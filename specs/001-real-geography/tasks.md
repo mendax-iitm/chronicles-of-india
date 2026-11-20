@@ -63,7 +63,7 @@ relevant) in the same commit.
 - [x] T018 [US3] In `scripts/build-geo.mjs`: extract relief from `ne_10m_geography_regions_polys` for whichever of Himalaya, Western Ghats, Eastern Ghats, Vindhya, Satpura, Aravalli, Thar exist (verify NE names); fail loudly if a required name is in neither NE nor `data/relief-traced.json`
 - [x] T019 (not needed: NE has all 7 relief areas) [US3] Download the R4 DEM (cache only, no tiles yet) and add a dev-only contour dump to `scripts/build-terrain.mjs --contours` (writes `.cache/contours.geojson`) to trace missing ranges from public-domain elevation
 - [x] T020 (not needed) [US3] Hand-trace missing ranges into `data/relief-traced.json` (`[{name, poly}]`) from the DEM contours — never from a copyrighted atlas
-- [ ] T021 [US3] `index.html`: render `ATLAS_BASE.relief` under polities (replacing `HIMAL`), labelled; `docs/SOURCES.md` rows for relief sources; rebuild; smoke; tick ROADMAP "Relief" 🔖
+- [x] T021 [US3] `index.html`: render `ATLAS_BASE.relief` under polities (replacing `HIMAL`), labelled; `docs/SOURCES.md` rows for relief sources; rebuild; smoke; tick ROADMAP "Relief" 🔖
 
 ---
 
