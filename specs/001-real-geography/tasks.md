@@ -20,15 +20,15 @@ relevant) in the same commit.
 
 ## Phase 1: Setup
 
-- [ ] T001 Create branch `001-real-geography` from `main` (repo has no remote yet; owner runs HANDOVER Step 2 separately)
-- [ ] T002 Add `package.json` with `devDependencies` only, exact-pinned: `mapshaper`, `pngjs`, `jpeg-js`, `playwright`; scripts `build:geo`, `build:terrain`, `check`, `smoke`; `"private": true`
-- [ ] T003 [P] Extend `.gitignore` with `node_modules/` and `.cache/`
-- [ ] T004 [P] Add a "Generating data" section to `CONTRIBUTING.md`: viewing needs nothing; `npm install` only to regenerate 🔖
+- [x] T001 Create branch `001-real-geography` from `main` (repo has no remote yet; owner runs HANDOVER Step 2 separately)
+- [x] T002 Add `package.json` with `devDependencies` only, exact-pinned: `mapshaper`, `pngjs`, `jpeg-js`, `playwright`; scripts `build:geo`, `build:terrain`, `check`, `smoke`; `"private": true`
+- [x] T003 [P] Extend `.gitignore` with `node_modules/` and `.cache/`
+- [x] T004 [P] Add a "Generating data" section to `CONTRIBUTING.md`: viewing needs nothing; `npm install` only to regenerate 🔖
 
 ## Phase 2: Foundational (blocks all stories)
 
-- [ ] T005 Write `scripts/smoke.mjs` (Playwright, `file://` URL): assert `window.atlas` keys `{st,SN,PL,EV,JR,setYear,act}` per contracts/window-atlas.md; `setYear(s.from)` for all 18 snapshots; fail on any console error; screenshot each snapshot at 390, 1024×768, 1440 to `.cache/shots/`
-- [ ] T006 Run smoke on the untouched prototype; keep `.cache/shots/before-*.png` as the baseline for ◆2 comparisons; record prototype first-paint time and weight (62 KB) for SC-002/SC-003 🔖
+- [x] T005 Write `scripts/smoke.mjs` (Playwright, `file://` URL): assert `window.atlas` keys `{st,SN,PL,EV,JR,setYear,act}` per contracts/window-atlas.md; `setYear(s.from)` for all 18 snapshots; fail on any console error; screenshot each snapshot at 390, 1024×768, 1440 to `.cache/shots/`
+- [x] T006 Run smoke on the untouched prototype; keep `.cache/shots/before-*.png` as the baseline for ◆2 comparisons; record prototype first-paint time and weight (62 KB) for SC-002/SC-003 🔖
 
 **Checkpoint**: baseline captured; smoke passes on prototype.
 
@@ -39,17 +39,17 @@ relevant) in the same commit.
 **Goal**: Natural Earth base map replaces COAST, LANKA and RIVERS in `index.html`.
 **Independent test**: quickstart US1 scenario; smoke 18/18, 0 errors.
 
-- [ ] T007 [US1] `scripts/build-geo.mjs`: download NE 10m `land`, `minor_islands`, `rivers_lake_centerlines`, `lakes`, `geography_regions_polys` into `.cache/ne/` (skip if cached); record NE version in `meta.ne_version`
-- [ ] T008 [US1] In `scripts/build-geo.mjs`: mapshaper clip `bbox=58,5,98,38`, `-simplify weighted keep-shapes`, keep-list for Lakshadweep/Andaman/Nicobar; largest polygon → `coast` ("One closed ring: the mainland after clipping"), rest → `islands` sorted by name
-- [ ] T009 [P] [US1] Create `data/river-labels.json` (allow-list, display name, `rank` 0|1, hand-picked `label` [lon,lat]) for ≥ 16 rivers: Indus, Jhelum, Chenab, Ravi, Beas, Sutlej, Ganga, Yamuna, Ghaghara, Gandak, Kosi, Son, Chambal, Brahmaputra, Narmada, Tapti, Mahanadi, Godavari, Krishna, Tungabhadra, Kaveri, Hooghly (exact NE names verified at build)
-- [ ] T010 [US1] In `scripts/build-geo.mjs`: rivers filtered by `data/river-labels.json`, merged per name; lakes Chilika, Sambhar, Dal, Wular, Loktak (where NE has them); hand `sea` labels (Arabian Sea, Bay of Bengal, Indian Ocean, Gulf of Mannar, Andaman Sea); `appear`/`vanish` omitted ("absent = always present; only set with a cited source")
-- [ ] T011 [US1] In `scripts/build-geo.mjs`: validation per data-model.md (bbox containment, ≤ 2 dp, required islands, rivers ≥ 16, no year 0); deterministic output (sorted arrays, schema key order, no timestamps); write `data/base.json` and `data/base.js` (`window.ATLAS_BASE=` + JSON + `;\n`) per contracts/base-json.md
-- [ ] T012 [US1] Run `npm run build:geo` twice; assert empty `git diff data/` on the second run (SC-008); tune simplify % by eye at max zoom and record it in the script header; commit script + output 🔖
-- [ ] T013 [US1] `index.html`: load `<script src="data/base.js">` before the app script; replace `COAST`/`LANKA`/`RIVERS` consumers with `ATLAS_BASE.coast/islands/rivers/lakes`; islands join the `#clipLand` clip path so island polities clip correctly; rivers stroke by `rank`; lakes as water fills; `GEO` sea labels from `ATLAS_BASE.sea`; graceful "Base map failed to load" if missing
-- [ ] T014 [US1] Keep old prototype atoms working against the new coast (no atom edits yet); fix only render breakage, not shapes
-- [ ] T015 [P] [US1] `docs/SOURCES.md`: Natural Earth rows per layer (version, URL, public domain)
-- [ ] T016 [P] [US1] `docs/DATA-MODEL.md` `base.json` section: add `meta`, `lakes`, optional `appear`/`vanish`, relief `source`
-- [ ] T017 [US1] Run smoke (18/18, 0 errors, 3 viewports); weight check `index.html + data/base.js` < 800 KB; tick ROADMAP "build-geo", "Coastline + islands", "Rivers and lakes" 🔖
+- [x] T007 [US1] `scripts/build-geo.mjs`: download NE 10m `land`, `minor_islands`, `rivers_lake_centerlines`, `lakes`, `geography_regions_polys` into `.cache/ne/` (skip if cached); record NE version in `meta.ne_version`
+- [x] T008 [US1] In `scripts/build-geo.mjs`: mapshaper clip `bbox=58,5,98,38`, `-simplify weighted keep-shapes`, keep-list for Lakshadweep/Andaman/Nicobar; largest polygon → `coast` ("One closed ring: the mainland after clipping"), rest → `islands` sorted by name
+- [x] T009 [P] [US1] Create `data/river-labels.json` (allow-list, display name, `rank` 0|1, hand-picked `label` [lon,lat]) for ≥ 16 rivers: Indus, Jhelum, Chenab, Ravi, Beas, Sutlej, Ganga, Yamuna, Ghaghara, Gandak, Kosi, Son, Chambal, Brahmaputra, Narmada, Tapti, Mahanadi, Godavari, Krishna, Tungabhadra, Kaveri, Hooghly (exact NE names verified at build)
+- [x] T010 [US1] In `scripts/build-geo.mjs`: rivers filtered by `data/river-labels.json`, merged per name; lakes Chilika, Sambhar, Dal, Wular, Loktak (where NE has them); hand `sea` labels (Arabian Sea, Bay of Bengal, Indian Ocean, Gulf of Mannar, Andaman Sea); `appear`/`vanish` omitted ("absent = always present; only set with a cited source")
+- [x] T011 [US1] In `scripts/build-geo.mjs`: validation per data-model.md (bbox containment, ≤ 2 dp, required islands, rivers ≥ 16, no year 0); deterministic output (sorted arrays, schema key order, no timestamps); write `data/base.json` and `data/base.js` (`window.ATLAS_BASE=` + JSON + `;\n`) per contracts/base-json.md
+- [x] T012 [US1] Run `npm run build:geo` twice; assert empty `git diff data/` on the second run (SC-008); tune simplify % by eye at max zoom and record it in the script header; commit script + output 🔖
+- [x] T013 [US1] `index.html`: load `<script src="data/base.js">` before the app script; replace `COAST`/`LANKA`/`RIVERS` consumers with `ATLAS_BASE.coast/islands/rivers/lakes`; islands join the `#clipLand` clip path so island polities clip correctly; rivers stroke by `rank`; lakes as water fills; `GEO` sea labels from `ATLAS_BASE.sea`; graceful "Base map failed to load" if missing
+- [x] T014 [US1] Keep old prototype atoms working against the new coast (no atom edits yet); fix only render breakage, not shapes
+- [x] T015 [P] [US1] `docs/SOURCES.md`: Natural Earth rows per layer (version, URL, public domain)
+- [x] T016 [P] [US1] `docs/DATA-MODEL.md` `base.json` section: add `meta`, `lakes`, optional `appear`/`vanish`, relief `source`
+- [x] T017 [US1] Run smoke (18/18, 0 errors, 3 viewports); weight check `index.html + data/base.js` < 800 KB; tick ROADMAP "build-geo", "Coastline + islands", "Rivers and lakes" 🔖
 
 ### ◆ CHECKPOINT 1 — STOP. Show owner screenshots (1440 + 390) of new coastline and rivers, the weight number, and the simplify setting. Wait for approval.
 
@@ -60,9 +60,9 @@ relevant) in the same commit.
 **Goal**: seven relief areas render under polities.
 **Independent test**: quickstart US1/US3 visual; smoke clean.
 
-- [ ] T018 [US3] In `scripts/build-geo.mjs`: extract relief from `ne_10m_geography_regions_polys` for whichever of Himalaya, Western Ghats, Eastern Ghats, Vindhya, Satpura, Aravalli, Thar exist (verify NE names); fail loudly if a required name is in neither NE nor `data/relief-traced.json`
-- [ ] T019 [US3] Download the R4 DEM (cache only, no tiles yet) and add a dev-only contour dump to `scripts/build-terrain.mjs --contours` (writes `.cache/contours.geojson`) to trace missing ranges from public-domain elevation
-- [ ] T020 [US3] Hand-trace missing ranges into `data/relief-traced.json` (`[{name, poly}]`) from the DEM contours — never from a copyrighted atlas
+- [x] T018 [US3] In `scripts/build-geo.mjs`: extract relief from `ne_10m_geography_regions_polys` for whichever of Himalaya, Western Ghats, Eastern Ghats, Vindhya, Satpura, Aravalli, Thar exist (verify NE names); fail loudly if a required name is in neither NE nor `data/relief-traced.json`
+- [x] T019 (not needed: NE has all 7 relief areas) [US3] Download the R4 DEM (cache only, no tiles yet) and add a dev-only contour dump to `scripts/build-terrain.mjs --contours` (writes `.cache/contours.geojson`) to trace missing ranges from public-domain elevation
+- [x] T020 (not needed) [US3] Hand-trace missing ranges into `data/relief-traced.json` (`[{name, poly}]`) from the DEM contours — never from a copyrighted atlas
 - [ ] T021 [US3] `index.html`: render `ATLAS_BASE.relief` under polities (replacing `HIMAL`), labelled; `docs/SOURCES.md` rows for relief sources; rebuild; smoke; tick ROADMAP "Relief" 🔖
 
 ---

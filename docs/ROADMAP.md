@@ -7,9 +7,9 @@ and [§8 (phases)](../BRIEF.md#8-phased-plan). This file is the running tick-lis
 Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 
 ## Phase 1 — Real geography  ⬅ current
-- [ ] `scripts/build-geo.mjs` — Natural Earth → `data/base.json`
-- [ ] Coastline + islands (Sri Lanka, Lakshadweep, Andamans)
-- [ ] Rivers and lakes (16+ named, with `appear`/`vanish` years)
+- [x] `scripts/build-geo.mjs` — Natural Earth → `data/base.json`
+- [x] Coastline + islands (Sri Lanka, Lakshadweep, Andamans)
+- [ ] Rivers and lakes (16+ named, with `appear`/`vanish` years) — 31 rivers + Wular done; `appear`/`vanish` schema ready, values need cited sources (Phase 3)
 - [ ] Relief: Himalaya, Ghats, Vindhyas, Aravallis, Thar
 - [ ] Terrain hillshade from a public-domain DEM, lazy-loaded
 - [ ] Redraw region atoms against real geography (25 → 40–60)

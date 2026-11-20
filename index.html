@@ -18,6 +18,7 @@ main{flex:1;min-height:0;display:flex}
 #map.drag{cursor:grabbing}
 .land{fill:var(--land);stroke:#b9b4a6;stroke-width:1;vector-effect:non-scaling-stroke}
 .river{fill:none;stroke:#8fbbdc;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.lake{fill:var(--sea);stroke:#8fbbdc;stroke-width:.8;vector-effect:non-scaling-stroke}
 .river.big{stroke-width:2.2}
 .pol{fill-opacity:.8;stroke:#fff;stroke-opacity:.6;stroke-width:.8;vector-effect:non-scaling-stroke;cursor:pointer}
 .pol.hov{fill-opacity:1}
@@ -86,9 +87,9 @@ footer#tl button#play{background:var(--navy);color:#fff}
 <main>
  <section id="mapwrap">
   <svg id="map" xmlns="http://www.w3.org/2000/svg">
-   <defs><clipPath id="clipLand"><polygon id="clipPoly"/></clipPath></defs>
+   <defs><clipPath id="clipLand"><path id="clipPoly"/></clipPath></defs>
    <g id="world">
-    <polygon id="land" class="land"/><polygon id="lanka" class="land"/>
+    <path id="land" class="land"/><g id="lakes"></g>
     <polygon id="himal" class="himal"/>
     <g id="rivers"></g>
     <g id="pols" clip-path="url(#clipLand)"></g>
@@ -113,6 +114,7 @@ footer#tl button#play{background:var(--navy);color:#fff}
  <div id="ylab"></div>
 </footer>
 
+<script src="data/base.js"></script>
 <script>
 "use strict";
 /* ---------- projection ---------- */
@@ -125,20 +127,11 @@ const rg=s=>s.from===s.to?fy(s.from):fy(s.from)+' – '+fy(s.to);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ---------- geography (schematic) ---------- */
-const COAST=[[20,60],[20,25.5],[58,25.4],[61.6,25.2],[66.7,25.4],[67.5,24.1],[68.4,23.6],[68.9,23.4],[69.5,22.8],[70.2,22.8],[69,22.25],[69.6,21.6],[70.4,20.9],[71,20.7],[72.1,21.8],[72.2,22.2],[72.6,22.3],[72.8,21.2],[72.8,19],[73.3,17],[73.8,15.4],[74.1,14.8],[74.8,12.9],[75.4,11.9],[76.2,9.9],[77.5,8.1],[78.2,8.8],[79.3,9.3],[79.9,10.8],[80.3,13.1],[80.1,14.5],[82.3,16.9],[83.3,17.7],[84.9,19.3],[85.8,19.8],[86.7,20.3],[87,21.5],[88,21.6],[89,21.8],[91,22.5],[91.8,22.3],[92.3,20.8],[92.9,20.1],[94.3,16],[96,16.5],[97.6,16.5],[98.5,15],[125,15],[125,60]];
-const LANKA=[[79.8,9.8],[80.5,9.5],[81.8,7.3],[81.3,6],[80.2,5.9],[79.8,7.5]];
+/* Base geography: data/base.js, generated from Natural Earth by scripts/build-geo.mjs. */
+const B=window.ATLAS_BASE||(console.error('Base map failed to load: data/base.js missing'),{coast:[],islands:[],rivers:[],lakes:[],relief:[],sea:[]});
+
 const HIMAL=[[73,35.8],[77,36.2],[79.5,34.4],[81,31.2],[84,29.2],[88,28.2],[92,28.3],[96,29.8],[96,28.3],[92,27],[88,26.9],[84,27.6],[81.5,28.8],[79,30.5],[76.5,32.6],[74,34.2]];
-const RIVERS=[
- ['Ganga',1,[[79,31],[78.2,29.95],[79.9,27.1],[81.9,25.4],[83,25.3],[85.1,25.6],[87.8,25],[89,23.6],[90.6,22.2]],[84,26.2]],
- ['Yamuna',0,[[78.5,31],[77.2,28.6],[77.7,27.5],[79.5,26.3],[81.9,25.4]],[77.9,28.7]],
- ['Indus',1,[[81,31],[78,34],[75.6,35.3],[72.25,33.9],[70.4,28.9],[68.9,27.7],[68.4,25.4],[67.5,24]],[70.6,29.6]],
- ['Brahmaputra',1,[[95.5,29],[94,27],[91.8,26.2],[90,26],[89.7,25.2],[89.5,24]],[92.3,26.5]],
- ['Narmada',0,[[81.8,22.7],[78,22.5],[75.7,22.2],[73,21.7],[72.6,21.7]],[77,23]],
- ['Godavari',0,[[73.5,19.9],[76,19],[79,18.8],[81,17.3],[82.3,16.7]],[77.5,19.3]],
- ['Krishna',0,[[73.6,17.9],[75.5,16.5],[78,16],[80.3,16.2],[81.1,15.7]],[77,16.4]],
- ['Kaveri',0,[[75.7,12.4],[77.5,12],[78.3,11.2],[79.3,10.8],[79.9,10.8]],[77.3,12.3]],
- ['Mahanadi',0,[[82,20.5],[84,21],[86,20.4]],[83.5,21.3]]];
-const GEO=[['Arabian Sea',66,15],['Bay of Bengal',88,13],['Indian Ocean',81,5.4],['Himalaya',83,29.6],['Thar Desert',71.8,27]];
+const GEO=[...B.sea.map(g=>[g.name,g.at[0],g.at[1]]),['Himalaya',83,29.6],['Thar Desert',71.8,27]];
 
 /* Reusable regions ("atoms"); polities are made of these. Coastal edges overshoot into the sea and are clipped. */
 const ATOMS={
@@ -167,7 +160,7 @@ TAMIL:[[78,14],[80.2,14.4],[81,13],[80.7,10.5],[79.5,9],[78.2,8.2],[77.4,8],[77,
 KERALA:[[74,12.9],[76.5,11.5],[77,10],[77.4,8],[76,8.8],[75,11]],
 KASHMIR:[[73,35],[77,35.5],[79,34],[78,32.5],[75.5,32.5],[74,34]],
 ASSAM:[[89,26.2],[92,25],[95.5,27.5],[95,28.5],[90,27]],
-SRILANKA:LANKA};
+SRILANKA:[[79.3,10.2],[82.3,10.2],[82.3,5.6],[79.3,5.6]]}; /* overshoot box, clipped to the real island */
 const AP={}; for(const k in ATOMS) AP[k]=ptsStr(ATOMS[k]);
 function cen(poly){let a=0,cx=0,cy=0;for(let i=0;i<poly.length;i++){const[x0,y0]=poly[i],[x1,y1]=poly[(i+1)%poly.length],f=x0*y1-x1*y0;a+=f;cx+=(x0+x1)*f;cy+=(y0+y1)*f}a/=2;return{a:Math.abs(a),x:cx/(6*a),y:cy/(6*a)}}
 
@@ -428,11 +421,14 @@ const svg=$('#map'),vb={x:0,y:0,w:W,h:H};
 let drag=null,hovPol=-1;
 
 /* ---------- init static layers ---------- */
-$('#land').setAttribute('points',ptsStr(COAST));
-$('#clipPoly').setAttribute('points',ptsStr(COAST));
-$('#lanka').setAttribute('points',ptsStr(LANKA));
+const lineD=r=>'M'+ptsStr(r).replace(/ /g,'L'), ringsD=rs=>rs.map(r=>lineD(r)+'Z').join('');
+const landD=ringsD([B.coast,...B.islands.map(i=>i.poly)]);
+$('#land').setAttribute('d',landD);
+$('#clipPoly').setAttribute('d',landD);
+$('#lakes').innerHTML=B.lakes.map(l=>`<path class="lake" d="${ringsD([l.poly])}"/>`).join('');
+if(!window.ATLAS_BASE)$('.note').textContent='Base map failed to load. '+$('.note').textContent;
 $('#himal').setAttribute('points',ptsStr(HIMAL));
-$('#rivers').innerHTML=RIVERS.map(r=>`<polyline class="river${r[1]?' big':''}" points="${ptsStr(r[2])}"/>`).join('');
+$('#rivers').innerHTML=B.rivers.map(r=>`<path class="river${r.rank?' big':''}" d="${r.line.map(lineD).join('')}"/>`).join('');
 $('#pols').setAttribute('clip-path','url(#clipLand)');
 
 /* ---------- view ---------- */
@@ -468,7 +464,7 @@ function wrap(n){if(n.length<=13||n.indexOf(' ')<0)return[n];const m=n.length/2;
 function drawOv(){
  let h='';const q=st.quiz,s=SN[st.si],y=st.year;
  GEO.forEach(g=>h+=glyph(`<text class="geo">${g[0]}</text>`,g[1],g[2],'pointer-events="none"'));
- if(scl()>1.6)RIVERS.forEach(r=>h+=glyph(`<text class="geo" style="fill:#4f86b3">${r[0]}</text>`,r[3][0],r[3][1],'pointer-events="none"'));
+ if(scl()>1.6)B.rivers.forEach(r=>h+=glyph(`<text class="geo" style="fill:#4f86b3">${r.name}</text>`,r.label[0],r.label[1],'pointer-events="none"'));
  if(!q.on){
   const sc=scl(),boxes=[];
   const free=(x,y,w,hh)=>{for(const b of boxes)if(x<b[0]+b[2]&&x+w>b[0]&&y<b[1]+b[3]&&y+hh>b[1])return false;boxes.push([x,y,w,hh]);return true};
