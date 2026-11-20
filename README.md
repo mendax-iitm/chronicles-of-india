@@ -17,7 +17,13 @@ cities change their names. Click anything to find out what it was and who ruled 
   Dhillika → Delhi → Shahjahanabad → New Delhi.
 - **Journeys** — follow Alexander, Faxian, Xuanzang, Ibn Battuta and Gandhi across the map.
 - **Events** — 25 dated turning points from the Kalinga War to Partition.
-- **Pinpoint quiz** — six rounds; tap where you think a historic city stood.
+- **Pinpoint quiz** — tap where you think a historic city stood; scored by distance.
+
+**In progress** (see [BRIEF.md §6](BRIEF.md#6-feature-parity-checklist)): reigning-ruler and
+regnal-era display, administrative divisions, an X-ray lens showing modern boundaries,
+trade corridors, terrain hillshade, universal search, deep links and embed mode, a GeoJSON
+export, an MCP server and agent skill, Hindi and regional languages, a classroom/exam mode,
+and full offline PWA use.
 
 ## Run it
 
@@ -48,9 +54,11 @@ data model, the phased plan and the editorial policy.
 
 ## Credits and licence
 
-Inspired by [Chronicles of the Realm (`jiangshan-map`)](https://github.com/DeanChensj/jiangshan-map),
-an interactive historical atlas of China. This project reuses its *ideas* only — all code
-and data here are original, so none of its GPL-3.0 or non-commercial data terms apply.
+A tribute to [Chronicles of the Realm (`jiangshan-map`)](https://github.com/DeanChensj/jiangshan-map),
+an interactive historical atlas of China, whose feature set this project aims to match for
+India. It reuses that project's *ideas* only — all code and data here are original, so
+none of its GPL-3.0 or non-commercial data terms apply, and everything here stays free for
+commercial reuse too.
 
 - Code: [MIT](LICENSE)
 - Data, text and curated geometry in `data/`: CC BY 4.0

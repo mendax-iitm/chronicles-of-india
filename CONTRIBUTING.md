@@ -28,8 +28,12 @@ text. In short: scholarly consensus, state the uncertainty, no communal framing,
 "invader vs native" framing, describe what rulers did rather than judging them, and
 remember that empires had frontiers rather than lines.
 
+Section 11.3 of the brief has a table of worked examples — phrasings that get rejected
+and the neutral phrasing to use instead. Read it before writing any summary text.
+
 Pull requests that re-colour the map along religious lines, or that rewrite summaries to
-advance a political reading, will be closed.
+advance a political reading, will be closed without discussion. Contested framing
+questions get resolved in an issue, never inside a pull request.
 
 ## Code
 
