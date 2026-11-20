@@ -49,6 +49,7 @@ missing kingdom, please open an issue.
 
 ## Project plan
 
+New here? [HANDOVER.md](HANDOVER.md) gets you from zero to a working session.
 Read [BRIEF.md](BRIEF.md) — it is the single source of truth for scope, architecture,
 data model, the phased plan and the editorial policy.
 
