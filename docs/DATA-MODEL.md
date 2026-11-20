@@ -38,6 +38,13 @@ Rules:
 - Keep atom count manageable (40–60 after Phase 1). Each one you add has to be drawn once
   and then pays for itself across 30 eras.
 
+**Phase 1 status:** the 60 atoms are authored in `scripts/build-atoms.mjs` as lists of
+named nodes; neighbours share nodes, so borders match exactly. `npm run build:atoms`
+writes them into the `ATOMS:BEGIN/END` block of `index.html` together with
+`ATOM_MIGRATION` (prototype id → new ids, expanded when snapshots load).
+`npm run check` verifies the count and that no land lies in two atoms. Phase 2 moves
+the output to `regions.json` and rewrites snapshots with the new ids.
+
 ## `eras.json`
 
 ```jsonc
