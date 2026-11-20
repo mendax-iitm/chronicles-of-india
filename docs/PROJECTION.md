@@ -1,7 +1,7 @@
 # Projection decision (Phase 1)
 
-**Status: awaiting owner decision.** The site still ships equirectangular. The conic is
-live behind a flag so it can be judged in the real page: open `index.html?proj=lcc`.
+**Status: Adopted.** Lambert conformal conic (LCC) is the default projection for Chronicles of India.
+The legacy equirectangular projection remains accessible for visual comparison via `index.html?proj=equirect`.
 
 ## Options
 

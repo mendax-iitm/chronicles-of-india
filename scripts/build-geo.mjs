@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 process.chdir(resolve(dirname(fileURLToPath(import.meta.url)), '..'));
 
 const NE_VERSION = '5.1.1';
-const BBOX = [56, 3, 102, 40];      // covers the whole map frame (lon 58–100, lat 4–39) so no clip edge shows
+const BBOX = [54, 2, 104, 40];      // covers the whole map frame (lon 54–104, lat 2–40) so no clip edge shows
 const SIMPLIFY = '10%';          // share of removable vertices kept (mapshaper weighted). Tuned by eye at max zoom.
 const MIN_ISLAND = 0.003;        // deg² (~35 km²); smaller unnamed islets are dropped
 const LAYERS = {

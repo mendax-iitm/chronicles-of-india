@@ -52,7 +52,7 @@ main{flex:1;min-height:0;display:flex}
 #content p{margin:6px 0}
 ul.l{list-style:none;margin:0;padding:0}
 ul.l li{display:flex;gap:8px;align-items:flex-start;padding:6px 6px;border-radius:8px;cursor:pointer}
-ul.l li:hover,ul.l li.on{background:#eef3fa}
+ul.l li:hover,ul.l li.on,ul.l li.hov{background:#eef3fa}
 .chip{flex:none;width:13px;height:13px;border-radius:4px;margin-top:4px}
 .dia{flex:none;width:11px;height:11px;margin-top:5px;background:var(--gold);transform:rotate(45deg)}
 .small{font-size:12.5px;color:var(--mut)}
@@ -89,7 +89,7 @@ footer#tl button#play{background:var(--navy);color:#fff}
 <header><h1>Chronicles of India</h1><span class="sub">An interactive historical atlas · 600 BCE – 1947 CE</span></header>
 <main>
  <section id="mapwrap">
-  <svg id="map" xmlns="http://www.w3.org/2000/svg">
+  <svg id="map" xmlns="http://www.w3.org/2000/svg" role="region" aria-label="Historical map of South Asia">
    <defs><clipPath id="clipLand"><path id="clipPoly"/></clipPath></defs>
    <g id="world">
     <path id="land" class="land"/><g id="terrain" clip-path="url(#clipLand)"></g><g id="lakes"></g>
@@ -106,14 +106,14 @@ footer#tl button#play{background:var(--navy);color:#fff}
   <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era">Ghost borders</button>
  </section>
  <aside id="panel">
-  <div id="tabs"><button data-t="era" class="on">Era</button><button data-t="places">Places</button><button data-t="journeys">Journeys</button><button data-t="quiz">Quiz</button></div>
+  <div id="tabs" role="tablist"><button data-t="era" class="on" role="tab" aria-selected="true">Era</button><button data-t="places" role="tab" aria-selected="false">Places</button><button data-t="journeys" role="tab" aria-selected="false">Journeys</button><button data-t="quiz" role="tab" aria-selected="false">Quiz</button></div>
   <div id="content"></div>
   <div class="note">Boundaries are schematic approximations for learning, not surveyed borders. Concept inspired by the open-source “Chronicles of the Realm” atlas of China; code and data here are original.</div>
  </aside>
 </main>
 <footer id="tl">
  <button id="prev" aria-label="Previous era">⏮</button><button id="play" aria-label="Play">▶</button><button id="next" aria-label="Next era">⏭</button>
- <div class="track"><input type="range" id="yr" min="-600" max="1947" value="-261" step="1"><div id="ticks"></div></div>
+ <div class="track"><input type="range" id="yr" min="-600" max="1947" value="-261" step="1" aria-label="Timeline slider: historical year"><div id="ticks"></div></div>
  <div id="ylab"></div>
 </footer>
 
@@ -122,10 +122,10 @@ footer#tl button#play{background:var(--navy);color:#fff}
 "use strict";
 /* ---------- projection ---------- */
 const K=22,XF=.93,W=860,H=770;
-/* Projection. Default: equirectangular with a 0.93 x-factor. ?proj=lcc previews a Lambert conformal
-   conic (standard parallels 15°N/31°N, centre 23°N 80°E) pinned to the same centre and scale — see
-   docs/PROJECTION.md. Every lon/lat → SVG conversion goes through XY; clicks come back through toLonLat. */
-const PROJ=/[?&]proj=lcc/.test(location.search)?'lcc':'equirect';
+/* Projection. Default: Lambert conformal conic (standard parallels 15°N/31°N, centre 23°N 80°E) — see
+   docs/PROJECTION.md. ?proj=equirect previews the legacy equirectangular projection (with 0.93 x-factor).
+   Every lon/lat → SVG conversion goes through XY; clicks come back through toLonLat. */
+const PROJ=/[?&]proj=equirect/.test(location.search)?'equirect':'lcc';
 const LCC=(()=>{const r=Math.PI/180,t=f=>Math.tan(Math.PI/4+f*r/2),n=Math.log(Math.cos(15*r)/Math.cos(31*r))/Math.log(t(31)/t(15)),
  F=Math.cos(15*r)*t(15)**n/n,r0=F/t(23)**n,S=K/r,X0=(80-58)*K*XF,Y0=(39-23)*K;
  return{fwd:(lon,lat)=>{const p=F/t(lat)**n,th=n*(lon-80)*r;return[X0+S*p*Math.sin(th),Y0-S*(r0-p*Math.cos(th))]},
@@ -506,7 +506,11 @@ function setYear(y,keepView){
 const chipLi=(c,t,a,on)=>`<li data-a="${a}" class="${on?'on':''}"><span class="chip" style="background:${c}"></span><span>${t}</span></li>`;
 function render(soft){
  const c=$('#content'),sc=c.scrollTop;let h='';
- document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===st.tab));
+ document.querySelectorAll('#tabs button').forEach(b=>{
+  const on=b.dataset.t===st.tab;
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-selected',on?'true':'false');
+ });
  if(st.tab==='era'){
   const s=SN[st.si];
   h+=`<h2>${esc(s.title)}</h2><div class="rng">${rg(s)}</div><p>${esc(s.sum)}</p>`;
@@ -545,9 +549,15 @@ function render(soft){
 function go(tab){if(st.quiz.on&&tab!=='quiz')quitQuiz(true);st.tab=tab;render()}
 
 /* ---------- actions ---------- */
+function zoomToPol(i){
+ const s=SN[st.si];if(!s||!s.pol[i])return;const p=s.pol[i];
+ let x0=999,x1=-999,y0=999,y1=-999;
+ p.atoms.forEach(k=>{(ATOMS[k]||[]).forEach(pt=>{x0=Math.min(x0,pt[0]);x1=Math.max(x1,pt[0]);y0=Math.min(y0,pt[1]);y1=Math.max(y1,pt[1])})});
+ if(x0<=x1&&y0<=y1){const r=svg.getBoundingClientRect();const w=Math.max((x1-x0)*K*XF*1.3,(y1-y0)*K*1.3*r.width/r.height,W/6);flyTo((x0+x1)/2,(y0+y1)/2,w)}
+}
 function act(a){
  const [k,v,w]=a.split(':');
- if(k==='pol'){st.selPol=st.selPol==+v?-1:+v;drawPols();render(true)}
+ if(k==='pol'){const next=st.selPol==+v?-1:+v;st.selPol=next;drawPols();render(true);if(next>=0)zoomToPol(next)}
  else if(k==='ev'){st.selEv=+v;const e=EV[+v];st.selEv=e.id;setYear(e.y);flyTo(e.lon,e.lat,W/3.2);render(true)}
  else if(k==='pl'){
   if(v==='back'){st.selPlace=-1;drawOv();render()}
@@ -600,14 +610,25 @@ function clickAt(e,t){
  if(st.quiz.on){const[lo,la]=toLonLat(e.clientX,e.clientY);guess(lo,la);return}
  const kEl=t.closest&&t.closest('[data-k]');
  if(kEl){const[k,v]=kEl.dataset.k.split(':');
-  if(k==='p'){st.selPlace=+v;go('places')+0;drawOv()}
+  if(k==='p'){st.selPlace=+v;go('places');drawOv()}
   else if(k==='e'){st.selEv=+v;go('era');drawOv();render(true)}
   else if(k==='j'){const p=JR[st.jr].s[+v];setYear(p[3]);st.tab='journeys';render(true)}
   return}
  const pEl=t.closest&&t.closest('[data-pi]');
- if(pEl){st.selPol=st.selPol==+pEl.dataset.pi?-1:+pEl.dataset.pi;drawPols();st.tab='era';render(true)}
+ if(pEl){const next=st.selPol==+pEl.dataset.pi?-1:+pEl.dataset.pi;st.selPol=next;drawPols();st.tab='era';render(true);if(next>=0)zoomToPol(next);return}
+ if(st.selPol>=0){st.selPol=-1;drawPols();render(true)}
 }
-function setHov(i){if(i===hovPol)return;document.querySelectorAll('.pol.hov').forEach(n=>n.classList.remove('hov'));hovPol=i;if(i>=0)document.querySelectorAll(`.pol[data-pi="${i}"]`).forEach(n=>n.classList.add('hov'))}
+function setHov(i){
+ if(i===hovPol)return;
+ document.querySelectorAll('.pol.hov').forEach(n=>n.classList.remove('hov'));
+ document.querySelectorAll('#content li[data-a^="pol:"].hov').forEach(n=>n.classList.remove('hov'));
+ hovPol=i;
+ if(i>=0){
+  document.querySelectorAll(`.pol[data-pi="${i}"]`).forEach(n=>n.classList.add('hov'));
+  const li=document.querySelector(`#content li[data-a="pol:${i}"]`);
+  if(li)li.classList.add('hov');
+ }
+}
 function tip(t,e){const el=$('#tip');if(!t){el.style.display='none';return}const r=$('#mapwrap').getBoundingClientRect();el.innerHTML=t;el.style.display='block';
  el.style.left=Math.min(e.clientX-r.left+12,r.width-el.offsetWidth-6)+'px';el.style.top=Math.max(e.clientY-r.top-el.offsetHeight-10,4)+'px'}
 function hover(e){
@@ -633,7 +654,26 @@ $('#play').onclick=()=>{if(st.quiz.on)return;if(st.play){stopPlay();return}$('#p
  st.play=setInterval(()=>{if(st.year>=1947){stopPlay();return}setYear(st.year+(st.year<0&&st.year+8>=0?9:8))},120)};
 $('#ticks').innerHTML=SN.map(s=>`<i style="left:${((s.from+600)/2547*100).toFixed(2)}%" title="${esc(s.title)} (${fy(s.from)})" data-y="${s.from}"></i>`).join('');
 $('#ticks').onclick=e=>{const i=e.target.closest('i');if(i&&!st.quiz.on){stopPlay();setYear(+i.dataset.y)}};
-document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')setYear(st.year+10);if(e.key==='ArrowLeft')setYear(st.year-10)});
+$('#content').addEventListener('pointerover',e=>{
+ const li=e.target.closest&&e.target.closest('[data-a]');
+ if(li&&li.dataset.a.startsWith('pol:'))setHov(+li.dataset.a.split(':')[1]);
+});
+$('#content').addEventListener('pointerout',e=>{
+ const li=e.target.closest&&e.target.closest('[data-a]');
+ if(li&&li.dataset.a.startsWith('pol:'))setHov(-1);
+});
+document.addEventListener('keydown',e=>{
+ if(e.target.tagName==='INPUT')return;
+ if(e.key==='ArrowRight'){if(e.shiftKey)setYear(st.year+10);else $('#next').click()}
+ else if(e.key==='ArrowLeft'){if(e.shiftKey)setYear(st.year-10);else $('#prev').click()}
+ else if(e.key===' '){e.preventDefault();$('#play').click()}
+ else if(e.key==='Escape'){
+  if(st.quiz.on)quitQuiz();
+  else if(st.jr>=0)act('jr:back');
+  else if(st.selPlace>=0)act('pl:back');
+  else if(st.selPol>=0){st.selPol=-1;drawPols();render(true)}
+ }
+});
 new ResizeObserver(()=>applyVB()).observe(svg);
 
 drawPols();setYear(-261);resetView();render();

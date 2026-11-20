@@ -1,0 +1,24 @@
+# Chronicles of India — Interactive Historical Atlas
+
+> An interactive historical atlas of India from 600 BCE to 1947 CE featuring timeline maps, rulers, place genealogy, historical journeys, and pinpoint quizzes. Zero runtime dependencies.
+
+## Overview
+Chronicles of India provides an interactive cartographic view of the history of the Indian subcontinent over 2,500 years. The atlas maps the territorial extent of dynasties and polities, major urban centers, key historical events, and travel routes.
+
+- Web Application: `index.html` (viewable directly in modern browsers without build steps or servers)
+- Base Geodata: `data/base.js` and `data/base.json` (Natural Earth 10m coastline, islands, 31 rivers, lakes, 7 relief areas)
+- Terrain Hillshade: `data/terrain/` (SRTM / ETOPO1 elevation model processed to greyscale hillshade tiles)
+
+## Core Documentation
+- [BRIEF.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/BRIEF.md): Master project brief, feature parity checklist, non-negotiables, editorial policy, and architectural guidelines.
+- [docs/ROADMAP.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/ROADMAP.md): Ten-phase development roadmap.
+- [docs/DATA-MODEL.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/DATA-MODEL.md): Schemas and contracts for base geography, region atoms, snapshots, places, events, and journeys.
+- [docs/PROJECTION.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/PROJECTION.md): Evaluation of Equirectangular (with 0.93 x-factor) vs Lambert Conformal Conic (LCC) projection.
+- [docs/SOURCES.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/SOURCES.md): Public-domain cartographic and historical sources used in the project.
+
+## Developer & Verification Tooling
+- `npm run check`: Validates region atom geometry (40–60 atoms, 0 overlaps across 0.05° land grid).
+- `npm run smoke`: Playwright smoke test asserting `window.atlas` contracts, clean console, and visual rendering across 390px, 1024px, and 1440px viewports.
+- `npm run build:geo`: Re-extracts Natural Earth vector geography to `data/base.json`.
+- `npm run build:atoms`: Re-injects verified atom nodes into `index.html`.
+- `npm run build:terrain`: Re-generates DEM terrain hillshade tiles.

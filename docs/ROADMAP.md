@@ -13,7 +13,7 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Relief: Himalaya, Ghats, Vindhyas, Aravallis, Thar
 - [x] Terrain hillshade from a public-domain DEM, lazy-loaded (built for the current projection; rerun with `--proj lcc` if the conic is adopted)
 - [x] Redraw region atoms against real geography (25 → 40–60) — 60 atoms, 0 overlaps
-- [ ] Decide: equirectangular vs Lambert conformal conic — flag before implementing
+- [x] Decide: equirectangular vs Lambert conformal conic — adopted Lambert conformal conic (LCC) as default, equirectangular available via ?proj=equirect
 
 ## Phase 2 — Code and data separation
 - [ ] Split `index.html` → `css/`, `js/`, `data/`

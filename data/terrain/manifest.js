@@ -1,1 +1,1 @@
-window.ATLAS_TERRAIN={"projection":"equirect","extent":[-40,-20,900,790],"rows":4,"cols":4,"tile":"r{r}c{c}.jpg","source":"aws-terrain-tiles-z7 (SRTM, ETOPO1; public domain)","px_per_unit":4};
+window.ATLAS_TERRAIN={"projection":"lcc","extent":[-40,-20,900,790],"rows":4,"cols":4,"tile":"r{r}c{c}.jpg","source":"aws-terrain-tiles-z7 (SRTM, ETOPO1; public domain)","px_per_unit":4};

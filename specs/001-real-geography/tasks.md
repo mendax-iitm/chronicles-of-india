@@ -94,7 +94,7 @@ relevant) in the same commit.
 
 ### ◆ CHECKPOINT 3 — STOP. Owner decides. If approved: T031. If not: skip T031.
 
-- [ ] T031 [US4] (only if approved) Switch `index.html` to LCC: single `pr()` + inverse; densify; smoke; quiz scoring spot-check (tap known city, distance ≈ 0) 🔖
+- [x] T031 [US4] Switch `index.html` to LCC: single `pr()` + inverse; widened BBOX; smoke; quiz scoring spot-check (tap known city, distance ≈ 0) 🔖
 
 ---
 
@@ -112,8 +112,8 @@ relevant) in the same commit.
 
 ## Phase 8: Polish
 
-- [ ] T036 Final quality gate (BRIEF §9): slider end to end at 390, 1024×768, 1440; console clean; every labelable polity labelled; weight report
-- [ ] T037 Tick ROADMAP "Decide: projection" with the outcome; keep `.cache/shots` used in ◆ reviews until owner closes Phase 1
+- [x] T036 Final quality gate (BRIEF §9): slider end to end at 390, 1024×768, 1440; console clean; every labelable polity labelled; weight report
+- [x] T037 Tick ROADMAP "Decide: projection" with the outcome; keep `.cache/shots` used in ◆ reviews until owner closes Phase 1
 - [x] T038 [P] README: one line on base-map sources and that viewing needs no build 🔖
 
 ---
