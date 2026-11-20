@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronicles of India — GeoJSON Demo</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  html, body { height: 100%; margin: 0; font-family: system-ui, sans-serif; }
+  #map { height: 100%; width: 100%; }
+  #controls {
+    position: absolute; top: 10px; right: 10px; z-index: 1000;
+    background: white; padding: 12px 16px; border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); max-width: 320px;
+  }
+  select { width: 100%; padding: 6px; font-size: 14px; margin-top: 6px; }
+  h3 { margin: 0 0 6px; font-size: 16px; }
+  .info { font-size: 12px; color: #555; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div id="controls">
+  <h3>Chronicles of India (GeoJSON)</h3>
+  <label for="eraSelect">Historical Snapshot:</label>
+  <select id="eraSelect"></select>
+  <div id="eraInfo" class="info"></div>
+</div>
+<div id="map"></div>
+
+<script>
+  const map = L.map('map').setView([22.5, 79.0], 5);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '© OpenStreetMap contributors | Chronicles of India GeoJSON'
+  }).addTo(map);
+
+  let currentLayer = null;
+
+  async function loadSnapshot(path) {
+    if (currentLayer) map.removeLayer(currentLayer);
+    const res = await fetch(path);
+    const data = await res.json();
+    document.getElementById('eraInfo').textContent = data.properties.summary;
+    currentLayer = L.geoJSON(data, {
+      style: feature => ({
+        color: feature.properties.color || '#3388ff',
+        weight: 1.5,
+        fillColor: feature.properties.color || '#3388ff',
+        fillOpacity: 0.4
+      }),
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup('<b>' + feature.properties.name + '</b><br>' + (feature.properties.note || ''));
+      }
+    }).addTo(map);
+  }
+
+  fetch('index.json')
+    .then(r => r.json())
+    .then(eras => {
+      const select = document.getElementById('eraSelect');
+      eras.forEach(e => {
+        const opt = document.createElement('option');
+        opt.value = e.path;
+        opt.textContent = (e.from < 0 ? (-e.from) + ' BCE' : e.from + ' CE') + ' · ' + e.title;
+        select.appendChild(opt);
+      });
+      select.onchange = () => loadSnapshot(select.value);
+      if (eras.length) loadSnapshot(eras[0].path);
+    });
+</script>
+</body>
+</html>

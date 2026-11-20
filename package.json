@@ -5,11 +5,15 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build:geo": "node scripts/build-geo.mjs",
-    "build:terrain": "node scripts/build-terrain.mjs",
+    "test": "node scripts/validate.mjs && node scripts/check-atoms.mjs && node scripts/smoke.mjs",
+    "validate": "node scripts/validate.mjs",
     "check": "node scripts/check-atoms.mjs",
     "smoke": "node scripts/smoke.mjs",
-    "build:atoms": "node scripts/build-atoms.mjs"
+    "build:geo": "node scripts/build-geo.mjs",
+    "build:terrain": "node scripts/build-terrain.mjs",
+    "build:atoms": "node scripts/build-atoms.mjs",
+    "build:dist": "node scripts/build-dist.mjs",
+    "export:geojson": "node scripts/export-geojson.mjs"
   },
   "devDependencies": {
     "jpeg-js": "0.4.4",

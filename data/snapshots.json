@@ -1,0 +1,3385 @@
+[
+  {
+    "id": "era-01",
+    "from": -600,
+    "to": -346,
+    "title": {
+      "en": "The Mahajanapadas",
+      "hi": "महाजनपद"
+    },
+    "representative": {
+      "en": "c. 550 BCE",
+      "hi": "c. 550 BCE"
+    },
+    "summary": {
+      "en": "Sixteen great realms (mahajanapadas) arise across the Indo-Gangetic plain as iron tools, rice farming and walled cities spread. Magadha, Kosala, Avanti and Vatsa compete for supremacy while Buddhism and Jainism emerge. The northwest passes to the Achaemenid Persians around 518 BCE.",
+      "hi": "Sixteen great realms (mahajanapadas) arise across the Indo-Gangetic plain as iron tools, rice farming and walled cities spread. Magadha, Kosala, Avanti and Vatsa compete for supremacy while Buddhism and Jainism emerge. The northwest passes to the Achaemenid Persians around 518 BCE."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Gandhara",
+          "hi": "गांधार"
+        },
+        "color": "#8e6bbf",
+        "atoms": [
+          "GANDHARA"
+        ],
+        "note": {
+          "en": "Capital Takshashila, a famed seat of learning.",
+          "hi": "Capital Takshashila, a famed seat of learning."
+        }
+      },
+      {
+        "name": {
+          "en": "Kamboja & Indus tribes",
+          "hi": "कंबोज और सिंधु जनजातियाँ"
+        },
+        "color": "#b7c4a3",
+        "atoms": [
+          "KABUL",
+          "ARACHOSIA",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "PUNJAB_W"
+        ],
+        "note": {
+          "en": "Frontier peoples; part of the Achaemenid empire from c. 518 BCE.",
+          "hi": "Frontier peoples; part of the Achaemenid empire from c. 518 BCE."
+        }
+      },
+      {
+        "name": {
+          "en": "Kuru–Panchala",
+          "hi": "कुरु-पांचाल"
+        },
+        "color": "#4a8fd8",
+        "atoms": [
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "PUNJAB_E"
+        ],
+        "note": {
+          "en": "Vedic heartland between the Ganga and Yamuna.",
+          "hi": "Vedic heartland between the Ganga and Yamuna."
+        }
+      },
+      {
+        "name": {
+          "en": "Matsya & Surasena",
+          "hi": "मत्स्य और शूरसेन"
+        },
+        "color": "#e3c7a1",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR"
+        ],
+        "note": {
+          "en": "Western realms; Mathura was the Surasena capital.",
+          "hi": "Western realms; Mathura was the Surasena capital."
+        }
+      },
+      {
+        "name": {
+          "en": "Avanti",
+          "hi": "अवंती"
+        },
+        "color": "#f28e2b",
+        "atoms": [
+          "MALWA"
+        ],
+        "note": {
+          "en": "Capital Ujjayini; a major rival of Magadha.",
+          "hi": "Capital Ujjayini; a major rival of Magadha."
+        }
+      },
+      {
+        "name": {
+          "en": "Kosala",
+          "hi": "कोसल"
+        },
+        "color": "#2a9d8f",
+        "atoms": [
+          "AWADH"
+        ],
+        "note": {
+          "en": "Capital Shravasti; home region of the Buddha’s Shakya clan.",
+          "hi": "Capital Shravasti; home region of the Buddha’s Shakya clan."
+        }
+      },
+      {
+        "name": {
+          "en": "Vatsa",
+          "hi": "वत्स"
+        },
+        "color": "#9db4c0",
+        "atoms": [
+          "VATSA",
+          "BUNDELKHAND"
+        ],
+        "note": {
+          "en": "Capital Kaushambi on the Yamuna.",
+          "hi": "Capital Kaushambi on the Yamuna."
+        }
+      },
+      {
+        "name": {
+          "en": "Magadha",
+          "hi": "मगध"
+        },
+        "color": "#e76f51",
+        "atoms": [
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA"
+        ],
+        "note": {
+          "en": "The rising power; Rajagriha, later Pataliputra.",
+          "hi": "The rising power; Rajagriha, later Pataliputra."
+        }
+      },
+      {
+        "name": {
+          "en": "Kalinga",
+          "hi": "कलिंग"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Prosperous eastern coast with sea trade.",
+          "hi": "Prosperous eastern coast with sea trade."
+        }
+      },
+      {
+        "name": {
+          "en": "Deccan chiefdoms",
+          "hi": "दक्कन के सरदार"
+        },
+        "color": "#d6c8a8",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Early Assaka and megalithic polities.",
+          "hi": "Early Assaka and megalithic polities."
+        }
+      },
+      {
+        "name": {
+          "en": "Tamilakam chiefdoms",
+          "hi": "तमिऴकम के सरदार"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KERALA",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Early Chera, Chola and Pandya country.",
+          "hi": "Early Chera, Chola and Pandya country."
+        }
+      },
+      {
+        "name": {
+          "en": "Island kingdoms (Lanka)",
+          "hi": "लंका के द्वीप राज्य"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Early Sinhalese settlements around Anuradhapura.",
+          "hi": "Early Sinhalese settlements around Anuradhapura."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-02",
+    "from": -345,
+    "to": -322,
+    "title": {
+      "en": "The Nanda Empire",
+      "hi": "नंद साम्राज्य"
+    },
+    "representative": {
+      "en": "c. 330 BCE",
+      "hi": "c. 330 BCE"
+    },
+    "summary": {
+      "en": "Magadha under the Nandas swallows its neighbours and builds the first great empire of the Gangetic plain, with a vast army and treasury. In the northwest, Alexander of Macedon crosses the Indus in 327–325 BCE but his soldiers refuse to march further east.",
+      "hi": "Magadha under the Nandas swallows its neighbours and builds the first great empire of the Gangetic plain, with a vast army and treasury. In the northwest, Alexander of Macedon crosses the Indus in 327–325 BCE but his soldiers refuse to march further east."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Nanda Empire",
+          "hi": "नंद साम्राज्य"
+        },
+        "color": "#b5838d",
+        "atoms": [
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "MALWA",
+          "KALINGA_N",
+          "KALINGA_S",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Founded by Mahapadma Nanda; capital Pataliputra.",
+          "hi": "Founded by Mahapadma Nanda; capital Pataliputra."
+        }
+      },
+      {
+        "name": {
+          "en": "Gandhara & Punjab kingdoms",
+          "hi": "गांधार और पंजाब के राज्य"
+        },
+        "color": "#8e6bbf",
+        "atoms": [
+          "GANDHARA",
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Rulers such as Ambhi and Porus meet Alexander.",
+          "hi": "Rulers such as Ambhi and Porus meet Alexander."
+        }
+      },
+      {
+        "name": {
+          "en": "Indus & frontier republics",
+          "hi": "सिंधु और सीमांत गणराज्य"
+        },
+        "color": "#b7c4a3",
+        "atoms": [
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "BALOCH",
+          "KABUL",
+          "ARACHOSIA"
+        ],
+        "note": {
+          "en": "Small republics and tribes.",
+          "hi": "Small republics and tribes."
+        }
+      },
+      {
+        "name": {
+          "en": "Rajasthan–Gujarat tribes",
+          "hi": "राजस्थान-गुजरात की जनजातियाँ"
+        },
+        "color": "#e3c7a1",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH"
+        ],
+        "note": {
+          "en": "Tribal republics (Malava, Yaudheya).",
+          "hi": "Tribal republics (Malava, Yaudheya)."
+        }
+      },
+      {
+        "name": {
+          "en": "Deccan chiefdoms",
+          "hi": "दक्कन के सरदार"
+        },
+        "color": "#d6c8a8",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR"
+        ],
+        "note": {
+          "en": "Early Deccan states.",
+          "hi": "Early Deccan states."
+        }
+      },
+      {
+        "name": {
+          "en": "Tamilakam",
+          "hi": "तमिऴकम"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KERALA",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Chera, Chola, Pandya.",
+          "hi": "Chera, Chola, Pandya."
+        }
+      },
+      {
+        "name": {
+          "en": "Lanka",
+          "hi": "लंका"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Anuradhapura kingdom taking shape.",
+          "hi": "Anuradhapura kingdom taking shape."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-03",
+    "from": -321,
+    "to": -262,
+    "title": {
+      "en": "Rise of the Mauryas",
+      "hi": "मौर्यों का उदय"
+    },
+    "representative": {
+      "en": "c. 300 BCE",
+      "hi": "c. 300 BCE"
+    },
+    "summary": {
+      "en": "Chandragupta Maurya, guided by Kautilya, overthrows the Nandas, drives out Macedonian garrisons and unites north India. His successor Bindusara extends the empire south into the Deccan.",
+      "hi": "Chandragupta Maurya, guided by Kautilya, overthrows the Nandas, drives out Macedonian garrisons and unites north India. His successor Bindusara extends the empire south into the Deccan."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Maurya Empire",
+          "hi": "मौर्य साम्राज्य"
+        },
+        "color": "#e76f51",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Capital Pataliputra; Megasthenes visits as Seleucid envoy.",
+          "hi": "Capital Pataliputra; Megasthenes visits as Seleucid envoy."
+        }
+      },
+      {
+        "name": {
+          "en": "Kalinga",
+          "hi": "कलिंग"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Still independent.",
+          "hi": "Still independent."
+        }
+      },
+      {
+        "name": {
+          "en": "Deccan chiefdoms",
+          "hi": "दक्कन के सरदार"
+        },
+        "color": "#d6c8a8",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR"
+        ],
+        "note": {
+          "en": "Soon absorbed.",
+          "hi": "Soon absorbed."
+        }
+      },
+      {
+        "name": {
+          "en": "Tamilakam",
+          "hi": "तमिऴकम"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KERALA",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Independent Tamil kingdoms.",
+          "hi": "Independent Tamil kingdoms."
+        }
+      },
+      {
+        "name": {
+          "en": "Lanka",
+          "hi": "लंका"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Anuradhapura kingdom.",
+          "hi": "Anuradhapura kingdom."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-04",
+    "from": -261,
+    "to": -186,
+    "title": {
+      "en": "Ashoka’s Maurya Empire",
+      "hi": "अशोक का मौर्य साम्राज्य"
+    },
+    "representative": {
+      "en": "c. 261 BCE",
+      "hi": "c. 261 BCE"
+    },
+    "summary": {
+      "en": "After the bloody conquest of Kalinga, Ashoka embraces Buddhist ideals of dhamma and carves his edicts on rocks and pillars across the subcontinent. The Maurya state is the largest in Indian history until the Mughals, covering nearly all except the far south.",
+      "hi": "After the bloody conquest of Kalinga, Ashoka embraces Buddhist ideals of dhamma and carves his edicts on rocks and pillars across the subcontinent. The Maurya state is the largest in Indian history until the Mughals, covering nearly all except the far south."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Maurya Empire",
+          "hi": "मौर्य साम्राज्य"
+        },
+        "color": "#e76f51",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "KASHMIR",
+          "LADAKH",
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "KALINGA_N",
+          "KALINGA_S",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Ashoka’s edicts appear from Kandahar to Karnataka.",
+          "hi": "Ashoka’s edicts appear from Kandahar to Karnataka."
+        }
+      },
+      {
+        "name": {
+          "en": "Chola, Chera & Pandya",
+          "hi": "चोल, चेर और पांड्य"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KERALA"
+        ],
+        "note": {
+          "en": "Friendly independent neighbours named in Ashoka’s edicts.",
+          "hi": "Friendly independent neighbours named in Ashoka’s edicts."
+        }
+      },
+      {
+        "name": {
+          "en": "Anuradhapura (Lanka)",
+          "hi": "अनुराधापुर (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Devanampiya Tissa receives Buddhism.",
+          "hi": "Devanampiya Tissa receives Buddhism."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-05",
+    "from": -185,
+    "to": 29,
+    "title": {
+      "en": "After the Mauryas",
+      "hi": "मौर्योत्तर काल"
+    },
+    "representative": {
+      "en": "c. 100 BCE",
+      "hi": "c. 100 BCE"
+    },
+    "summary": {
+      "en": "The Maurya empire fragments. Shungas hold the Gangetic heartland, Indo-Greeks rule the northwest, the Satavahanas build power in the Deccan and Kharavela’s Kalinga flourishes. Tamil kingdoms trade pepper and pearls with Rome.",
+      "hi": "The Maurya empire fragments. Shungas hold the Gangetic heartland, Indo-Greeks rule the northwest, the Satavahanas build power in the Deccan and Kharavela’s Kalinga flourishes. Tamil kingdoms trade pepper and pearls with Rome."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Shunga Empire",
+          "hi": "शुंग साम्राज्य"
+        },
+        "color": "#c26a3d",
+        "atoms": [
+          "MAGADHA",
+          "MITHILA",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "MALWA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Founded by Pushyamitra; Sanchi and Bharhut stupas are enlarged.",
+          "hi": "Founded by Pushyamitra; Sanchi and Bharhut stupas are enlarged."
+        }
+      },
+      {
+        "name": {
+          "en": "Indo-Greek kingdoms",
+          "hi": "भारत-यूनानी राज्य"
+        },
+        "color": "#6c8ebf",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "PUNJAB_W",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S"
+        ],
+        "note": {
+          "en": "Menander I is remembered in the Buddhist Milindapanha.",
+          "hi": "Menander I is remembered in the Buddhist Milindapanha."
+        }
+      },
+      {
+        "name": {
+          "en": "Kalinga (Kharavela)",
+          "hi": "कलिंग (खारवेल)"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Hathigumpha inscription at Udayagiri.",
+          "hi": "Hathigumpha inscription at Udayagiri."
+        }
+      },
+      {
+        "name": {
+          "en": "Satavahana (early)",
+          "hi": "प्रारंभिक सातवाहन"
+        },
+        "color": "#6a994e",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR"
+        ],
+        "note": {
+          "en": "Rising Deccan power; Pratishthana capital.",
+          "hi": "Rising Deccan power; Pratishthana capital."
+        }
+      },
+      {
+        "name": {
+          "en": "Janapada republics",
+          "hi": "जनपद गणराज्य"
+        },
+        "color": "#e3c7a1",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "PUNJAB_E",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH"
+        ],
+        "note": {
+          "en": "Yaudheya, Malava and others.",
+          "hi": "Yaudheya, Malava and others."
+        }
+      },
+      {
+        "name": {
+          "en": "Tamilakam",
+          "hi": "तमिऴकम"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KERALA",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Sangam age; Muziris and Arikamedu trade with Rome.",
+          "hi": "Sangam age; Muziris and Arikamedu trade with Rome."
+        }
+      },
+      {
+        "name": {
+          "en": "Anuradhapura (Lanka)",
+          "hi": "अनुराधापुर (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Buddhist kingdom.",
+          "hi": "Buddhist kingdom."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-06",
+    "from": 30,
+    "to": 319,
+    "title": {
+      "en": "Kushans & Satavahanas",
+      "hi": "कुषाण और सातवाहन"
+    },
+    "representative": {
+      "en": "c. 100 CE",
+      "hi": "c. 100 CE"
+    },
+    "summary": {
+      "en": "The Kushan empire links the Silk Road with the Gangetic plain under Kanishka, patronising Gandharan art and Mahayana Buddhism. The Satavahanas dominate the Deccan and Roman gold flows into southern ports.",
+      "hi": "The Kushan empire links the Silk Road with the Gangetic plain under Kanishka, patronising Gandharan art and Mahayana Buddhism. The Satavahanas dominate the Deccan and Roman gold flows into southern ports."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Kushan Empire",
+          "hi": "कुषाण साम्राज्य"
+        },
+        "color": "#5b7db1",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KASHMIR",
+          "LADAKH",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND"
+        ],
+        "note": {
+          "en": "Peshawar and Mathura as capitals.",
+          "hi": "Peshawar and Mathura as capitals."
+        }
+      },
+      {
+        "name": {
+          "en": "Western Kshatrapas",
+          "hi": "पश्चिमी क्षत्रप"
+        },
+        "color": "#d6a24c",
+        "atoms": [
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR"
+        ],
+        "note": {
+          "en": "Saka rulers controlling Arabian Sea ports.",
+          "hi": "Saka rulers controlling Arabian Sea ports."
+        }
+      },
+      {
+        "name": {
+          "en": "Satavahana Empire",
+          "hi": "सातवाहन साम्राज्य"
+        },
+        "color": "#6a994e",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Gautamiputra Satakarni; thriving trade with Rome.",
+          "hi": "Gautamiputra Satakarni; thriving trade with Rome."
+        }
+      },
+      {
+        "name": {
+          "en": "Magadha & Bengal chiefs",
+          "hi": "मगध और बंगाल के शासक"
+        },
+        "color": "#d99a82",
+        "atoms": [
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA"
+        ],
+        "note": {
+          "en": "Local dynasties.",
+          "hi": "Local dynasties."
+        }
+      },
+      {
+        "name": {
+          "en": "Tamilakam (Sangam age)",
+          "hi": "तमिऴकम (संगम काल)"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KERALA",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Chera, Chola and Pandya courts.",
+          "hi": "Chera, Chola and Pandya courts."
+        }
+      },
+      {
+        "name": {
+          "en": "Anuradhapura (Lanka)",
+          "hi": "अनुराधापुर (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Buddhist kingdom.",
+          "hi": "Buddhist kingdom."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-07",
+    "from": 320,
+    "to": 605,
+    "title": {
+      "en": "The Gupta Age",
+      "hi": "गुप्त काल"
+    },
+    "representative": {
+      "en": "c. 400 CE",
+      "hi": "c. 400 CE"
+    },
+    "summary": {
+      "en": "The Guptas unite much of north India. Mathematics (zero and the decimal system), astronomy, Sanskrit literature and temple building flourish; Nalanda is founded. The Chinese monk Faxian visits around 405 CE.",
+      "hi": "The Guptas unite much of north India. Mathematics (zero and the decimal system), astronomy, Sanskrit literature and temple building flourish; Nalanda is founded. The Chinese monk Faxian visits around 405 CE."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Gupta Empire",
+          "hi": "गुप्त साम्राज्य"
+        },
+        "color": "#3d7ea6",
+        "atoms": [
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "MALWA",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "PUNJAB_E",
+          "PUNJAB_W",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Samudragupta and Chandragupta II; capital Pataliputra.",
+          "hi": "Samudragupta and Chandragupta II; capital Pataliputra."
+        }
+      },
+      {
+        "name": {
+          "en": "Kidarites & Kushan remnants",
+          "hi": "किदाराइट और कुषाण अवशेष"
+        },
+        "color": "#9db4c0",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Northwestern successor states.",
+          "hi": "Northwestern successor states."
+        }
+      },
+      {
+        "name": {
+          "en": "Vakataka",
+          "hi": "वाकाटक"
+        },
+        "color": "#6a994e",
+        "atoms": [
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR"
+        ],
+        "note": {
+          "en": "Allies of the Guptas; patrons of Ajanta.",
+          "hi": "Allies of the Guptas; patrons of Ajanta."
+        }
+      },
+      {
+        "name": {
+          "en": "Kadamba, Ganga & others",
+          "hi": "कदंब, गंग और अन्य"
+        },
+        "color": "#b7c4a3",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Early Kannada-speaking dynasties.",
+          "hi": "Early Kannada-speaking dynasties."
+        }
+      },
+      {
+        "name": {
+          "en": "Pallava",
+          "hi": "पल्लव"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Capital Kanchipuram.",
+          "hi": "Capital Kanchipuram."
+        }
+      },
+      {
+        "name": {
+          "en": "Chera & Pandya",
+          "hi": "चेर और पांड्य"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Spice-trading kingdoms.",
+          "hi": "Spice-trading kingdoms."
+        }
+      },
+      {
+        "name": {
+          "en": "Kamarupa",
+          "hi": "कामरूप"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Early Assamese kingdom.",
+          "hi": "Early Assamese kingdom."
+        }
+      },
+      {
+        "name": {
+          "en": "Anuradhapura (Lanka)",
+          "hi": "अनुराधापुर (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Buddhist kingdom.",
+          "hi": "Buddhist kingdom."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-08",
+    "from": 606,
+    "to": 749,
+    "title": {
+      "en": "Harsha & Regional Kingdoms",
+      "hi": "हर्षवर्धन और क्षेत्रीय राज्य"
+    },
+    "representative": {
+      "en": "c. 640 CE",
+      "hi": "c. 640 CE"
+    },
+    "summary": {
+      "en": "After the Guptas, Harsha of Kannauj briefly reunites the north. The Chalukyas of Badami check him on the Narmada and the Pallavas build great temples at Mamallapuram. Xuanzang studies at Nalanda (637–642). In 712 Arab forces take Sindh.",
+      "hi": "After the Guptas, Harsha of Kannauj briefly reunites the north. The Chalukyas of Badami check him on the Narmada and the Pallavas build great temples at Mamallapuram. Xuanzang studies at Nalanda (637–642). In 712 Arab forces take Sindh."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Harsha’s Empire",
+          "hi": "हर्षवर्धन का साम्राज्य"
+        },
+        "color": "#4a8fd8",
+        "atoms": [
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA"
+        ],
+        "note": {
+          "en": "Capital Kannauj; Xuanzang attends his assembly.",
+          "hi": "Capital Kannauj; Xuanzang attends his assembly."
+        }
+      },
+      {
+        "name": {
+          "en": "Gauda (Shashanka)",
+          "hi": "गौड़ (शशांक)"
+        },
+        "color": "#d99a82",
+        "atoms": [
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA"
+        ],
+        "note": {
+          "en": "Early Bengal state.",
+          "hi": "Early Bengal state."
+        }
+      },
+      {
+        "name": {
+          "en": "Chalukyas of Badami",
+          "hi": "बादामी के चालुक्य"
+        },
+        "color": "#6a994e",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Pulakeshin II halts Harsha.",
+          "hi": "Pulakeshin II halts Harsha."
+        }
+      },
+      {
+        "name": {
+          "en": "Pallava",
+          "hi": "पल्लव"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Mahendravarman and Narasimhavarman.",
+          "hi": "Mahendravarman and Narasimhavarman."
+        }
+      },
+      {
+        "name": {
+          "en": "Chera & Pandya",
+          "hi": "चेर और पांड्य"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Southern kingdoms.",
+          "hi": "Southern kingdoms."
+        }
+      },
+      {
+        "name": {
+          "en": "Maitraka & Gurjara",
+          "hi": "मैत्रक और गुर्जर"
+        },
+        "color": "#d6a24c",
+        "atoms": [
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR"
+        ],
+        "note": {
+          "en": "Valabhi, a Buddhist learning centre.",
+          "hi": "Valabhi, a Buddhist learning centre."
+        }
+      },
+      {
+        "name": {
+          "en": "Rai dynasty (Sindh)",
+          "hi": "राय राजवंश (सिंध)"
+        },
+        "color": "#b7c4a3",
+        "atoms": [
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "BALOCH"
+        ],
+        "note": {
+          "en": "Later Brahmin rulers.",
+          "hi": "Later Brahmin rulers."
+        }
+      },
+      {
+        "name": {
+          "en": "Turk Shahi & Kabul",
+          "hi": "तुर्क शाही और काबुल"
+        },
+        "color": "#9db4c0",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "PUNJAB_W"
+        ],
+        "note": {
+          "en": "Frontier kingdoms.",
+          "hi": "Frontier kingdoms."
+        }
+      },
+      {
+        "name": {
+          "en": "Karkota (Kashmir)",
+          "hi": "कारकोट (कश्मीर)"
+        },
+        "color": "#8e6bbf",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Lalitaditya Muktapida.",
+          "hi": "Lalitaditya Muktapida."
+        }
+      },
+      {
+        "name": {
+          "en": "Kamarupa",
+          "hi": "कामरूप"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Bhaskaravarman, Harsha’s ally.",
+          "hi": "Bhaskaravarman, Harsha’s ally."
+        }
+      },
+      {
+        "name": {
+          "en": "Eastern Ganga & Kalinga",
+          "hi": "पूर्वी गंग और कलिंग"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Odisha and the eastern coast.",
+          "hi": "Odisha and the eastern coast."
+        }
+      },
+      {
+        "name": {
+          "en": "Anuradhapura (Lanka)",
+          "hi": "अनुराधापुर (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Buddhist kingdom.",
+          "hi": "Buddhist kingdom."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-09",
+    "from": 750,
+    "to": 999,
+    "title": {
+      "en": "The Tripartite Struggle",
+      "hi": "त्रिपक्षीय संघर्ष"
+    },
+    "representative": {
+      "en": "c. 800 CE",
+      "hi": "c. 800 CE"
+    },
+    "summary": {
+      "en": "Three powers fight for Kannauj and the Gangetic plain: the Gurjara-Pratiharas from the west, the Palas from Bengal and Bihar, and the Rashtrakutas from the Deccan. Adi Shankara’s philosophy spreads across the land and Nalanda and Vikramashila prosper under the Palas.",
+      "hi": "Three powers fight for Kannauj and the Gangetic plain: the Gurjara-Pratiharas from the west, the Palas from Bengal and Bihar, and the Rashtrakutas from the Deccan. Adi Shankara’s philosophy spreads across the land and Nalanda and Vikramashila prosper under the Palas."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Gurjara-Pratihara",
+          "hi": "गुर्जर-प्रतिहार"
+        },
+        "color": "#3d7ea6",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "PUNJAB_E"
+        ],
+        "note": {
+          "en": "Controls Kannauj.",
+          "hi": "Controls Kannauj."
+        }
+      },
+      {
+        "name": {
+          "en": "Pala Empire",
+          "hi": "पाल साम्राज्य"
+        },
+        "color": "#b5535a",
+        "atoms": [
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA"
+        ],
+        "note": {
+          "en": "Dharmapala and Devapala; Buddhist patrons.",
+          "hi": "Dharmapala and Devapala; Buddhist patrons."
+        }
+      },
+      {
+        "name": {
+          "en": "Rashtrakuta",
+          "hi": "राष्ट्रकूट"
+        },
+        "color": "#6a994e",
+        "atoms": [
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "KARNATAKA_S",
+          "KANARA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Built the Kailasa temple at Ellora.",
+          "hi": "Built the Kailasa temple at Ellora."
+        }
+      },
+      {
+        "name": {
+          "en": "Pallava & Pandya",
+          "hi": "पल्लव और पांड्य"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Rivals in the far south.",
+          "hi": "Rivals in the far south."
+        }
+      },
+      {
+        "name": {
+          "en": "Chera",
+          "hi": "चेर"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Kerala kingdom.",
+          "hi": "Kerala kingdom."
+        }
+      },
+      {
+        "name": {
+          "en": "Karkota (Kashmir)",
+          "hi": "कारकोट (कश्मीर)"
+        },
+        "color": "#8e6bbf",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Sanskrit learning.",
+          "hi": "Sanskrit learning."
+        }
+      },
+      {
+        "name": {
+          "en": "Hindu Shahis",
+          "hi": "हिंदू शाही"
+        },
+        "color": "#9db4c0",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "PUNJAB_W"
+        ],
+        "note": {
+          "en": "Kabul–Gandhara.",
+          "hi": "Kabul–Gandhara."
+        }
+      },
+      {
+        "name": {
+          "en": "Arab governors of Sindh",
+          "hi": "सिंध के अरब राज्यपाल"
+        },
+        "color": "#b7c4a3",
+        "atoms": [
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "BALOCH"
+        ],
+        "note": {
+          "en": "Habbarid and others.",
+          "hi": "Habbarid and others."
+        }
+      },
+      {
+        "name": {
+          "en": "Kamarupa",
+          "hi": "कामरूप"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Assam kingdom.",
+          "hi": "Assam kingdom."
+        }
+      },
+      {
+        "name": {
+          "en": "Eastern Ganga",
+          "hi": "पूर्वी गंग"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Kalinga coast.",
+          "hi": "Kalinga coast."
+        }
+      },
+      {
+        "name": {
+          "en": "Anuradhapura (Lanka)",
+          "hi": "अनुराधापुर (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Buddhist kingdom.",
+          "hi": "Buddhist kingdom."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-10",
+    "from": 1000,
+    "to": 1205,
+    "title": {
+      "en": "Cholas & Ghaznavids",
+      "hi": "चोल और ग़ज़नवी"
+    },
+    "representative": {
+      "en": "c. 1030 CE",
+      "hi": "c. 1030 CE"
+    },
+    "summary": {
+      "en": "The Cholas under Rajaraja and Rajendra command the Bay of Bengal, conquering Lanka and sending a fleet to Southeast Asia. In the northwest Mahmud of Ghazni raids deep into India and annexes the Punjab. Regional Rajput and Kalachuri houses rule the north.",
+      "hi": "The Cholas under Rajaraja and Rajendra command the Bay of Bengal, conquering Lanka and sending a fleet to Southeast Asia. In the northwest Mahmud of Ghazni raids deep into India and annexes the Punjab. Regional Rajput and Kalachuri houses rule the north."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Chola Empire",
+          "hi": "चोल साम्राज्य"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KARNATAKA_S",
+          "KANARA",
+          "KERALA",
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Capital Thanjavur; Brihadisvara Temple (1010).",
+          "hi": "Capital Thanjavur; Brihadisvara Temple (1010)."
+        }
+      },
+      {
+        "name": {
+          "en": "Western Chalukya",
+          "hi": "पश्चिमी चालुक्य"
+        },
+        "color": "#6a994e",
+        "atoms": [
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N"
+        ],
+        "note": {
+          "en": "Kalyani; heirs to the Rashtrakutas.",
+          "hi": "Kalyani; heirs to the Rashtrakutas."
+        }
+      },
+      {
+        "name": {
+          "en": "Ghaznavid Empire",
+          "hi": "ग़ज़नवी साम्राज्य"
+        },
+        "color": "#7a5c9e",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "PUNJAB_W"
+        ],
+        "note": {
+          "en": "Mahmud of Ghazni; Lahore later a second capital.",
+          "hi": "Mahmud of Ghazni; Lahore later a second capital."
+        }
+      },
+      {
+        "name": {
+          "en": "Paramara",
+          "hi": "परमार"
+        },
+        "color": "#d6a24c",
+        "atoms": [
+          "MALWA"
+        ],
+        "note": {
+          "en": "Bhoja of Dhar.",
+          "hi": "Bhoja of Dhar."
+        }
+      },
+      {
+        "name": {
+          "en": "Chaulukya (Solanki)",
+          "hi": "चौलुक्य (सोलंकी)"
+        },
+        "color": "#f28e2b",
+        "atoms": [
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH"
+        ],
+        "note": {
+          "en": "Anhilwara and Somnath temple.",
+          "hi": "Anhilwara and Somnath temple."
+        }
+      },
+      {
+        "name": {
+          "en": "Rajput states",
+          "hi": "राजपूत राज्य"
+        },
+        "color": "#3d7ea6",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON"
+        ],
+        "note": {
+          "en": "Chahamana and Tomara houses.",
+          "hi": "Chahamana and Tomara houses."
+        }
+      },
+      {
+        "name": {
+          "en": "Kalachuri & Chandela",
+          "hi": "कलचुरी और चंदेल"
+        },
+        "color": "#4a8fd8",
+        "atoms": [
+          "VATSA",
+          "BUNDELKHAND",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "AWADH"
+        ],
+        "note": {
+          "en": "Khajuraho temples.",
+          "hi": "Khajuraho temples."
+        }
+      },
+      {
+        "name": {
+          "en": "Pala Empire",
+          "hi": "पाल साम्राज्य"
+        },
+        "color": "#b5535a",
+        "atoms": [
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA"
+        ],
+        "note": {
+          "en": "Mahipala’s revival.",
+          "hi": "Mahipala’s revival."
+        }
+      },
+      {
+        "name": {
+          "en": "Kashmir (Lohara)",
+          "hi": "कश्मीर (लोहार)"
+        },
+        "color": "#b9a3d9",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Kalhana later writes the Rajatarangini.",
+          "hi": "Kalhana later writes the Rajatarangini."
+        }
+      },
+      {
+        "name": {
+          "en": "Kamarupa",
+          "hi": "कामरूप"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Assam.",
+          "hi": "Assam."
+        }
+      },
+      {
+        "name": {
+          "en": "Eastern Ganga",
+          "hi": "पूर्वी गंग"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Odisha.",
+          "hi": "Odisha."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-11",
+    "from": 1206,
+    "to": 1319,
+    "title": {
+      "en": "The Delhi Sultanate",
+      "hi": "दिल्ली सल्तनत"
+    },
+    "representative": {
+      "en": "c. 1230 CE",
+      "hi": "c. 1230 CE"
+    },
+    "summary": {
+      "en": "Qutb-ud-din Aibak founds the Delhi Sultanate in 1206. Within a generation it reaches from the Indus to Bengal. Nalanda and Vikramashila decline; Persian, Turkic and Indian cultures begin to blend in language, music and architecture. Mongol armies threaten the northwest.",
+      "hi": "Qutb-ud-din Aibak founds the Delhi Sultanate in 1206. Within a generation it reaches from the Indus to Bengal. Nalanda and Vikramashila decline; Persian, Turkic and Indian cultures begin to blend in language, music and architecture. Mongol armies threaten the northwest."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Delhi Sultanate",
+          "hi": "Delhi Sultanate"
+        },
+        "color": "#8e6bbf",
+        "atoms": [
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR"
+        ],
+        "note": {
+          "en": "Iltutmish consolidates; Qutb Minar is built.",
+          "hi": "Iltutmish consolidates; Qutb Minar is built."
+        }
+      },
+      {
+        "name": {
+          "en": "Lakhnauti (Bengal)",
+          "hi": "लखनौती (बंगाल)"
+        },
+        "color": "#d99a82",
+        "atoms": [
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA"
+        ],
+        "note": {
+          "en": "Eastern frontier.",
+          "hi": "Eastern frontier."
+        }
+      },
+      {
+        "name": {
+          "en": "Gandhara & Kabul zone",
+          "hi": "गांधार और काबुल क्षेत्र"
+        },
+        "color": "#9db4c0",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH"
+        ],
+        "note": {
+          "en": "Contested by Khwarazmians and Mongols.",
+          "hi": "Contested by Khwarazmians and Mongols."
+        }
+      },
+      {
+        "name": {
+          "en": "Chaulukya (Vaghela)",
+          "hi": "चौलुक्य (वाघेला)"
+        },
+        "color": "#f28e2b",
+        "atoms": [
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH"
+        ],
+        "note": {
+          "en": "Gujarat.",
+          "hi": "Gujarat."
+        }
+      },
+      {
+        "name": {
+          "en": "Paramara & Chandela",
+          "hi": "परमार और चंदेल"
+        },
+        "color": "#d6a24c",
+        "atoms": [
+          "MALWA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Central India.",
+          "hi": "Central India."
+        }
+      },
+      {
+        "name": {
+          "en": "Yadava (Seuna)",
+          "hi": "यादव (सेउण)"
+        },
+        "color": "#6a994e",
+        "atoms": [
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR"
+        ],
+        "note": {
+          "en": "Devagiri.",
+          "hi": "Devagiri."
+        }
+      },
+      {
+        "name": {
+          "en": "Kakatiya",
+          "hi": "काकतीय"
+        },
+        "color": "#4c9f70",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N"
+        ],
+        "note": {
+          "en": "Warangal.",
+          "hi": "Warangal."
+        }
+      },
+      {
+        "name": {
+          "en": "Hoysala",
+          "hi": "होयसल"
+        },
+        "color": "#c26a3d",
+        "atoms": [
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Belur and Halebidu temples.",
+          "hi": "Belur and Halebidu temples."
+        }
+      },
+      {
+        "name": {
+          "en": "Late Chola → Pandya",
+          "hi": "उत्तरवर्ती चोल → पांड्य"
+        },
+        "color": "#e9b30f",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Pandya revival.",
+          "hi": "Pandya revival."
+        }
+      },
+      {
+        "name": {
+          "en": "Chera / Venad",
+          "hi": "चेर / वेणाड"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Spice ports.",
+          "hi": "Spice ports."
+        }
+      },
+      {
+        "name": {
+          "en": "Eastern Ganga",
+          "hi": "पूर्वी गंग"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Konark Sun Temple (c. 1250).",
+          "hi": "Konark Sun Temple (c. 1250)."
+        }
+      },
+      {
+        "name": {
+          "en": "Kashmir",
+          "hi": "कश्मीर"
+        },
+        "color": "#b9a3d9",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Hindu rulers until the 14th century.",
+          "hi": "Hindu rulers until the 14th century."
+        }
+      },
+      {
+        "name": {
+          "en": "Ahom",
+          "hi": "अहोम"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Ahom kingdom founded 1228.",
+          "hi": "Ahom kingdom founded 1228."
+        }
+      },
+      {
+        "name": {
+          "en": "Lanka (Dambadeniya)",
+          "hi": "लंका (दंबदेणिय)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Post-Polonnaruwa kingdoms.",
+          "hi": "Post-Polonnaruwa kingdoms."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-12",
+    "from": 1320,
+    "to": 1449,
+    "title": {
+      "en": "Tughlaq Peak & the South Rises",
+      "hi": "तुग़लक़ साम्राज्य और दक्षिण का उत्थान"
+    },
+    "representative": {
+      "en": "c. 1330 CE",
+      "hi": "c. 1330 CE"
+    },
+    "summary": {
+      "en": "Under Muhammad bin Tughlaq the Delhi Sultanate reaches its greatest extent, even moving the capital to Daulatabad. Overstretched, it soon loses the Deccan and the south. In 1336 Harihara and Bukka found Vijayanagara on the Tungabhadra. Ibn Battuta serves at Delhi (1334–41).",
+      "hi": "Under Muhammad bin Tughlaq the Delhi Sultanate reaches its greatest extent, even moving the capital to Daulatabad. Overstretched, it soon loses the Deccan and the south. In 1336 Harihara and Bukka found Vijayanagara on the Tungabhadra. Ibn Battuta serves at Delhi (1334–41)."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Delhi Sultanate (Tughlaq)",
+          "hi": "दिल्ली सल्तनत (तुग़लक़)"
+        },
+        "color": "#8e6bbf",
+        "atoms": [
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Greatest extent, then rapid fragmentation.",
+          "hi": "Greatest extent, then rapid fragmentation."
+        }
+      },
+      {
+        "name": {
+          "en": "Hoysala → Vijayanagara",
+          "hi": "होयसल → विजयनगर"
+        },
+        "color": "#d1495b",
+        "atoms": [
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Vijayanagara founded 1336.",
+          "hi": "Vijayanagara founded 1336."
+        }
+      },
+      {
+        "name": {
+          "en": "Gajapati & Eastern Ganga",
+          "hi": "गजपति और पूर्वी गंग"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Odisha.",
+          "hi": "Odisha."
+        }
+      },
+      {
+        "name": {
+          "en": "Kerala (Venad, Calicut)",
+          "hi": "केरल (वेणाड, कालिकट)"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Zamorin of Calicut.",
+          "hi": "Zamorin of Calicut."
+        }
+      },
+      {
+        "name": {
+          "en": "Kashmir (Shah Mir)",
+          "hi": "कश्मीर (शाह मीर)"
+        },
+        "color": "#b9a3d9",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "First Muslim dynasty of Kashmir (1339).",
+          "hi": "First Muslim dynasty of Kashmir (1339)."
+        }
+      },
+      {
+        "name": {
+          "en": "Ahom",
+          "hi": "अहोम"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Assam.",
+          "hi": "Assam."
+        }
+      },
+      {
+        "name": {
+          "en": "Mongol–Turkic frontier",
+          "hi": "मंगोल-तुर्क सीमांत"
+        },
+        "color": "#9db4c0",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH"
+        ],
+        "note": {
+          "en": "Chagatai Khanate and Ilkhanid frontier.",
+          "hi": "Chagatai Khanate and Ilkhanid frontier."
+        }
+      },
+      {
+        "name": {
+          "en": "Lanka (Gampola, Jaffna)",
+          "hi": "लंका (गमपोला, जाफ़ना)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Divided island.",
+          "hi": "Divided island."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-13",
+    "from": 1450,
+    "to": 1579,
+    "title": {
+      "en": "Sultanates & Vijayanagara",
+      "hi": "सल्तनतें और विजयनगर"
+    },
+    "representative": {
+      "en": "c. 1500 CE",
+      "hi": "c. 1500 CE"
+    },
+    "summary": {
+      "en": "India divides into powerful regional states. Vijayanagara dominates the south, the Bahmani sultanate splits into five Deccan sultanates, Gujarat and Bengal are rich trading sultanates, and the Lodis hold Delhi. Vasco da Gama reaches Calicut in 1498; Babur wins Panipat in 1526 and Vijayanagara falls at Talikota in 1565.",
+      "hi": "India divides into powerful regional states. Vijayanagara dominates the south, the Bahmani sultanate splits into five Deccan sultanates, Gujarat and Bengal are rich trading sultanates, and the Lodis hold Delhi. Vasco da Gama reaches Calicut in 1498; Babur wins Panipat in 1526 and Vijayanagara falls at Talikota in 1565."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Vijayanagara Empire",
+          "hi": "विजयनगर साम्राज्य"
+        },
+        "color": "#d1495b",
+        "atoms": [
+          "KARNATAKA_S",
+          "KANARA",
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "KERALA"
+        ],
+        "note": {
+          "en": "Krishnadevaraya’s court at Hampi.",
+          "hi": "Krishnadevaraya’s court at Hampi."
+        }
+      },
+      {
+        "name": {
+          "en": "Bahmani → Deccan Sultanates",
+          "hi": "बहमनी → दक्कन सल्तनतें"
+        },
+        "color": "#4c9f70",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR"
+        ],
+        "note": {
+          "en": "Bidar, Bijapur, Golconda, Ahmednagar.",
+          "hi": "Bidar, Bijapur, Golconda, Ahmednagar."
+        }
+      },
+      {
+        "name": {
+          "en": "Delhi Sultanate (Lodi)",
+          "hi": "दिल्ली सल्तनत (लोदी)"
+        },
+        "color": "#8e6bbf",
+        "atoms": [
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA"
+        ],
+        "note": {
+          "en": "Last dynasty of the Sultanate.",
+          "hi": "Last dynasty of the Sultanate."
+        }
+      },
+      {
+        "name": {
+          "en": "Bengal Sultanate",
+          "hi": "बंगाल सल्तनत"
+        },
+        "color": "#d99a82",
+        "atoms": [
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA"
+        ],
+        "note": {
+          "en": "Prosperous trade state.",
+          "hi": "Prosperous trade state."
+        }
+      },
+      {
+        "name": {
+          "en": "Gujarat Sultanate",
+          "hi": "गुजरात सल्तनत"
+        },
+        "color": "#f28e2b",
+        "atoms": [
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH"
+        ],
+        "note": {
+          "en": "Ports like Cambay and Surat.",
+          "hi": "Ports like Cambay and Surat."
+        }
+      },
+      {
+        "name": {
+          "en": "Malwa Sultanate",
+          "hi": "मालवा सल्तनत"
+        },
+        "color": "#d6a24c",
+        "atoms": [
+          "MALWA"
+        ],
+        "note": {
+          "en": "Mandu.",
+          "hi": "Mandu."
+        }
+      },
+      {
+        "name": {
+          "en": "Rajput kingdoms",
+          "hi": "राजपूत राज्य"
+        },
+        "color": "#3d7ea6",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR"
+        ],
+        "note": {
+          "en": "Mewar under Rana Sanga.",
+          "hi": "Mewar under Rana Sanga."
+        }
+      },
+      {
+        "name": {
+          "en": "Gajapati of Odisha",
+          "hi": "ओडिशा के गजपति"
+        },
+        "color": "#a8d5ba",
+        "atoms": [
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Eastern empire.",
+          "hi": "Eastern empire."
+        }
+      },
+      {
+        "name": {
+          "en": "Sindh & Multan",
+          "hi": "सिंध और मुल्तान"
+        },
+        "color": "#b7c4a3",
+        "atoms": [
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "PUNJAB_W"
+        ],
+        "note": {
+          "en": "Arghun and Langah rulers.",
+          "hi": "Arghun and Langah rulers."
+        }
+      },
+      {
+        "name": {
+          "en": "Kabul & Gandhara",
+          "hi": "काबुल और गांधार"
+        },
+        "color": "#9db4c0",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH"
+        ],
+        "note": {
+          "en": "Where Babur rules from 1504.",
+          "hi": "Where Babur rules from 1504."
+        }
+      },
+      {
+        "name": {
+          "en": "Kashmir Sultanate",
+          "hi": "कश्मीर सल्तनत"
+        },
+        "color": "#b9a3d9",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Zain-ul-Abidin’s cultural age.",
+          "hi": "Zain-ul-Abidin’s cultural age."
+        }
+      },
+      {
+        "name": {
+          "en": "Gond kingdoms",
+          "hi": "गोंड राज्य"
+        },
+        "color": "#c8b273",
+        "atoms": [
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH"
+        ],
+        "note": {
+          "en": "Central India.",
+          "hi": "Central India."
+        }
+      },
+      {
+        "name": {
+          "en": "Ahom",
+          "hi": "अहोम"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Assam.",
+          "hi": "Assam."
+        }
+      },
+      {
+        "name": {
+          "en": "Kotte (Lanka)",
+          "hi": "कोट्टे (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Portuguese arrive in 1505.",
+          "hi": "Portuguese arrive in 1505."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-14",
+    "from": 1580,
+    "to": 1679,
+    "title": {
+      "en": "Akbar’s Mughal Empire",
+      "hi": "अकबर का मुग़ल साम्राज्य"
+    },
+    "representative": {
+      "en": "c. 1605 CE",
+      "hi": "c. 1605 CE"
+    },
+    "summary": {
+      "en": "Akbar builds a centralised empire with a revenue system (mansabdari), religious tolerance and a brilliant Indo-Persian court at Agra and Fatehpur Sikri. Jahangir and Shah Jahan later commission the great monuments, including the Taj Mahal.",
+      "hi": "Akbar builds a centralised empire with a revenue system (mansabdari), religious tolerance and a brilliant Indo-Persian court at Agra and Fatehpur Sikri. Jahangir and Shah Jahan later commission the great monuments, including the Taj Mahal."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Mughal Empire",
+          "hi": "मुग़ल साम्राज्य"
+        },
+        "color": "#2a9d8f",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH",
+          "KASHMIR",
+          "LADAKH",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Capitals at Agra, Fatehpur Sikri and Lahore.",
+          "hi": "Capitals at Agra, Fatehpur Sikri and Lahore."
+        }
+      },
+      {
+        "name": {
+          "en": "Deccan Sultanates",
+          "hi": "दक्कन सल्तनतें"
+        },
+        "color": "#4c9f70",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N"
+        ],
+        "note": {
+          "en": "Bijapur, Golconda, Ahmednagar.",
+          "hi": "Bijapur, Golconda, Ahmednagar."
+        }
+      },
+      {
+        "name": {
+          "en": "Nayakas & Vijayanagara remnants",
+          "hi": "नायक और विजयनगर अवशेष"
+        },
+        "color": "#d1495b",
+        "atoms": [
+          "KARNATAKA_S",
+          "KANARA",
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Madurai, Thanjavur, Mysore, Gingee.",
+          "hi": "Madurai, Thanjavur, Mysore, Gingee."
+        }
+      },
+      {
+        "name": {
+          "en": "Kerala (Zamorin, Cochin)",
+          "hi": "केरल (सामूतिरि, कोचीन)"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Portuguese and later Dutch influence.",
+          "hi": "Portuguese and later Dutch influence."
+        }
+      },
+      {
+        "name": {
+          "en": "Ahom",
+          "hi": "अहोम"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Resist Mughal advances.",
+          "hi": "Resist Mughal advances."
+        }
+      },
+      {
+        "name": {
+          "en": "Kandy & Portuguese coast",
+          "hi": "कैंडी और पुर्तगाली तट"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Lanka.",
+          "hi": "Lanka."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-15",
+    "from": 1680,
+    "to": 1739,
+    "title": {
+      "en": "Aurangzeb & the Marathas",
+      "hi": "औरंगज़ेब और मराठा"
+    },
+    "representative": {
+      "en": "c. 1707 CE",
+      "hi": "c. 1707 CE"
+    },
+    "summary": {
+      "en": "Aurangzeb extends the Mughal empire to its largest extent but is drawn into a quarter-century of war in the Deccan against the Marathas, whose Swarajya was founded by Shivaji (crowned 1674). The empire is overstretched and begins to unravel after his death in 1707.",
+      "hi": "Aurangzeb extends the Mughal empire to its largest extent but is drawn into a quarter-century of war in the Deccan against the Marathas, whose Swarajya was founded by Shivaji (crowned 1674). The empire is overstretched and begins to unravel after his death in 1707."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Mughal Empire (peak)",
+          "hi": "मुग़ल साम्राज्य (चरमोत्कर्ष)"
+        },
+        "color": "#2a9d8f",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH",
+          "KASHMIR",
+          "LADAKH",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "KALINGA_N",
+          "KALINGA_S",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MALWA",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Greatest territorial extent.",
+          "hi": "Greatest territorial extent."
+        }
+      },
+      {
+        "name": {
+          "en": "Maratha Swarajya",
+          "hi": "मराठा स्वराज्य"
+        },
+        "color": "#f28e2b",
+        "atoms": [
+          "DESH",
+          "KONKAN"
+        ],
+        "note": {
+          "en": "Shivaji’s kingdom; capital Raigad.",
+          "hi": "Shivaji’s kingdom; capital Raigad."
+        }
+      },
+      {
+        "name": {
+          "en": "Mysore & Nayakas",
+          "hi": "मैसूर और नायक"
+        },
+        "color": "#d1495b",
+        "atoms": [
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Wodeyar rulers of Mysore.",
+          "hi": "Wodeyar rulers of Mysore."
+        }
+      },
+      {
+        "name": {
+          "en": "Kerala states",
+          "hi": "केरल राज्य"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Travancore, Cochin, Calicut.",
+          "hi": "Travancore, Cochin, Calicut."
+        }
+      },
+      {
+        "name": {
+          "en": "Ahom",
+          "hi": "अहोम"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Defeated Mughals at Saraighat (1671).",
+          "hi": "Defeated Mughals at Saraighat (1671)."
+        }
+      },
+      {
+        "name": {
+          "en": "Kandy (Lanka)",
+          "hi": "कैंडी (लंका)"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Dutch hold the coast.",
+          "hi": "Dutch hold the coast."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-16",
+    "from": 1740,
+    "to": 1817,
+    "title": {
+      "en": "Marathas & Successor States",
+      "hi": "मराठा और उत्तरवर्ती राज्य"
+    },
+    "representative": {
+      "en": "c. 1760 CE",
+      "hi": "c. 1760 CE"
+    },
+    "summary": {
+      "en": "As Mughal power collapses, successor states emerge: the Nizam in Hyderabad, the Nawabs of Awadh and Bengal, the Sikh misls, and the Maratha Confederacy under the Peshwas, which reaches its widest extent by 1760 before defeat at Panipat (1761). Meanwhile the East India Company wins at Plassey (1757).",
+      "hi": "As Mughal power collapses, successor states emerge: the Nizam in Hyderabad, the Nawabs of Awadh and Bengal, the Sikh misls, and the Maratha Confederacy under the Peshwas, which reaches its widest extent by 1760 before defeat at Panipat (1761). Meanwhile the East India Company wins at Plassey (1757)."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Maratha Confederacy",
+          "hi": "मराठा परिसंघ"
+        },
+        "color": "#f28e2b",
+        "atoms": [
+          "DESH",
+          "KONKAN",
+          "MALWA",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "KALINGA_N",
+          "KALINGA_S"
+        ],
+        "note": {
+          "en": "Peshwas at Pune; Scindia, Holkar, Gaekwad, Bhonsle.",
+          "hi": "Peshwas at Pune; Scindia, Holkar, Gaekwad, Bhonsle."
+        }
+      },
+      {
+        "name": {
+          "en": "Mughal rump (Delhi)",
+          "hi": "मुग़ल अवशेष (दिल्ली)"
+        },
+        "color": "#2a9d8f",
+        "atoms": [
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON"
+        ],
+        "note": {
+          "en": "Nominal emperor.",
+          "hi": "Nominal emperor."
+        }
+      },
+      {
+        "name": {
+          "en": "Nawab of Awadh",
+          "hi": "अवध के नवाब"
+        },
+        "color": "#2f8f9d",
+        "atoms": [
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND"
+        ],
+        "note": {
+          "en": "Lucknow.",
+          "hi": "Lucknow."
+        }
+      },
+      {
+        "name": {
+          "en": "Bengal Nawab → East India Company",
+          "hi": "बंगाल के नवाब → ईस्ट इंडिया कंपनी"
+        },
+        "color": "#d9534f",
+        "atoms": [
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "MAGADHA",
+          "MITHILA"
+        ],
+        "note": {
+          "en": "Company dominant after Plassey.",
+          "hi": "Company dominant after Plassey."
+        }
+      },
+      {
+        "name": {
+          "en": "Sikh misls",
+          "hi": "सिख मिसलें"
+        },
+        "color": "#e8b923",
+        "atoms": [
+          "PUNJAB_E",
+          "PUNJAB_W"
+        ],
+        "note": {
+          "en": "Confederacies later united by Ranjit Singh.",
+          "hi": "Confederacies later united by Ranjit Singh."
+        }
+      },
+      {
+        "name": {
+          "en": "Durrani Empire",
+          "hi": "दुर्रानी साम्राज्य"
+        },
+        "color": "#7a5c9e",
+        "atoms": [
+          "GANDHARA",
+          "KABUL",
+          "ARACHOSIA",
+          "BALOCH",
+          "KASHMIR",
+          "LADAKH",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S"
+        ],
+        "note": {
+          "en": "Ahmad Shah Abdali.",
+          "hi": "Ahmad Shah Abdali."
+        }
+      },
+      {
+        "name": {
+          "en": "Rajput states",
+          "hi": "राजपूत राज्य"
+        },
+        "color": "#3d7ea6",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR"
+        ],
+        "note": {
+          "en": "Jaipur, Jodhpur, Mewar.",
+          "hi": "Jaipur, Jodhpur, Mewar."
+        }
+      },
+      {
+        "name": {
+          "en": "Hyderabad (Nizam)",
+          "hi": "हैदराबाद (निज़ाम)"
+        },
+        "color": "#4c9f70",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N"
+        ],
+        "note": {
+          "en": "Asaf Jah I.",
+          "hi": "Asaf Jah I."
+        }
+      },
+      {
+        "name": {
+          "en": "Mysore (Hyder Ali)",
+          "hi": "मैसूर (हैदर अली)"
+        },
+        "color": "#c26a3d",
+        "atoms": [
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Rising power.",
+          "hi": "Rising power."
+        }
+      },
+      {
+        "name": {
+          "en": "Carnatic Nawab & Nayakas",
+          "hi": "कर्नाटक नवाब और नायक"
+        },
+        "color": "#c9a227",
+        "atoms": [
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA"
+        ],
+        "note": {
+          "en": "Arcot.",
+          "hi": "Arcot."
+        }
+      },
+      {
+        "name": {
+          "en": "Travancore & Cochin",
+          "hi": "त्रावणकोर और कोचीन"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Marthanda Varma.",
+          "hi": "Marthanda Varma."
+        }
+      },
+      {
+        "name": {
+          "en": "Ahom",
+          "hi": "अहोम"
+        },
+        "color": "#c9b6d9",
+        "atoms": [
+          "KAMARUPA"
+        ],
+        "note": {
+          "en": "Assam.",
+          "hi": "Assam."
+        }
+      },
+      {
+        "name": {
+          "en": "Kandy & Dutch Ceylon",
+          "hi": "कैंडी और डच सीलोन"
+        },
+        "color": "#f3b6b6",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Lanka.",
+          "hi": "Lanka."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-17",
+    "from": 1818,
+    "to": 1946,
+    "title": {
+      "en": "Company Raj & Princely States",
+      "hi": "कंपनी राज और रियासतें"
+    },
+    "representative": {
+      "en": "c. 1857 CE",
+      "hi": "c. 1857 CE"
+    },
+    "summary": {
+      "en": "After the Third Anglo-Maratha War the East India Company is paramount. Punjab (1849), Sindh and Awadh (1856) are annexed. The Uprising of 1857 shakes Company rule; in 1858 the Crown assumes control. About a third of the land stays under hundreds of princely states.",
+      "hi": "After the Third Anglo-Maratha War the East India Company is paramount. Punjab (1849), Sindh and Awadh (1856) are annexed. The Uprising of 1857 shakes Company rule; in 1858 the Crown assumes control. About a third of the land stays under hundreds of princely states."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "British India (direct rule)",
+          "hi": "ब्रिटिश भारत (प्रत्यक्ष शासन)"
+        },
+        "color": "#d9534f",
+        "atoms": [
+          "PUNJAB_W",
+          "PUNJAB_E",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "RADHA",
+          "VANGA",
+          "VARENDRA",
+          "SAMATATA",
+          "KALINGA_N",
+          "KALINGA_S",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "DESH",
+          "KONKAN",
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "KAMARUPA",
+          "GANDHARA"
+        ],
+        "note": {
+          "en": "Presidencies of Bengal, Bombay and Madras.",
+          "hi": "Presidencies of Bengal, Bombay and Madras."
+        }
+      },
+      {
+        "name": {
+          "en": "Hyderabad (Nizam)",
+          "hi": "हैदराबाद (निज़ाम)"
+        },
+        "color": "#4c9f70",
+        "atoms": [
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N"
+        ],
+        "note": {
+          "en": "Largest princely state.",
+          "hi": "Largest princely state."
+        }
+      },
+      {
+        "name": {
+          "en": "Mysore",
+          "hi": "मैसूर"
+        },
+        "color": "#c26a3d",
+        "atoms": [
+          "KARNATAKA_S",
+          "KANARA"
+        ],
+        "note": {
+          "en": "Restored after Tipu Sultan’s fall (1799).",
+          "hi": "Restored after Tipu Sultan’s fall (1799)."
+        }
+      },
+      {
+        "name": {
+          "en": "Travancore & Cochin",
+          "hi": "त्रावणकोर और कोचीन"
+        },
+        "color": "#d98e04",
+        "atoms": [
+          "KERALA"
+        ],
+        "note": {
+          "en": "Princely states.",
+          "hi": "Princely states."
+        }
+      },
+      {
+        "name": {
+          "en": "Rajputana states",
+          "hi": "राजपूताना राज्य"
+        },
+        "color": "#3d7ea6",
+        "atoms": [
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR"
+        ],
+        "note": {
+          "en": "Princely states.",
+          "hi": "Princely states."
+        }
+      },
+      {
+        "name": {
+          "en": "Gwalior, Indore & Bhopal",
+          "hi": "ग्वालियर, इंदौर और भोपाल"
+        },
+        "color": "#f28e2b",
+        "atoms": [
+          "MALWA"
+        ],
+        "note": {
+          "en": "Central India agency.",
+          "hi": "Central India agency."
+        }
+      },
+      {
+        "name": {
+          "en": "Baroda & Kathiawar",
+          "hi": "बड़ौदा और काठियावाड़"
+        },
+        "color": "#d6a24c",
+        "atoms": [
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH"
+        ],
+        "note": {
+          "en": "Princely states.",
+          "hi": "Princely states."
+        }
+      },
+      {
+        "name": {
+          "en": "Kashmir (Dogra)",
+          "hi": "कश्मीर (डोगरा)"
+        },
+        "color": "#b9a3d9",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Sold to Gulab Singh in 1846.",
+          "hi": "Sold to Gulab Singh in 1846."
+        }
+      },
+      {
+        "name": {
+          "en": "Afghanistan",
+          "hi": "अफ़ग़ानिस्तान"
+        },
+        "color": "#7a5c9e",
+        "atoms": [
+          "KABUL",
+          "ARACHOSIA"
+        ],
+        "note": {
+          "en": "Buffer state.",
+          "hi": "Buffer state."
+        }
+      },
+      {
+        "name": {
+          "en": "Kalat (Baloch)",
+          "hi": "क़लात (बलोच)"
+        },
+        "color": "#b7c4a3",
+        "atoms": [
+          "BALOCH"
+        ],
+        "note": {
+          "en": "Khanate.",
+          "hi": "Khanate."
+        }
+      },
+      {
+        "name": {
+          "en": "British Ceylon",
+          "hi": "ब्रिटिश सीलोन"
+        },
+        "color": "#e58a8a",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Crown colony.",
+          "hi": "Crown colony."
+        }
+      }
+    ]
+  },
+  {
+    "id": "era-18",
+    "from": 1947,
+    "to": 1947,
+    "title": {
+      "en": "Independence & Partition",
+      "hi": "स्वतंत्रता और विभाजन"
+    },
+    "representative": {
+      "en": "15 Aug 1947",
+      "hi": "15 Aug 1947"
+    },
+    "summary": {
+      "en": "On 14–15 August 1947 British rule ends and two dominions, India and Pakistan, are created. Partition of Punjab and Bengal triggers one of history’s largest migrations, with great loss of life. Over 560 princely states are integrated over the next years; the status of Jammu & Kashmir remains disputed.",
+      "hi": "On 14–15 August 1947 British rule ends and two dominions, India and Pakistan, are created. Partition of Punjab and Bengal triggers one of history’s largest migrations, with great loss of life. Over 560 princely states are integrated over the next years; the status of Jammu & Kashmir remains disputed."
+    },
+    "polities": [
+      {
+        "name": {
+          "en": "Dominion of India",
+          "hi": "भारतीय अधिराज्य"
+        },
+        "color": "#f4a23a",
+        "atoms": [
+          "PUNJAB_E",
+          "HIMACHAL",
+          "KURU",
+          "DOAB_UPPER",
+          "DOAB_LOWER",
+          "ROHILKHAND",
+          "KUMAON",
+          "AWADH",
+          "VATSA",
+          "BUNDELKHAND",
+          "MAGADHA",
+          "MITHILA",
+          "JHARKHAND",
+          "RADHA",
+          "VANGA",
+          "KALINGA_N",
+          "KALINGA_S",
+          "GONDWANA",
+          "BAGHELKHAND",
+          "CHHATTISGARH",
+          "VIDARBHA",
+          "KHANDESH",
+          "MARATHWADA",
+          "BASTAR",
+          "DESH",
+          "KONKAN",
+          "TONDAI",
+          "KONGU",
+          "CHOLA",
+          "PANDYA",
+          "TELANGANA",
+          "VENGI",
+          "RAYALASEEMA",
+          "KARNATAKA_N",
+          "KARNATAKA_S",
+          "KANARA",
+          "KERALA",
+          "MALWA",
+          "GUJARAT",
+          "SAURASHTRA",
+          "KUTCH",
+          "MARWAR",
+          "MEWAR",
+          "DHUNDHAR",
+          "KAMARUPA",
+          "NE_HILLS"
+        ],
+        "note": {
+          "en": "Capital New Delhi.",
+          "hi": "Capital New Delhi."
+        }
+      },
+      {
+        "name": {
+          "en": "Dominion of Pakistan",
+          "hi": "पाकिस्तान अधिराज्य"
+        },
+        "color": "#3a9d5d",
+        "atoms": [
+          "GANDHARA",
+          "MULTAN",
+          "SINDH_N",
+          "SINDH_S",
+          "BALOCH",
+          "PUNJAB_W",
+          "VARENDRA",
+          "SAMATATA"
+        ],
+        "note": {
+          "en": "West and East Pakistan.",
+          "hi": "West and East Pakistan."
+        }
+      },
+      {
+        "name": {
+          "en": "Jammu & Kashmir (disputed)",
+          "hi": "जम्मू और कश्मीर (विवादित)"
+        },
+        "color": "#b9a3d9",
+        "atoms": [
+          "KASHMIR",
+          "LADAKH"
+        ],
+        "note": {
+          "en": "Acceded to India in October 1947; disputed since.",
+          "hi": "Acceded to India in October 1947; disputed since."
+        }
+      },
+      {
+        "name": {
+          "en": "Afghanistan",
+          "hi": "अफ़ग़ानिस्तान"
+        },
+        "color": "#7a5c9e",
+        "atoms": [
+          "KABUL",
+          "ARACHOSIA"
+        ],
+        "note": {
+          "en": "Independent.",
+          "hi": "Independent."
+        }
+      },
+      {
+        "name": {
+          "en": "British Ceylon",
+          "hi": "ब्रिटिश सीलोन"
+        },
+        "color": "#e58a8a",
+        "atoms": [
+          "RAJARATA",
+          "RUHUNA"
+        ],
+        "note": {
+          "en": "Independent in February 1948.",
+          "hi": "Independent in February 1948."
+        }
+      }
+    ]
+  }
+]

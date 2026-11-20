@@ -205,4 +205,8 @@ const html = readFileSync('index.html', 'utf8');
 const re = /\/\* ATOMS:BEGIN[\s\S]*?\/\* ATOMS:END \*\//;
 if (!re.test(html)) throw new Error('ATOMS:BEGIN/END markers not found in index.html');
 writeFileSync('index.html', html.replace(re, () => block));
-console.log(`${Object.keys(atoms).length} atoms, ${Object.keys(MIGRATION).length} migrations written to index.html`);
+
+const regionsData = { atoms, migration: MIGRATION };
+writeFileSync('data/regions.json', JSON.stringify(regionsData, null, 2) + '\n');
+writeFileSync('data/regions.js', `window.ATLAS_REGIONS=${JSON.stringify(regionsData)};\n`);
+console.log(`${Object.keys(atoms).length} atoms, ${Object.keys(MIGRATION).length} migrations written to index.html and data/regions.json`);

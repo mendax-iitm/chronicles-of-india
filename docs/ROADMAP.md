@@ -16,11 +16,11 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Decide: equirectangular vs Lambert conformal conic — adopted Lambert conformal conic (LCC) as default, equirectangular available via ?proj=equirect
 
 ## Phase 2 — Code and data separation
-- [ ] Split `index.html` → `css/`, `js/`, `data/`
-- [ ] All content to `data/*.json`; strings shaped `{en, hi}` from day one
-- [ ] `scripts/validate.mjs` + CI
-- [ ] `scripts/export-geojson.mjs` (RFC 7946) + `geojson/demo.html` + point-lookup helper
-- [ ] `dist/atlas.html` single-file offline build
+- [x] Split `index.html` → `css/`, `js/`, `data/`
+- [x] All content to `data/*.json`; strings shaped `{en, hi}` from day one
+- [x] `scripts/validate.mjs` + CI
+- [x] `scripts/export-geojson.mjs` (RFC 7946) + `geojson/demo.html` + point-lookup helper
+- [x] `dist/atlas.html` single-file offline build
 
 ## Phase 3 — Depth of content
 - [ ] Snapshots 18 → ~200 (gaps: 185 BCE–30 CE, 550–750, 1200–1500, 1750–1850)

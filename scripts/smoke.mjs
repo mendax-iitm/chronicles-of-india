@@ -7,7 +7,8 @@ import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
 
 const prefix = process.argv[2] || 'after';
-const url = pathToFileURL(resolve('index.html')).href + (process.argv[3] || '');
+const targetFile = process.env.TARGET || 'index.html';
+const url = pathToFileURL(resolve(targetFile)).href + (process.argv[3] || '');
 const out = resolve('.cache/shots');
 mkdirSync(out, { recursive: true });
 

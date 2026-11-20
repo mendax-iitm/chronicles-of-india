@@ -2,16 +2,21 @@
 // Usage: npm run check
 // ponytail: grid sampling at 0.05° (~5 km); misses slivers thinner than that. Shared-node borders
 // (scripts/build-atoms.mjs) make real slivers unlikely; upgrade to exact polygon intersection if one shows.
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 process.chdir(resolve(dirname(fileURLToPath(import.meta.url)), '..'));
 
-const html = readFileSync('index.html', 'utf8');
-const m = html.match(/const ATOMS=(\{.*?\});\n/);
-if (!m) { console.error('check-atoms: ATOMS block not found in index.html'); process.exit(1); }
-const atoms = JSON.parse(m[1]);
+let atoms;
+if (existsSync('data/regions.json')) {
+  atoms = JSON.parse(readFileSync('data/regions.json', 'utf8')).atoms;
+} else {
+  const html = readFileSync('index.html', 'utf8');
+  const m = html.match(/const ATOMS=(\{.*?\});\n/);
+  if (!m) { console.error('check-atoms: ATOMS block not found in index.html or data/regions.json'); process.exit(1); }
+  atoms = JSON.parse(m[1]);
+}
 const base = JSON.parse(readFileSync('data/base.json', 'utf8'));
 const land = [base.coast, ...base.islands.map(i => i.poly)];
 

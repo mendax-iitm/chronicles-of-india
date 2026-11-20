@@ -1,0 +1,614 @@
+[
+  {
+    "id": 0,
+    "title": {
+      "en": "Alexander’s campaign",
+      "hi": "सिकंदर का अभियान"
+    },
+    "who": {
+      "en": "Alexander of Macedon",
+      "hi": "मैसेडोन का सिकंदर"
+    },
+    "years": {
+      "en": "327–325 BCE",
+      "hi": "327–325 BCE"
+    },
+    "description": {
+      "en": "The Macedonian army crosses the Hindu Kush, defeats Porus and sails down the Indus.",
+      "hi": "The Macedonian army crosses the Hindu Kush, defeats Porus and sails down the Indus."
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Hindu Kush",
+          "hi": "Hindu Kush"
+        },
+        "lon": 68.5,
+        "lat": 35,
+        "year": -327,
+        "note": {
+          "en": "Crosses into the Indus lands.",
+          "hi": "Crosses into the Indus lands."
+        }
+      },
+      {
+        "name": {
+          "en": "Taxila",
+          "hi": "तक्षशिला"
+        },
+        "lon": 72.83,
+        "lat": 33.75,
+        "year": -326,
+        "note": {
+          "en": "Received by King Ambhi.",
+          "hi": "Received by King Ambhi."
+        }
+      },
+      {
+        "name": {
+          "en": "Hydaspes (Jhelum)",
+          "hi": "Hydaspes (Jhelum)"
+        },
+        "lon": 73.73,
+        "lat": 32.93,
+        "year": -326,
+        "note": {
+          "en": "Defeats Porus.",
+          "hi": "Defeats Porus."
+        }
+      },
+      {
+        "name": {
+          "en": "Beas river",
+          "hi": "Beas river"
+        },
+        "lon": 75,
+        "lat": 31.5,
+        "year": -326,
+        "note": {
+          "en": "Army refuses to go further.",
+          "hi": "Army refuses to go further."
+        }
+      },
+      {
+        "name": {
+          "en": "Multan region",
+          "hi": "Multan region"
+        },
+        "lon": 71.5,
+        "lat": 30.2,
+        "year": -325,
+        "note": {
+          "en": "Fierce fighting with the Malloi.",
+          "hi": "Fierce fighting with the Malloi."
+        }
+      },
+      {
+        "name": {
+          "en": "Patala (Indus delta)",
+          "hi": "Patala (Indus delta)"
+        },
+        "lon": 68.3,
+        "lat": 24.8,
+        "year": -325,
+        "note": {
+          "en": "Sails to the sea.",
+          "hi": "Sails to the sea."
+        }
+      },
+      {
+        "name": {
+          "en": "Gedrosia",
+          "hi": "Gedrosia"
+        },
+        "lon": 62.5,
+        "lat": 26.2,
+        "year": -325,
+        "note": {
+          "en": "Marches home across the desert.",
+          "hi": "Marches home across the desert."
+        }
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": {
+      "en": "Faxian’s pilgrimage",
+      "hi": "फ़ाहियान की तीर्थयात्रा"
+    },
+    "who": {
+      "en": "Faxian (Fa-Hien), Chinese Buddhist monk",
+      "hi": "फ़ाहियान, चीनी बौद्ध भिक्षु"
+    },
+    "years": {
+      "en": "c. 400–411 CE",
+      "hi": "c. 400–411 CE"
+    },
+    "description": {
+      "en": "Travels the Buddhist holy places under the Gupta empire.",
+      "hi": "Travels the Buddhist holy places under the Gupta empire."
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Peshawar",
+          "hi": "Peshawar"
+        },
+        "lon": 71.6,
+        "lat": 34,
+        "year": 402,
+        "note": {
+          "en": "Visits the great stupa of Kanishka.",
+          "hi": "Visits the great stupa of Kanishka."
+        }
+      },
+      {
+        "name": {
+          "en": "Mathura",
+          "hi": "मथुरा"
+        },
+        "lon": 77.67,
+        "lat": 27.49,
+        "year": 404,
+        "note": {
+          "en": "Sees many monasteries.",
+          "hi": "Sees many monasteries."
+        }
+      },
+      {
+        "name": {
+          "en": "Kannauj",
+          "hi": "कन्नौज"
+        },
+        "lon": 79.92,
+        "lat": 27.05,
+        "year": 405,
+        "note": {
+          "en": "Buddhist and Brahmanical centre.",
+          "hi": "Buddhist and Brahmanical centre."
+        }
+      },
+      {
+        "name": {
+          "en": "Kapilavastu region",
+          "hi": "Kapilavastu region"
+        },
+        "lon": 82.8,
+        "lat": 27.5,
+        "year": 406,
+        "note": {
+          "en": "Buddha’s birthplace region.",
+          "hi": "Buddha’s birthplace region."
+        }
+      },
+      {
+        "name": {
+          "en": "Pataliputra",
+          "hi": "पाटलिपुत्र"
+        },
+        "lon": 85.14,
+        "lat": 25.61,
+        "year": 408,
+        "note": {
+          "en": "Admires Ashoka’s palace and the peaceful Gupta realm.",
+          "hi": "Admires Ashoka’s palace and the peaceful Gupta realm."
+        }
+      },
+      {
+        "name": {
+          "en": "Tamralipti",
+          "hi": "Tamralipti"
+        },
+        "lon": 87.9,
+        "lat": 22.3,
+        "year": 411,
+        "note": {
+          "en": "Sails for Lanka.",
+          "hi": "Sails for Lanka."
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": {
+      "en": "Xuanzang’s journey",
+      "hi": "ह्वेन त्सांग की भारत यात्रा"
+    },
+    "who": {
+      "en": "Xuanzang, Chinese monk and scholar",
+      "hi": "ह्वेन त्सांग, चीनी भिक्षु एवं विद्वान"
+    },
+    "years": {
+      "en": "630–643 CE",
+      "hi": "630–643 CE"
+    },
+    "description": {
+      "en": "The famous pilgrim studies at Nalanda and tours the subcontinent in Harsha’s time.",
+      "hi": "The famous pilgrim studies at Nalanda and tours the subcontinent in Harsha’s time."
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Peshawar",
+          "hi": "Peshawar"
+        },
+        "lon": 71.6,
+        "lat": 34,
+        "year": 630,
+        "note": {
+          "en": "Enters the subcontinent.",
+          "hi": "Enters the subcontinent."
+        }
+      },
+      {
+        "name": {
+          "en": "Taxila",
+          "hi": "तक्षशिला"
+        },
+        "lon": 72.83,
+        "lat": 33.75,
+        "year": 631,
+        "note": {
+          "en": "Notes the ruined city.",
+          "hi": "Notes the ruined city."
+        }
+      },
+      {
+        "name": {
+          "en": "Kashmir",
+          "hi": "कश्मीर"
+        },
+        "lon": 74.8,
+        "lat": 34.1,
+        "year": 631,
+        "note": {
+          "en": "Studies for two years.",
+          "hi": "Studies for two years."
+        }
+      },
+      {
+        "name": {
+          "en": "Mathura",
+          "hi": "मथुरा"
+        },
+        "lon": 77.67,
+        "lat": 27.49,
+        "year": 635,
+        "note": {
+          "en": "Records the monasteries.",
+          "hi": "Records the monasteries."
+        }
+      },
+      {
+        "name": {
+          "en": "Kannauj",
+          "hi": "कन्नौज"
+        },
+        "lon": 79.92,
+        "lat": 27.05,
+        "year": 636,
+        "note": {
+          "en": "Harsha’s capital.",
+          "hi": "Harsha’s capital."
+        }
+      },
+      {
+        "name": {
+          "en": "Varanasi",
+          "hi": "Varanasi"
+        },
+        "lon": 83,
+        "lat": 25.32,
+        "year": 637,
+        "note": {
+          "en": "Visits Sarnath.",
+          "hi": "Visits Sarnath."
+        }
+      },
+      {
+        "name": {
+          "en": "Bodh Gaya",
+          "hi": "बोधगया"
+        },
+        "lon": 84.99,
+        "lat": 24.7,
+        "year": 637,
+        "note": {
+          "en": "Worships at the bodhi tree.",
+          "hi": "Worships at the bodhi tree."
+        }
+      },
+      {
+        "name": {
+          "en": "Nalanda",
+          "hi": "Nalanda"
+        },
+        "lon": 85.44,
+        "lat": 25.14,
+        "year": 638,
+        "note": {
+          "en": "Studies for years at the great monastery.",
+          "hi": "Studies for years at the great monastery."
+        }
+      },
+      {
+        "name": {
+          "en": "Tamralipti",
+          "hi": "Tamralipti"
+        },
+        "lon": 87.9,
+        "lat": 22.3,
+        "year": 639,
+        "note": {
+          "en": "Eastern port.",
+          "hi": "Eastern port."
+        }
+      },
+      {
+        "name": {
+          "en": "Kanchipuram",
+          "hi": "कांचीपुरम"
+        },
+        "lon": 79.7,
+        "lat": 12.83,
+        "year": 640,
+        "note": {
+          "en": "Pallava capital.",
+          "hi": "Pallava capital."
+        }
+      },
+      {
+        "name": {
+          "en": "Nasik region",
+          "hi": "Nasik region"
+        },
+        "lon": 73.8,
+        "lat": 20,
+        "year": 641,
+        "note": {
+          "en": "Meets Pulakeshin II’s realm.",
+          "hi": "Meets Pulakeshin II’s realm."
+        }
+      },
+      {
+        "name": {
+          "en": "Valabhi",
+          "hi": "Valabhi"
+        },
+        "lon": 71.9,
+        "lat": 21.9,
+        "year": 641,
+        "note": {
+          "en": "Great monastic centre in Gujarat.",
+          "hi": "Great monastic centre in Gujarat."
+        }
+      },
+      {
+        "name": {
+          "en": "Sindh",
+          "hi": "Sindh"
+        },
+        "lon": 71.5,
+        "lat": 30.2,
+        "year": 642,
+        "note": {
+          "en": "Leaves India with hundreds of manuscripts.",
+          "hi": "Leaves India with hundreds of manuscripts."
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": {
+      "en": "Ibn Battuta in India",
+      "hi": "इब्न बत्तूता की भारत यात्रा"
+    },
+    "who": {
+      "en": "Ibn Battuta, Moroccan traveller",
+      "hi": "इब्न बत्तूता, मोरक्कन यात्री"
+    },
+    "years": {
+      "en": "1333–1342 CE",
+      "hi": "1333–1342 CE"
+    },
+    "description": {
+      "en": "Serves as a judge at Delhi under Muhammad bin Tughlaq and then sails for the Malabar coast.",
+      "hi": "Serves as a judge at Delhi under Muhammad bin Tughlaq and then sails for the Malabar coast."
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Sukkur (Indus)",
+          "hi": "Sukkur (Indus)"
+        },
+        "lon": 68.9,
+        "lat": 27.7,
+        "year": 1333,
+        "note": {
+          "en": "Enters Sindh.",
+          "hi": "Enters Sindh."
+        }
+      },
+      {
+        "name": {
+          "en": "Multan",
+          "hi": "Multan"
+        },
+        "lon": 71.5,
+        "lat": 30.2,
+        "year": 1333,
+        "note": {
+          "en": "Governor’s court.",
+          "hi": "Governor’s court."
+        }
+      },
+      {
+        "name": {
+          "en": "Delhi",
+          "hi": "दिल्ली"
+        },
+        "lon": 77.21,
+        "lat": 28.61,
+        "year": 1334,
+        "note": {
+          "en": "Appointed qazi of Delhi.",
+          "hi": "Appointed qazi of Delhi."
+        }
+      },
+      {
+        "name": {
+          "en": "Daulatabad",
+          "hi": "Daulatabad"
+        },
+        "lon": 75.2,
+        "lat": 19.9,
+        "year": 1341,
+        "note": {
+          "en": "Tughlaq’s second capital.",
+          "hi": "Tughlaq’s second capital."
+        }
+      },
+      {
+        "name": {
+          "en": "Cambay",
+          "hi": "Cambay"
+        },
+        "lon": 72.6,
+        "lat": 22.3,
+        "year": 1342,
+        "note": {
+          "en": "Port town.",
+          "hi": "Port town."
+        }
+      },
+      {
+        "name": {
+          "en": "Honavar",
+          "hi": "Honavar"
+        },
+        "lon": 74.4,
+        "lat": 14.3,
+        "year": 1342,
+        "note": {
+          "en": "Coastal kingdom.",
+          "hi": "Coastal kingdom."
+        }
+      },
+      {
+        "name": {
+          "en": "Calicut",
+          "hi": "कालिकट"
+        },
+        "lon": 75.78,
+        "lat": 11.25,
+        "year": 1342,
+        "note": {
+          "en": "Great port; sets out for China.",
+          "hi": "Great port; sets out for China."
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": {
+      "en": "Gandhi’s India",
+      "hi": "गांधीजी का भारत"
+    },
+    "who": {
+      "en": "Mohandas K. Gandhi",
+      "hi": "मोहनदास करमचंद गांधी"
+    },
+    "years": {
+      "en": "1869–1947",
+      "hi": "1869–1947"
+    },
+    "description": {
+      "en": "From Porbandar to Delhi: key places in the freedom movement.",
+      "hi": "From Porbandar to Delhi: key places in the freedom movement."
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Porbandar",
+          "hi": "Porbandar"
+        },
+        "lon": 69.6,
+        "lat": 21.64,
+        "year": 1869,
+        "note": {
+          "en": "Birthplace.",
+          "hi": "Birthplace."
+        }
+      },
+      {
+        "name": {
+          "en": "Champaran",
+          "hi": "Champaran"
+        },
+        "lon": 84.9,
+        "lat": 26.6,
+        "year": 1917,
+        "note": {
+          "en": "First satyagraha in India.",
+          "hi": "First satyagraha in India."
+        }
+      },
+      {
+        "name": {
+          "en": "Ahmedabad",
+          "hi": "Ahmedabad"
+        },
+        "lon": 72.58,
+        "lat": 23.03,
+        "year": 1920,
+        "note": {
+          "en": "Sabarmati Ashram.",
+          "hi": "Sabarmati Ashram."
+        }
+      },
+      {
+        "name": {
+          "en": "Dandi",
+          "hi": "Dandi"
+        },
+        "lon": 72.8,
+        "lat": 20.9,
+        "year": 1930,
+        "note": {
+          "en": "Breaks the salt law.",
+          "hi": "Breaks the salt law."
+        }
+      },
+      {
+        "name": {
+          "en": "Noakhali",
+          "hi": "Noakhali"
+        },
+        "lon": 91.1,
+        "lat": 22.8,
+        "year": 1946,
+        "note": {
+          "en": "Works for peace amid communal violence.",
+          "hi": "Works for peace amid communal violence."
+        }
+      },
+      {
+        "name": {
+          "en": "Delhi",
+          "hi": "दिल्ली"
+        },
+        "lon": 77.21,
+        "lat": 28.61,
+        "year": 1947,
+        "note": {
+          "en": "Independence.",
+          "hi": "Independence."
+        }
+      }
+    ]
+  }
+]

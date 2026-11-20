@@ -1,0 +1,352 @@
+[
+  {
+    "id": 0,
+    "year": -528,
+    "lon": 84.99,
+    "lat": 24.7,
+    "title": {
+      "en": "Buddha’s enlightenment",
+      "hi": "Buddha’s enlightenment"
+    },
+    "description": {
+      "en": "Siddhartha Gautama attains awakening at Bodh Gaya (traditional date).",
+      "hi": "Siddhartha Gautama attains awakening at Bodh Gaya (traditional date)."
+    }
+  },
+  {
+    "id": 1,
+    "year": -326,
+    "lon": 73.73,
+    "lat": 32.93,
+    "title": {
+      "en": "Battle of the Hydaspes",
+      "hi": "Battle of the Hydaspes"
+    },
+    "description": {
+      "en": "Alexander defeats Porus on the Jhelum, but his army refuses to advance east of the Beas.",
+      "hi": "Alexander defeats Porus on the Jhelum, but his army refuses to advance east of the Beas."
+    }
+  },
+  {
+    "id": 2,
+    "year": -321,
+    "lon": 85.14,
+    "lat": 25.61,
+    "title": {
+      "en": "Chandragupta founds the Maurya dynasty",
+      "hi": "Chandragupta founds the Maurya dynasty"
+    },
+    "description": {
+      "en": "The Nanda dynasty falls.",
+      "hi": "The Nanda dynasty falls."
+    }
+  },
+  {
+    "id": 3,
+    "year": -261,
+    "lon": 85.84,
+    "lat": 20.19,
+    "title": {
+      "en": "Kalinga War",
+      "hi": "Kalinga War"
+    },
+    "description": {
+      "en": "Ashoka’s conquest of Kalinga leads him to adopt dhamma and renounce expansion by war.",
+      "hi": "Ashoka’s conquest of Kalinga leads him to adopt dhamma and renounce expansion by war."
+    }
+  },
+  {
+    "id": 4,
+    "year": 320,
+    "lon": 85.14,
+    "lat": 25.61,
+    "title": {
+      "en": "Gupta era begins",
+      "hi": "Gupta era begins"
+    },
+    "description": {
+      "en": "Chandragupta I founds the Gupta dynasty (traditional date of the Gupta era).",
+      "hi": "Chandragupta I founds the Gupta dynasty (traditional date of the Gupta era)."
+    }
+  },
+  {
+    "id": 5,
+    "year": 606,
+    "lon": 79.92,
+    "lat": 27.05,
+    "title": {
+      "en": "Harsha crowned at Kannauj",
+      "hi": "Harsha crowned at Kannauj"
+    },
+    "description": {
+      "en": "Harshavardhana unites much of north India.",
+      "hi": "Harshavardhana unites much of north India."
+    }
+  },
+  {
+    "id": 6,
+    "year": 712,
+    "lon": 68.3,
+    "lat": 25.4,
+    "title": {
+      "en": "Arab conquest of Sindh",
+      "hi": "Arab conquest of Sindh"
+    },
+    "description": {
+      "en": "Muhammad bin Qasim establishes Arab rule in Sindh.",
+      "hi": "Muhammad bin Qasim establishes Arab rule in Sindh."
+    }
+  },
+  {
+    "id": 7,
+    "year": 1025,
+    "lon": 79.45,
+    "lat": 11.2,
+    "title": {
+      "en": "Chola naval expedition",
+      "hi": "Chola naval expedition"
+    },
+    "description": {
+      "en": "Rajendra I’s fleet crosses the Bay of Bengal; he founds Gangaikonda Cholapuram.",
+      "hi": "Rajendra I’s fleet crosses the Bay of Bengal; he founds Gangaikonda Cholapuram."
+    }
+  },
+  {
+    "id": 8,
+    "year": 1192,
+    "lon": 76.93,
+    "lat": 29.95,
+    "title": {
+      "en": "Second Battle of Tarain",
+      "hi": "Second Battle of Tarain"
+    },
+    "description": {
+      "en": "Muhammad of Ghor defeats Prithviraj Chauhan, opening the Gangetic plain.",
+      "hi": "Muhammad of Ghor defeats Prithviraj Chauhan, opening the Gangetic plain."
+    }
+  },
+  {
+    "id": 9,
+    "year": 1206,
+    "lon": 77.21,
+    "lat": 28.61,
+    "title": {
+      "en": "Delhi Sultanate founded",
+      "hi": "Delhi Sultanate founded"
+    },
+    "description": {
+      "en": "Qutb-ud-din Aibak rules from Lahore and then Delhi.",
+      "hi": "Qutb-ud-din Aibak rules from Lahore and then Delhi."
+    }
+  },
+  {
+    "id": 10,
+    "year": 1336,
+    "lon": 76.46,
+    "lat": 15.34,
+    "title": {
+      "en": "Vijayanagara founded",
+      "hi": "Vijayanagara founded"
+    },
+    "description": {
+      "en": "Harihara I and Bukka Raya establish a Hindu empire in the south.",
+      "hi": "Harihara I and Bukka Raya establish a Hindu empire in the south."
+    }
+  },
+  {
+    "id": 11,
+    "year": 1398,
+    "lon": 77.21,
+    "lat": 28.61,
+    "title": {
+      "en": "Timur sacks Delhi",
+      "hi": "Timur sacks Delhi"
+    },
+    "description": {
+      "en": "The Sultanate never fully recovers.",
+      "hi": "The Sultanate never fully recovers."
+    }
+  },
+  {
+    "id": 12,
+    "year": 1498,
+    "lon": 75.78,
+    "lat": 11.25,
+    "title": {
+      "en": "Vasco da Gama reaches Calicut",
+      "hi": "Vasco da Gama reaches Calicut"
+    },
+    "description": {
+      "en": "The sea route between Europe and India is opened.",
+      "hi": "The sea route between Europe and India is opened."
+    }
+  },
+  {
+    "id": 13,
+    "year": 1526,
+    "lon": 76.97,
+    "lat": 29.39,
+    "title": {
+      "en": "First Battle of Panipat",
+      "hi": "First Battle of Panipat"
+    },
+    "description": {
+      "en": "Babur defeats Ibrahim Lodi, founding the Mughal empire.",
+      "hi": "Babur defeats Ibrahim Lodi, founding the Mughal empire."
+    }
+  },
+  {
+    "id": 14,
+    "year": 1565,
+    "lon": 76.3,
+    "lat": 16.5,
+    "title": {
+      "en": "Battle of Talikota",
+      "hi": "Battle of Talikota"
+    },
+    "description": {
+      "en": "Deccan sultanates defeat Vijayanagara; Hampi is sacked.",
+      "hi": "Deccan sultanates defeat Vijayanagara; Hampi is sacked."
+    }
+  },
+  {
+    "id": 15,
+    "year": 1674,
+    "lon": 73.44,
+    "lat": 18.23,
+    "title": {
+      "en": "Shivaji crowned at Raigad",
+      "hi": "Shivaji crowned at Raigad"
+    },
+    "description": {
+      "en": "Chhatrapati Shivaji formally founds the Maratha kingdom.",
+      "hi": "Chhatrapati Shivaji formally founds the Maratha kingdom."
+    }
+  },
+  {
+    "id": 16,
+    "year": 1707,
+    "lon": 74.74,
+    "lat": 19.09,
+    "title": {
+      "en": "Death of Aurangzeb",
+      "hi": "Death of Aurangzeb"
+    },
+    "description": {
+      "en": "The long Deccan wars end and Mughal power begins to fragment.",
+      "hi": "The long Deccan wars end and Mughal power begins to fragment."
+    }
+  },
+  {
+    "id": 17,
+    "year": 1757,
+    "lon": 88.25,
+    "lat": 23.8,
+    "title": {
+      "en": "Battle of Plassey",
+      "hi": "Battle of Plassey"
+    },
+    "description": {
+      "en": "Robert Clive’s Company army defeats the Nawab of Bengal.",
+      "hi": "Robert Clive’s Company army defeats the Nawab of Bengal."
+    }
+  },
+  {
+    "id": 18,
+    "year": 1761,
+    "lon": 76.85,
+    "lat": 29.4,
+    "title": {
+      "en": "Third Battle of Panipat",
+      "hi": "Third Battle of Panipat"
+    },
+    "description": {
+      "en": "Ahmad Shah Durrani defeats the Maratha army.",
+      "hi": "Ahmad Shah Durrani defeats the Maratha army."
+    }
+  },
+  {
+    "id": 19,
+    "year": 1764,
+    "lon": 84.1,
+    "lat": 25.56,
+    "title": {
+      "en": "Battle of Buxar",
+      "hi": "Battle of Buxar"
+    },
+    "description": {
+      "en": "The Company defeats the Mughal emperor and allies and gains the diwani of Bengal in 1765.",
+      "hi": "The Company defeats the Mughal emperor and allies and gains the diwani of Bengal in 1765."
+    }
+  },
+  {
+    "id": 20,
+    "year": 1799,
+    "lon": 76.68,
+    "lat": 12.42,
+    "title": {
+      "en": "Fall of Srirangapatna",
+      "hi": "Fall of Srirangapatna"
+    },
+    "description": {
+      "en": "Tipu Sultan is killed in the Fourth Anglo-Mysore War.",
+      "hi": "Tipu Sultan is killed in the Fourth Anglo-Mysore War."
+    }
+  },
+  {
+    "id": 21,
+    "year": 1857,
+    "lon": 77.7,
+    "lat": 29,
+    "title": {
+      "en": "Uprising of 1857",
+      "hi": "Uprising of 1857"
+    },
+    "description": {
+      "en": "Revolt begins at Meerut; the Crown takes over from the Company in 1858.",
+      "hi": "Revolt begins at Meerut; the Crown takes over from the Company in 1858."
+    }
+  },
+  {
+    "id": 22,
+    "year": 1911,
+    "lon": 77.21,
+    "lat": 28.61,
+    "title": {
+      "en": "Delhi Durbar",
+      "hi": "Delhi Durbar"
+    },
+    "description": {
+      "en": "The capital of British India is announced to move from Calcutta to Delhi.",
+      "hi": "The capital of British India is announced to move from Calcutta to Delhi."
+    }
+  },
+  {
+    "id": 23,
+    "year": 1930,
+    "lon": 72.8,
+    "lat": 20.9,
+    "title": {
+      "en": "Dandi Salt March",
+      "hi": "Dandi Salt March"
+    },
+    "description": {
+      "en": "Gandhi’s 240-mile march to the sea defies the salt tax.",
+      "hi": "Gandhi’s 240-mile march to the sea defies the salt tax."
+    }
+  },
+  {
+    "id": 24,
+    "year": 1947,
+    "lon": 77.21,
+    "lat": 28.61,
+    "title": {
+      "en": "Independence and Partition",
+      "hi": "Independence and Partition"
+    },
+    "description": {
+      "en": "India and Pakistan become independent on 14–15 August; mass migration and great suffering follow.",
+      "hi": "India and Pakistan become independent on 14–15 August; mass migration and great suffering follow."
+    }
+  }
+]

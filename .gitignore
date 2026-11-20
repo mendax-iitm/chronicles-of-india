@@ -1,6 +1,9 @@
 .DS_Store
 node_modules/
 dist/
+geojson/snapshots/
+geojson/*.geojson
+geojson/index.json
 *.log
 .cache/
 raw-geo/
