@@ -35,6 +35,17 @@ Pull requests that re-colour the map along religious lines, or that rewrite summ
 advance a political reading, will be closed without discussion. Contested framing
 questions get resolved in an issue, never inside a pull request.
 
+## Generating data
+
+Viewing the site needs nothing installed. `data/base.json` / `data/base.js` and
+`data/terrain/` are generated and committed. Only if you change base geography:
+
+```bash
+npm install          # dev-only tools: mapshaper, pngjs, jpeg-js, playwright
+npm run build:geo    # Natural Earth → data/base.json + data/base.js
+npm run smoke        # every snapshot renders, clean console, screenshots in .cache/shots/
+```
+
 ## Code
 
 - No build step, no dependencies, no framework. Plain HTML/CSS/JS.

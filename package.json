@@ -1,0 +1,19 @@
+{
+  "name": "chronicles-of-india",
+  "private": true,
+  "description": "Dev-only tooling to regenerate committed data. Viewing the site needs none of this.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build:geo": "node scripts/build-geo.mjs",
+    "build:terrain": "node scripts/build-terrain.mjs",
+    "check": "node scripts/check-atoms.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "jpeg-js": "0.4.4",
+    "mapshaper": "0.8.5",
+    "playwright": "1.65.1",
+    "pngjs": "7.0.0"
+  }
+}
