@@ -103,10 +103,10 @@ relevant) in the same commit.
 **Goal**: ~1 km/px hillshade under everything, lazy, fail-silent.
 **Independent test**: quickstart US3 scenario (Slow 3G, blocked tiles).
 
-- [ ] T032 [US3] Verify Terrain Tiles licence for South Asia inputs (SRTM/GMTED2010/ETOPO1, public domain); if unclear, switch to GMTED2010 fallback per research R4
-- [ ] T033 [US3] `scripts/build-terrain.mjs`: z7 tiles over bbox → decode (pngjs) → Horn hillshade → resample to the **chosen** projection → greyscale JPEG q≈70, 4×4 grid `data/terrain/r{r}c{c}.jpg` + `manifest.json` + `manifest.js` (`projection`, `extent`, `rows`, `cols`, `source`)
-- [ ] T034 [US3] `index.html`: after `load` + `requestIdleCallback`, insert SVG `<image>` tiles beneath all layers; skip if manifest projection ≠ page projection; `onerror` removes silently; opacity fade, no layout shift
-- [ ] T035 [US3] Slow-3G check (map usable before tiles; first paint ≤ 120% of T006 baseline); blocked-tiles check (clean console); terrain total ≤ ~1.5 MB; `docs/SOURCES.md` terrain row; tick ROADMAP "Terrain hillshade" + BRIEF §6.2 terrain 🔖
+- [x] T032 [US3] Verify Terrain Tiles licence for South Asia inputs (SRTM/GMTED2010/ETOPO1, public domain); if unclear, switch to GMTED2010 fallback per research R4
+- [x] T033 [US3] `scripts/build-terrain.mjs`: z7 tiles over bbox → decode (pngjs) → Horn hillshade → resample to the **chosen** projection → greyscale JPEG q≈70, 4×4 grid `data/terrain/r{r}c{c}.jpg` + `manifest.json` + `manifest.js` (`projection`, `extent`, `rows`, `cols`, `source`)
+- [x] T034 [US3] `index.html`: after `load` + `requestIdleCallback`, insert SVG `<image>` tiles beneath all layers; skip if manifest projection ≠ page projection; `onerror` removes silently; opacity fade, no layout shift
+- [x] T035 [US3] Slow-3G check (map usable before tiles; first paint ≤ 120% of T006 baseline); blocked-tiles check (clean console); terrain total ≤ ~1.5 MB; `docs/SOURCES.md` terrain row; tick ROADMAP "Terrain hillshade" + BRIEF §6.2 terrain 🔖
 
 ---
 

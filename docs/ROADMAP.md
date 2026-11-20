@@ -11,7 +11,7 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Coastline + islands (Sri Lanka, Lakshadweep, Andamans)
 - [ ] Rivers and lakes (16+ named, with `appear`/`vanish` years) — 31 rivers + Wular done; `appear`/`vanish` schema ready, values need cited sources (Phase 3)
 - [x] Relief: Himalaya, Ghats, Vindhyas, Aravallis, Thar
-- [ ] Terrain hillshade from a public-domain DEM, lazy-loaded
+- [x] Terrain hillshade from a public-domain DEM, lazy-loaded (built for the current projection; rerun with `--proj lcc` if the conic is adopted)
 - [x] Redraw region atoms against real geography (25 → 40–60) — 60 atoms, 0 overlaps
 - [ ] Decide: equirectangular vs Lambert conformal conic — flag before implementing
 
