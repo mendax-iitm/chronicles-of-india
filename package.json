@@ -8,7 +8,8 @@
     "build:geo": "node scripts/build-geo.mjs",
     "build:terrain": "node scripts/build-terrain.mjs",
     "check": "node scripts/check-atoms.mjs",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "build:atoms": "node scripts/build-atoms.mjs"
   },
   "devDependencies": {
     "jpeg-js": "0.4.4",

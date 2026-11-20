@@ -72,13 +72,13 @@ relevant) in the same commit.
 **Goal**: 26 → 40–60 atoms following coasts, rivers, watersheds; every snapshot keeps its territory.
 **Independent test**: `npm run check` → count in range, 0 overlaps; quickstart US2 scenario.
 
-- [ ] T022 [US2] `scripts/check-atoms.mjs`: parse `ATOMS` from `index.html`; assert "40–60 atoms"; 0.05° land grid sample, any point inside > 1 atom fails; print count and overlaps
-- [ ] T023 [US2] `index.html`: `?debug=atoms` overlay — atom outlines, ids, rivers, 1° graticule (debug only, not linked)
-- [ ] T024 [US2] Redraw north and west atoms (GANDHARA … SAURASHTRA/KUTCH per research R6) in `ATOMS`; river borders copy `base.json` river vertices; coastal edges overshoot ≥ 0.3°
-- [ ] T025 [US2] Redraw east and north-east atoms (AWADH … NE_HILLS)
-- [ ] T026 [US2] Redraw centre, Deccan and south (MALWA … KERALA), incl. TELANGANA / RAYALASEEMA / KARNATAKA_N split; `SRILANKA` from the base island polygon; leave forest/tribal interiors as gaps where prototype left them unclaimed
-- [ ] T027 [US2] `ATOM_MIGRATION` in `index.html`: every prototype id is kept or mapped; expand once at load over `SN[*].pol[*].atoms`; smoke asserts all ids resolve
-- [ ] T028 [US2] Verify per snapshot that every polity present before is present after (SC-007) and J&K 1947 colour/label unchanged; compare against `.cache/shots/before-*`; `npm run check` + smoke clean; tick ROADMAP "Redraw region atoms" 🔖
+- [x] T022 [US2] `scripts/check-atoms.mjs`: parse `ATOMS` from `index.html`; assert "40–60 atoms"; 0.05° land grid sample, any point inside > 1 atom fails; print count and overlaps
+- [x] T023 [US2] `index.html`: `?debug=atoms` overlay — atom outlines, ids, rivers, 1° graticule (debug only, not linked)
+- [x] T024 [US2] Redraw north and west atoms (GANDHARA … SAURASHTRA/KUTCH per research R6) in `ATOMS`; river borders copy `base.json` river vertices; coastal edges overshoot ≥ 0.3°
+- [x] T025 [US2] Redraw east and north-east atoms (AWADH … NE_HILLS)
+- [x] T026 [US2] Redraw centre, Deccan and south (MALWA … KERALA), incl. TELANGANA / RAYALASEEMA / KARNATAKA_N split; `SRILANKA` from the base island polygon; leave forest/tribal interiors as gaps where prototype left them unclaimed
+- [x] T027 [US2] `ATOM_MIGRATION` in `index.html`: every prototype id is kept or mapped; expand once at load over `SN[*].pol[*].atoms`; smoke asserts all ids resolve
+- [x] T028 [US2] Verify per snapshot that every polity present before is present after (SC-007) and J&K 1947 colour/label unchanged; compare against `.cache/shots/before-*`; `npm run check` + smoke clean; tick ROADMAP "Redraw region atoms" 🔖
 
 ### ◆ CHECKPOINT 2 — STOP. Show owner: all atoms with labels (`?debug=atoms`), and 261 BCE, 1526 CE, 1947 CE before/after. Wait for acceptance.
 
