@@ -114,7 +114,7 @@ relevant) in the same commit.
 
 - [ ] T036 Final quality gate (BRIEF §9): slider end to end at 390, 1024×768, 1440; console clean; every labelable polity labelled; weight report
 - [ ] T037 Tick ROADMAP "Decide: projection" with the outcome; keep `.cache/shots` used in ◆ reviews until owner closes Phase 1
-- [ ] T038 [P] README: one line on base-map sources and that viewing needs no build 🔖
+- [x] T038 [P] README: one line on base-map sources and that viewing needs no build 🔖
 
 ---
 

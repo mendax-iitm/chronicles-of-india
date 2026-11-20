@@ -18,16 +18,20 @@ cities change their names. Click anything to find out what it was and who ruled 
 - **Journeys** — follow Alexander, Faxian, Xuanzang, Ibn Battuta and Gandhi across the map.
 - **Events** — 25 dated turning points from the Kalinga War to Partition.
 - **Pinpoint quiz** — tap where you think a historic city stood; scored by distance.
+- **Real geography** — coastline, islands, 31 rivers and mountain relief from Natural Earth,
+  and a terrain hillshade from SRTM/ETOPO1 elevation data (all public domain). Kingdoms are
+  built from 60 regions drawn along real rivers, coasts and watersheds.
 
 **In progress** (see [BRIEF.md §6](BRIEF.md#6-feature-parity-checklist)): reigning-ruler and
 regnal-era display, administrative divisions, an X-ray lens showing modern boundaries,
-trade corridors, terrain hillshade, universal search, deep links and embed mode, a GeoJSON
+trade corridors, universal search, deep links and embed mode, a GeoJSON
 export, an MCP server and agent skill, Hindi and regional languages, a classroom/exam mode,
 and full offline PWA use.
 
 ## Run it
 
-No build step, no dependencies.
+No build step, no dependencies. The generated map data in `data/` is committed, so you never
+need to run the scripts in `scripts/` just to view the atlas.
 
 ```bash
 git clone https://github.com/<your-username>/chronicles-of-india.git
