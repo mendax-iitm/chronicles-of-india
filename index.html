@@ -121,8 +121,17 @@ footer#tl button#play{background:var(--navy);color:#fff}
 "use strict";
 /* ---------- projection ---------- */
 const K=22,XF=.93,W=860,H=770;
-const px=lon=>(lon-58)*K*XF, py=lat=>(39-lat)*K;
-const ptsStr=a=>a.map(p=>px(p[0]).toFixed(1)+','+py(p[1]).toFixed(1)).join(' ');
+/* Projection. Default: equirectangular with a 0.93 x-factor. ?proj=lcc previews a Lambert conformal
+   conic (standard parallels 15°N/31°N, centre 23°N 80°E) pinned to the same centre and scale — see
+   docs/PROJECTION.md. Every lon/lat → SVG conversion goes through XY; clicks come back through toLonLat. */
+const PROJ=/[?&]proj=lcc/.test(location.search)?'lcc':'equirect';
+const LCC=(()=>{const r=Math.PI/180,t=f=>Math.tan(Math.PI/4+f*r/2),n=Math.log(Math.cos(15*r)/Math.cos(31*r))/Math.log(t(31)/t(15)),
+ F=Math.cos(15*r)*t(15)**n/n,r0=F/t(23)**n,S=K/r,X0=(80-58)*K*XF,Y0=(39-23)*K;
+ return{fwd:(lon,lat)=>{const p=F/t(lat)**n,th=n*(lon-80)*r;return[X0+S*p*Math.sin(th),Y0-S*(r0-p*Math.cos(th))]},
+  inv:(x,y)=>{const a=(x-X0)/S,b=r0-(Y0-y)/S,p=Math.hypot(a,b);return[80+Math.atan2(a,b)/n/r,(2*Math.atan((F/p)**(1/n))-Math.PI/2)/r]}}})();
+const XY=PROJ==='lcc'?LCC.fwd:(lon,lat)=>[(lon-58)*K*XF,(39-lat)*K];
+const px=(lon,lat)=>XY(lon,lat)[0], py=(lon,lat)=>XY(lon,lat)[1];
+const ptsStr=a=>a.map(p=>{const q=XY(p[0],p[1]);return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ');
 const $=s=>document.querySelector(s);
 const fy=y=>y<0?(-y)+' BCE':y+' CE';
 const rg=s=>s.from===s.to?fy(s.from):fy(s.from)+' – '+fy(s.to);
@@ -411,7 +420,7 @@ $('#relief').innerHTML=B.relief.map(r=>`<polygon class="relief${r.name==='Thar'?
 $('#rivers').innerHTML=B.rivers.map(r=>`<path class="river${r.rank?' big':''}" d="${r.line.map(lineD).join('')}"/>`).join('');
 $('#pols').setAttribute('clip-path','url(#clipLand)');
 /* ?debug=atoms: every atom outlined and labelled, for checking the atom geometry. Not linked from the UI. */
-if(/[?&]debug=atoms/.test(location.search)){document.body.classList.add('dbg');const ids=Object.keys(ATOMS);$('#world').insertAdjacentHTML('beforeend','<g clip-path="url(#clipLand)">'+ids.map((k,i)=>`<polygon points="${AP[k]}" fill="hsl(${i*137%360} 60% 60%)" fill-opacity=".45" stroke="#333" stroke-width=".6"/>`).join('')+'</g>'+ids.map(k=>{const c=cen(ATOMS[k]);return `<text x="${px(c.x).toFixed(1)}" y="${py(c.y).toFixed(1)}" font-size="7" text-anchor="middle" fill="#111" style="paint-order:stroke;stroke:#fff;stroke-width:2px">${k}</text>`}).join(''))}
+if(/[?&]debug=atoms/.test(location.search)){document.body.classList.add('dbg');const ids=Object.keys(ATOMS);$('#world').insertAdjacentHTML('beforeend','<g clip-path="url(#clipLand)">'+ids.map((k,i)=>`<polygon points="${AP[k]}" fill="hsl(${i*137%360} 60% 60%)" fill-opacity=".45" stroke="#333" stroke-width=".6"/>`).join('')+'</g>'+ids.map(k=>{const c=cen(ATOMS[k]);return `<text x="${px(c.x,c.y).toFixed(1)}" y="${py(c.x,c.y).toFixed(1)}" font-size="7" text-anchor="middle" fill="#111" style="paint-order:stroke;stroke:#fff;stroke-width:2px">${k}</text>`}).join(''))}
 
 /* ---------- view ---------- */
 const scl=()=>svg.clientWidth/vb.w;
@@ -427,7 +436,7 @@ function resetView(){const r=svg.getBoundingClientRect();vb.w=Math.max(W*.82,H*.
 function zoomAt(f,fx,fy){const nw=Math.min(Math.max(vb.w*f,W/18),W*1.4);const wx=vb.x+fx*vb.w,wy=vb.y+fy*vb.h;const hh=vb.h/vb.w;vb.x=wx-fx*nw;vb.y=wy-fy*nw*hh;vb.w=nw;applyVB()}
 function flyTo(lon,lat,w){
  const r=svg.getBoundingClientRect();w=Math.max(W/18,Math.min(w||vb.w,W*1.4));const h=w*r.height/r.width;
- const t={x:px(lon)-w/2,y:py(lat)-h/2,w},s={x:vb.x,y:vb.y,w:vb.w};const t0=performance.now();
+ const t={x:px(lon,lat)-w/2,y:py(lon,lat)-h/2,w},s={x:vb.x,y:vb.y,w:vb.w};const t0=performance.now();
  (function f(now){const k=Math.min(1,(now-t0)/450),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;vb.x=s.x+(t.x-s.x)*e;vb.y=s.y+(t.y-s.y)*e;vb.w=s.w+(t.w-s.w)*e;applyVB();if(k<1)requestAnimationFrame(f)})(t0);
 }
 
@@ -440,7 +449,7 @@ function drawPols(){
  }
  $('#pols').innerHTML=h;
 }
-function glyph(inner,lon,lat,attrs){const s=scl();return `<g transform="translate(${px(lon).toFixed(1)} ${py(lat).toFixed(1)}) scale(${(1/s).toFixed(4)})" ${attrs||''}>${inner}</g>`}
+function glyph(inner,lon,lat,attrs){const s=scl();return `<g transform="translate(${px(lon,lat).toFixed(1)} ${py(lon,lat).toFixed(1)}) scale(${(1/s).toFixed(4)})" ${attrs||''}>${inner}</g>`}
 function nameAt(p,y){let c=null;for(const n of p.n)if(n[0]<=y)c=n;return c}
 function wrap(n){if(n.length<=13||n.indexOf(' ')<0)return[n];const m=n.length/2;let b=-1,bd=99;for(let i=0;i<n.length;i++)if(n[i]===' '&&Math.abs(i-m)<bd){bd=Math.abs(i-m);b=i}return[n.slice(0,b),n.slice(b+1)]}
 function drawOv(){
@@ -452,18 +461,18 @@ function drawOv(){
   const free=(x,y,w,hh)=>{for(const b of boxes)if(x<b[0]+b[2]&&x+w>b[0]&&y<b[1]+b[3]&&y+hh>b[1])return false;boxes.push([x,y,w,hh]);return true};
   s.pol.slice().sort((a,b)=>b.area-a.area).forEach(p=>{if(p.area<4.5)return;const ls=wrap(p.n);
    const w=Math.max(...ls.map(t=>t.length))*6.4+6,hh=ls.length*12+4;
-   if(!free(px(p.lon)*sc-w/2,py(p.lat)*sc-hh/2,w,hh))return;
+   if(!free(px(p.lon,p.lat)*sc-w/2,py(p.lon,p.lat)*sc-hh/2,w,hh))return;
    h+=glyph(`<text class="plab">${ls.map((t,i)=>`<tspan x="0" dy="${i?12:(ls.length>1?-3:4)}">${esc(t)}</tspan>`).join('')}</text>`,p.lon,p.lat,'pointer-events="none"')});
   const pls=PL.filter(p=>nameAt(p,y)).sort((a,b)=>(b.id===st.selPlace)-(a.id===st.selPlace));
   pls.forEach(p=>{const c=nameAt(p,y),on=p.id===st.selPlace,w=c[1].length*6.6+4;
-   const lab=free(px(p.lon)*sc+8,py(p.lat)*sc-8,w,16)||on;
+   const lab=free(px(p.lon,p.lat)*sc+8,py(p.lon,p.lat)*sc-8,w,16)||on;
    h+=glyph(`<circle r="${on?7:5}" fill="${on?'#c98a00':'#0b2a5b'}" stroke="#fff" stroke-width="2"/>${lab?`<text class="pname" x="9" y="4">${esc(c[1])}</text>`:''}`,p.lon,p.lat,`data-k="p:${p.id}"`)});
   EV.forEach(e=>{if(Math.abs(e.y-y)>30&&e.id!==st.selEv)return;
    h+=glyph(`<path d="M0,-8 L8,0 L0,8 L-8,0Z" fill="#e9a400" stroke="#fff" stroke-width="2"/>`,e.lon,e.lat,`data-k="e:${e.id}"`)});
   if(st.jr>=0){const j=JR[st.jr];j.s.forEach((p,i)=>{const done=y>=p[3];
    h+=glyph(`<circle r="10" fill="${done?'#0b2a5b':'#fff'}" stroke="#0b2a5b" stroke-width="2"/><text y="4" text-anchor="middle" font-size="11" font-weight="700" fill="${done?'#fff':'#0b2a5b'}">${i+1}</text>`,p[1],p[2],`data-k="j:${i}"`)})}
  }else{
-  if(q.res){h+=`<line x1="${px(q.res.gl).toFixed(1)}" y1="${py(q.res.ga).toFixed(1)}" x2="${px(q.res.tl).toFixed(1)}" y2="${py(q.res.ta).toFixed(1)}" class="route" stroke="#b42318"/>`;
+  if(q.res){h+=`<line x1="${px(q.res.gl,q.res.ga).toFixed(1)}" y1="${py(q.res.gl,q.res.ga).toFixed(1)}" x2="${px(q.res.tl,q.res.ta).toFixed(1)}" y2="${py(q.res.tl,q.res.ta).toFixed(1)}" class="route" stroke="#b42318"/>`;
    h+=glyph(`<circle r="7" fill="#0b2a5b" stroke="#fff" stroke-width="2"/>`,q.res.gl,q.res.ga,'pointer-events="none"');
    h+=glyph(`<circle r="8" fill="#1a8f4c" stroke="#fff" stroke-width="2"/><text class="pname" x="11" y="4">${esc(q.res.name)}</text>`,q.res.tl,q.res.ta,'pointer-events="none"')}
  }
@@ -563,7 +572,7 @@ function guess(lon,lat){const q=st.quiz;if(!q.on||q.done||q.res)return;const t=q
 
 /* ---------- pointer interaction ---------- */
 const ptrs=new Map();let pinch=0;
-function toLonLat(cx,cy){const r=svg.getBoundingClientRect();const x=vb.x+(cx-r.left)/r.width*vb.w,y=vb.y+(cy-r.top)/r.height*vb.h;return[x/(K*XF)+58,39-y/K]}
+function toLonLat(cx,cy){const r=svg.getBoundingClientRect();const x=vb.x+(cx-r.left)/r.width*vb.w,y=vb.y+(cy-r.top)/r.height*vb.h;return PROJ==='lcc'?LCC.inv(x,y):[x/(K*XF)+58,39-y/K]}
 svg.addEventListener('pointerdown',e=>{ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
  if(ptrs.size===1)drag={sx:e.clientX,sy:e.clientY,vx:vb.x,vy:vb.y,moved:false,t:e.target};
  else{const[a,b]=[...ptrs.values()];pinch=Math.hypot(a.x-b.x,a.y-b.y);if(drag)drag.moved=true}});

@@ -89,8 +89,8 @@ relevant) in the same commit.
 **Goal**: evidence-based recommendation; no switch without go-ahead.
 **Independent test**: quickstart US4 scenario.
 
-- [ ] T029 [US4] `scripts/proj-prototype.html` (standalone, loads `../data/base.js` and copies atoms): equirect-0.93 vs LCC (φ0 23°N, λ0 80°E, standard parallels ~15°N/31°N) side by side, with graticule and the 1526 snapshot
-- [ ] T030 [US4] `docs/PROJECTION.md`: measured costs from research R7 (14 call sites → `pr([lon,lat])`, LCC inverse in `toLonLat`, densify long edges, terrain resample, label/hit-test impact), screenshots, recommendation 🔖
+- [x] T029 (done as `?proj=lcc` in index.html instead of a separate page — measures real cost) [US4] `scripts/proj-prototype.html` (standalone, loads `../data/base.js` and copies atoms): equirect-0.93 vs LCC (φ0 23°N, λ0 80°E, standard parallels ~15°N/31°N) side by side, with graticule and the 1526 snapshot
+- [x] T030 [US4] `docs/PROJECTION.md`: measured costs from research R7 (14 call sites → `pr([lon,lat])`, LCC inverse in `toLonLat`, densify long edges, terrain resample, label/hit-test impact), screenshots, recommendation 🔖
 
 ### ◆ CHECKPOINT 3 — STOP. Owner decides. If approved: T031. If not: skip T031.
 
