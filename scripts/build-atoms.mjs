@@ -87,13 +87,13 @@ const N = {
   // Bengal and the north-east
   frk: [87.95, 24.8], pd1: [88.6, 24.3], pd2: [89.7, 23.8], pd3: [90.6, 23.2],
   bh1: [88.2, 24.2], bh2: [88.35, 23.3], bh3: [88.3, 22.55], bh4: [88.1, 21.7],
-  sA: [88.0, 21.0], sB: [87.6, 21.2], bn1: [87.2, 22.0], sV: [90.9, 21.8], sSm: [92.6, 20.5],
+  sA: [88.0, 21.0], sB: [87.6, 21.2], bn1: [87.2, 22.0], sV: [90.9, 21.8], sSm: [92.4, 20.5],
   np5: [88.4, 26.7], kch: [89.6, 26.3], bp1: [89.95, 25.9], bp2: [89.75, 24.6],
-  gr1: [90.2, 25.2], gr2: [90.6, 26.0], sy1: [92.4, 25.1], tp1: [92.3, 24.0], tp2: [91.9, 23.0],
-  ct1: [92.3, 22.0],
+  gr1: [90.2, 25.2], gr2: [90.6, 26.0], sy1: [92.4, 25.1], tp1: [92.3, 24.0], tp2: [92.3, 23.3],
+  ct1: [92.65, 22.0],  // Chittagong Hill Tracts stay in SAMATATA; NE_HILLS ends at the Lushai hills
   np6: [90.5, 26.9], as1: [92.0, 26.95], as2: [94.0, 27.6], as3: [95.6, 28.0], as4: [95.9, 27.4],
   as5: [94.6, 26.7], as6: [93.4, 26.2], as7: [92.2, 26.0],
-  ne1: [97.0, 27.2], ne2: [94.6, 23.6], ne3: [93.0, 21.8],
+  ne1: [95.4, 26.8], ne4: [94.8, 25.7], ne2: [94.3, 24.0], ne3: [93.2, 22.1],  // Patkai–Naga–Manipur–Chin line (pre-1947 Assam–Burma frontier)
   // Sri Lanka (boxes, clipped to the island)
   lk1: [79.55, 7.9], lk2: [82.3, 7.9], lkn1: [79.55, 9.95], lkn2: [82.3, 9.95], lks1: [79.55, 5.6], lks2: [82.3, 5.6],
 };
@@ -157,7 +157,7 @@ const A = {
   VARENDRA: 'mh1 np5 kch bp1 bp2 pd2 pd1 frk mh2',
   SAMATATA: 'pd2 bp2 bp1 gr1 sy1 tp1 tp2 ct1 sSm sV pd3',
   KAMARUPA: 'kch np6 as1 as2 as3 as4 as5 as6 as7 gr2 bp1',
-  NE_HILLS: 'bp1 gr2 as7 as6 as5 as4 ne1 ne2 ne3 ct1 tp2 tp1 sy1 gr1',
+  NE_HILLS: 'bp1 gr2 as7 as6 as5 as4 ne1 ne4 ne2 ne3 ct1 tp2 tp1 sy1 gr1',
   RAJARATA: 'lkn1 lkn2 lk2 lk1',
   RUHUNA: 'lk1 lk2 lks2 lks1',
 };
