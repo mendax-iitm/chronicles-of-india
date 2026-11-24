@@ -203,13 +203,15 @@ function drawOv() {
       h += glyph(`<text class="plab">${ls.map((t, i) => `<tspan x="0" dy="${i ? 12 : (ls.length > 1 ? -3 : 4)}">${esc(t)}</tspan>`).join('')}</text>`, p.lon, p.lat, 'pointer-events="none"');
     });
 
-    const pls = PL.filter(p => nameAt(p, y)).sort((a, b) => (b.id === st.selPlace) - (a.id === st.selPlace));
+    const isPlaceActive = (p, idx) => (st.selPlace === idx) || (st.selPlaces && st.selPlaces.includes(idx));
+    const pls = PL.filter(p => nameAt(p, y)).sort((a, b) => isPlaceActive(b, PL.indexOf(b)) - isPlaceActive(a, PL.indexOf(a)));
     pls.forEach(p => {
-      const c = nameAt(p, y), on = p.id === st.selPlace;
+      const idx = PL.indexOf(p);
+      const c = nameAt(p, y), on = isPlaceActive(p, idx);
       const cName = T(c[1]);
       const w = cName.length * 6.6 + 4;
       const lab = free(px(p.lon, p.lat) * sc + 8, py(p.lon, p.lat) * sc - 8, w, 16) || on;
-      h += glyph(`<circle r="${on ? 7 : 5}" fill="${on ? '#c98a00' : '#0b2a5b'}" stroke="#fff" stroke-width="2"/>${lab ? `<text class="pname" x="9" y="4">${esc(cName)}</text>` : ''}`, p.lon, p.lat, `data-k="p:${p.id}"`);
+      h += glyph(`<circle r="${on ? 7 : 5}" fill="${on ? '#c98a00' : '#0b2a5b'}" stroke="#fff" stroke-width="2"/>${lab ? `<text class="pname" x="9" y="4">${esc(cName)}</text>` : ''}`, p.lon, p.lat, `data-k="p:${idx}"`);
     });
 
     EV.forEach(e => {

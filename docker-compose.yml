@@ -1,0 +1,14 @@
+services:
+  atlas:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chronicles-of-india
+    ports:
+      - "8008:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/index.html"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

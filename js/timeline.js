@@ -68,6 +68,7 @@ function setYear(y, keepView) {
   drawOv();
   if (st.tab === 'era' && ch) render();
   else if (st.tab === 'places' || st.tab === 'journeys') render(true);
+  if (typeof syncURL === 'function') syncURL();
 }
 
 function stopPlay() {

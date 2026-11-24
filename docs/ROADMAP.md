@@ -41,14 +41,14 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Person chronicles as arcs with directional ticks; multiple people at once
 - [x] Quiz: 10 rounds, clues, confirm, accuracy rings, named ranks
 
-## Phase 5 — Sharing and deployment  ⬅ current
-- [ ] Deep links: `year`, `place` (multi-stop), `person`, `polity`, `quiz`, `lang`
-- [ ] Embed mode `?embed=1` with full param set
-- [ ] Export current view as PNG
-- [ ] Docker + Docker Compose (`nginx:alpine`, 8008:80)
-- [ ] `sitemap.xml` + per-period landing pages
+## Phase 5 — Sharing and deployment
+- [x] Deep links: `year`, `place` (multi-stop), `person`, `polity`, `quiz`, `lang`
+- [x] Embed mode `?embed=1` with full param set
+- [x] Export current view as PNG and SVG with attribution watermark
+- [x] Docker + Docker Compose (`nginx:alpine`, 8008:80)
+- [x] `sitemap.xml` + per-period landing pages (36 periods + robots.txt)
 
-## Phase 6 — AI and agent integration
+## Phase 6 — AI and agent integration  ⬅ current
 - [ ] `llms.txt`
 - [ ] MCP server (`inspect_place`, `inspect_person`, `search_atlas`, `inspect_ruler`)
 - [ ] Agent skill `skills/chronicles-of-india/SKILL.md`

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mendax-iitm.github.io/chronicles-of-india/sitemap.xml

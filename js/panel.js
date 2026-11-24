@@ -34,6 +34,12 @@ function render(soft) {
       const p = PL[st.selPlace], cur = nameAt(p, st.year);
       const rawP = (window.ATLAS_PLACES || []).find(x => x.id === p.id) || p;
       h += '<button class="sec" data-a="pl:back">← All places</button>';
+      if (st.selPlaces && st.selPlaces.length > 1) {
+        h += `<div class="multi-trace" style="margin-top:10px;padding:8px 10px;background:#fef3c7;border:1px solid #fde68a;border-radius:6px;font-size:12px;color:#92400e;">
+          <b>Multi-Site Route (${st.selPlaces.length} places):</b><br>` +
+          st.selPlaces.map(idx => `<button class="cap-badge" data-a="pl:${PL[idx].id}" style="cursor:pointer;margin:4px 4px 2px 0;background:#fff;border-color:#f59e0b;color:#92400e;${idx === st.selPlace ? 'font-weight:bold;outline:2px solid #b45309;' : ''}">${esc(T(PL[idx].n[0][1]))}</button>`).join('') +
+        `</div>`;
+      }
       if (cur) {
         h += `<h2 style="margin-top:10px">${esc(T(cur[1]))}`;
         if (rawP.category) h += `<span class="cap-badge">${esc(T(rawP.category))}</span>`;
@@ -147,6 +153,7 @@ function render(soft) {
   }
   c.innerHTML = h;
   if (soft) c.scrollTop = sc;
+  if (typeof syncURL === 'function') syncURL();
 }
 
 function go(tab) {

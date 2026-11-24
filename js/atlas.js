@@ -7,6 +7,7 @@ const st = {
   si: 0,
   selPol: -1,
   selPlace: -1,
+  selPlaces: [],
   selEv: -1,
   jr: -1,
   cmpJr: -1,
@@ -15,7 +16,9 @@ const st = {
   xray: false,
   play: false,
   walk: null,
-  quiz: { on: false, rounds: [], i: 0, score: 0, res: null, guess: null, done: false }
+  quiz: { on: false, rounds: [], i: 0, score: 0, res: null, guess: null, done: false },
+  embed: false,
+  lang: 'en'
 };
 
 const svg = $('#map');
@@ -602,8 +605,11 @@ new ResizeObserver(() => applyVB()).observe(svg);
 initStaticLayers();
 initTimeline();
 initSearch();
+if (typeof initShare === 'function') initShare();
 drawPols();
-setYear(-261);
+if (!window.location.search || !window.location.search.includes('year=')) {
+  setYear(-261);
+}
 resetView();
 render();
 

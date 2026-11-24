@@ -1,0 +1,6 @@
+.git
+.cache
+.specify
+node_modules
+scripts/test*
+.DS_Store

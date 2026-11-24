@@ -42,6 +42,7 @@ const jsScripts = [
   'js/render.js',
   'js/timeline.js',
   'js/panel.js',
+  'js/share.js',
   'js/api.js',
   'js/atlas.js'
 ].map(file => readFileSync(file, 'utf8')).join('\n');

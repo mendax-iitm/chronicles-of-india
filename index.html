@@ -10,11 +10,17 @@
 <header>
   <h1>Chronicles of India</h1>
   <span class="sub">An interactive historical atlas · 600 BCE – 1947 CE</span>
-  <button id="searchBtn" class="search-btn" title="Search atlas (Press / or Cmd+K)" aria-label="Search atlas">
-    <span class="search-icon">🔍</span>
-    <span class="search-text">Search atlas...</span>
-    <kbd>/</kbd>
-  </button>
+  <div class="header-actions">
+    <button id="searchBtn" class="search-btn" title="Search atlas (Press / or Cmd+K)" aria-label="Search atlas">
+      <span class="search-icon">🔍</span>
+      <span class="search-text">Search atlas...</span>
+      <kbd>/</kbd>
+    </button>
+    <button id="shareBtn" class="header-btn" title="Share or export this map view" aria-label="Share map">
+      <span class="btn-icon">🔗</span>
+      <span class="btn-text">Share</span>
+    </button>
+  </div>
 </header>
 <main>
  <section id="mapwrap">
@@ -67,6 +73,43 @@
   </div>
 </div>
 
+<!-- Share & Export Modal -->
+<div id="share-modal" class="share-modal" style="display:none" role="dialog" aria-modal="true" aria-label="Share atlas view">
+  <div class="share-dialog">
+    <div class="share-header">
+      <h2>Share & Export</h2>
+      <button id="shareClose" class="modal-close" aria-label="Close share dialog">✕</button>
+    </div>
+    <div class="share-body">
+      <div class="share-group">
+        <label for="shareUrlInput">Permanent Deep Link</label>
+        <div class="input-with-button">
+          <input type="text" id="shareUrlInput" readonly spellcheck="false">
+          <button id="copyShareBtn" class="pri">Copy Link</button>
+        </div>
+      </div>
+      <div class="share-group">
+        <label for="embedCodeInput">Embed in Website / LMS</label>
+        <div class="input-with-button">
+          <input type="text" id="embedCodeInput" readonly spellcheck="false">
+          <button id="copyEmbedBtn">Copy Embed</button>
+        </div>
+      </div>
+      <div class="share-group export-actions">
+        <label>Export Current Map View</label>
+        <div class="export-btn-group">
+          <button id="exportPngBtn" class="btn-export">
+            <span>📷</span> Download PNG (High-Res)
+          </button>
+          <button id="exportSvgBtn" class="btn-export">
+            <span>📐</span> Download SVG
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Base geodata & historical content -->
 <script src="data/base.js"></script>
 <script src="data/regions.js"></script>
@@ -84,6 +127,7 @@
 <script src="js/render.js"></script>
 <script src="js/timeline.js"></script>
 <script src="js/panel.js"></script>
+<script src="js/share.js"></script>
 <script src="js/api.js"></script>
 <script src="js/atlas.js"></script>
 </body>
