@@ -9,8 +9,10 @@ const st = {
   selPlace: -1,
   selEv: -1,
   jr: -1,
+  cmpJr: -1,
   ghost: true,
   corridors: true,
+  xray: false,
   play: false,
   walk: null,
   quiz: { on: false, rounds: [], i: 0, score: 0, res: null, guess: null, done: false }
@@ -211,17 +213,47 @@ svg.addEventListener('pointermove', e => {
   hover(e);
 });
 
+let lastUpTime = 0, lastUpX = 0, lastUpY = 0;
+
+function handleDblClick(e) {
+  if (st.quiz.on) return;
+  const [lo, la] = toLonLat(e.clientX, e.clientY);
+  let best = -1, minD = Infinity;
+  PL.forEach((p, idx) => {
+    const d = Math.hypot((p.lon - lo) * Math.cos(la * Math.PI / 180), p.lat - la);
+    if (d < minD) { minD = d; best = idx; }
+  });
+  if (best >= 0 && minD < 4.5) {
+    st.selPlace = best;
+    go('places');
+    drawOv();
+    flyTo(PL[best].lon, PL[best].lat, Math.min(vb.w, W / 2));
+  }
+}
+
 function end(e) {
   ptrs.delete(e.pointerId);
   pinch = 0;
   svg.classList.remove('drag');
-  if (drag && !drag.moved && ptrs.size === 0 && e.type === 'pointerup') clickAt(e, drag.t);
+  if (drag && !drag.moved && ptrs.size === 0 && e.type === 'pointerup') {
+    const now = performance.now();
+    if (!st.quiz.on && now - lastUpTime < 350 && Math.hypot(e.clientX - lastUpX, e.clientY - lastUpY) < 25) {
+      handleDblClick(e);
+      lastUpTime = 0;
+    } else {
+      lastUpTime = now;
+      lastUpX = e.clientX;
+      lastUpY = e.clientY;
+      clickAt(e, drag.t);
+    }
+  }
   if (ptrs.size === 0) drag = null;
 }
 
 svg.addEventListener('pointerup', end);
 svg.addEventListener('pointercancel', end);
 svg.addEventListener('pointerleave', () => { tip(); setHov(-1); });
+svg.addEventListener('dblclick', handleDblClick);
 svg.addEventListener('wheel', e => {
   e.preventDefault();
   const r = svg.getBoundingClientRect();
@@ -248,6 +280,11 @@ function clickAt(e, t) {
       render(true);
     } else if (k === 'j') {
       const p = JR[st.jr].s[+v];
+      setYear(p[3]);
+      st.tab = 'journeys';
+      render(true);
+    } else if (k === 'cj') {
+      const p = JR[st.cmpJr].s[+v];
       setYear(p[3]);
       st.tab = 'journeys';
       render(true);
@@ -286,6 +323,9 @@ function hover(e) {
     } else if (a === 'j') {
       const q = JR[st.jr].s[+v];
       s = `<b>${+v + 1}. ${esc(T(q[0]))}</b> · ${fy(q[3])}`;
+    } else if (a === 'cj') {
+      const q = JR[st.cmpJr].s[+v];
+      s = `<b>[Alt] ${+v + 1}. ${esc(T(q[0]))}</b> · ${fy(q[3])}`;
     }
     setHov(-1);
     tip(s, e);
@@ -296,6 +336,158 @@ function hover(e) {
   } else {
     setHov(-1);
     tip();
+  }
+}
+
+/* ---------- Universal Search Engine ---------- */
+const SEARCH_ITEMS = [];
+let searchActiveIdx = 0;
+let filteredSearch = [];
+
+function initSearch() {
+  PL.forEach((p, idx) => {
+    const rawP = (window.ATLAS_PLACES || []).find(x => x.id === p.id) || p;
+    const names = p.n.map(n => [T(n[1]), n[1]?.hi || '']).flat().filter(Boolean);
+    const primaryName = p.n[0] ? T(p.n[0][1]) : p.id;
+    SEARCH_ITEMS.push({
+      type: 'place',
+      badge: 'Place',
+      title: primaryName,
+      desc: rawP.category || (p.n.length > 1 ? `${p.n.length} names` : 'Settlement'),
+      matchStr: (names.join(' ') + ' ' + (rawP.lore ? T(rawP.lore) : '') + ' ' + (rawP.category || '')).toLowerCase(),
+      action: () => {
+        st.selPlace = idx;
+        go('places');
+        drawOv();
+        flyTo(p.lon, p.lat, Math.min(vb.w, W / 2));
+      }
+    });
+  });
+
+  (window.ATLAS_RULERS || []).forEach(r => {
+    SEARCH_ITEMS.push({
+      type: 'ruler',
+      badge: 'Ruler',
+      title: T(r.name),
+      desc: `${T(r.dynasty_name || r.dynasty)} (${fy(r.reign[0])}–${fy(r.reign[1])})`,
+      matchStr: `${T(r.name)} ${r.name?.hi || ''} ${T(r.dynasty_name || r.dynasty)}`.toLowerCase(),
+      action: () => {
+        setYear(r.reign[0]);
+        go('era');
+      }
+    });
+  });
+
+  SN.forEach((s) => {
+    const polNames = s.pol.map(p => T(p.n)).join(' ');
+    SEARCH_ITEMS.push({
+      type: 'era',
+      badge: 'Era',
+      title: T(s.title),
+      desc: rg(s),
+      matchStr: `${T(s.title)} ${s.title?.hi || ''} ${polNames} ${rg(s)}`.toLowerCase(),
+      action: () => {
+        setYear(s.from);
+        go('era');
+      }
+    });
+  });
+
+  EV.forEach(e => {
+    SEARCH_ITEMS.push({
+      type: 'event',
+      badge: 'Event',
+      title: T(e.t),
+      desc: `${fy(e.y)} · ${esc(T(e.d)).slice(0, 50)}...`,
+      matchStr: `${T(e.t)} ${e.t?.hi || ''} ${T(e.d)} ${fy(e.y)}`.toLowerCase(),
+      action: () => {
+        act('ev:' + e.id);
+      }
+    });
+  });
+
+  JR.forEach((j, idx) => {
+    SEARCH_ITEMS.push({
+      type: 'journey',
+      badge: 'Person',
+      title: T(j.n),
+      desc: `${T(j.who)} (${T(j.yrs)})`,
+      matchStr: `${T(j.n)} ${j.n?.hi || ''} ${T(j.who)} ${T(j.d)}`.toLowerCase(),
+      action: () => {
+        act('jr:' + idx);
+      }
+    });
+  });
+
+  SEARCH_ITEMS.push({
+    type: 'quiz',
+    badge: 'Quiz',
+    title: 'Historical Pinpoint Quiz',
+    desc: '10 rounds · Test your historical geography skills',
+    matchStr: 'quiz game test trivia pinpoint exam practice',
+    action: () => {
+      go('quiz');
+      act('q:start');
+    }
+  });
+}
+
+function openSearch() {
+  const m = $('#search-modal');
+  if (!m) return;
+  m.style.display = 'flex';
+  const inp = $('#searchInput');
+  if (inp) {
+    inp.value = '';
+    inp.focus();
+    renderSearch('');
+  }
+}
+
+function closeSearch() {
+  const m = $('#search-modal');
+  if (m) m.style.display = 'none';
+  const inp = $('#searchInput');
+  if (inp) inp.blur();
+}
+
+function updateActiveSearchItem() {
+  const items = document.querySelectorAll('#searchResults .search-item');
+  items.forEach((it, i) => {
+    const isAct = i === searchActiveIdx;
+    it.classList.toggle('active', isAct);
+    if (isAct) it.scrollIntoView({ block: 'nearest' });
+  });
+}
+
+function renderSearch(q) {
+  const resultsEl = $('#searchResults');
+  if (!resultsEl) return;
+  q = (q || '').trim().toLowerCase();
+  if (!q) {
+    filteredSearch = SEARCH_ITEMS.slice(0, 8);
+  } else {
+    filteredSearch = SEARCH_ITEMS.filter(item => item.matchStr.includes(q)).slice(0, 10);
+  }
+  searchActiveIdx = 0;
+  if (!filteredSearch.length) {
+    resultsEl.innerHTML = '<div style="padding:16px;text-align:center;color:var(--mut);font-size:13px">No results found for "' + esc(q) + '".</div>';
+    return;
+  }
+  resultsEl.innerHTML = filteredSearch.map((item, idx) => `
+    <div class="search-item ${idx === 0 ? 'active' : ''}" data-sidx="${idx}" role="option">
+      <span class="search-badge ${item.type}">${item.badge}</span>
+      <span class="search-title">${esc(item.title)}</span>
+      <span class="search-desc">${esc(item.desc)}</span>
+    </div>
+  `).join('');
+}
+
+function selectSearchResult(idx) {
+  const item = filteredSearch[idx];
+  if (item && item.action) {
+    closeSearch();
+    item.action();
   }
 }
 
@@ -316,6 +508,9 @@ $('#content').onclick = e => {
   const li = e.target.closest('[data-a]');
   if (li) act(li.dataset.a);
 };
+$('#content').addEventListener('change', e => {
+  if (e.target.id === 'cmpJrSelect') act('jr:cmp:' + e.target.value);
+});
 $('#content').addEventListener('pointerover', e => {
   const li = e.target.closest && e.target.closest('[data-a]');
   if (li && li.dataset.a.startsWith('pol:')) setHov(+li.dataset.a.split(':')[1]);
@@ -325,9 +520,62 @@ $('#content').addEventListener('pointerout', e => {
   if (li && li.dataset.a.startsWith('pol:')) setHov(-1);
 });
 
+// Search modal listeners
+const searchBtn = $('#searchBtn');
+if (searchBtn) searchBtn.onclick = openSearch;
+const searchClose = $('#searchClose');
+if (searchClose) searchClose.onclick = closeSearch;
+const searchModal = $('#search-modal');
+if (searchModal) {
+  searchModal.onclick = e => {
+    if (e.target.id === 'search-modal') closeSearch();
+  };
+}
+const searchInput = $('#searchInput');
+if (searchInput) {
+  searchInput.oninput = e => renderSearch(e.target.value);
+}
+const searchResults = $('#searchResults');
+if (searchResults) {
+  searchResults.onclick = e => {
+    const item = e.target.closest('[data-sidx]');
+    if (item) selectSearchResult(+item.dataset.sidx);
+  };
+}
+
 document.addEventListener('keydown', e => {
-  if (e.target.tagName === 'INPUT') return;
-  if (e.key === 'ArrowRight') {
+  const modalOpen = searchModal && searchModal.style.display !== 'none';
+  if (modalOpen) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      searchActiveIdx = Math.min(filteredSearch.length - 1, searchActiveIdx + 1);
+      updateActiveSearchItem();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      searchActiveIdx = Math.max(0, searchActiveIdx - 1);
+      updateActiveSearchItem();
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      selectSearchResult(searchActiveIdx);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      closeSearch();
+    }
+    return;
+  }
+
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+
+  if (e.key === '/' || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+    e.preventDefault();
+    openSearch();
+  } else if (e.key.toLowerCase() === 'x') {
+    $('#tgXray')?.click();
+  } else if (e.key.toLowerCase() === 'c') {
+    $('#tgCorridors')?.click();
+  } else if (e.key.toLowerCase() === 'g') {
+    $('#tgGhost')?.click();
+  } else if (e.key === 'ArrowRight') {
     if (e.shiftKey) setYear(st.year + 10);
     else $('#next').click();
   } else if (e.key === 'ArrowLeft') {
@@ -353,6 +601,7 @@ new ResizeObserver(() => applyVB()).observe(svg);
 // Startup sequence
 initStaticLayers();
 initTimeline();
+initSearch();
 drawPols();
 setYear(-261);
 resetView();

@@ -64,6 +64,7 @@ function setYear(y, keepView) {
   $('#eracard').innerHTML = cardHtml;
   drawWaterways();
   drawCorridors();
+  drawModern();
   drawOv();
   if (st.tab === 'era' && ch) render();
   else if (st.tab === 'places' || st.tab === 'journeys') render(true);

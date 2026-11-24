@@ -19,8 +19,23 @@ const dataScripts = [
   'data/places.js',
   'data/events.js',
   'data/journeys.js',
-  'data/corridors.js'
-].map(file => readFileSync(file, 'utf8')).join('\n');
+  'data/corridors.js',
+  'data/modern.js'
+].map(file => {
+  const content = readFileSync(file, 'utf8');
+  const eqIdx = content.indexOf('=');
+  if (eqIdx > 0 && content.includes('window.ATLAS_')) {
+    const prefix = content.slice(0, eqIdx + 1);
+    const rest = content.slice(eqIdx + 1).trim().replace(/;$/, '');
+    try {
+      const parsed = JSON.parse(rest);
+      return prefix + JSON.stringify(parsed) + ';';
+    } catch {
+      return content;
+    }
+  }
+  return content;
+}).join('\n');
 
 const jsScripts = [
   'js/projection.js',

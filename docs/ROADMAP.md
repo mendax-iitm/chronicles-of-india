@@ -32,16 +32,16 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Corridors: Uttarapatha, Dakshinapatha, GT Road, Silk Road Karakoram/Tibet, spice routes, Buddhist Circuit, Char Dham
 - [x] Compact topology-deduplicated encoding (all snapshots in 568 KB single-file offline bundle, under 600 KB budget)
 
-## Phase 4 — Interaction parity  ⬅ current
-- [ ] Universal search (`/`, `Cmd+K`) across people, places, rulers, eras, events
-- [ ] Keyboard shortcuts (arrows, Shift+arrow, Space, Esc)
-- [ ] Legend hover-highlight + click-to-zoom-to-bbox
-- [ ] X-ray lens (modern boundaries over the historical map)
-- [ ] Trace Place: double-click to open, capital badges, site events that jump to their year
-- [ ] Person chronicles as arcs with directional ticks; multiple people at once
-- [ ] Quiz: 10 rounds, clues, confirm, accuracy rings, named ranks
+## Phase 4 — Interaction parity
+- [x] Universal search (`/`, `Cmd+K`) across people, places, rulers, eras, events, quiz
+- [x] Keyboard shortcuts (arrows, Shift+arrow, Space, Esc, X, C, G)
+- [x] Legend hover-highlight + click-to-zoom-to-bbox
+- [x] X-ray lens (modern boundaries over the historical map)
+- [x] Trace Place: double-click to open, capital badges, site events that jump to their year
+- [x] Person chronicles as arcs with directional ticks; multiple people at once
+- [x] Quiz: 10 rounds, clues, confirm, accuracy rings, named ranks
 
-## Phase 5 — Sharing and deployment
+## Phase 5 — Sharing and deployment  ⬅ current
 - [ ] Deep links: `year`, `place` (multi-stop), `person`, `polity`, `quiz`, `lang`
 - [ ] Embed mode `?embed=1` with full param set
 - [ ] Export current view as PNG

@@ -213,6 +213,21 @@ else {
   log(`Corridors: ${corridors.length} historical highways, routes, and pilgrimage circuits`);
 }
 
+// 10. Validate Modern Boundaries (X-Ray Lens)
+const modernFile = 'data/modern.json';
+if (!existsSync(modernFile)) fail(`Missing ${modernFile}`);
+else {
+  const modern = JSON.parse(readFileSync(modernFile, 'utf8'));
+  if (!modern.countryLines || modern.countryLines.length < 30) fail(`Modern country lines count ${modern.countryLines?.length} < 30`);
+  if (!modern.stateLines || modern.stateLines.length < 100) fail(`Modern state lines count ${modern.stateLines?.length} < 100`);
+  if (!modern.labels || modern.labels.length < 25) fail(`Modern labels count ${modern.labels?.length} < 25`);
+  modern.labels.forEach((l, i) => {
+    if (!l.name?.en || !l.name?.hi) fail(`Modern label ${i} missing bilingual name`);
+    if (!l.at || typeof l.at[0] !== 'number' || typeof l.at[1] !== 'number') fail(`Modern label ${i} invalid coords`);
+  });
+  log(`Modern boundaries: ${modern.countryLines.length} country lines, ${modern.stateLines.length} state lines, ${modern.labels.length} labels`);
+}
+
 console.log('\n--- Validation Summary ---');
 if (errors.length) {
   console.error(`❌ Validation failed with ${errors.length} error(s):`);

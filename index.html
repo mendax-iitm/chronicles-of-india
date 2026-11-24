@@ -7,7 +7,15 @@
 <link rel="stylesheet" href="css/atlas.css">
 </head>
 <body>
-<header><h1>Chronicles of India</h1><span class="sub">An interactive historical atlas · 600 BCE – 1947 CE</span></header>
+<header>
+  <h1>Chronicles of India</h1>
+  <span class="sub">An interactive historical atlas · 600 BCE – 1947 CE</span>
+  <button id="searchBtn" class="search-btn" title="Search atlas (Press / or Cmd+K)" aria-label="Search atlas">
+    <span class="search-icon">🔍</span>
+    <span class="search-text">Search atlas...</span>
+    <kbd>/</kbd>
+  </button>
+</header>
 <main>
  <section id="mapwrap">
   <svg id="map" xmlns="http://www.w3.org/2000/svg" role="region" aria-label="Historical map of South Asia">
@@ -17,6 +25,7 @@
     <g id="relief"></g>
     <g id="rivers"></g>
     <g id="pols" clip-path="url(#clipLand)"></g>
+    <g id="modern"></g>
     <g id="corridors"></g>
     <g id="route"></g>
     <g id="ov"></g>
@@ -25,8 +34,9 @@
   <div id="eracard"></div>
   <div id="tip"></div>
   <div class="zoom"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">−</button><button id="zr" aria-label="Reset view" style="font-size:14px">⌂</button></div>
-  <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era">Ghost borders</button>
-  <button class="tg on" id="tgCorridors" title="Toggle historical trade corridors and pilgrimage routes" style="right:112px">Corridors</button>
+  <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era [G]">Ghost borders</button>
+  <button class="tg on" id="tgCorridors" title="Toggle historical trade corridors and pilgrimage routes [C]" style="right:112px">Corridors</button>
+  <button class="tg" id="tgXray" title="Toggle present-day state & national boundaries (X-ray lens) [X]" style="right:196px">X-Ray</button>
  </section>
  <aside id="panel">
   <div id="tabs" role="tablist"><button data-t="era" class="on" role="tab" aria-selected="true">Era</button><button data-t="places" role="tab" aria-selected="false">Places</button><button data-t="journeys" role="tab" aria-selected="false">Journeys</button><button data-t="quiz" role="tab" aria-selected="false">Quiz</button></div>
@@ -40,6 +50,23 @@
  <div id="ylab"></div>
 </footer>
 
+<!-- Universal Search Modal -->
+<div id="search-modal" class="search-modal" style="display:none" role="dialog" aria-modal="true" aria-label="Search atlas">
+  <div class="search-dialog">
+    <div class="search-input-box">
+      <span class="search-icon">🔍</span>
+      <input type="search" id="searchInput" placeholder="Search places, rulers, eras, events, people, or 'quiz'..." autocomplete="off" spellcheck="false" aria-label="Search input">
+      <kbd id="searchClose">Esc</kbd>
+    </div>
+    <div id="searchResults" class="search-results" role="listbox"></div>
+    <div class="search-hints">
+      <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+      <span><kbd>↵</kbd> Select</span>
+      <span><kbd>Esc</kbd> Close</span>
+    </div>
+  </div>
+</div>
+
 <!-- Base geodata & historical content -->
 <script src="data/base.js"></script>
 <script src="data/regions.js"></script>
@@ -50,6 +77,7 @@
 <script src="data/events.js"></script>
 <script src="data/journeys.js"></script>
 <script src="data/corridors.js"></script>
+<script src="data/modern.js"></script>
 
 <!-- Atlas application modules -->
 <script src="js/projection.js"></script>

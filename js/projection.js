@@ -26,8 +26,17 @@ const LCC = (() => {
 })();
 
 const XY = PROJ === 'lcc' ? LCC.fwd : (lon, lat) => [(lon - 58) * K * XF, (39 - lat) * K];
+const invXY = PROJ === 'lcc' ? LCC.inv : (x, y) => [58 + x / (K * XF), 39 - y / K];
 const px = (lon, lat) => XY(lon, lat)[0];
 const py = (lon, lat) => XY(lon, lat)[1];
+
+function toLonLat(clientX, clientY) {
+  const mapEl = typeof svg !== 'undefined' && svg ? svg : $('#map');
+  const r = mapEl.getBoundingClientRect();
+  const sx = vb.x + (clientX - r.left) * (vb.w / r.width);
+  const sy = vb.y + (clientY - r.top) * (vb.h / r.height);
+  return invXY(sx, sy);
+}
 
 const ptsStr = a => a.map(p => {
   const q = XY(p[0], p[1]);
