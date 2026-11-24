@@ -27,6 +27,15 @@ Then define the key below, with enough detail that a reader can find the exact c
 | `sastri-cholas` | K.A. Nilakanta Sastri, *The Cōlas*, University of Madras, 1935 (revised 1955). | Chola mandalams, valanadus, naval expeditions, and southern Indian trade guilds. |
 | `eaton-deccan` | Richard M. Eaton, *A Social History of the Deccan, 1300–1761: Eight Indian Lives*, Cambridge University Press, 2005. | Deccan sultanates, Bahmani divisions, and Maratha-Deccan interactions. |
 | `stein-vijayanagara` | Burton Stein, *Vijayanagara*, The New Cambridge History of India (I.2), Cambridge University Press, 1989. | Vijayanagara rajyas, administrative structure, and peninsular urban centres. |
+| `constitution-india-1950` | *The Constitution of India*, New Delhi: Government of India, 1950. | Preamble, Article 1 ("Union of States"), and the First Schedule defining state and territory boundaries. |
+| `menon-1956` | V.P. Menon, *The Story of the Integration of the Indian States*, Orient Longman, 1956. | Definitive historical account by the Secretary of the Ministry of States on accession and merger of 565 princely states under Sardar Vallabhbhai Patel. |
+| `white-paper-states-1950` | Ministry of States, Government of India, *White Paper on Indian States*, New Delhi: Government of India Press, 1950. | Official Government of India documentation on the Instrument of Accession and integration of Indian states. |
+| `ncert-pol-sc-12` | NCERT, *Politics in India Since Independence*, Class 12 Political Science, Chapter 1: "Challenges of Nation Building", 2007. | Curriculum benchmark for the integration of princely states (Junagadh, Hyderabad, Jammu & Kashmir). |
+| `ncert-themes-3` | NCERT, *Themes in Indian History - Part III*, Class 12 History, Themes 14 & 15: "Understanding Partition" & "Framing the Constitution", 2007. | Partition boundaries, communal migrations, and Constituent Assembly proceedings. |
+| `chandra-post-indep` | Bipan Chandra, Mridula Mukherjee, Aditya Mukherjee, *India After Independence: 1947–2000*, Penguin Books India, 1999 (rev. 2008). | Scholarly consensus on national integration, Patel's diplomacy, and post-1947 state consolidation. |
+| `majumdar-struggle` | R.C. Majumdar (ed.), *The History and Culture of the Indian People*, Vol. XI: *Struggle for Freedom*, Bharatiya Vidya Bhavan, 1969. | Indian historiographical consensus on the freedom movement, Partition, and transfer of power. |
+| `soi-1947` | Survey of India, *Political Map of India* (1947–1950 editions), Dehradun: Survey of India. | Official Indian cartographic baseline for 1947 state boundaries and accessions. |
+| `parliament-res-1994` | Parliament of India, *Unanimous Parliamentary Resolution on Jammu & Kashmir*, 22 February 1994. | Reaffirms Jammu & Kashmir as an integral and inalienable part of the Union of India. |
 
 ## Base geography
 

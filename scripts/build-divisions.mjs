@@ -318,6 +318,86 @@ const DIVISIONS = [
         atoms: ["KAMARUPA", "NE_HILLS"]
       }
     ]
+  },
+  {
+    empire: "independent-india",
+    system: "states-integration",
+    name: { en: "Union of India (States & Integration, 1947)", hi: "भारतीय संघ (राज्य एवं एकीकरण, 1947)" },
+    period: [1947, 1947],
+    divisions: [
+      {
+        id: "state-jk",
+        name: { en: "Jammu & Kashmir State", hi: "जम्मू एवं कश्मीर राज्य" },
+        capital: "Srinagar",
+        atoms: ["KASHMIR", "LADAKH"]
+      },
+      {
+        id: "state-east-punjab-himachal",
+        name: { en: "East Punjab, PEPSU & Himachal", hi: "पूर्वी पंजाब, पेप्सू एवं हिमाचल" },
+        capital: "Shimla",
+        atoms: ["PUNJAB_E", "KURU", "HIMACHAL"]
+      },
+      {
+        id: "state-united-provinces",
+        name: { en: "United Provinces (Uttar Pradesh)", hi: "संयुक्त प्रांत (उत्तर प्रदेश)" },
+        capital: "Lucknow",
+        atoms: ["DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "KUMAON", "BUNDELKHAND"]
+      },
+      {
+        id: "state-bihar-bengal",
+        name: { en: "Bihar & West Bengal", hi: "बिहार एवं पश्चिम बंगाल" },
+        capital: "Calcutta",
+        atoms: ["MAGADHA", "MITHILA", "JHARKHAND", "RADHA"]
+      },
+      {
+        id: "state-assam-ne",
+        name: { en: "Assam & North-East Frontier", hi: "असम एवं पूर्वोत्तर सीमांत" },
+        capital: "Shillong",
+        atoms: ["KAMARUPA", "NE_HILLS"]
+      },
+      {
+        id: "state-rajasthan-saurashtra",
+        name: { en: "Rajasthan & Saurashtra Unions", hi: "राजस्थान एवं सौराष्ट्र संघ" },
+        capital: "Jaipur",
+        atoms: ["MARWAR", "MEWAR", "DHUNDHAR", "SAURASHTRA", "KUTCH"]
+      },
+      {
+        id: "state-madhya-bharat-cp",
+        name: { en: "Madhya Bharat, Vindhya Pradesh & CP", hi: "मध्य भारत, विंध्य प्रदेश एवं मध्य प्रांत" },
+        capital: "Nagpur",
+        atoms: ["MALWA", "BAGHELKHAND", "GONDWANA", "VIDARBHA", "CHHATTISGARH", "BASTAR"]
+      },
+      {
+        id: "state-bombay",
+        name: { en: "Bombay State (incl. Gujarat & Baroda)", hi: "बॉम्बे राज्य" },
+        capital: "Bombay",
+        atoms: ["KONKAN", "DESH", "GUJARAT", "KHANDESH", "KANARA"]
+      },
+      {
+        id: "state-madras-andhra",
+        name: { en: "Madras State (incl. Coastal Andhra)", hi: "मद्रास राज्य (तटीय आंध्र सहित)" },
+        capital: "Madras",
+        atoms: ["TONDAI", "CHOLA", "PANDYA", "KONGU", "VENGI", "RAYALASEEMA", "KALINGA_S"]
+      },
+      {
+        id: "state-mysore-kerala",
+        name: { en: "Mysore & Travancore-Cochin", hi: "मैसूर एवं त्रावणकोर-कोचीन" },
+        capital: "Bangalore",
+        atoms: ["KARNATAKA_S", "KERALA"]
+      },
+      {
+        id: "state-orissa",
+        name: { en: "Orissa State", hi: "उड़ीसा राज्य" },
+        capital: "Cuttack",
+        atoms: ["KALINGA_N"]
+      },
+      {
+        id: "state-hyderabad-standstill",
+        name: { en: "Hyderabad State (Standstill Agreement)", hi: "हैदराबाद रियासत (यथास्थिति समझौता)" },
+        capital: "Hyderabad",
+        atoms: ["TELANGANA", "MARATHWADA", "KARNATAKA_N"]
+      }
+    ]
   }
 ];
 

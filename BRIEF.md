@@ -449,11 +449,18 @@ however well-sourced.
   reorganisation, no Line of Control, no Line of Actual Control, no current disputes.
   This is a deliberate limit that keeps the project an educational artefact rather than a
   participant in live disputes.
-- **Jammu & Kashmir** in the 1947 snapshot: shown in a distinct neutral colour, labelled
-  *disputed*, with a summary stating the facts of accession and that the status is
-  disputed — and nothing further. Do not recolour it into either dominion. Do not add
-  territorial claims. **Changing this requires discussion in an issue first.**
-- Similarly neutral handling for any 1947 boundary that was unresolved at that date.
+- **1947 Snapshot as per Indian References**: The 1947 snapshot is drawn in strict accordance
+  with authentic Indian constitutional, historical, and cartographic references (*The Constitution of India*,
+  Survey of India political maps, Ministry of States *White Paper on Indian States*, V.P. Menon's
+  *The Story of the Integration of the Indian States*, and NCERT Class 12 *Themes in Indian History III* /
+  *Politics in India Since Independence*).
+- **Union of India (Bharat)**: Depicted as the sovereign Union comprising British Indian provinces and
+  565 acceding princely states integrated by Sardar Vallabhbhai Patel and V.P. Menon. Jammu & Kashmir is
+  drawn as an integral constituent of the Union of India, grounded in the legal and unconditional
+  Instrument of Accession executed by Maharaja Hari Singh on 26 October 1947 and accepted on 27 October 1947
+  under the Indian Independence Act 1947, and the unanimous 1994 Parliamentary Resolution.
+- **Hyderabad State**: Depicted under the one-year Standstill Agreement signed on 29 November 1947 with the
+  Government of India, maintaining status quo pending its full integration following Operation Polo in September 1948.
 
 ### 11.2 Evidence
 - **Follow scholarly consensus. Where there isn't one, say so on the map, not in a

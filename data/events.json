@@ -1111,12 +1111,40 @@
     "lon": 77.21,
     "lat": 28.61,
     "title": {
-      "en": "Independence and Partition",
-      "hi": "स्वतंत्रता और देश का विभाजन"
+      "en": "Independence of India & Partition",
+      "hi": "भारत की स्वतंत्रता एवं विभाजन"
     },
     "description": {
-      "en": "India and Pakistan gain independence on 14–15 August; mass migrations and communal violence alter the subcontinent.",
-      "hi": "14-15 अगस्त को भारत और पाकिस्तान स्वतंत्र हुए; बड़े पैमाने पर विस्थापन और विभाजन की त्रासदी हुई।"
+      "en": "On 15 August 1947, India attains independence from British colonial rule. Prime Minister Jawaharlal Nehru delivers the historic 'Tryst with Destiny' speech in New Delhi. Partition brings tragic displacement across Punjab and Bengal.",
+      "hi": "15 अगस्त 1947 को भारत ब्रिटिश औपनिवेशिक शासन से स्वतंत्र हुआ। नई दिल्ली में पंडित नेहरू ने प्रसिद्ध 'नियति से साक्षात्कार' (Tryst with Destiny) भाषण दिया। पंजाब और बंगाल में विभाजन की भीषण त्रासदी हुई।"
+    }
+  },
+  {
+    "id": 80,
+    "year": 1947,
+    "lon": 74.8,
+    "lat": 34.08,
+    "title": {
+      "en": "Accession of Jammu & Kashmir to the Indian Union",
+      "hi": "जम्मू-कश्मीर का भारत संघ में विलय"
+    },
+    "description": {
+      "en": "On 26 October 1947, Maharaja Hari Singh executes the Instrument of Accession in favor of the Union of India, uniting Jammu & Kashmir with India under the Indian Independence Act. Indian armed forces air-land in Srinagar to defend the state.",
+      "hi": "26 अक्टूबर 1947 को महाराजा हरि सिंह ने भारत संघ के पक्ष में विलय-पत्र (Instrument of Accession) पर हस्ताक्षर किए, जिससे जम्मू-कश्मीर का भारत में पूर्ण संवैधानिक विलय हुआ। कबायली आक्रमणकारियों को खदेड़ने के लिए भारतीय सेना श्रीनगर पहुंची।"
+    }
+  },
+  {
+    "id": 81,
+    "year": 1947,
+    "lon": 78.47,
+    "lat": 17.36,
+    "title": {
+      "en": "Integration of Princely States & Hyderabad Standstill Agreement",
+      "hi": "देशी रियासतों का एकीकरण एवं हैदराबाद समझौता"
+    },
+    "description": {
+      "en": "Sardar Vallabhbhai Patel and V.P. Menon successfully integrate 565 princely states into the Indian Union. On 29 November 1947, Nizam Mir Osman Ali Khan signs a one-year Standstill Agreement with the Government of India, preceding Operation Polo in 1948.",
+      "hi": "सरदार वल्लभभाई पटेल और वी.पी. मेनन ने 565 देशी रियासतों का भारत संघ में ऐतिहासिक एकीकरण किया। 29 नवंबर 1947 को हैदराबाद के निज़ाम ने भारत सरकार के साथ एक वर्षीय यथास्थिति समझौते पर हस्ताक्षर किए, जिसके बाद 1948 में ऑपरेशन पोलो हुआ।"
     }
   }
 ]

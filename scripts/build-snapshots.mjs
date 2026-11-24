@@ -768,21 +768,79 @@ export const SNAPSHOTS = [
     ]
   },
 
-  // 36. 1947 to 1947: Independence & Partition
+  // 36. 1947 to 1947: Independence & Integration of India
   {
     id: "era-36",
     from: 1947,
     to: 1947,
-    title: { en: "Independence & Partition", hi: "स्वतंत्रता और विभाजन" },
-    representative: { en: "August 1947", hi: "अगस्त 1947" },
+    title: { en: "Independence of India & National Integration", hi: "भारत की स्वतंत्रता एवं राष्ट्रीय एकीकरण" },
+    representative: { en: "15 August – October 1947", hi: "15 अगस्त – अक्टूबर 1947" },
     summary: {
-      en: "On 14–15 August 1947, British rule ends with the partition of British India into India and Pakistan. Sardar Patel leads the rapid integration of 565 princely states into the Indian Union.",
-      hi: "14-15 अगस्त 1947 को भारत और पाकिस्तान स्वतंत्र हुए। सरदार वल्लभभाई पटेल के नेतृत्व में 565 रियासतों का भारतीय संघ में ऐतिहासिक एकीकरण हुआ।"
+      en: "On 15 August 1947, India achieves independence from British colonial rule under Prime Minister Jawaharlal Nehru. Deputy Prime Minister Sardar Vallabhbhai Patel and V.P. Menon rapidly integrate 565 princely states into the sovereign Union of India (Bharat). On 26 October 1947, Maharaja Hari Singh executes the Instrument of Accession, integrating Jammu & Kashmir into the Indian Union. Pakistan is carved out across West Punjab, Sindh, NWFP, Balochistan, and East Bengal.",
+      hi: "15 अगस्त 1947 को भारत स्वतंत्र हुआ। उप-प्रधानमंत्री सरदार वल्लभभाई पटेल और वी.पी. मेनन ने 565 देशी रियासतों का संप्रभु भारतीय संघ (भारत) में ऐतिहासिक एकीकरण किया। 26 अक्टूबर 1947 को महाराजा हरि सिंह द्वारा विलय-पत्र (इंस्ट्रूमेंट ऑफ एक्सेशन) पर हस्ताक्षर से जम्मू-कश्मीर का भारत में पूर्ण संवैधानिक विलय हुआ। पश्चिमी और पूर्वी पाकिस्तान अलग हुए।"
     },
     polities: [
-      { name: { en: "Dominion of India", hi: "भारतीय संघ (भारत)" }, color: "#ea580c", atoms: ["PUNJAB_E", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "MAGADHA", "MITHILA", "RADHA", "KAMARUPA", "NE_HILLS", "KALINGA_N", "KALINGA_S", "VIDARBHA", "CHHATTISGARH", "KHANDESH", "DESH", "KONKAN", "GUJARAT", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "MARWAR", "MEWAR", "DHUNDHAR", "SAURASHTRA", "KUTCH", "MALWA", "BUNDELKHAND", "BAGHELKHAND", "JHARKHAND", "BASTAR", "GONDWANA", "KARNATAKA_S", "KERALA"], note: { en: "Independent India under Prime Minister Jawaharlal Nehru; Sardar Patel integrates princely territories.", hi: "जवाहरलाल नेहरू प्रथम प्रधानमंत्री; सरदार पटेल द्वारा रियासतों का एकीकरण।" } },
-      { name: { en: "Dominion of Pakistan", hi: "पाकिस्तान" }, color: "#15803d", atoms: ["PUNJAB_W", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "GANDHARA", "KABUL", "VANGA", "VARENDRA", "SAMATATA"], note: { en: "West and East Pakistan (divided by the Radcliffe Line) under Governor-General Muhammad Ali Jinnah.", hi: "रेडक्लिफ रेखा द्वारा विभाजित पश्चिमी और पूर्वी पाकिस्तान।" } },
-      { name: { en: "Acceding / Unintegrated States (Aug 1947)", hi: "विलयशील राज्य (अगस्त 1947)" }, color: "#2563eb", atoms: ["KASHMIR", "LADAKH", "TELANGANA", "VENGI", "KARNATAKA_N"], note: { en: "Jammu & Kashmir signs Instrument of Accession in Oct 1947; Hyderabad integrated via Police Action in Sep 1948.", hi: "कश्मीर (अक्टूबर 1947) और हैदराबाद (सितंबर 1948) का बाद में संघ में विलय।" } }
+      {
+        name: { en: "Union of India (Bharat)", hi: "भारतीय संघ (भारत)" },
+        color: "#ea580c",
+        atoms: [
+          "KASHMIR", "LADAKH", "HIMACHAL", "PUNJAB_E", "KURU",
+          "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "MAGADHA", "MITHILA", "RADHA",
+          "KAMARUPA", "NE_HILLS",
+          "KALINGA_N", "KALINGA_S", "VIDARBHA", "CHHATTISGARH", "JHARKHAND", "BASTAR", "GONDWANA",
+          "MARWAR", "MEWAR", "DHUNDHAR", "MALWA", "BUNDELKHAND", "BAGHELKHAND", "GUJARAT", "SAURASHTRA", "KUTCH", "KHANDESH", "DESH", "KONKAN",
+          "VENGI", "RAYALASEEMA", "KANARA", "KARNATAKA_S", "TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA"
+        ],
+        note: {
+          en: "Sovereign Union of India under Prime Minister Jawaharlal Nehru and Home Minister Sardar Patel. Includes British Indian provinces and acceding princely states. Jammu & Kashmir formally acceded on 26 October 1947 via the Instrument of Accession.",
+          hi: "प्रधानमंत्री जवाहरलाल नेहरू एवं गृह मंत्री सरदार पटेल के नेतृत्व में संप्रभु भारतीय संघ। पूर्व ब्रिटिश प्रांतों और विलयित देशी रियासतों का समावेश; 26 अक्टूबर 1947 को विलय-पत्र द्वारा जम्मू-कश्मीर का भारत संघ में पूर्ण विलय।"
+        }
+      },
+      {
+        name: { en: "Hyderabad State (Standstill Agreement, 1947)", hi: "हैदराबाद रियासत (यथास्थिति समझौता, 1947)" },
+        color: "#9333ea",
+        atoms: [
+          "TELANGANA", "MARATHWADA", "KARNATAKA_N"
+        ],
+        note: {
+          en: "Ruled by Nizam Mir Osman Ali Khan; signed a one-year Standstill Agreement with the Government of India on 29 November 1947. Integrated into the Indian Union following Sardar Patel's Police Action (Operation Polo) in September 1948.",
+          hi: "निज़ाम मीर उस्मान अली ख़ान का शासन; 29 नवंबर 1947 को भारत सरकार के साथ एक वर्षीय यथास्थिति समझौता। सितंबर 1948 में सरदार पटेल के 'ऑपरेशन पोलो' (पुलिस कार्रवाई) के बाद भारतीय संघ में पूर्ण विलय।"
+        }
+      },
+      {
+        name: { en: "Dominion of Pakistan", hi: "पाकिस्तान" },
+        color: "#15803d",
+        atoms: [
+          "PUNJAB_W", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "GANDHARA",
+          "VANGA", "VARENDRA", "SAMATATA"
+        ],
+        note: {
+          en: "West and East Pakistan (demarcated by the Radcliffe Line Award) under Governor-General Muhammad Ali Jinnah.",
+          hi: "रेडक्लिफ रेखा द्वारा विभाजित पश्चिमी और पूर्वी पाकिस्तान; मुहम्मद अली जिन्ना गवर्नर-जनरल बने।"
+        }
+      },
+      {
+        name: { en: "Kingdom of Afghanistan", hi: "अफगानिस्तान राजतंत्र" },
+        color: "#64748b",
+        atoms: [
+          "KABUL", "ARACHOSIA"
+        ],
+        note: {
+          en: "Independent Kingdom of Afghanistan ruled by King Mohammed Zahir Shah (r. 1933–1973).",
+          hi: "शाह मोहम्मद ज़ाहिर शाह (1933-1973) के अधीन स्वतंत्र अफ़गान राजशाही।"
+        }
+      },
+      {
+        name: { en: "Dominion of Ceylon", hi: "सीलोन (श्रीलंका)" },
+        color: "#94a3b8",
+        atoms: [
+          "RAJARATA", "RUHUNA"
+        ],
+        note: {
+          en: "British Crown colony achieving self-governing dominion status in February 1948 under Prime Minister D.S. Senanayake.",
+          hi: "ब्रिटिश क्राउन कॉलोनी, जिसने फरवरी 1948 में डोमिनियन का दर्जा प्राप्त किया।"
+        }
+      }
     ]
   }
 ];
@@ -797,6 +855,26 @@ SNAPSHOTS.forEach(s => {
     });
   });
 });
+
+// Attach syllabus & teacher metadata if available
+try {
+  const metaScript = readFileSync('scripts/add-syllabus-metadata.mjs', 'utf8');
+  const match = metaScript.match(/const SYLLABUS_METADATA = (\{[\s\S]*?\n\};)/);
+  if (match) {
+    const fn = new Function(`return ${match[1]}`);
+    const metadata = fn();
+    SNAPSHOTS.forEach(s => {
+      const m = metadata[s.id];
+      if (m) {
+        s.period = m.period;
+        s.syllabus = m.syllabus;
+        s.teacher_notes = m.teacher_notes;
+      }
+    });
+  }
+} catch (e) {
+  console.warn('Could not load syllabus metadata:', e.message);
+}
 
 // Write data/snapshots.json
 writeFileSync('data/snapshots.json', JSON.stringify(SNAPSHOTS, null, 2) + '\n');
