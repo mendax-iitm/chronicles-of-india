@@ -1,24 +1,50 @@
 # Chronicles of India — Interactive Historical Atlas
 
-> An interactive historical atlas of India from 600 BCE to 1947 CE featuring timeline maps, rulers, place genealogy, historical journeys, and pinpoint quizzes. Zero runtime dependencies.
+> An interactive historical atlas of South Asia from 600 BCE to 1947 CE featuring territorial snapshots, rulers, place genealogy, historical journeys, trade corridors, and pinpoint quizzes. Zero runtime dependencies. Plain SVG + vanilla JS. Single-file offline build under 600 KB.
 
-## Overview
-Chronicles of India provides an interactive cartographic view of the history of the Indian subcontinent over 2,500 years. The atlas maps the territorial extent of dynasties and polities, major urban centers, key historical events, and travel routes.
+## Quick Reference
+- **Website**: https://mendax-iitm.github.io/chronicles-of-india/
+- **Repository**: https://github.com/mendax-iitm/chronicles-of-india
+- **Full LLM Reference**: [llms-full.txt](llms-full.txt)
+- **Agent Skill**: `skills/chronicles-of-india/SKILL.md`
+- **MCP Server**: `scripts/mcp-server.js` (stdio JSON-RPC 2.0)
+- **Headless CLI**: `python3 scripts/atlas-cli.py`
 
-- Web Application: `index.html` (viewable directly in modern browsers without build steps or servers)
-- Base Geodata: `data/base.js` and `data/base.json` (Natural Earth 10m coastline, islands, 31 rivers, lakes, 7 relief areas)
-- Terrain Hillshade: `data/terrain/` (SRTM / ETOPO1 elevation model processed to greyscale hillshade tiles)
+## Historical Scope & Editorial Policy
+1. **Chronological Boundary**: 600 BCE to 1947 CE. No post-independence mapping (no state reorganisation, no LOC/LAC).
+2. **Neutrality & Scholarly Consensus**: Disputed dates (Buddha, Mahavira, Harappan chronology, Adi Shankara) are represented with acknowledged ranges. Archaeological and epigraphic evidence outranks later literary traditions.
+3. **Jammu & Kashmir (1947)**: Rendered in neutral styling as disputed at the date of accession, adhering to academic conventions.
+4. **Regnal Calendars**: Automated conversion between CE/BCE and classical South Asian regnal eras:
+   - **Vikram Samvat (VS)**: started 57 BCE
+   - **Shaka Samvat (Shaka)**: started 78 CE
+   - **Hijri (AH)**: Islamic lunar calendar from 622 CE
+   - **Kollam Era / Malayalam Era (ME)**: started 825 CE
 
-## Core Documentation
-- [BRIEF.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/BRIEF.md): Master project brief, feature parity checklist, non-negotiables, editorial policy, and architectural guidelines.
-- [docs/ROADMAP.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/ROADMAP.md): Ten-phase development roadmap.
-- [docs/DATA-MODEL.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/DATA-MODEL.md): Schemas and contracts for base geography, region atoms, snapshots, places, events, and journeys.
-- [docs/PROJECTION.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/PROJECTION.md): Evaluation of Equirectangular (with 0.93 x-factor) vs Lambert Conformal Conic (LCC) projection.
-- [docs/SOURCES.md](file:///Users/mendax/Side%20Projects/Chronicles%20of%20India/chronicles-of-india/docs/SOURCES.md): Public-domain cartographic and historical sources used in the project.
+## Dataset Architecture (`data/*.json` and `data/*.js`)
+- `data/snapshots.json`: 36 contiguous key historical snapshots from 600 BCE to 1947 CE. Each snapshot defines imperial polities, color coding, territorial atoms, and summary.
+- `data/rulers.json`: 54 prominent monarchs across 36 dynasties with verified reign spans, regnal dates, and dynastic capitals.
+- `data/places.json`: 92 settlements, passes, ports, and sacred sites. Features chronological name genealogies (ancient Sanskrit/Pali, medieval Persian/regional, colonial, modern), coordinates, and cultural lore.
+- `data/events.json`: 80 historical milestones (battles, edicts, councils, treaties) with exact coordinates and descriptions.
+- `data/journeys.json`: 26 historical traveler chronicles (Alexander, Buddha, Megasthenes, Faxian, Xuanzang, Adi Shankara, Ibn Battuta, Guru Nanak, Babur, Shivaji) with 153 geocoded itinerary stops.
+- `data/corridors.json`: 9 historical routes (Uttarapatha, Dakshinapatha, Grand Trunk Road, Silk Road Karakoram/Tibet branches, spice maritime routes, Buddhist Circuit, Char Dham).
+- `data/divisions.json`: 6 administrative divisions (Maurya Pradeshas, Gupta Bhuktis, Chola Mandalams, Sultanate Iqtas, Mughal Subahs, British Presidencies).
+- `data/regions.json`: 60 non-overlapping regional atoms covering South Asia, clipped to Natural Earth 10m coastlines.
+- `data/modern.json`: 105 national and 220 state boundary lines for modern "X-Ray" comparative projection.
 
-## Developer & Verification Tooling
-- `npm run check`: Validates region atom geometry (40–60 atoms, 0 overlaps across 0.05° land grid).
-- `npm run smoke`: Playwright smoke test asserting `window.atlas` contracts, clean console, and visual rendering across 390px, 1024px, and 1440px viewports.
-- `npm run build:geo`: Re-extracts Natural Earth vector geography to `data/base.json`.
-- `npm run build:atoms`: Re-injects verified atom nodes into `index.html`.
-- `npm run build:terrain`: Re-generates DEM terrain hillshade tiles.
+## Browser API (`window.atlasAPI`)
+In modern browser sessions or headless WebMCP, `window.atlasAPI` provides:
+- `atlasAPI.locate(lon, lat, [zoomWidth])`: Pan camera to coordinate.
+- `atlasAPI.inspect()`: Full state snapshot: year, era, polities, active rulers, events.
+- `atlasAPI.resolvePlace(name)`: Find place by any historical or modern alias.
+- `atlasAPI.openPerson(name)`: Load person journey and render curved route arcs.
+- `atlasAPI.setYear(year)`: Scrub timeline (-600 to 1947).
+- `atlasAPI.search(query)`: Search all polities, rulers, places, events, and routes.
+- `atlasAPI.getRulers(year)`: Active rulers for any year.
+
+## Model Context Protocol (MCP) Tools
+The bundled MCP server (`scripts/mcp-server.js`) exposes the following tools:
+- `search_atlas`: Query polities, rulers, places, events, and routes.
+- `inspect_place`: Retrieve place genealogy, coordinates, and nearby events.
+- `inspect_person`: Retrieve traveler itinerary and historical significance.
+- `inspect_ruler`: Retrieve reign span, dynasty, and regnal eras.
+- `get_era`: Retrieve all active polities, boundaries, and rulers for any year.

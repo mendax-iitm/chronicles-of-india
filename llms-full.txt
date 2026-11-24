@@ -1,0 +1,74 @@
+# Chronicles of India — Exhaustive LLM Knowledge Base
+
+## 1. Complete Historical Eras (36 Contiguous Snapshots)
+1. **600 BCE – 346 BCE**: The Mahajanapadas (16 great realms: Magadha, Kosala, Avanti, Vatsa, Gandhara).
+2. **345 BCE – 322 BCE**: Nanda Empire & Alexander's Incursion (First pan-Gangetic empire, Macedonian invasion of Punjab).
+3. **321 BCE – 185 BCE**: The Mauryan Empire (Chandragupta, Bindusara, Ashoka; Edicts across the subcontinent).
+4. **184 BCE – 73 BCE**: Shunga Dynasty & Indo-Greeks (Demetrius, Menander I / Milinda in Punjab; Pushyamitra Shunga).
+5. **72 BCE – 30 BCE**: Kanva Dynasty & Satavahana Rise (Decentralized Gangetic plain, early Deccan expansion).
+6. **29 BCE – 77 CE**: Northern Satraps & Early Kushans (Kujula Kadphises, Shaka-Pahlavas of Mathura and Taxila).
+7. **78 CE – 200 CE**: The Kushan Empire & Western Satraps (Kanishka I, Mahakshatrapa Rudradaman I, Junagadh inscription).
+8. **201 CE – 319 CE**: Middle Kingdoms & Murunda Interregnum (Post-Kushan splintering, early Licchavis and Nagas).
+9. **320 CE – 374 CE**: The Gupta Rise (Chandragupta I, Samudragupta's Digvijaya conquests recorded on Allahabad pillar).
+10. **375 CE – 454 CE**: The Gupta Golden Age (Chandragupta II Vikramaditya, Kalidasa, Faxian's travels).
+11. **455 CE – 527 CE**: Later Guptas & Huna Invasions (Skandagupta, Toramana, Mihirakula, Huna disruption).
+12. **528 CE – 605 CE**: Pushyabhutis, Maukharis & Early Chalukyas (Yashodharman, Harsha's predecessors, Pulakeshin I).
+13. **606 CE – 647 CE**: Empire of Harsha (Harshavardhana of Kannauj, Pulakeshin II of Badami, Xuanzang's visit).
+14. **648 CE – 752 CE**: Regional Ascendancy (Chalukyas of Vatapi, Pallavas of Kanchi, Lalitaditya of Kashmir).
+15. **753 CE – 813 CE**: Tripartite Struggle Begins (Rashtrakutas [Dantidurga], Palas [Dharmapala], Gurjara-Pratiharas).
+16. **814 CE – 906 CE**: Gurjara-Pratihara & Rashtrakuta Zenith (Mihira Bhoja, Amoghavarsha I, Devapala).
+17. **907 CE – 984 CE**: Chola Resurgence & Pratihara Decline (Parantaka I, Krishna III Rashtrakuta).
+18. **985 CE – 1044 CE**: Imperial Cholas (Rajaraja I [Brihadisvara temple], Rajendra I [Gangaikonda, Srivijaya maritime expedition]).
+19. **1045 CE – 1119 CE**: Western Chalukyas of Kalyani & Eastern Gangas (Someshvara, Vikramaditya VI).
+20. **1120 CE – 1191 CE**: Chahamanas, Sena & Hoysala Zenith (Prithviraj III Chauhan, Ballala Sena, Vishnuvardhana).
+21. **1192 CE – 1205 CE**: Ghurid Conquests (Second Battle of Tarain 1192, fall of Delhi, Ajmer, and Bihar).
+22. **1206 CE – 1289 CE**: Mamluk Sultanate of Delhi (Qutb-ud-din Aibak, Iltutmish, Razia Sultan, Balban).
+23. **1290 CE – 1320 CE**: Khalji Dynasty (Alauddin Khalji, Deccan campaigns of Malik Kafur, market reforms).
+24. **1321 CE – 1350 CE**: Tughlaq Empire (Muhammad bin Tughlaq, capital shift to Daulatabad, token currency).
+25. **1351 CE – 1397 CE**: Firoz Shah Tughlaq & Bahmani Rise (Canals, Bahmani Sultanate, early Vijayanagara).
+26. **1398 CE – 1450 CE**: Timurid Sack & Regional Sultanates (Timur's sack of Delhi 1398; Jaunpur, Gujarat, Malwa, Bengal sultanates).
+27. **1451 CE – 1508 CE**: Lodi Dynasty & Vijayanagara Expansion (Bahlul Lodi, Sikandar Lodi, Saluva dynasty).
+28. **1509 CE – 1525 CE**: Krishnadevaraya's Vijayanagara & Eve of Panipat (Krishnadevaraya, Ibrahim Lodi).
+29. **1526 CE – 1555 CE**: First Battle of Panipat & Sur Empire (Babur 1526, Sher Shah Suri [Grand Trunk Road], Humayun).
+30. **1556 CE – 1605 CE**: Akbar the Great (Second Battle of Panipat 1556, Subahs administrative system, Sulh-i-Kul).
+31. **1606 CE – 1657 CE**: Jahangir and Shah Jahan (Mughal architectural peak, Taj Mahal, Red Fort, Peacock Throne).
+32. **1658 CE – 1707 CE**: Aurangzeb & Chhatrapati Shivaji (Maratha Empire founded 1674, Mughal-Maratha 27-year war).
+33. **1708 CE – 1760 CE**: Maratha Confederacy Expansion (Peshwa Baji Rao I, Chauth/Sardeshmukhi across north India).
+34. **1761 CE – 1798 CE**: Third Battle of Panipat & Company Expansion (1761 Panipat, Battle of Buxar 1764, Tipu Sultan).
+35. **1799 CE – 1856 CE**: British Paramountcy & Sikh Empire (Maharaja Ranjit Singh, Anglo-Maratha, Anglo-Sikh wars).
+36. **1857 CE – 1947 CE**: Revolt of 1857, British Raj & Independence (1857 Rebellion, Crown Rule, Partition 1947).
+
+## 2. Person Chronicles (26 Historical Travelers)
+1. **Alexander of Macedon (327–325 BCE)**: Hindu Kush, Taxila, Jhelum/Hydaspes, Multan, Indus mouth.
+2. **Gautama Buddha (c. 563–483 BCE)**: Lumbini, Bodh Gaya, Sarnath, Rajgir, Vaishali, Kushinagar.
+3. **Megasthenes (c. 302–298 BCE)**: Seleucid embassy via Arachosia, Taxila, Uttarapatha to Pataliputra.
+4. **Heliodorus (c. 113 BCE)**: Indo-Greek envoy from Taxila to Vidisha (erects Garuda pillar).
+5. **Faxian (399–412 CE)**: Dunhuang, Khotan, Peshawar, Taxila, Mathura, Kannauj, Pataliputra, Tamralipti, Sri Lanka.
+6. **Xuanzang (629–645 CE)**: Silk Road, Kashmir, Harsha's Kannauj, Nalanda (5 years), Kanchi, Assam.
+7. **Yijing (671–695 CE)**: Maritime Srivijaya route to Tamralipti, Nalanda, Bodh Gaya.
+8. **Adi Shankara (c. 788–820 CE)**: Kalady (Kerala), Kashi, Badarikashrama, Dwarka, Puri, Sringeri, Kedarnath.
+9. **Al-Biruni (1017–1030 CE)**: Ghazni, Multan, Lahore, Punjab salt range (calculates Earth's radius).
+10. **Ibn Battuta (1333–1346 CE)**: Indus crossing, Delhi (qadi to Muhammad bin Tughlaq), Daulatabad, Calicut, Maldives.
+11. **Marco Polo (1292 CE)**: Coromandel Coast, Kayal port, Malabar.
+12. **Niccolò de' Conti (1420–1421 CE)**: Cambay, Vijayanagara, Mailapur.
+13. **Abdur Razzaq (1442–1443 CE)**: Timurid ambassador from Herat to Calicut and Vijayanagara.
+14. **Athanasius Nikitin (1469–1472 CE)**: Russian merchant via Chaul, Junnar, Bidar (Bahmani court).
+15. **Vasco da Gama (1498 CE)**: Cape route landfall at Kappad near Calicut.
+16. **Duarte Barbosa (1500–1516 CE)**: Cannanore, Cochin, Vijayanagara empire.
+17. **Domingo Paes (1520–1522 CE)**: Portuguese chronicler of Krishnadevaraya's Vijayanagara.
+18. **Fernão Nunes (1535–1537 CE)**: Chronicler of Vijayanagara royal administration.
+19. **Guru Nanak (1499–1524 CE)**: Four Udasis (journeys): Sultanpur, Haridwar, Assam, Puri, Sri Lanka, Mecca, Baghdad, Kartarpur.
+20. **Babur (1526–1530 CE)**: Kabul, Panipat, Agra, Khanwa, Gwalior.
+21. **Chhatrapati Shivaji (1666 CE)**: Escape from Agra through Mathura, Kashi, Deccan back to Rajgad.
+22. **Jean-Baptiste Tavernier (1640–1668 CE)**: Gem merchant visiting Golconda diamond mines, Surat, Agra.
+23. **François Bernier (1656–1668 CE)**: Physician to Dara Shikoh and Aurangzeb; Kashmir, Delhi, Bengal.
+24. **Mahatma Gandhi (1915–1930 CE)**: Return from South Africa, Champaran, Ahmedabad, Dandi Salt March.
+25. **Subhas Chandra Bose (1941–1945 CE)**: The Great Escape from Calcutta, Kabul, Berlin, Singapore (INA), Imphal.
+26. **Rabindranath Tagore (1901–1932 CE)**: Shantiniketan, world lectures, cultural synthesis.
+
+## 3. Major Settlements & Strategic Geography (92 Places)
+- **Imperial Capitals**: Pataliputra, Delhi (Dhillika/Shahjahanabad), Vijayanagara, Kannauj, Agra, Thanjavur, Kanchi, Madurai, Manyakheta, Kalyani, Gaur/Lakhnauti, Murshidabad, Lahore, Pune.
+- **Mountain Passes**: Khyber Pass (34.1°N, 71.1°E), Bolan Pass (29.8°N, 67.5°E), Shipki La, Nathu La.
+- **Ports**: Lothal, Barygaza (Bharuch), Muziris, Arikamedu, Tamralipti, Surat, Calicut, Goa, Masulipatnam.
+- **Seats of Learning**: Takshashila, Nalanda, Vikramashila, Vallabhi, Kashi, Kanchi.
+- **Decisive Battlefields**: Hydaspes (-326), Kalinga (-261), Tarain (1191/1192), Panipat (1526/1556/1761), Khanwa (1527), Talikota (1565), Plassey (1757), Buxar (1764), Assaye (1803).

@@ -48,15 +48,15 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Docker + Docker Compose (`nginx:alpine`, 8008:80)
 - [x] `sitemap.xml` + per-period landing pages (36 periods + robots.txt)
 
-## Phase 6 — AI and agent integration  ⬅ current
-- [ ] `llms.txt`
-- [ ] MCP server (`inspect_place`, `inspect_person`, `search_atlas`, `inspect_ruler`)
-- [ ] Agent skill `skills/chronicles-of-india/SKILL.md`
-- [ ] `window.atlasAPI` (`locate`, `inspect`, `resolvePlace`, `openPerson`, `search`)
-- [ ] WebMCP via `navigator.modelContext`
-- [ ] CLI renderer `scripts/atlas-cli.py`
+## Phase 6 — AI and agent integration
+- [x] `llms.txt` + `llms-full.txt` machine-readable documentation
+- [x] MCP server `scripts/mcp-server.js` (`search_atlas`, `inspect_place`, `inspect_person`, `inspect_ruler`, `get_era`, `inspect_atom`)
+- [x] Agent skill `skills/chronicles-of-india/SKILL.md`
+- [x] `window.atlasAPI` (`locate`, `inspect`, `resolvePlace`, `openPerson`, `search`, `getRulers`, `getTimeline`)
+- [x] WebMCP via `navigator.modelContext` and `window.modelContext`
+- [x] CLI renderer `scripts/atlas-cli.py` (terminal ASCII map + JSON output)
 
-## Phase 7 — Language and accessibility
+## Phase 7 — Language and accessibility  ⬅ current
 - [ ] Hindi UI + content; then Bengali, Tamil, Telugu, Marathi
 - [ ] Regional-script place names
 - [ ] Keyboard navigation + screen-reader era announcements
