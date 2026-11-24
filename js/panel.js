@@ -136,7 +136,8 @@ function render(soft) {
       h += `<div style="margin-top:14px"><button class="pri" data-a="q:start">Play again</button> <button class="sec" data-a="q:quit">Back to the atlas</button></div>`;
     } else {
       const t = q.rounds[q.i];
-      h += `<div class="rng">Round ${q.i + 1} of ${q.rounds.length} · Score ${Math.round(q.score)} / 1000</div><h2>Where was ${esc(T(t.n[0][1]))}?</h2>`;
+      const displayName = t.targetName ? T(t.targetName) : T(t.n[0][1]);
+      h += `<div class="rng">Round ${q.i + 1} of ${q.rounds.length} · Score ${Math.round(q.score)} / 1000</div><h2>Where was ${esc(displayName)}?</h2>`;
       if (t.clue) {
         h += `<div class="quiz-clue"><b>Historical Clue:</b> ${esc(t.clue)}</div>`;
       }
@@ -291,16 +292,16 @@ function stopWalk() {
 }
 
 const QUIZ_CURATED = [
-  { id: 'pataliputra', clue: 'Imperial capital under Chandragupta Maurya and Ashoka, situated at the sacred confluence of the Ganga and Son rivers.' },
-  { id: 'delhi', clue: 'Historic seat of the Sultanate and Mughal throne, site of seven fortified cities from Siri to Shahjahanabad.' },
-  { id: 'vijayanagara', clue: 'Legendary City of Victory along the boulder-strewn banks of the Tungabhadra, founded by Harihara and Bukka.' },
-  { id: 'kannauj', clue: 'Imperial seat of Emperor Harsha and the prized imperial citadel disputed in the Tripartite Struggle.' },
-  { id: 'thanjavur', clue: 'Imperial Chola capital renowned for the monumental granite Rajarajeshvara (Brihadisvara) temple of Rajaraja I.' },
-  { id: 'muziris', clue: 'Legendary Sangam port on the Malabar Coast that loaded Roman fleets with black pepper and Malabar spices.' },
-  { id: 'ujjayini', clue: 'Sacred prime meridian city of ancient Indian astronomers and capital of Avanti associated with King Vikramaditya.' },
-  { id: 'nalanda', clue: 'Preeminent international Mahavihara and monastic university of ancient Magadha, patronized by the Guptas and Harsha.' },
-  { id: 'lothal', clue: 'Bronze Age Harappan port on the Gulf of Khambhat featuring the world’s earliest engineered tidal dockyard.' },
-  { id: 'taxila', clue: 'Ancient Gandharan capital and intellectual crossroads of Vedic, Persian, and Hellenistic learning along the Uttarapatha.' }
+  { id: 0, slug: 'pataliputra', name: { en: 'Pataliputra (Patna)', hi: 'पाटलिपुत्र (पटना)' }, clue: 'Imperial capital under Chandragupta Maurya and Ashoka, situated at the sacred confluence of the Ganga and Son rivers.' },
+  { id: 1, slug: 'delhi', name: { en: 'Delhi (Dhillika)', hi: 'दिल्ली (ढिल्लिका)' }, clue: 'Historic seat of the Sultanate and Mughal throne, site of seven fortified cities from Siri to Shahjahanabad.' },
+  { id: 10, slug: 'vijayanagara', name: { en: 'Vijayanagara (Hampi)', hi: 'विजयनगर (हम्पी)' }, clue: 'Legendary City of Victory along the boulder-strewn banks of the Tungabhadra, founded by Harihara and Bukka.' },
+  { id: 6, slug: 'kannauj', name: { en: 'Kannauj (Kanyakubja)', hi: 'कन्नौज (कान्यकुब्ज)' }, clue: 'Imperial seat of Emperor Harsha and the prized imperial citadel disputed in the Tripartite Struggle.' },
+  { id: 9, slug: 'thanjavur', name: { en: 'Thanjavur (Tanjore)', hi: 'तंजावुर (तंज़ौर)' }, clue: 'Imperial Chola capital renowned for the monumental granite Rajarajeshvara (Brihadisvara) temple of Rajaraja I.' },
+  { id: 20, slug: 'muziris', name: { en: 'Muziris (Kodungallur)', hi: 'मुज़िरिस (कोडंगलूर)' }, clue: 'Legendary Sangam port on the Malabar Coast that loaded Roman fleets with black pepper and Malabar spices.' },
+  { id: 4, slug: 'ujjayini', name: { en: 'Ujjayini (Ujjain)', hi: 'उज्जयिनी (उज्जैन)' }, clue: 'Sacred prime meridian city of ancient Indian astronomers and capital of Avanti associated with King Vikramaditya.' },
+  { id: 16, slug: 'nalanda', name: { en: 'Nalanda Mahavihara', hi: 'नालंदा महाविहार' }, clue: 'Preeminent international Mahavihara and monastic university of ancient Magadha, patronized by the Guptas and Harsha.' },
+  { id: 28, slug: 'lothal', name: { en: 'Lothal', hi: 'लोथल' }, clue: 'Bronze Age Harappan port on the Gulf of Khambhat featuring the world’s earliest engineered tidal dockyard.' },
+  { id: 3, slug: 'taxila', name: { en: 'Taxila (Takshashila)', hi: 'तक्षशिला' }, clue: 'Ancient Gandharan capital and intellectual crossroads of Vedic, Persian, and Hellenistic learning along the Uttarapatha.' }
 ];
 
 function startQuiz() {
@@ -313,8 +314,10 @@ function startQuiz() {
   q.guess = null;
   q.res = null;
   q.rounds = QUIZ_CURATED.map(item => {
-    const p = PL.find(x => x.id === item.id) || PL[0];
-    return { ...p, clue: item.clue };
+    const p = PL.find(x => x.id === item.id) ||
+              PL.find(x => x.n && x.n.some(n => T(n[1]).toLowerCase().includes(item.slug))) ||
+              PL[0];
+    return { ...p, clue: item.clue, targetName: item.name };
   });
   st.selPol = -1;
   st.selPlace = -1;
@@ -364,7 +367,8 @@ function confirmGuess() {
   const d = Math.round(hav(q.guess.lon, q.guess.lat, t.lon, t.lat));
   const pts = Math.max(0, Math.round(100 * (1 - d / 800)));
   q.score += pts;
-  q.res = { d, pts, gl: q.guess.lon, ga: q.guess.lat, tl: t.lon, ta: t.lat, name: t.n[0][1] };
+  const displayName = t.targetName ? T(t.targetName) : T(t.n[0][1]);
+  q.res = { d, pts, gl: q.guess.lon, ga: q.guess.lat, tl: t.lon, ta: t.lat, name: displayName };
   q.guess = null;
   drawOv();
   render();
