@@ -59,6 +59,9 @@ const SN = rawSN.map(s => {
     title: s.title,
     rep: s.representative || s.rep,
     sum: s.summary || s.sum,
+    period: s.period,
+    syllabus: s.syllabus,
+    teacher_notes: s.teacher_notes,
     pol
   };
 });
@@ -667,6 +670,12 @@ if (st.lang === 'hi' && typeof setLanguage === 'function') {
 }
 resetView();
 render();
+if (typeof initExamPhase === 'function') initExamPhase();
+if (window.atlasAPI) {
+  window.atlasAPI.setSyllabus = (typeof setSyllabus === 'function') ? setSyllabus : null;
+  window.atlasAPI.toggleTeacherMode = (typeof toggleTeacherMode === 'function') ? toggleTeacherMode : null;
+  window.atlasAPI.openExamModal = (typeof openExamModal === 'function') ? openExamModal : null;
+}
 
 // Contract export
 window.atlas = { st, SN, PL, EV, JR, setYear, act };

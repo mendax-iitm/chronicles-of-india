@@ -20,6 +20,23 @@
       <span class="btn-icon">🔗</span>
       <span class="btn-text">Share</span>
     </button>
+    <div class="syllabus-select-wrap">
+      <select id="syllabusFilter" class="header-select" title="Filter timeline by syllabus (NCERT / UPSC)" aria-label="Syllabus Filter">
+        <option value="all">📚 All Eras (600 BCE – 1947 CE)</option>
+        <option value="ancient">🏛️ NCERT Ancient (Cl. 6 &amp; 12)</option>
+        <option value="medieval">⚔️ NCERT Medieval (Cl. 7 &amp; 12)</option>
+        <option value="modern">🇮🇳 NCERT Modern (Cl. 8 &amp; 12)</option>
+        <option value="upsc">🎯 UPSC Target Topics</option>
+      </select>
+    </div>
+    <button id="teacherBtn" class="header-btn" title="Teacher guided tour with pedagogical talking points" aria-label="Toggle Teacher Tour mode">
+      <span class="btn-icon">👩‍🏫</span>
+      <span class="btn-text" id="teacherBtnText">Teacher Tour</span>
+    </button>
+    <button id="examBtn" class="header-btn" title="Printable period revision sheets and blank map worksheets" aria-label="Open Exam and Worksheets dialog">
+      <span class="btn-icon">📄</span>
+      <span class="btn-text" id="examBtnText">Worksheets</span>
+    </button>
     <button id="langBtn" class="header-btn" title="Toggle language (English / हिन्दी)" aria-label="Current language: English. Click to switch to Hindi.">
       <span class="btn-icon">🌐</span>
       <span class="btn-text" id="langBtnText">हिन्दी</span>
@@ -42,6 +59,19 @@
     <g id="ov"></g>
    </g>
   </svg>
+  <div id="teacher-bar" class="teacher-bar" style="display:none" role="region" aria-label="Teacher tour controls">
+    <div class="tb-header">
+      <div class="tb-badge">👩‍🏫 Teacher Tour Mode</div>
+      <div id="tbSlideIndicator" class="tb-indicator">Lesson 1 of 6</div>
+      <div class="tb-actions">
+        <button id="tbVoice" class="tb-btn" title="Toggle audio read-aloud (SpeechSynthesis)" aria-label="Toggle voice narration">🔊 Read</button>
+        <button id="tbPrev" class="tb-btn" title="Previous lesson" aria-label="Previous lesson">◀ Prev</button>
+        <button id="tbNext" class="tb-btn" title="Next lesson" aria-label="Next lesson">Next ▶</button>
+        <button id="tbClose" class="tb-btn close" title="Exit Teacher Tour" aria-label="Exit Teacher Tour">✕</button>
+      </div>
+    </div>
+    <div id="tbLessonTitle" class="tb-title"></div>
+  </div>
   <div id="eracard"></div>
   <div id="tip"></div>
   <div class="zoom"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">−</button><button id="zr" aria-label="Reset view" style="font-size:14px">⌂</button></div>
@@ -115,6 +145,43 @@
   </div>
 </div>
 
+<!-- Exam & Classroom Mode Modal -->
+<div id="exam-modal" class="exam-modal" style="display:none" role="dialog" aria-modal="true" aria-label="Exam and Worksheets Modal">
+  <div class="exam-dialog">
+    <div class="exam-header">
+      <div class="exam-tabs">
+        <button id="tabExamRevision" class="exam-tab-btn active">📄 Period Revision Sheet</button>
+        <button id="tabExamWorksheet" class="exam-tab-btn">🗺️ Blank Outline Map &amp; Key</button>
+      </div>
+      <div class="exam-header-right">
+        <button id="printExamBtn" class="exam-btn print-btn" title="Print this sheet">🖨️ Print Sheet</button>
+        <button id="examClose" class="exam-close-btn" title="Close dialog" aria-label="Close dialog">✕</button>
+      </div>
+    </div>
+    <div class="exam-body">
+      <!-- Revision View -->
+      <div id="examRevisionView" class="exam-view">
+        <div id="examRevisionContent"></div>
+      </div>
+      <!-- Worksheet View -->
+      <div id="examWorksheetView" class="exam-view" style="display:none">
+        <div class="worksheet-intro">
+          <h3>Historical Geography Practice Worksheet</h3>
+          <p>Identify the 10 numbered settlements on the outline map below. Fill in their ancient/classical names and syllabus significance.</p>
+          <button id="toggleAnswerKey" class="exam-btn" style="margin-bottom:12px">👁️ Toggle Answer Key</button>
+        </div>
+        <div class="worksheet-map-container">
+          <svg id="worksheetMapSvg" viewBox="0 0 1000 700" style="width:100%;max-height:480px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;"></svg>
+        </div>
+        <div id="worksheetAnswerKey" style="display:none;margin-top:16px">
+          <h4 style="margin:0 0 8px 0;color:#0b2a5b">Answer Key &amp; Examination Notes</h4>
+          <div id="worksheetAnswerKeyTable"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Base geodata & historical content -->
 <script src="data/base.js"></script>
 <script src="data/regions.js"></script>
@@ -134,6 +201,7 @@
 <script src="js/timeline.js"></script>
 <script src="js/panel.js"></script>
 <script src="js/share.js"></script>
+<script src="js/exam.js"></script>
 <script src="js/api.js"></script>
 <script src="js/atlas.js"></script>
 </body>

@@ -27,6 +27,17 @@ function render(soft) {
         divSys.divisions.slice(0, 8).map(dv => `<div class="div-card"><b>${esc(T(dv.name))}</b> <span class="small">(${tUI('capitalBadge')}: ${esc(typeof dv.capital === 'object' ? T(dv.capital) : dv.capital)})</span></div>`).join('') +
         `</div>`;
     }
+    if (s.syllabus) {
+      h += `<div class="syllabus-card" style="margin:14px 0;padding:10px 12px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:6px;font-size:12px;color:#0369a1;">
+        <div style="font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+          <span>📖</span>
+          <span>NCERT Class ${s.syllabus.ncert_class}: ${esc(s.syllabus.book)}</span>
+        </div>
+        <div style="color:#0284c7;margin-bottom:4px;"><b>Chapter:</b> ${esc(s.syllabus.chapter)}</div>
+        <div style="color:#0f172a;font-size:11.5px;"><b>UPSC Target:</b> ${esc(s.syllabus.upsc_topic)}</div>
+        ${s.syllabus.tags ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;">` + s.syllabus.tags.map(tg => `<span style="display:inline-block;padding:2px 6px;background:#e0f2fe;color:#0369a1;border-radius:4px;font-size:10.5px;">#${tg}</span>`).join('') + `</div>` : ''}
+      </div>`;
+    }
     h += `<p class="small" style="margin-top:12px">${tUI('eraTip')}</p>`;
   } else if (st.tab === 'places') {
     const vis = PL.filter(p => nameAt(p, st.year));
@@ -107,6 +118,11 @@ function render(soft) {
       h += `<h2>${tUI('journeysThroughTime')}</h2><p class="small">${tUI('journeysIntro')}</p><ul class="l">` + JR.map((j, i) => `<li data-a="jr:${i}"><span class="chip" style="background:#0b2a5b"></span><span><b>${esc(T(j.n))}</b><br><span class="small">${esc(T(j.who))} · ${esc(T(j.yrs))}</span></span></li>`).join('') + '</ul>';
     }
   } else {
+    if (typeof renderPracticePanel === 'function') {
+      renderPracticePanel();
+      if (typeof syncURL === 'function') syncURL();
+      return;
+    }
     const q = st.quiz;
     if (!q.on) {
       h += `<h2>${tUI('quizTitle')}</h2><p>${tUI('quizIntro')}</p><button class="pri" data-a="q:start">${tUI('startQuiz')}</button>`;

@@ -46,6 +46,13 @@ function applyURLParams() {
     st.lang = p.get('lang');
   }
 
+  // Syllabus
+  if (p.has('syllabus')) {
+    const syl = p.get('syllabus');
+    st.syllabus = syl;
+    if (typeof setSyllabus === 'function') setSyllabus(syl);
+  }
+
   // Year
   const yrParam = p.get('year');
   if (yrParam !== null) {
@@ -181,6 +188,7 @@ function syncURL() {
 
       // Toggles
       if (st.xray) p.set('xray', '1');
+      if (st.syllabus && st.syllabus !== 'all') p.set('syllabus', st.syllabus);
       if (!st.corridors) p.set('corridors', '0');
       if (!st.ghost) p.set('ghost', '0');
       if (st.embed) p.set('embed', '1');
@@ -211,6 +219,7 @@ function getDeepLink() {
   if (st.selPol >= 0 && SN[st.si]?.pol[st.selPol]) p.set('polity', T(SN[st.si].pol[st.selPol].n));
   if (st.quiz?.on) p.set('quiz', '1');
   if (st.xray) p.set('xray', '1');
+  if (st.syllabus && st.syllabus !== 'all') p.set('syllabus', st.syllabus);
 
   const base = window.location.origin + window.location.pathname;
   return base + (p.toString() ? '?' + p.toString() : '');

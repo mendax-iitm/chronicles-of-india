@@ -62,15 +62,15 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Keyboard navigation + screen-reader era announcements (`aria-live="polite"`, `l` key, `1-4` tab switching, tablist arrow navigation)
 - [x] `prefers-reduced-motion` instantaneous transitions and high-contrast palette support
 
-## Phase 8 — Exam and classroom mode  ⬅ current
-- [ ] NCERT (Classes 6–12) and UPSC syllabus tagging + filter
-- [ ] Printable revision view per period
-- [ ] Practice sets (match-the-capital, order-the-dynasties, locate-the-site)
-- [ ] Teacher mode: scripted guided tour with notes; optional speech narration
-- [ ] Printable blank outline-map worksheets + answer key
-- [ ] Verified at 1024×768 projector resolution
+## Phase 8 — Exam and classroom mode
+- [x] NCERT (Classes 6–12) and UPSC syllabus tagging + filter
+- [x] Printable revision view per period
+- [x] Practice sets (match-the-capital, order-the-dynasties, locate-the-site, which-ruler)
+- [x] Teacher mode: scripted guided tour with notes; optional speech narration
+- [x] Printable blank outline-map worksheets + answer key
+- [x] Verified at 1024×768 projector resolution
 
-## Phase 9 — Community and launch
+## Phase 9 — Community and launch  ⬅ current
 - [ ] 30–50 seeded `good-first-issue` entries, one per missing snapshot/place
 - [ ] `docs/ACCURACY.md` — method, uncertainty, known weak spots
 - [ ] One-click pre-filled error-report issue link on every era

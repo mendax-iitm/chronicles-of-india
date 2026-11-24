@@ -116,12 +116,28 @@ function initTimeline() {
   $('#prev').onclick = () => {
     if (st.quiz.on) return;
     stopPlay();
+    if (typeof getFilteredSnapshots === 'function' && st.syllabus && st.syllabus !== 'all') {
+      const allowed = getFilteredSnapshots(st.syllabus);
+      const curIdx = allowed.findIndex(s => s.id === SN[st.si].id);
+      if (curIdx > 0) {
+        setYear(allowed[curIdx - 1].from);
+        return;
+      }
+    }
     const i = st.year > SN[st.si].from ? st.si : Math.max(0, st.si - 1);
     setYear(SN[i].from);
   };
   $('#next').onclick = () => {
     if (st.quiz.on) return;
     stopPlay();
+    if (typeof getFilteredSnapshots === 'function' && st.syllabus && st.syllabus !== 'all') {
+      const allowed = getFilteredSnapshots(st.syllabus);
+      const curIdx = allowed.findIndex(s => s.id === SN[st.si].id);
+      if (curIdx >= 0 && curIdx < allowed.length - 1) {
+        setYear(allowed[curIdx + 1].from);
+        return;
+      }
+    }
     setYear(SN[Math.min(SN.length - 1, st.si + 1)].from);
   };
   $('#play').onclick = () => {

@@ -236,7 +236,7 @@ function setSyllabus(val) {
 }
 
 function getFilteredSnapshots() {
-  const all = window.SN || [];
+  const all = (typeof SN !== 'undefined' ? SN : (window.atlas && window.atlas.SN) || []);
   if (!st.syllabus || st.syllabus === 'all') return all;
   if (st.syllabus === 'ancient') return all.filter(s => s.period === 'ancient');
   if (st.syllabus === 'medieval') return all.filter(s => s.period === 'medieval');
@@ -255,15 +255,18 @@ function updateTimelineTicks() {
   if (!ticks) return;
   const filtered = getFilteredSnapshots();
   const allowedIds = new Set(filtered.map(s => s.id));
+  const allSnaps = (typeof SN !== 'undefined' ? SN : (window.atlas && window.atlas.SN) || []);
 
   [...ticks.children].forEach((t, i) => {
-    const s = SN[i];
+    const s = allSnaps[i];
     if (s && allowedIds.has(s.id)) {
       t.style.opacity = '1';
       t.style.pointerEvents = 'auto';
+      t.classList.remove('dimmed');
     } else {
       t.style.opacity = '0.2';
       t.style.pointerEvents = 'none';
+      t.classList.add('dimmed');
     }
   });
 }
@@ -408,7 +411,7 @@ const practiceState = {
 
 function renderPracticeModesHeader() {
   const m = practiceState.mode;
-  return `<div class="practice-tabs" style="display:flex;gap:4px;margin-bottom:12px;background:#f1f5f9;padding:4px;border-radius:6px">
+  return `<div class="practice-tabs practice-modes-nav" style="display:flex;gap:4px;margin-bottom:12px;background:#f1f5f9;padding:4px;border-radius:6px">
     <button class="prac-tab-btn ${m === 'pinpoint' ? 'active' : ''}" data-pm="pinpoint" style="flex:1;padding:4px 6px;border:0;border-radius:4px;font:600 11.5px system-ui;cursor:pointer;background:${m === 'pinpoint' ? '#fff' : 'transparent'};color:${m === 'pinpoint' ? 'var(--navy)' : '#64748b'};box-shadow:${m === 'pinpoint' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'}">${tUI('modePinpoint')}</button>
     <button class="prac-tab-btn ${m === 'match-capital' ? 'active' : ''}" data-pm="match-capital" style="flex:1;padding:4px 6px;border:0;border-radius:4px;font:600 11.5px system-ui;cursor:pointer;background:${m === 'match-capital' ? '#fff' : 'transparent'};color:${m === 'match-capital' ? 'var(--navy)' : '#64748b'};box-shadow:${m === 'match-capital' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'}">${tUI('modeMatchCapital')}</button>
     <button class="prac-tab-btn ${m === 'order-dynasties' ? 'active' : ''}" data-pm="order-dynasties" style="flex:1;padding:4px 6px;border:0;border-radius:4px;font:600 11.5px system-ui;cursor:pointer;background:${m === 'order-dynasties' ? '#fff' : 'transparent'};color:${m === 'order-dynasties' ? 'var(--navy)' : '#64748b'};box-shadow:${m === 'order-dynasties' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'}">${tUI('modeOrderDynasties')}</button>
@@ -769,9 +772,12 @@ function initExamModal() {
 
   const ansToggle = $('#toggleAnswerKey');
   if (ansToggle) {
-    ansToggle.onchange = e => {
+    ansToggle.onclick = () => {
       const keySection = $('#worksheetAnswerKey');
-      if (keySection) keySection.style.display = e.target.checked ? 'block' : 'none';
+      if (keySection) {
+        const isHidden = keySection.style.display === 'none' || !keySection.style.display;
+        keySection.style.display = isHidden ? 'block' : 'none';
+      }
     };
   }
 }
@@ -812,7 +818,7 @@ function renderRevisionSheet() {
       </thead>
       <tbody>`;
 
-  snaps.slice(0, 15).forEach(s => {
+  snaps.forEach(s => {
     const polsStr = s.pol.slice(0, 3).map(p => `${T(p.n)}${p.capital ? ` (${p.capital})` : ''}`).join(', ');
     const ncertStr = s.syllabus ? `NCERT Cl.${s.syllabus.ncert_class}: ${s.syllabus.chapter}` : 'General';
     const upscStr = s.syllabus ? s.syllabus.upsc_topic : '';
@@ -845,12 +851,20 @@ function renderWorksheet() {
   const mapSvg = $('#worksheetMapSvg');
   if (!mapSvg) return;
 
-  // Build clean blank outline SVG with coastline, rivers, and numbered circles
-  let svgContent = `<path d="${$('#land').getAttribute('d')}" fill="#fff" stroke="#1e293b" stroke-width="1.2"/>`;
+  const base = window.ATLAS_BASE || {};
+  const landEl = $('#land');
+  const landD = landEl ? landEl.getAttribute('d') : '';
 
-  // Draw 7 major rivers
-  B.rivers.slice(0, 18).forEach(r => {
-    svgContent += `<polyline points="${ptsStr(r.poly)}" fill="none" stroke="#94a3b8" stroke-width="0.9" stroke-linecap="round"/>`;
+  // Build clean blank outline SVG with coastline, rivers, and numbered circles
+  let svgContent = `<path d="${landD || ''}" fill="#fff" stroke="#1e293b" stroke-width="1.2"/>`;
+
+  // Draw major rivers
+  (base.rivers || []).slice(0, 18).forEach(r => {
+    if (r.line) {
+      r.line.forEach(seg => {
+        svgContent += `<polyline points="${ptsStr(seg)}" fill="none" stroke="#94a3b8" stroke-width="0.9" stroke-linecap="round"/>`;
+      });
+    }
   });
 
   // Draw 10 Numbered Site Circles
