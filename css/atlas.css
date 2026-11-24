@@ -730,3 +730,48 @@ body.embed .embed-watermark a:hover {
   #eracard span { display: none; }
   #eracard b { font-size: 14px; }
 }
+
+/* Accessibility & Screen Reader */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .radar-ring {
+    animation: none !important;
+    opacity: 0.6 !important;
+  }
+  #terrain {
+    transition: none !important;
+  }
+}
+
+/* Forced Colors & High Contrast Mode */
+@media (forced-colors: active) {
+  .pol.sel {
+    outline: 3px solid Highlight;
+  }
+  .search-dialog, .share-dialog, #eracard, #panel {
+    border: 2px solid CanvasText;
+  }
+}

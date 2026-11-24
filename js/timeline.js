@@ -55,13 +55,17 @@ function setYear(y, keepView) {
   const s = SN[si];
   const rulers = getActiveRulers(y);
   const erasStr = getRegnalEras(y);
-  let cardHtml = `<b>${esc(T(s.title))}</b><span>${rg(s)} · map shown at ${esc(T(s.rep))}</span>`;
+  const mapShownStr = typeof tUI === 'function' ? tUI('mapShownAt', { rep: esc(T(s.rep)) }) : `map shown at ${esc(T(s.rep))}`;
+  let cardHtml = `<b>${esc(T(s.title))}</b><span>${rg(s)} · ${mapShownStr}</span>`;
   if (erasStr) cardHtml += `<div class="regnal-eras">${erasStr}</div>`;
   if (rulers.length) {
     const rChips = rulers.slice(0, 3).map(r => `<span class="ruler-chip" title="${esc(T(r.dynasty))} (${r.span})">👑 <b>${esc(T(r.name))}</b> <span class="small">(${esc(T(r.dynasty))})</span></span>`).join('');
     cardHtml += `<div class="rulers">${rChips}</div>`;
   }
   $('#eracard').innerHTML = cardHtml;
+  if (typeof announceEraChange === 'function') {
+    announceEraChange(s, y, ch);
+  }
   drawWaterways();
   drawCorridors();
   drawModern();

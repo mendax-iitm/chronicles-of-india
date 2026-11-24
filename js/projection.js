@@ -62,7 +62,12 @@ const hav = (a, b, c, d) => {
 };
 
 const $ = s => document.querySelector(s);
-const fy = y => (y < 0 ? (-y) + ' BCE' : y + ' CE');
+const fy = y => {
+  if (typeof CURRENT_LANG !== 'undefined' && CURRENT_LANG === 'hi') {
+    return (y < 0 ? (-y) + ' ' + (typeof tUI === 'function' ? tUI('bce') : 'ई.पू.') : y + ' ' + (typeof tUI === 'function' ? tUI('ce') : 'ईस्वी'));
+  }
+  return (y < 0 ? (-y) + ' BCE' : y + ' CE');
+};
 const rg = s => (s.from === s.to ? fy(s.from) : fy(s.from) + ' – ' + fy(s.to));
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 

@@ -8,8 +8,8 @@
 </head>
 <body>
 <header>
-  <h1>Chronicles of India</h1>
-  <span class="sub">An interactive historical atlas · 600 BCE – 1947 CE</span>
+  <h1 id="appTitle">Chronicles of India</h1>
+  <span class="sub" id="appSub">An interactive historical atlas · 600 BCE – 1947 CE</span>
   <div class="header-actions">
     <button id="searchBtn" class="search-btn" title="Search atlas (Press / or Cmd+K)" aria-label="Search atlas">
       <span class="search-icon">🔍</span>
@@ -20,8 +20,13 @@
       <span class="btn-icon">🔗</span>
       <span class="btn-text">Share</span>
     </button>
+    <button id="langBtn" class="header-btn" title="Toggle language (English / हिन्दी)" aria-label="Current language: English. Click to switch to Hindi.">
+      <span class="btn-icon">🌐</span>
+      <span class="btn-text" id="langBtnText">हिन्दी</span>
+    </button>
   </div>
 </header>
+<div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 <main>
  <section id="mapwrap">
   <svg id="map" xmlns="http://www.w3.org/2000/svg" role="region" aria-label="Historical map of South Asia">
@@ -47,7 +52,7 @@
  <aside id="panel">
   <div id="tabs" role="tablist"><button data-t="era" class="on" role="tab" aria-selected="true">Era</button><button data-t="places" role="tab" aria-selected="false">Places</button><button data-t="journeys" role="tab" aria-selected="false">Journeys</button><button data-t="quiz" role="tab" aria-selected="false">Quiz</button></div>
   <div id="content"></div>
-  <div class="note">Boundaries are schematic approximations for learning, not surveyed borders. Concept inspired by the open-source “Chronicles of the Realm” atlas of China; code and data here are original.</div>
+  <div class="note" id="panelNote">Boundaries are schematic approximations for learning, not surveyed borders. Concept inspired by the open-source “Chronicles of the Realm” atlas of China; code and data here are original.</div>
  </aside>
 </main>
 <footer id="tl">
@@ -123,6 +128,7 @@
 <script src="data/modern.js"></script>
 
 <!-- Atlas application modules -->
+<script src="js/i18n.js"></script>
 <script src="js/projection.js"></script>
 <script src="js/render.js"></script>
 <script src="js/timeline.js"></script>

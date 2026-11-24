@@ -158,6 +158,15 @@ function flyTo(lon, lat, w) {
   w = Math.max(W / 18, Math.min(w || vb.w, W * 1.4));
   const h = w * r.height / r.width;
   const t = { x: px(lon, lat) - w / 2, y: py(lon, lat) - h / 2, w };
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    vb.x = t.x;
+    vb.y = t.y;
+    vb.w = t.w;
+    applyVB();
+    return;
+  }
+
   const s = { x: vb.x, y: vb.y, w: vb.w };
   const t0 = performance.now();
   (function f(now) {
@@ -348,16 +357,19 @@ let searchActiveIdx = 0;
 let filteredSearch = [];
 
 function initSearch() {
+  SEARCH_ITEMS.length = 0;
   PL.forEach((p, idx) => {
     const rawP = (window.ATLAS_PLACES || []).find(x => x.id === p.id) || p;
     const names = p.n.map(n => [T(n[1]), n[1]?.hi || '']).flat().filter(Boolean);
+    if (rawP.regional) names.push(rawP.regional.name);
     const primaryName = p.n[0] ? T(p.n[0][1]) : p.id;
+    const catName = rawP.category ? (tUI('cat' + rawP.category.charAt(0).toUpperCase() + rawP.category.slice(1)) || rawP.category) : '';
     SEARCH_ITEMS.push({
       type: 'place',
-      badge: 'Place',
+      badge: tUI('badgePlace'),
       title: primaryName,
-      desc: rawP.category || (p.n.length > 1 ? `${p.n.length} names` : 'Settlement'),
-      matchStr: (names.join(' ') + ' ' + (rawP.lore ? T(rawP.lore) : '') + ' ' + (rawP.category || '')).toLowerCase(),
+      desc: catName || (p.n.length > 1 ? `${p.n.length} ${tUI('namesOverTime')}` : 'Settlement'),
+      matchStr: (names.join(' ') + ' ' + (rawP.regional?.name || '') + ' ' + (rawP.lore ? T(rawP.lore) : '') + ' ' + (rawP.category || '')).toLowerCase(),
       action: () => {
         st.selPlace = idx;
         go('places');
@@ -370,7 +382,7 @@ function initSearch() {
   (window.ATLAS_RULERS || []).forEach(r => {
     SEARCH_ITEMS.push({
       type: 'ruler',
-      badge: 'Ruler',
+      badge: tUI('badgeRuler'),
       title: T(r.name),
       desc: `${T(r.dynasty_name || r.dynasty)} (${fy(r.reign[0])}–${fy(r.reign[1])})`,
       matchStr: `${T(r.name)} ${r.name?.hi || ''} ${T(r.dynasty_name || r.dynasty)}`.toLowerCase(),
@@ -385,7 +397,7 @@ function initSearch() {
     const polNames = s.pol.map(p => T(p.n)).join(' ');
     SEARCH_ITEMS.push({
       type: 'era',
-      badge: 'Era',
+      badge: tUI('badgeEra'),
       title: T(s.title),
       desc: rg(s),
       matchStr: `${T(s.title)} ${s.title?.hi || ''} ${polNames} ${rg(s)}`.toLowerCase(),
@@ -399,7 +411,7 @@ function initSearch() {
   EV.forEach(e => {
     SEARCH_ITEMS.push({
       type: 'event',
-      badge: 'Event',
+      badge: tUI('badgeEvent'),
       title: T(e.t),
       desc: `${fy(e.y)} · ${esc(T(e.d)).slice(0, 50)}...`,
       matchStr: `${T(e.t)} ${e.t?.hi || ''} ${T(e.d)} ${fy(e.y)}`.toLowerCase(),
@@ -412,7 +424,7 @@ function initSearch() {
   JR.forEach((j, idx) => {
     SEARCH_ITEMS.push({
       type: 'journey',
-      badge: 'Person',
+      badge: tUI('badgePerson'),
       title: T(j.n),
       desc: `${T(j.who)} (${T(j.yrs)})`,
       matchStr: `${T(j.n)} ${j.n?.hi || ''} ${T(j.who)} ${T(j.d)}`.toLowerCase(),
@@ -424,10 +436,10 @@ function initSearch() {
 
   SEARCH_ITEMS.push({
     type: 'quiz',
-    badge: 'Quiz',
-    title: 'Historical Pinpoint Quiz',
-    desc: '10 rounds · Test your historical geography skills',
-    matchStr: 'quiz game test trivia pinpoint exam practice',
+    badge: tUI('badgeQuiz'),
+    title: tUI('quizTitle'),
+    desc: tUI('startQuiz'),
+    matchStr: 'quiz game test trivia pinpoint exam practice प्रश्नोत्तरी खेल परीक्षा',
     action: () => {
       go('quiz');
       act('q:start');
@@ -572,6 +584,18 @@ document.addEventListener('keydown', e => {
   if (e.key === '/' || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
     e.preventDefault();
     openSearch();
+  } else if (e.key.toLowerCase() === 'l') {
+    if (typeof setLanguage === 'function') {
+      setLanguage(CURRENT_LANG === 'hi' ? 'en' : 'hi');
+    }
+  } else if (e.key === '1') {
+    go('era');
+  } else if (e.key === '2') {
+    go('places');
+  } else if (e.key === '3') {
+    go('journeys');
+  } else if (e.key === '4') {
+    go('quiz');
   } else if (e.key.toLowerCase() === 'x') {
     $('#tgXray')?.click();
   } else if (e.key.toLowerCase() === 'c') {
@@ -599,6 +623,34 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// Tablist keyboard navigation
+const tabBtns = [...document.querySelectorAll('#tabs button')];
+tabBtns.forEach((btn, idx) => {
+  btn.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nxt = tabBtns[(idx + 1) % tabBtns.length];
+      nxt.focus();
+      nxt.click();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prv = tabBtns[(idx - 1 + tabBtns.length) % tabBtns.length];
+      prv.focus();
+      prv.click();
+    }
+  });
+});
+
+// Language button
+const langBtn = $('#langBtn');
+if (langBtn) {
+  langBtn.onclick = () => {
+    if (typeof setLanguage === 'function') {
+      setLanguage(CURRENT_LANG === 'hi' ? 'en' : 'hi');
+    }
+  };
+}
+
 new ResizeObserver(() => applyVB()).observe(svg);
 
 // Startup sequence
@@ -610,8 +662,12 @@ drawPols();
 if (!window.location.search || !window.location.search.includes('year=')) {
   setYear(-261);
 }
+if (st.lang === 'hi' && typeof setLanguage === 'function') {
+  setLanguage('hi');
+}
 resetView();
 render();
 
 // Contract export
 window.atlas = { st, SN, PL, EV, JR, setYear, act };
+window.setLanguage = setLanguage;

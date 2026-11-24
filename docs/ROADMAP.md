@@ -56,13 +56,13 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] WebMCP via `navigator.modelContext` and `window.modelContext`
 - [x] CLI renderer `scripts/atlas-cli.py` (terminal ASCII map + JSON output)
 
-## Phase 7 — Language and accessibility  ⬅ current
-- [ ] Hindi UI + content; then Bengali, Tamil, Telugu, Marathi
-- [ ] Regional-script place names
-- [ ] Keyboard navigation + screen-reader era announcements
-- [ ] `prefers-reduced-motion`
+## Phase 7 — Language and accessibility
+- [x] Hindi UI + content (`js/i18n.js`, language toggle button, bilingual quiz clues and cards)
+- [x] Regional-script place names across 92 settlements (Tamil, Kannada, Telugu, Malayalam, Bengali, Marathi, Odia, Gurmukhi, Perso-Arabic)
+- [x] Keyboard navigation + screen-reader era announcements (`aria-live="polite"`, `l` key, `1-4` tab switching, tablist arrow navigation)
+- [x] `prefers-reduced-motion` instantaneous transitions and high-contrast palette support
 
-## Phase 8 — Exam and classroom mode
+## Phase 8 — Exam and classroom mode  ⬅ current
 - [ ] NCERT (Classes 6–12) and UPSC syllabus tagging + filter
 - [ ] Printable revision view per period
 - [ ] Practice sets (match-the-capital, order-the-dynasties, locate-the-site)

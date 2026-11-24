@@ -38,6 +38,7 @@ const dataScripts = [
 }).join('\n');
 
 const jsScripts = [
+  'js/i18n.js',
   'js/projection.js',
   'js/render.js',
   'js/timeline.js',

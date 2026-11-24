@@ -15,6 +15,12 @@ window.atlasAPI = {
   setYear: (y) => {
     if (typeof setYear === 'function') setYear(y);
   },
+  setLanguage: (lang) => {
+    if (typeof setLanguage === 'function') setLanguage(lang);
+  },
+  getLanguage: () => {
+    return (typeof CURRENT_LANG !== 'undefined' ? CURRENT_LANG : (typeof st !== 'undefined' ? st.lang : 'en')) || 'en';
+  },
   getTimeline: () => {
     return (window.SN || []).map((s, idx) => ({
       index: idx,
