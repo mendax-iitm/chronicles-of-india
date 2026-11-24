@@ -1,0 +1,20 @@
+{
+  "name": "Chronicles of India — Historical Atlas",
+  "short_name": "Chronicles India",
+  "description": "Free, offline-capable interactive historical atlas of the Indian subcontinent (600 BCE – 1947 CE).",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#0b2a5b",
+  "orientation": "any",
+  "categories": ["education", "books", "reference"],
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

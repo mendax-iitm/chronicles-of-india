@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b2a5b">
 <title>Chronicles of India — Interactive Historical Atlas</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/atlas.css">
 </head>
 <body>
@@ -87,6 +90,7 @@
   <div class="zoom"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">−</button><button id="zr" aria-label="Reset view" style="font-size:14px">⌂</button></div>
   <div id="scale-bar" class="scale-bar" aria-hidden="true"><span id="scale-label">500 km</span><div class="scale-line"></div></div>
   <div class="layer-pills" role="group" aria-label="Map layers">
+    <button class="tg" id="liteBtn" title="Lite mode for low-end devices (disables terrain hillshade, blur, and transitions)" aria-pressed="false">⚡ Lite</button>
     <button class="tg" id="tgXray" title="Toggle present-day state &amp; national boundaries (X-ray lens) [X]">X-Ray</button>
     <button class="tg on" id="tgCorridors" title="Toggle historical trade corridors and pilgrimage routes [C]">Corridors</button>
     <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era [G]">Ghost borders</button>

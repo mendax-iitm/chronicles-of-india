@@ -1038,6 +1038,21 @@ body.embed .embed-watermark a:hover {
   outline-offset: 2px;
 }
 
+/* Lite Mode for low-end devices */
+body.lite-mode #terrain { display: none !important; }
+body.lite-mode *, body.lite-mode *::before, body.lite-mode *::after {
+  transition: none !important;
+  animation: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body.lite-mode #eracard,
+body.lite-mode .start-guide,
+body.lite-mode .event-balloon,
+body.lite-mode .tg {
+  box-shadow: none !important;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

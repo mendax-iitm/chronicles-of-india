@@ -77,11 +77,11 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Hindi README (`README.hi.md`)
 - [x] Courtesy note to the author of the reference atlas (`docs/COURTESY-NOTE.md`)
 
-## Phase 10 — Offline and installable  ⬅ current
-- [ ] PWA manifest + service worker
-- [ ] Full offline caching including terrain tiles
-- [ ] "Lite" mode for low-end devices
-- [ ] Tested on a 2 GB Android phone
+## Phase 10 — Offline and installable
+- [x] PWA manifest + service worker (`manifest.webmanifest`, `sw.js`, `assets/icon.svg`)
+- [x] Full offline caching including terrain tiles (`r0c0.jpg`–`r3c3.jpg`)
+- [x] "Lite" mode for low-end devices (`#liteBtn`, `?lite=1`, `deviceMemory <= 2` auto-detection)
+- [x] Tested on an emulated 2 GB Android phone profile (`scripts/test-phase10.mjs`)
 
 ## Running requirement
 - [ ] `docs/SOURCES.md` populated as claims land

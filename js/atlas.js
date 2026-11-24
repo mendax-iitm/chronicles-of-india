@@ -657,6 +657,40 @@ if (langBtn) {
   };
 }
 
+// Lite mode for low-end devices (Phase 10)
+function applyLiteMode(on, persist) {
+  st.lite = !!on;
+  document.body.classList.toggle('lite-mode', st.lite);
+  const lb = $('#liteBtn');
+  if (lb) {
+    lb.classList.toggle('on', st.lite);
+    lb.setAttribute('aria-pressed', st.lite ? 'true' : 'false');
+  }
+  if (persist) {
+    try { localStorage.setItem('coi_lite', st.lite ? '1' : '0'); } catch (_) {}
+  }
+}
+
+const liteBtn = $('#liteBtn');
+if (liteBtn) {
+  liteBtn.onclick = () => applyLiteMode(!st.lite, true);
+}
+
+(function initLiteAndPWA() {
+  const qs = new URLSearchParams(window.location.search);
+  const urlLite = qs.get('lite');
+  let savedLite = null;
+  try { savedLite = localStorage.getItem('coi_lite'); } catch (_) {}
+  const lowMem = (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2) ||
+                 (navigator.connection && navigator.connection.saveData);
+  if (urlLite === '1' || savedLite === '1' || (savedLite === null && urlLite !== '0' && lowMem)) {
+    applyLiteMode(true, false);
+  }
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+})();
+
 // Bottom-left floating legend card polity clicks
 const eraCardEl = $('#eracard');
 if (eraCardEl) {
