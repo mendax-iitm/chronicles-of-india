@@ -39,6 +39,24 @@ function getActiveRulers(y) {
   return res;
 }
 
+function renderEraCard(s, si, y) {
+  const rulers = getActiveRulers(y);
+  const erasStr = getRegnalEras(y);
+  const mapShownStr = typeof tUI === 'function' ? tUI('mapShownAt', { rep: esc(T(s.rep)) }) : `map shown at ${esc(T(s.rep))}`;
+  let cardHtml = `<div class="ec-head"><b>${esc(T(s.title))}</b><span class="ec-stage">${si + 1}/${SN.length}</span></div><span>${rg(s)} · ${mapShownStr}</span>`;
+  if (erasStr) cardHtml += `<div class="regnal-eras">${erasStr}</div>`;
+  if (rulers.length) {
+    const rChips = rulers.slice(0, 3).map(r => `<span class="ruler-chip" title="${esc(T(r.dynasty))} (${r.span})">👑 <b>${esc(T(r.name))}</b> <span class="small">(${esc(T(r.dynasty))})</span></span>`).join('');
+    cardHtml += `<div class="rulers">${rChips}</div>`;
+  }
+  if (s.pol && s.pol.length) {
+    const chips = s.pol.map((p, i) => `<button type="button" class="ec-pol-chip${i === st.selPol ? ' sel' : ''}" data-pol-idx="${i}" title="${esc(T(p.n))}"><span class="ec-swatch" style="background:${p.c}"></span>${esc(T(p.n))}</button>`).join('');
+    cardHtml += `<div class="era-legend-grid">${chips}</div>`;
+  }
+  const ec = $('#eracard');
+  if (ec) ec.innerHTML = cardHtml;
+}
+
 function setYear(y, keepView) {
   y = Math.max(-600, Math.min(1947, Math.round(y)));
   if (y === 0) y = 1;
@@ -50,19 +68,17 @@ function setYear(y, keepView) {
   if (ch) {
     st.selPol = -1;
     drawPols();
+    if (typeof closeEventBalloon === 'function') closeEventBalloon();
   }
   [...$('#ticks').children].forEach((t, i) => t.classList.toggle('on', i === si));
   const s = SN[si];
-  const rulers = getActiveRulers(y);
-  const erasStr = getRegnalEras(y);
-  const mapShownStr = typeof tUI === 'function' ? tUI('mapShownAt', { rep: esc(T(s.rep)) }) : `map shown at ${esc(T(s.rep))}`;
-  let cardHtml = `<b>${esc(T(s.title))}</b><span>${rg(s)} · ${mapShownStr}</span>`;
-  if (erasStr) cardHtml += `<div class="regnal-eras">${erasStr}</div>`;
-  if (rulers.length) {
-    const rChips = rulers.slice(0, 3).map(r => `<span class="ruler-chip" title="${esc(T(r.dynasty))} (${r.span})">👑 <b>${esc(T(r.name))}</b> <span class="small">(${esc(T(r.dynasty))})</span></span>`).join('');
-    cardHtml += `<div class="rulers">${rChips}</div>`;
+  renderEraCard(s, si, y);
+  const tlTip = $('#tl-tip');
+  if (tlTip) {
+    const pct = Math.max(4, Math.min(96, ((y + 600) / 2547 * 100)));
+    tlTip.style.left = pct.toFixed(2) + '%';
+    tlTip.textContent = `${fy(y)} · ${T(s.title)}`;
   }
-  $('#eracard').innerHTML = cardHtml;
   if (typeof announceEraChange === 'function') {
     announceEraChange(s, y, ch);
   }
@@ -74,6 +90,8 @@ function setYear(y, keepView) {
   else if (st.tab === 'places' || st.tab === 'journeys') render(true);
   if (typeof syncURL === 'function') syncURL();
 }
+
+let playSpeed = 1;
 
 function stopPlay() {
   if (st.play) {
@@ -90,16 +108,38 @@ function startPlay() {
   }
   $('#play').textContent = '❚❚';
   if (st.year >= 1940) setYear(-600);
+  const stepMs = Math.round(120 / playSpeed);
   st.play = setInterval(() => {
     if (st.year >= 1947) {
       stopPlay();
       return;
     }
     setYear(st.year + (st.year < 0 && st.year + 8 >= 0 ? 9 : 8));
-  }, 120);
+  }, stepMs);
+}
+
+function initEraSegments() {
+  const segEl = $('#era-segments');
+  if (!segEl) return;
+  const segs = [
+    { from: -600, to: -322, label: '600 BCE', color: '#7c5a46' },
+    { from: -322, to: -185, label: 'Maurya', color: '#4f7755' },
+    { from: -185, to: 320, label: 'Shunga–Kushan', color: '#8e6540' },
+    { from: 320, to: 550, label: 'Gupta', color: '#c27d2c' },
+    { from: 550, to: 1000, label: 'Post-Gupta', color: '#7e6491' },
+    { from: 1000, to: 1206, label: 'Chola–Rajput', color: '#4a7d8a' },
+    { from: 1206, to: 1526, label: 'Sultanate', color: '#4e678f' },
+    { from: 1526, to: 1757, label: 'Mughal–Maratha', color: '#9e483c' },
+    { from: 1757, to: 1947, label: 'British–1947', color: '#6e5645' }
+  ];
+  segEl.innerHTML = segs.map(sg => {
+    const w = ((sg.to - sg.from) / 2547 * 100).toFixed(2);
+    return `<div class="era-seg" style="width:${w}%;background:${sg.color}" title="${sg.label}">${sg.label}</div>`;
+  }).join('');
 }
 
 function initTimeline() {
+  initEraSegments();
   $('#ticks').innerHTML = SN.map(s => `<i style="left:${((s.from + 600) / 2547 * 100).toFixed(2)}%" title="${esc(T(s.title))} (${fy(s.from)})" data-y="${s.from}"></i>`).join('');
   $('#ticks').onclick = e => {
     const i = e.target.closest('i');
@@ -144,4 +184,15 @@ function initTimeline() {
     if (st.quiz.on) return;
     startPlay();
   };
+  const spBtn = $('#speedBtn');
+  if (spBtn) {
+    spBtn.onclick = () => {
+      playSpeed = playSpeed === 1 ? 2 : playSpeed === 2 ? 0.5 : 1;
+      spBtn.textContent = playSpeed + '×';
+      if (st.play) {
+        stopPlay();
+        startPlay();
+      }
+    };
+  }
 }

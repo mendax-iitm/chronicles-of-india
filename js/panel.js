@@ -17,7 +17,7 @@ function render(soft) {
     h += `<h3>${tUI('powersOnMap')}</h3><ul class="l">` + s.pol.map((p, i) => chipLi(p.c, `<b>${esc(T(p.n))}</b>${i === st.selPol ? `<br><span class="small">${esc(T(p.t))}</span>` : ''}`, 'pol:' + i, i === st.selPol)).join('') + '</ul>';
     const evs = EV.filter(e => e.y >= s.from && e.y <= s.to);
     if (evs.length) {
-      h += `<h3>${tUI('eventsInEra')}</h3><ul class="l">` + evs.map(e => `<li data-a="ev:${e.id}" class="${e.id === st.selEv ? 'on' : ''}"><span class="dia"></span><span><b>${fy(e.y)}</b> · ${esc(T(e.t))}${e.id === st.selEv ? `<br><span class="small">${esc(T(e.d))}</span>` : ''}</span></li>`).join('') + '</ul>';
+      h += `<h3>${tUI('eventsInEra')}</h3><ul class="l">` + evs.map(e => `<li data-a="ev:${e.id}" class="ev-card ${e.id === st.selEv ? 'on' : ''}"><span class="dia"></span><span><b>${fy(e.y)}</b> · ${esc(T(e.t))}<br><span class="small">${esc(T(e.d))}</span></span></li>`).join('') + '</ul>';
     }
     const divSys = (window.ATLAS_DIVISIONS || []).find(d => {
       return d.period && d.period[0] <= s.from && s.from <= d.period[1];
@@ -191,6 +191,43 @@ function go(tab) {
   render();
 }
 
+function closeEventBalloon() {
+  const b = $('#event-balloon');
+  if (b) b.style.display = 'none';
+}
+
+function openEventBalloon(e) {
+  const b = $('#event-balloon');
+  const mw = $('#mapwrap');
+  if (!b || !mw || !e) return;
+  const nearPlaces = PL.map((p, idx) => ({
+    idx,
+    name: (nameAt(p, e.y) || p.n[0])[1],
+    d: Math.hypot((e.lon - p.lon) * Math.cos(p.lat * Math.PI / 180), e.lat - p.lat)
+  })).filter(x => x.d < 2.2).sort((a, c) => a.d - c.d).slice(0, 2);
+
+  const placeChips = nearPlaces.map(np => `<button type="button" class="eb-place-chip" data-eb-pl="${np.idx}">📍 ${esc(T(np.name))} ›</button>`).join('');
+  b.innerHTML = `<div class="eb-head"><div class="eb-title">${fy(e.y)} · ${esc(T(e.t))}</div><button type="button" class="eb-close" id="ebClose" aria-label="Close event details">×</button></div>${placeChips ? `<div class="eb-places">${placeChips}</div>` : ''}<p class="eb-desc">${esc(T(e.d))}</p>`;
+  b.style.display = 'block';
+
+  // Position near center-top-ish of mapwrap so it's always cleanly visible without overlapping #eracard
+  const r = mw.getBoundingClientRect();
+  const left = Math.max(16, Math.min(r.width - 320, Math.round(r.width * 0.48 - 140)));
+  const top = Math.max(54, Math.min(r.height - 220, Math.round(r.height * 0.32)));
+  b.style.left = left + 'px';
+  b.style.top = top + 'px';
+
+  const closeBtn = $('#ebClose');
+  if (closeBtn) closeBtn.onclick = closeEventBalloon;
+  b.querySelectorAll('[data-eb-pl]').forEach(btn => {
+    btn.onclick = () => {
+      closeEventBalloon();
+      act('pl:' + btn.dataset.ebPl);
+      go('places');
+    };
+  });
+}
+
 function act(a) {
   const [k, v, w] = a.split(':');
   if (k === 'pol') {
@@ -198,14 +235,17 @@ function act(a) {
     st.selPol = next;
     drawPols();
     render(true);
+    if (typeof renderEraCard === 'function') renderEraCard(SN[st.si], st.si, st.year);
     if (next >= 0) zoomToPol(next);
   } else if (k === 'ev') {
-    st.selEv = +v;
-    const e = EV[+v];
-    st.selEv = e.id;
-    setYear(e.y);
-    flyTo(e.lon, e.lat, W / 3.2);
-    render(true);
+    const e = EV.find(x => x.id === +v) || EV[+v];
+    if (e) {
+      st.selEv = e.id;
+      setYear(e.y);
+      flyTo(e.lon, e.lat, W / 3.2);
+      render(true);
+      openEventBalloon(e);
+    }
   } else if (k === 'pl') {
     if (v === 'back') {
       st.selPlace = -1;

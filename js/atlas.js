@@ -616,12 +616,15 @@ document.addEventListener('keydown', e => {
     $('#play').click();
   } else if (e.key === 'Escape') {
     if (st.quiz.on) quitQuiz();
-    else if (st.jr >= 0) act('jr:back');
+    else if ($('#event-balloon') && $('#event-balloon').style.display !== 'none' && typeof closeEventBalloon === 'function') {
+      closeEventBalloon();
+    } else if (st.jr >= 0) act('jr:back');
     else if (st.selPlace >= 0) act('pl:back');
     else if (st.selPol >= 0) {
       st.selPol = -1;
       drawPols();
       render(true);
+      if (typeof renderEraCard === 'function') renderEraCard(SN[st.si], st.si, st.year);
     }
   }
 });
@@ -652,6 +655,43 @@ if (langBtn) {
       setLanguage(CURRENT_LANG === 'hi' ? 'en' : 'hi');
     }
   };
+}
+
+// Bottom-left floating legend card polity clicks
+const eraCardEl = $('#eracard');
+if (eraCardEl) {
+  eraCardEl.addEventListener('click', e => {
+    const chip = e.target.closest('[data-pol-idx]');
+    if (chip && !st.quiz.on) {
+      act('pol:' + chip.dataset.polIdx);
+    }
+  });
+}
+
+// Top-right quick-start guide pill
+const sgEl = $('#start-guide');
+if (sgEl) {
+  const sgClose = $('#sgClose');
+  if (sgClose) sgClose.onclick = () => { sgEl.style.display = 'none'; };
+  sgEl.querySelectorAll('[data-sg]').forEach(btn => {
+    btn.onclick = () => {
+      const k = btn.dataset.sg;
+      if (k === 'xuanzang') {
+        const idx = JR.findIndex(j => T(j.n).toLowerCase().includes('xuanzang') || T(j.who).toLowerCase().includes('xuanzang'));
+        go('journeys');
+        act('jr:' + (idx >= 0 ? idx : 0));
+      } else if (k === 'pataliputra') {
+        const idx = PL.findIndex(p => p.id === 'pataliputra' || T(p.n[0][1]).toLowerCase().includes('pataliputra'));
+        if (idx >= 0) {
+          go('places');
+          act('pl:' + idx);
+        }
+      } else if (k === 'quiz') {
+        go('quiz');
+        act('q:start');
+      }
+    };
+  });
 }
 
 new ResizeObserver(() => applyVB()).observe(svg);

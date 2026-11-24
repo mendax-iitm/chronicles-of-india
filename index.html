@@ -72,12 +72,25 @@
     </div>
     <div id="tbLessonTitle" class="tb-title"></div>
   </div>
+  <div id="start-guide" class="start-guide" role="region" aria-label="Quick start suggestions">
+    <span class="sg-label">New here?</span>
+    <button class="sg-link" data-sg="xuanzang">Follow Xuanzang</button>
+    <span class="sg-dot">·</span>
+    <button class="sg-link" data-sg="pataliputra">Find Pataliputra</button>
+    <span class="sg-dot">·</span>
+    <button class="sg-link" data-sg="quiz">Map quiz</button>
+    <button id="sgClose" class="sg-close" title="Dismiss" aria-label="Dismiss quick start">×</button>
+  </div>
+  <div id="event-balloon" class="event-balloon" style="display:none" role="dialog" aria-label="Selected historical event"></div>
   <div id="eracard"></div>
   <div id="tip"></div>
   <div class="zoom"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">−</button><button id="zr" aria-label="Reset view" style="font-size:14px">⌂</button></div>
-  <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era [G]">Ghost borders</button>
-  <button class="tg on" id="tgCorridors" title="Toggle historical trade corridors and pilgrimage routes [C]" style="right:112px">Corridors</button>
-  <button class="tg" id="tgXray" title="Toggle present-day state & national boundaries (X-ray lens) [X]" style="right:196px">X-Ray</button>
+  <div id="scale-bar" class="scale-bar" aria-hidden="true"><span id="scale-label">500 km</span><div class="scale-line"></div></div>
+  <div class="layer-pills" role="group" aria-label="Map layers">
+    <button class="tg" id="tgXray" title="Toggle present-day state &amp; national boundaries (X-ray lens) [X]">X-Ray</button>
+    <button class="tg on" id="tgCorridors" title="Toggle historical trade corridors and pilgrimage routes [C]">Corridors</button>
+    <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era [G]">Ghost borders</button>
+  </div>
  </section>
  <aside id="panel">
   <div id="tabs" role="tablist"><button data-t="era" class="on" role="tab" aria-selected="true">Era</button><button data-t="places" role="tab" aria-selected="false">Places</button><button data-t="journeys" role="tab" aria-selected="false">Journeys</button><button data-t="quiz" role="tab" aria-selected="false">Quiz</button></div>
@@ -86,8 +99,8 @@
  </aside>
 </main>
 <footer id="tl">
- <button id="prev" aria-label="Previous era">⏮</button><button id="play" aria-label="Play">▶</button><button id="next" aria-label="Next era">⏭</button>
- <div class="track"><input type="range" id="yr" min="-600" max="1947" value="-261" step="1" aria-label="Timeline slider: historical year"><div id="ticks"></div></div>
+ <button id="prev" aria-label="Previous era">⏮</button><button id="play" aria-label="Play">▶</button><button id="speedBtn" class="tl-speed" title="Playback speed" aria-label="Toggle playback speed">1×</button><button id="next" aria-label="Next era">⏭</button>
+ <div class="track"><div id="era-segments" class="era-segments" aria-hidden="true"></div><div id="tl-tip" class="tl-tip" aria-hidden="true"></div><input type="range" id="yr" min="-600" max="1947" value="-261" step="1" aria-label="Timeline slider: historical year"><div id="ticks"></div></div>
  <div id="ylab"></div>
 </footer>
 
