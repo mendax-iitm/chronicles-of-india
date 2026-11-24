@@ -11,24 +11,24 @@
     },
     "years": {
       "en": "327–325 BCE",
-      "hi": "327–325 BCE"
+      "hi": "327–325 ई.पू."
     },
     "description": {
-      "en": "The Macedonian army crosses the Hindu Kush, defeats Porus and sails down the Indus.",
-      "hi": "The Macedonian army crosses the Hindu Kush, defeats Porus and sails down the Indus."
+      "en": "The Macedonian army crosses the Hindu Kush, defeats Porus and sails down the Indus to the Indian Ocean.",
+      "hi": "मैसेडोनियाई सेना ने हिंदूकुश पार कर पोरस को हराया और सिंधु नदी से होते हुए हिंद महासागर तक पहुँची।"
     },
     "stops": [
       {
         "name": {
-          "en": "Hindu Kush",
-          "hi": "Hindu Kush"
+          "en": "Hindu Kush (Alexandria in Caucaso)",
+          "hi": "हिंदूकुश"
         },
-        "lon": 68.5,
-        "lat": 35,
+        "lon": 69.17,
+        "lat": 34.96,
         "year": -327,
         "note": {
-          "en": "Crosses into the Indus lands.",
-          "hi": "Crosses into the Indus lands."
+          "en": "Crosses the mountains into the Kabul valley.",
+          "hi": "पहाड़ पार कर काबुल घाटी में प्रवेश।"
         }
       },
       {
@@ -40,73 +40,73 @@
         "lat": 33.75,
         "year": -326,
         "note": {
-          "en": "Received by King Ambhi.",
-          "hi": "Received by King Ambhi."
+          "en": "Received in alliance by King Ambhi of Taxila.",
+          "hi": "तक्षशिला के राजा आंभी द्वारा स्वागत व संधि।"
         }
       },
       {
         "name": {
           "en": "Hydaspes (Jhelum)",
-          "hi": "Hydaspes (Jhelum)"
+          "hi": "झेलम (हाइडैस्पेस)"
         },
         "lon": 73.73,
         "lat": 32.93,
         "year": -326,
         "note": {
-          "en": "Defeats Porus.",
-          "hi": "Defeats Porus."
+          "en": "Defeats King Porus in a ferocious monsoon battle.",
+          "hi": "मानसून के दौरान भीषण युद्ध में राजा पोरस को हराया।"
         }
       },
       {
         "name": {
-          "en": "Beas river",
-          "hi": "Beas river"
+          "en": "Hyphasis (Beas)",
+          "hi": "ब्यास (हाइफेसिस)"
         },
-        "lon": 75,
+        "lon": 75.2,
         "lat": 31.5,
         "year": -326,
         "note": {
-          "en": "Army refuses to go further.",
-          "hi": "Army refuses to go further."
+          "en": "Exhausted soldiers mutiny; Alexander halts eastward advance.",
+          "hi": "सैनिकों के विद्रोह के बाद पूर्व की ओर बढ़ना बंद किया।"
         }
       },
       {
         "name": {
-          "en": "Multan region",
-          "hi": "Multan region"
+          "en": "Multan (Malloi campaign)",
+          "hi": "मुल्तान"
         },
-        "lon": 71.5,
+        "lon": 71.47,
         "lat": 30.2,
         "year": -325,
         "note": {
-          "en": "Fierce fighting with the Malloi.",
-          "hi": "Fierce fighting with the Malloi."
+          "en": "Fierce fighting with Malloi tribes; Alexander wounded.",
+          "hi": "मल्लोई जनजातियों से युद्ध में सिकंदर गंभीर घायल हुआ।"
         }
       },
       {
         "name": {
           "en": "Patala (Indus delta)",
-          "hi": "Patala (Indus delta)"
+          "hi": "पाताल (सिंधु डेल्टा)"
         },
         "lon": 68.3,
         "lat": 24.8,
         "year": -325,
         "note": {
-          "en": "Sails to the sea.",
-          "hi": "Sails to the sea."
+          "en": "Reaches the Indian Ocean; Nearchus prepares the naval fleet.",
+          "hi": "हिंद महासागर पहुँचकर नौसेना का बेड़ा तैयार किया।"
         }
       },
       {
         "name": {
-          "en": "Gedrosia",
-          "hi": "Gedrosia"
+          "en": "Gedrosian Desert",
+          "hi": "गेड्रोसिया का मरुस्थल"
         },
-        "lon": 62.5,
-        "lat": 26.2,
+        "lon": 63.5,
+        "lat": 26,
         "year": -325,
         "note": {
-          "en": "Marches home across the desert.",
-          "hi": "Marches home across the desert."
+          "en": "Marches the land army through the arid Makran coast.",
+          "hi": "मकरान तट के भीषण मरुस्थल से पैदल सेना की वापसी।"
         }
       }
     ]
@@ -114,33 +114,713 @@
   {
     "id": 1,
     "title": {
+      "en": "The Buddha’s wanderings",
+      "hi": "भगवान बुद्ध की धर्मयात्रा"
+    },
+    "who": {
+      "en": "Siddhartha Gautama, the Buddha",
+      "hi": "सिद्धार्थ गौतम बुद्ध"
+    },
+    "years": {
+      "en": "c. 528–483 BCE",
+      "hi": "लगभग 528–483 ई.पू."
+    },
+    "description": {
+      "en": "From awakening at Bodh Gaya to parinirvana at Kushinagar: 45 years of teaching across Magadha and Kosala.",
+      "hi": "बोधगया में सम्बोधि से कुशीनगर में महापरिनिर्वाण तक: मगध और कोसल में 45 वर्षों की धर्मदेशना।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Lumbini",
+          "hi": "लुंबिनी"
+        },
+        "lon": 83.28,
+        "lat": 27.47,
+        "year": -563,
+        "note": {
+          "en": "Birthplace in the Shakya republic.",
+          "hi": "शाक्य गणराज्य में राजकुमार सिद्धार्थ का जन्म।"
+        }
+      },
+      {
+        "name": {
+          "en": "Bodh Gaya",
+          "hi": "बोधगया"
+        },
+        "lon": 84.99,
+        "lat": 24.7,
+        "year": -528,
+        "note": {
+          "en": "Attains enlightenment under the Bodhi tree.",
+          "hi": "बोधिवृक्ष के नीचे परम ज्ञान (सम्बोधि) की प्राप्ति।"
+        }
+      },
+      {
+        "name": {
+          "en": "Sarnath (Isipatana)",
+          "hi": "सारनाथ"
+        },
+        "lon": 83.02,
+        "lat": 25.38,
+        "year": -528,
+        "note": {
+          "en": "Delivers the first sermon (Dhammacakkappavattana Sutta).",
+          "hi": "प्रथम उपदेश: धर्मचक्रप्रवर्तन।"
+        }
+      },
+      {
+        "name": {
+          "en": "Rajagriha (Vulture Peak)",
+          "hi": "राजगृह (गृध्रकूट)"
+        },
+        "lon": 85.42,
+        "lat": 25.01,
+        "year": -525,
+        "note": {
+          "en": "Frequent rainy-season retreats patronized by King Bimbisara.",
+          "hi": "राजा बिंबिसार द्वारा प्रदत्त वेणुवन में वर्षावास।"
+        }
+      },
+      {
+        "name": {
+          "en": "Shravasti (Jetavana)",
+          "hi": "श्रावस्ती (जेतवन)"
+        },
+        "lon": 82.02,
+        "lat": 27.51,
+        "year": -515,
+        "note": {
+          "en": "Spends 25 rainy seasons teaching at Anathapindika's monastery.",
+          "hi": "अनाथपिंडिक के जेतवन महाविहार में 25 वर्षावास।"
+        }
+      },
+      {
+        "name": {
+          "en": "Vaishali",
+          "hi": "वैशाली"
+        },
+        "lon": 85.29,
+        "lat": 25.98,
+        "year": -484,
+        "note": {
+          "en": "Accepts mango grove from Ambapali and foretells parinirvana.",
+          "hi": "आम्रपाली का आम्रवन स्वीकार किया और अंतिम उपदेश दिए।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kushinagar",
+          "hi": "कुशीनगर"
+        },
+        "lon": 83.89,
+        "lat": 26.74,
+        "year": -483,
+        "note": {
+          "en": "Attains Mahaparinirvana between two Sal trees.",
+          "hi": "शाल वृक्षों के बीच महापरिनिर्वाण प्राप्त किया।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": {
+      "en": "Mahavira’s ascetic path",
+      "hi": "भगवान महावीर की तपोभूमि"
+    },
+    "who": {
+      "en": "Vardhamana Mahavira, 24th Tirthankara",
+      "hi": "वर्धमान महावीर (24वें तीर्थंकर)"
+    },
+    "years": {
+      "en": "c. 510–468 BCE",
+      "hi": "लगभग 510–468 ई.पू."
+    },
+    "description": {
+      "en": "Twelve years of intense penance followed by thirty years propagating anekantavada, ahimsa, and aparigraha.",
+      "hi": "12 वर्षों की कठोर तपस्या के बाद अहिंसा, अनेकांतवाद और अपरिग्रह का देशना अभियान।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Kundagrama (Vaishali)",
+          "hi": "कुंडलपुर (वैशाली)"
+        },
+        "lon": 85.29,
+        "lat": 25.98,
+        "year": -540,
+        "note": {
+          "en": "Born into the Jnatrika kshatriya clan.",
+          "hi": "ज्ञातृक क्षत्रिय कुल में जन्म।"
+        }
+      },
+      {
+        "name": {
+          "en": "Jambhiyagama (Rijupalika river)",
+          "hi": "जंभियग्राम (ऋजुपालिका तट)"
+        },
+        "lon": 86.1,
+        "lat": 24.3,
+        "year": -498,
+        "note": {
+          "en": "Attains Kevala Jnana (supreme omniscience).",
+          "hi": "ऋजुपालिका नदी के तट पर केवल ज्ञान की प्राप्ति।"
+        }
+      },
+      {
+        "name": {
+          "en": "Rajagriha (Vipulachala)",
+          "hi": "राजगृह (विपुलाचल)"
+        },
+        "lon": 85.42,
+        "lat": 25.01,
+        "year": -498,
+        "note": {
+          "en": "Delivers first divine discourse (Divya Dhvani); King Shrenika listens.",
+          "hi": "विपुलाचल पर्वत पर प्रथम दिव्यध्वनि (उपदेश)।"
+        }
+      },
+      {
+        "name": {
+          "en": "Champa",
+          "hi": "चंपा"
+        },
+        "lon": 87,
+        "lat": 25.24,
+        "year": -485,
+        "note": {
+          "en": "Preaches in the capital of Anga, patronized by King Dadhivahana.",
+          "hi": "अंग देश की राजधानी में तीन वर्षावास।"
+        }
+      },
+      {
+        "name": {
+          "en": "Mithila",
+          "hi": "मिथिला"
+        },
+        "lon": 85.8,
+        "lat": 26.15,
+        "year": -475,
+        "note": {
+          "en": "Spends several rainy seasons teaching Jain monastic code.",
+          "hi": "मिथिला नगरी में जैन धर्म का प्रचार।"
+        }
+      },
+      {
+        "name": {
+          "en": "Pavapuri",
+          "hi": "पावापुरी"
+        },
+        "lon": 85.55,
+        "lat": 25.08,
+        "year": -468,
+        "note": {
+          "en": "Attains nirvana; Diwali festival commemorates his liberation.",
+          "hi": "दीपावली के दिन पावापुरी में मोक्ष (निर्वाण) प्राप्त किया।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": {
+      "en": "Megasthenes’ embassy",
+      "hi": "मेगस्थनीज का पाटलिपुत्र दूतावास"
+    },
+    "who": {
+      "en": "Megasthenes, Seleucid Greek ambassador",
+      "hi": "मेगस्थनीज, यूनानी राजदूत"
+    },
+    "years": {
+      "en": "c. 302–298 BCE",
+      "hi": "लगभग 302–298 ई.पू."
+    },
+    "description": {
+      "en": "Travels from Arachosia along the Royal Highway to Chandragupta Maurya’s palisaded capital at Pataliputra, authoring the Indika.",
+      "hi": "सिकंदर के उत्तराधिकारी सेल्युकस के राजदूत के रूप में पाटलिपुत्र आगमन; 'इंडिका' ग्रंथ की रचना।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Alexandria Arachosia (Kandahar)",
+          "hi": "कंधार (अराकोसिया)"
+        },
+        "lon": 65.71,
+        "lat": 31.62,
+        "year": -302,
+        "note": {
+          "en": "Dispatched from the court of Sibyrtius, satrap of Arachosia.",
+          "hi": "अराकोसिया के यूनानी क्षत्रप के दरबार से प्रस्थान।"
+        }
+      },
+      {
+        "name": {
+          "en": "Taxila",
+          "hi": "तक्षशिला"
+        },
+        "lon": 72.83,
+        "lat": 33.75,
+        "year": -302,
+        "note": {
+          "en": "Crosses the Indus; notes the prosperous university town.",
+          "hi": "सिंधु पार कर तक्षशिला नगर का अवलोकन किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Mathura (Methora)",
+          "hi": "मथुरा"
+        },
+        "lon": 77.67,
+        "lat": 27.49,
+        "year": -301,
+        "note": {
+          "en": "Records the Suraseni people worshipping Herakles (Vasudeva-Krishna).",
+          "hi": "शूरसेन जनपद और वासुदेव पूजा का विवरण लिखा।"
+        }
+      },
+      {
+        "name": {
+          "en": "Prayagraj (Ganges-Yamuna confluence)",
+          "hi": "प्रयाग"
+        },
+        "lon": 81.88,
+        "lat": 25.43,
+        "year": -301,
+        "note": {
+          "en": "Travels along the great royal river artery.",
+          "hi": "गंगा-यमुना संगम से होकर पाटलिपुत्र का मार्ग।"
+        }
+      },
+      {
+        "name": {
+          "en": "Pataliputra (Palimbothra)",
+          "hi": "पाटलिपुत्र"
+        },
+        "lon": 85.14,
+        "lat": 25.61,
+        "year": -300,
+        "note": {
+          "en": "Describes the 64-gate wooden capital, 400,000 army, and civic boards.",
+          "hi": "मौर्य राजधानी के नगर प्रशासन, सेना और समाज का विशद वर्णन।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": {
+      "en": "Ashoka’s Dhamma tours",
+      "hi": "सम्राट अशोक की धम्मयात्राएँ"
+    },
+    "who": {
+      "en": "Ashoka Maurya, Devanampriya",
+      "hi": "सम्राट अशोक मौर्य (देवानांप्रिय)"
+    },
+    "years": {
+      "en": "c. 260–240 BCE",
+      "hi": "लगभग 260–240 ई.पू."
+    },
+    "description": {
+      "en": "Replaces royal hunting with pilgrimage tours (dhamma-yatras) across the subcontinent, engraving rock and pillar edicts.",
+      "hi": "शिकार की जगह धम्मयात्राओं की शुरुआत; संपूर्ण भारत में शिला और स्तंभ लेख उत्कीर्ण कराए।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Pataliputra",
+          "hi": "पाटलिपुत्र"
+        },
+        "lon": 85.14,
+        "lat": 25.61,
+        "year": -260,
+        "note": {
+          "en": "Renounces aggressive war after the Kalinga conquest.",
+          "hi": "कलिंग युद्ध के बाद दिग्विजय की जगह धम्मविजय का संकल्प।"
+        }
+      },
+      {
+        "name": {
+          "en": "Bodh Gaya (Sambodhi)",
+          "hi": "बोधगया"
+        },
+        "lon": 84.99,
+        "lat": 24.7,
+        "year": -259,
+        "note": {
+          "en": "Inaugurates the first royal pilgrimage to the Bodhi tree (Major Rock Edict VIII).",
+          "hi": "बोधिवृक्ष की प्रथम आधिकारिक तीर्थयात्रा (शिलालेख 8)।"
+        }
+      },
+      {
+        "name": {
+          "en": "Lumbini (Rummindei)",
+          "hi": "लुंबिनी (रुम्मिनदेई)"
+        },
+        "lon": 83.28,
+        "lat": 27.47,
+        "year": -249,
+        "note": {
+          "en": "Visits Buddha's birthplace; exempts village from land taxes.",
+          "hi": "बुद्ध जन्मस्थली पर स्तंभ स्थापित कर कर-मुक्त घोषित किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Sarnath",
+          "hi": "सारनाथ"
+        },
+        "lon": 83.02,
+        "lat": 25.38,
+        "year": -248,
+        "note": {
+          "en": "Erects the Lion Capital of Ashoka and warns against schism in the Sangha.",
+          "hi": "सिंह शीर्ष स्तंभ स्थापित किया, जो भारत का राष्ट्रीय प्रतीक बना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Sanchi",
+          "hi": "सांची"
+        },
+        "lon": 77.74,
+        "lat": 23.48,
+        "year": -245,
+        "note": {
+          "en": "Expands the Great Stupa; sends Mahinda and Sanghamitta to Sri Lanka.",
+          "hi": "महान स्तूप का विस्तार; श्रीलंका में धर्म प्रचार हेतु दल भेजा।"
+        }
+      },
+      {
+        "name": {
+          "en": "Girnar (Junagadh)",
+          "hi": "गिरनार"
+        },
+        "lon": 70.47,
+        "lat": 21.52,
+        "year": -242,
+        "note": {
+          "en": "Engraves 14 Major Rock Edicts on the volcanic boulder.",
+          "hi": "गिरनार पर्वत पर 14 प्रमुख शिलालेख उत्कीर्ण कराए।"
+        }
+      },
+      {
+        "name": {
+          "en": "Maski / Brahmagiri",
+          "hi": "मास्की / ब्रह्मगिरि"
+        },
+        "lon": 76.66,
+        "lat": 15.96,
+        "year": -240,
+        "note": {
+          "en": "Minor rock edicts identify the author explicitly as 'Devanampriya Ashoka'.",
+          "hi": "कर्नाटक के शिलालेखों में स्पष्ट 'देवानांप्रिय अशोक' नाम मिलता है।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": {
+      "en": "Heliodorus’ embassy to Vidisha",
+      "hi": "हेलियोडोरस का बेसनगर दूतावास"
+    },
+    "who": {
+      "en": "Heliodorus, son of Dion",
+      "hi": "हेलियोडोरस, यवन राजदूत"
+    },
+    "years": {
+      "en": "c. 113 BCE",
+      "hi": "लगभग 113 ई.पू."
+    },
+    "description": {
+      "en": "Indo-Greek ambassador travels from Taxila to Shunga Vidisha, adopting Bhagavata Vaishnavism and erecting the Garuda pillar.",
+      "hi": "तक्षशिला से शुंग दरबार विदिशा आगमन; भागवत धर्म अपनाकर गरुड़ ध्वज स्तंभ की स्थापना।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Taxila",
+          "hi": "तक्षशिला"
+        },
+        "lon": 72.83,
+        "lat": 33.75,
+        "year": -115,
+        "note": {
+          "en": "Commissioned by King Antialcidas of the Indo-Greek kingdom.",
+          "hi": "इंडो-ग्रीक राजा एंटियालकिडास द्वारा दूत नियुक्त।"
+        }
+      },
+      {
+        "name": {
+          "en": "Mathura",
+          "hi": "मथुरा"
+        },
+        "lon": 77.67,
+        "lat": 27.49,
+        "year": -114,
+        "note": {
+          "en": "Major trading crossroads connecting Gandhara with Central India.",
+          "hi": "गांधार और मध्य भारत को जोड़ने वाला प्रमुख व्यापारिक केंद्र।"
+        }
+      },
+      {
+        "name": {
+          "en": "Vidisha (Besnagar)",
+          "hi": "विदिशा (बेसनगर)"
+        },
+        "lon": 77.81,
+        "lat": 23.53,
+        "year": -113,
+        "note": {
+          "en": "Presents credentials to Shunga King Kasiputra Bhagabhadra and erects the Garuda pillar.",
+          "hi": "शुंग राजा भागभद्र के दरबार में गरुड़ स्तंभ की प्रतिष्ठा की।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": {
+      "en": "Samudragupta’s southern campaign",
+      "hi": "समुद्रगुप्त का दक्षिणापथ अभियान"
+    },
+    "who": {
+      "en": "Samudragupta, Parakramanka",
+      "hi": "सम्राट समुद्रगुप्त (पराक्रमांक)"
+    },
+    "years": {
+      "en": "c. 345–350 CE",
+      "hi": "लगभग 345–350 ई."
+    },
+    "description": {
+      "en": "The Gupta emperor marches through South Kosala, Odisha, and Andhra to Kanchipuram, releasing captured kings as tributaries (grahana-moksha).",
+      "hi": "पाटलिपुत्र से कांचीपुरम तक ऐतिहासिक सैन्य अभियान; दक्षिण के 12 राजाओं को हराकर करद राज्य बनाया।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Pataliputra",
+          "hi": "पाटलिपुत्र"
+        },
+        "lon": 85.14,
+        "lat": 25.61,
+        "year": 345,
+        "note": {
+          "en": "Imperial army departs the Gupta capital.",
+          "hi": "गुप्त राजधानी से विशाल सेना का दक्षिणापथ प्रस्थान।"
+        }
+      },
+      {
+        "name": {
+          "en": "South Kosala (Sirpur)",
+          "hi": "दक्षिण कोसल (सिरपुर)"
+        },
+        "lon": 82.18,
+        "lat": 21.34,
+        "year": 346,
+        "note": {
+          "en": "Defeats King Mahendra of South Kosala in the forested tract.",
+          "hi": "महाकांतार और दक्षिण कोसल के राजा महेंद्र को हराया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kottura (Ganjam)",
+          "hi": "कोत्तूर (गंजम)"
+        },
+        "lon": 84.8,
+        "lat": 19.1,
+        "year": 347,
+        "note": {
+          "en": "Subdues rulers of the coastal Odisha littoral.",
+          "hi": "ओडिशा के तटीय राजाओं को परास्त किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Pishtapura (Pithapuram)",
+          "hi": "पिष्टपुर (पीठापुरम)"
+        },
+        "lon": 82.25,
+        "lat": 17.11,
+        "year": 348,
+        "note": {
+          "en": "Captures the maritime stronghold of King Mahendragiri in coastal Andhra.",
+          "hi": "तटीय आंध्र के महत्वपूर्ण दुर्ग पिष्टपुर पर विजय।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kanchipuram",
+          "hi": "कांचीपुरम"
+        },
+        "lon": 79.7,
+        "lat": 12.83,
+        "year": 349,
+        "note": {
+          "en": "Defeats Pallava king Vishnugopa; restores him as a feudatory tributary.",
+          "hi": "पल्लव राजा विष्णुगोप को पराजित कर करद शासक बनाया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Prayagraj",
+          "hi": "प्रयागराज"
+        },
+        "lon": 81.85,
+        "lat": 25.43,
+        "year": 350,
+        "note": {
+          "en": "Performs the ashvamedha sacrifice and has the Allahabad Pillar inscribed.",
+          "hi": "अश्वमेध यज्ञ संपन्न कर प्रयाग प्रशस्ति उत्कीर्ण करवाई।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": {
+      "en": "Kalidasa’s Meghaduta route",
+      "hi": "कालिदास के मेघदूत का मार्ग"
+    },
+    "who": {
+      "en": "The Cloud Messenger (Literary chronicle)",
+      "hi": "मेघदूत (महाकवि कालिदास की साहित्यिक यात्रा)"
+    },
+    "years": {
+      "en": "c. 400 CE",
+      "hi": "लगभग 400 ई."
+    },
+    "description": {
+      "en": "A poetic journey mapped by Kalidasa: an exiled yaksha directs a monsoon cloud from Ramagiri across central India to Alaka in the Himalayas.",
+      "hi": "रामगिरि से अलकापुरी तक मानसून के मेघ का भौगोलिक मार्ग; प्राचीन भारत का काव्यात्मक भूगोल।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Ramagiri (Ramtek, Vidarbha)",
+          "hi": "रामगिरि (रामटेक)"
+        },
+        "lon": 79.33,
+        "lat": 21.4,
+        "year": 400,
+        "note": {
+          "en": "The exiled yaksha longs for his beloved and addresses the cloud.",
+          "hi": "निर्वासित यक्ष द्वारा मेघ को संदेशवाहक बनाने का आरंभ।"
+        }
+      },
+      {
+        "name": {
+          "en": "Amrakuta (Amarkantak)",
+          "hi": "आम्रकूट (अमरकंटक)"
+        },
+        "lon": 81.75,
+        "lat": 22.67,
+        "year": 400,
+        "note": {
+          "en": "Cloud quenches mountain forest fires and crosses the Narmada.",
+          "hi": "नर्मदा के उद्गम पर वनाग्नि शांत करने का वर्णन।"
+        }
+      },
+      {
+        "name": {
+          "en": "Vidisha & Betwa (Vetravati)",
+          "hi": "विदिशा व वेत्रवती"
+        },
+        "lon": 77.81,
+        "lat": 23.53,
+        "year": 400,
+        "note": {
+          "en": "Passes the rich capital of Dasharna and the rock caves of Udayagiri.",
+          "hi": "दशार्ण देश की संपन्न राजधानी और उदयगिरि गुफाएँ।"
+        }
+      },
+      {
+        "name": {
+          "en": "Ujjayini (Mahakala Temple)",
+          "hi": "उज्जयिनी (महाकाल)"
+        },
+        "lon": 75.77,
+        "lat": 23.18,
+        "year": 400,
+        "note": {
+          "en": "Lingers at the evening twilight aarti at the Mahakala shrine on the Shipra.",
+          "hi": "शिप्रा तट पर महाकाल की संध्या आरती का मनोहारी दृश्य।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kurukshetra (Brahmavarta)",
+          "hi": "कुरुक्षेत्र"
+        },
+        "lon": 76.84,
+        "lat": 29.97,
+        "year": 400,
+        "note": {
+          "en": "Flies across the battlefield of the Mahabharata heroes.",
+          "hi": "महाभारत के ऐतिहासिक युद्धक्षेत्र के ऊपर से गमन।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kanakhala (Haridwar)",
+          "hi": "कनखल (हरिद्वार)"
+        },
+        "lon": 78.14,
+        "lat": 29.93,
+        "year": 400,
+        "note": {
+          "en": "Where Jahnavi (Ganga) descends from Jahnu's ear into the plains.",
+          "hi": "गंगा के हिमालय से मैदान में उतरने का पावन स्थल।"
+        }
+      },
+      {
+        "name": {
+          "en": "Alaka (Mount Kailash)",
+          "hi": "अलकापुरी (कैलाश मानसरोवर)"
+        },
+        "lon": 81.31,
+        "lat": 31.07,
+        "year": 400,
+        "note": {
+          "en": "Reaches Kubera’s celestial city in the high snows of the Himalayas.",
+          "hi": "हिमालय के शिखरों में यक्ष की प्रियतमा का निवास स्थल।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": {
       "en": "Faxian’s pilgrimage",
-      "hi": "फ़ाहियान की तीर्थयात्रा"
+      "hi": "फ़ाहियान की भारत यात्रा"
     },
     "who": {
       "en": "Faxian (Fa-Hien), Chinese Buddhist monk",
       "hi": "फ़ाहियान, चीनी बौद्ध भिक्षु"
     },
     "years": {
-      "en": "c. 400–411 CE",
-      "hi": "c. 400–411 CE"
+      "en": "400–411 CE",
+      "hi": "400–411 ई."
     },
     "description": {
-      "en": "Travels the Buddhist holy places under the Gupta empire.",
-      "hi": "Travels the Buddhist holy places under the Gupta empire."
+      "en": "Walks overland across Central Asia to search for Vinaya texts during Chandragupta II’s peaceful Gupta empire.",
+      "hi": "बौद्ध विनय ग्रंथों की खोज में पैदल भारत यात्रा; गुप्तकालीन शांति और समृद्धि का प्रत्यक्ष विवरण।"
     },
     "stops": [
       {
         "name": {
-          "en": "Peshawar",
-          "hi": "Peshawar"
+          "en": "Peshawar (Purushapura)",
+          "hi": "पेशावर"
         },
-        "lon": 71.6,
-        "lat": 34,
+        "lon": 71.57,
+        "lat": 34.01,
         "year": 402,
         "note": {
-          "en": "Visits the great stupa of Kanishka.",
-          "hi": "Visits the great stupa of Kanishka."
+          "en": "Admires Kanishka's towering multi-tiered stupa.",
+          "hi": "कनिष्क के 400 फीट ऊँचे महाविहार और स्तूप के दर्शन।"
         }
       },
       {
@@ -152,8 +832,8 @@
         "lat": 27.49,
         "year": 404,
         "note": {
-          "en": "Sees many monasteries.",
-          "hi": "Sees many monasteries."
+          "en": "Records dozens of monasteries along the Yamuna and benign governance.",
+          "hi": "यमुना किनारे 20 संघाराम और दयालु शासन का वर्णन।"
         }
       },
       {
@@ -165,21 +845,21 @@
         "lat": 27.05,
         "year": 405,
         "note": {
-          "en": "Buddhist and Brahmanical centre.",
-          "hi": "Buddhist and Brahmanical centre."
+          "en": "Thriving Gangetic trade and monastic centre.",
+          "hi": "गंगा तट का समृद्ध धार्मिक एवं व्यापारिक नगर।"
         }
       },
       {
         "name": {
-          "en": "Kapilavastu region",
-          "hi": "Kapilavastu region"
+          "en": "Kapilavastu & Lumbini",
+          "hi": "कपिलवस्तु व लुंबिनी"
         },
-        "lon": 82.8,
-        "lat": 27.5,
+        "lon": 83.28,
+        "lat": 27.47,
         "year": 406,
         "note": {
-          "en": "Buddha’s birthplace region.",
-          "hi": "Buddha’s birthplace region."
+          "en": "Visits the desolate ruins of Buddha's ancestral city.",
+          "hi": "शाक्यों की उजड़ी राजधानी और बुद्ध जन्मस्थली के दर्शन।"
         }
       },
       {
@@ -191,94 +871,68 @@
         "lat": 25.61,
         "year": 408,
         "note": {
-          "en": "Admires Ashoka’s palace and the peaceful Gupta realm.",
-          "hi": "Admires Ashoka’s palace and the peaceful Gupta realm."
+          "en": "Studies Sanskrit for 3 years; copies Mahasanghika Vinaya manuscripts.",
+          "hi": "तीन वर्ष रहकर संस्कृत सीखी और विनय ग्रंथों की प्रतिलिपि बनाई।"
         }
       },
       {
         "name": {
           "en": "Tamralipti",
-          "hi": "Tamralipti"
+          "hi": "ताम्रलिप्ति"
         },
-        "lon": 87.9,
+        "lon": 87.92,
         "lat": 22.3,
         "year": 411,
         "note": {
-          "en": "Sails for Lanka.",
-          "hi": "Sails for Lanka."
+          "en": "Boards a merchant ship for Ceylon (Sri Lanka) and China.",
+          "hi": "व्यापारिक जहाज से श्रीलंका और चीन की समुद्री यात्रा हेतु प्रस्थान।"
         }
       }
     ]
   },
   {
-    "id": 2,
+    "id": 9,
     "title": {
       "en": "Xuanzang’s journey",
       "hi": "ह्वेन त्सांग की भारत यात्रा"
     },
     "who": {
-      "en": "Xuanzang, Chinese monk and scholar",
-      "hi": "ह्वेन त्सांग, चीनी भिक्षु एवं विद्वान"
+      "en": "Xuanzang (Hiuen Tsang), Master of the Law",
+      "hi": "ह्वेन त्सांग, चीनी महाविद्वान"
     },
     "years": {
-      "en": "630–643 CE",
-      "hi": "630–643 CE"
+      "en": "630–644 CE",
+      "hi": "630–644 ई."
     },
     "description": {
-      "en": "The famous pilgrim studies at Nalanda and tours the subcontinent in Harsha’s time.",
-      "hi": "The famous pilgrim studies at Nalanda and tours the subcontinent in Harsha’s time."
+      "en": "The greatest Chinese pilgrim travels across northern, eastern, and southern India during the reign of Emperor Harshavardhana.",
+      "hi": "सम्राट हर्षवर्धन के काल में 15 वर्षों तक भारत का भ्रमण, नालंदा में अध्ययन और 'सी-यू-की' ग्रंथ की रचना।"
     },
     "stops": [
       {
         "name": {
-          "en": "Peshawar",
-          "hi": "Peshawar"
+          "en": "Khyber Pass & Peshawar",
+          "hi": "खैबर दर्रा व पेशावर"
         },
-        "lon": 71.6,
-        "lat": 34,
+        "lon": 71.3,
+        "lat": 34.1,
         "year": 630,
         "note": {
-          "en": "Enters the subcontinent.",
-          "hi": "Enters the subcontinent."
+          "en": "Crosses into Gandhara through the mountain defiles.",
+          "hi": "पहाड़ी दर्रों को पार कर गांधार में प्रवेश।"
         }
       },
       {
         "name": {
-          "en": "Taxila",
-          "hi": "तक्षशिला"
-        },
-        "lon": 72.83,
-        "lat": 33.75,
-        "year": 631,
-        "note": {
-          "en": "Notes the ruined city.",
-          "hi": "Notes the ruined city."
-        }
-      },
-      {
-        "name": {
-          "en": "Kashmir",
+          "en": "Kashmir (Srinagar)",
           "hi": "कश्मीर"
         },
         "lon": 74.8,
-        "lat": 34.1,
+        "lat": 34.08,
         "year": 631,
         "note": {
-          "en": "Studies for two years.",
-          "hi": "Studies for two years."
-        }
-      },
-      {
-        "name": {
-          "en": "Mathura",
-          "hi": "मथुरा"
-        },
-        "lon": 77.67,
-        "lat": 27.49,
-        "year": 635,
-        "note": {
-          "en": "Records the monasteries.",
-          "hi": "Records the monasteries."
+          "en": "Spends two full years copying Buddhist sutras.",
+          "hi": "दो वर्ष रहकर बौद्ध दर्शन का गहन अध्ययन किया।"
         }
       },
       {
@@ -290,60 +944,34 @@
         "lat": 27.05,
         "year": 636,
         "note": {
-          "en": "Harsha’s capital.",
-          "hi": "Harsha’s capital."
+          "en": "Received by Emperor Harsha; later presides at the grand assembly.",
+          "hi": "हर्षवर्धन की राजधानी में भव्य स्वागत और विद्वत सभा का नेतृत्व।"
         }
       },
       {
         "name": {
-          "en": "Varanasi",
-          "hi": "Varanasi"
+          "en": "Prayagraj",
+          "hi": "प्रयाग"
         },
-        "lon": 83,
-        "lat": 25.32,
+        "lon": 81.85,
+        "lat": 25.43,
         "year": 637,
         "note": {
-          "en": "Visits Sarnath.",
-          "hi": "Visits Sarnath."
+          "en": "Witnesses Harsha's quinquennial charity assembly at the Sangam.",
+          "hi": "संगम तट पर हर्ष द्वारा आयोजित पंचवार्षिक महादान समारोह।"
         }
       },
       {
         "name": {
-          "en": "Bodh Gaya",
-          "hi": "बोधगया"
-        },
-        "lon": 84.99,
-        "lat": 24.7,
-        "year": 637,
-        "note": {
-          "en": "Worships at the bodhi tree.",
-          "hi": "Worships at the bodhi tree."
-        }
-      },
-      {
-        "name": {
-          "en": "Nalanda",
-          "hi": "Nalanda"
+          "en": "Nalanda Mahavihara",
+          "hi": "नालंदा महाविहार"
         },
         "lon": 85.44,
-        "lat": 25.14,
+        "lat": 25.13,
         "year": 638,
         "note": {
-          "en": "Studies for years at the great monastery.",
-          "hi": "Studies for years at the great monastery."
-        }
-      },
-      {
-        "name": {
-          "en": "Tamralipti",
-          "hi": "Tamralipti"
-        },
-        "lon": 87.9,
-        "lat": 22.3,
-        "year": 639,
-        "note": {
-          "en": "Eastern port.",
-          "hi": "Eastern port."
+          "en": "Studies Yogachara philosophy under Chancellor Shilabhadra for 5 years.",
+          "hi": "कुलपति शीलभद्र के चरणों में 5 वर्षों तक योगाचार का अध्ययन।"
         }
       },
       {
@@ -355,94 +983,378 @@
         "lat": 12.83,
         "year": 640,
         "note": {
-          "en": "Pallava capital.",
-          "hi": "Pallava capital."
+          "en": "Visits the southern Pallava capital under Narasimhavarman I.",
+          "hi": "पल्लव राजधानी कांची का भ्रमण और दक्षिण भारत का विवरण।"
         }
       },
       {
         "name": {
-          "en": "Nasik region",
-          "hi": "Nasik region"
+          "en": "Vatapi / Badami",
+          "hi": "वातापी"
         },
-        "lon": 73.8,
-        "lat": 20,
+        "lon": 75.68,
+        "lat": 15.92,
         "year": 641,
         "note": {
-          "en": "Meets Pulakeshin II’s realm.",
-          "hi": "Meets Pulakeshin II’s realm."
+          "en": "Observes the warlike valor and court of Chalukya Pulakeshin II.",
+          "hi": "पुलकेशिन् द्वितीय के शौर्य और महाराष्ट्र के लोगों का वर्णन।"
         }
       },
       {
         "name": {
-          "en": "Valabhi",
-          "hi": "Valabhi"
+          "en": "Hindu Kush return",
+          "hi": "हिंदूकुश वापसी"
         },
-        "lon": 71.9,
-        "lat": 21.9,
-        "year": 641,
+        "lon": 69.17,
+        "lat": 34.96,
+        "year": 644,
         "note": {
-          "en": "Great monastic centre in Gujarat.",
-          "hi": "Great monastic centre in Gujarat."
-        }
-      },
-      {
-        "name": {
-          "en": "Sindh",
-          "hi": "Sindh"
-        },
-        "lon": 71.5,
-        "lat": 30.2,
-        "year": 642,
-        "note": {
-          "en": "Leaves India with hundreds of manuscripts.",
-          "hi": "Leaves India with hundreds of manuscripts."
+          "en": "Crosses back to China with 657 Sanskrit texts on twenty pack-horses.",
+          "hi": "657 दुर्लभ संस्कृत ग्रंथों और मूर्तियों के साथ चीन वापसी।"
         }
       }
     ]
   },
   {
-    "id": 3,
+    "id": 10,
     "title": {
-      "en": "Ibn Battuta in India",
-      "hi": "इब्न बत्तूता की भारत यात्रा"
+      "en": "Adi Shankara’s Digvijaya",
+      "hi": "आदि शंकराचार्य की दिग्विजय यात्रा"
     },
     "who": {
-      "en": "Ibn Battuta, Moroccan traveller",
-      "hi": "इब्न बत्तूता, मोरक्कन यात्री"
+      "en": "Adi Shankaracharya",
+      "hi": "आदि शंकराचार्य"
     },
     "years": {
-      "en": "1333–1342 CE",
-      "hi": "1333–1342 CE"
+      "en": "c. 800–820 CE",
+      "hi": "लगभग 800–820 ई."
     },
     "description": {
-      "en": "Serves as a judge at Delhi under Muhammad bin Tughlaq and then sails for the Malabar coast.",
-      "hi": "Serves as a judge at Delhi under Muhammad bin Tughlaq and then sails for the Malabar coast."
+      "en": "Walks the length and breadth of India debating rival philosophical schools and establishing the four Amnaya Mathas.",
+      "hi": "कालड़ी से केदारनाथ तक पदयात्रा; शास्त्रार्थ में विजय और चारों दिशाओं में चार धाम/मठों की स्थापना।"
     },
     "stops": [
       {
         "name": {
-          "en": "Sukkur (Indus)",
-          "hi": "Sukkur (Indus)"
+          "en": "Kalady (Kerala)",
+          "hi": "कालड़ी (केरल)"
         },
-        "lon": 68.9,
-        "lat": 27.7,
-        "year": 1333,
+        "lon": 76.43,
+        "lat": 10.17,
+        "year": 800,
         "note": {
-          "en": "Enters Sindh.",
-          "hi": "Enters Sindh."
+          "en": "Birthplace on the Periyar river; takes sannyasa at a young age.",
+          "hi": "पेरियार तट पर जन्म; बाल्यकाल में संन्यास ग्रहण।"
+        }
+      },
+      {
+        "name": {
+          "en": "Omkareshwar (Narmada)",
+          "hi": "ओंकारेश्वर"
+        },
+        "lon": 76.15,
+        "lat": 22.25,
+        "year": 806,
+        "note": {
+          "en": "Initiated into Advaita by his guru Govinda Bhagavatpada.",
+          "hi": "गुरु गोविंद भगवत्पाद से अद्वैत वेदांत की दीक्षा।"
+        }
+      },
+      {
+        "name": {
+          "en": "Varanasi",
+          "hi": "वाराणसी"
+        },
+        "lon": 83,
+        "lat": 25.32,
+        "year": 810,
+        "note": {
+          "en": "Composes master commentaries (bhashyas) on the Prasthanatrayi.",
+          "hi": "ब्रह्मसूत्र, उपनिषदों और गीता पर अमर भाष्यों की रचना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Mahishmati",
+          "hi": "माहिष्मती"
+        },
+        "lon": 75.58,
+        "lat": 22.18,
+        "year": 812,
+        "note": {
+          "en": "Famous philosophical debate with Mandana Mishra and Ubhaya Bharati.",
+          "hi": "मंडन मिश्र और भारती के साथ प्रसिद्ध शास्त्रार्थ।"
+        }
+      },
+      {
+        "name": {
+          "en": "Sringeri (South Matha)",
+          "hi": "शृंगेरी (शारदा पीठ)"
+        },
+        "lon": 75.25,
+        "lat": 13.42,
+        "year": 814,
+        "note": {
+          "en": "Founds the southern Sharada Peetham on the Tunga river.",
+          "hi": "तुंगा तट पर दक्षिण आम्नाय शारदा पीठ की स्थापना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Puri (Govardhana Matha)",
+          "hi": "पुरी (गोवर्धन पीठ)"
+        },
+        "lon": 85.83,
+        "lat": 19.81,
+        "year": 816,
+        "note": {
+          "en": "Establishes the eastern seat overlooking the Bay of Bengal.",
+          "hi": "पूर्व दिशा में गोवर्धन पीठ की स्थापना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Dwarka (Kalika Matha)",
+          "hi": "द्वारका (शारदा पीठ)"
+        },
+        "lon": 68.97,
+        "lat": 22.24,
+        "year": 818,
+        "note": {
+          "en": "Establishes the western seat in coastal Saurashtra.",
+          "hi": "पश्चिम दिशा में द्वारका पीठ की स्थापना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Badrinath & Kedarnath",
+          "hi": "बद्रीनाथ व केदारनाथ"
+        },
+        "lon": 79.49,
+        "lat": 30.74,
+        "year": 820,
+        "note": {
+          "en": "Founds Jyotirmath in the Himalayas and attains Mahasamadhi.",
+          "hi": "उत्तर में ज्योतिर्मठ की स्थापना और केदारनाथ में महासमाधि।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": {
+      "en": "Al-Biruni in India",
+      "hi": "अल-बरूनी का भारत अध्ययन"
+    },
+    "who": {
+      "en": "Abu Rayhan al-Biruni, Khwarazmian polymath",
+      "hi": "अबू रेहान अल-बरूनी, महान विद्वान"
+    },
+    "years": {
+      "en": "1017–1030 CE",
+      "hi": "1017–1030 ई."
+    },
+    "description": {
+      "en": "Accompanies Mahmud of Ghazni’s campaigns to study Sanskrit, astronomy, mathematics, and philosophy, writing the Kitab al-Hind.",
+      "hi": "संस्कृत सीखकर भारतीय विज्ञान, खगोल और दर्शन का गहन अध्ययन; 'किताब-उल-हिंद' की रचना।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Ghazni",
+          "hi": "गजनी"
+        },
+        "lon": 68.42,
+        "lat": 33.55,
+        "year": 1017,
+        "note": {
+          "en": "Brought as court scholar following Ghaznavid conquest of Khwarazm.",
+          "hi": "ख्वाहज्म विजय के बाद गजनी के दरबार में लाया गया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Peshawar",
+          "hi": "पेशावर"
+        },
+        "lon": 71.57,
+        "lat": 34.01,
+        "year": 1019,
+        "note": {
+          "en": "Begins collecting Indian astronomical texts and treatises.",
+          "hi": "भारतीय ज्योतिष और खगोल ग्रंथों का संकलन शुरू किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Nandana Fort (Salt Range)",
+          "hi": "नंदना दुर्ग (साल्ट रेंज)"
+        },
+        "lon": 73.16,
+        "lat": 32.72,
+        "year": 1021,
+        "note": {
+          "en": "Calculates the circumference of the Earth with unprecedented 99.8% precision.",
+          "hi": "त्रिकोणमिति द्वारा पृथ्वी की परिधि की अत्यंत सटीक गणना की।"
         }
       },
       {
         "name": {
           "en": "Multan",
-          "hi": "Multan"
+          "hi": "मुल्तान"
         },
-        "lon": 71.5,
+        "lon": 71.47,
+        "lat": 30.2,
+        "year": 1024,
+        "note": {
+          "en": "Studies the great Sun Temple and interactions with local scholars.",
+          "hi": "सूर्य मंदिर और स्थानीय विद्वानों के साथ गहन संवाद।"
+        }
+      },
+      {
+        "name": {
+          "en": "Lahore",
+          "hi": "लाहौर"
+        },
+        "lon": 74.35,
+        "lat": 31.55,
+        "year": 1030,
+        "note": {
+          "en": "Completes the monumental encyclopedic survey 'Tarikh al-Hind'.",
+          "hi": "'तारीख-उल-हिंद' (किताब-उल-हिंद) को अंतिम रूप दिया।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": {
+      "en": "Marco Polo’s Indian coast",
+      "hi": "मार्को पोलो का भारतीय तटीय सफर"
+    },
+    "who": {
+      "en": "Marco Polo, Venetian merchant traveller",
+      "hi": "मार्को पोलो, वेनिस का यात्री"
+    },
+    "years": {
+      "en": "1292–1293 CE",
+      "hi": "1292–1293 ई."
+    },
+    "description": {
+      "en": "Escorts a Mongol princess from China to Persia, visiting the flourishing spice and diamond ports of Coromandel and Malabar.",
+      "hi": "चीन से फारस जाते हुए कोरोमंडल और मालाबार के संपन्न बंदरगाहों की यात्रा और सजीव विवरण।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Andaman Islands",
+          "hi": "अंडमान द्वीपसमूह"
+        },
+        "lon": 92.73,
+        "lat": 11.67,
+        "year": 1292,
+        "note": {
+          "en": "Sails through the Bay of Bengal island chains from Sumatra.",
+          "hi": "सुमात्रा से बंगाल की खाड़ी होकर अंडमान पहुंचा।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kayal (Coromandel / Pandya)",
+          "hi": "कयाल (पांड्य तट)"
+        },
+        "lon": 78.08,
+        "lat": 8.65,
+        "year": 1292,
+        "note": {
+          "en": "Describes the thriving pearl fisheries and Arab horse import trade.",
+          "hi": "मोती के व्यापार और अरब से घोड़ों के आयात का वर्णन।"
+        }
+      },
+      {
+        "name": {
+          "en": "Mylapore (St. Thomas Mount)",
+          "hi": "मैलापुर (मद्रास)"
+        },
+        "lon": 80.2,
+        "lat": 13,
+        "year": 1292,
+        "note": {
+          "en": "Visits the shrine of St. Thomas the Apostle revered by Christians and Muslims.",
+          "hi": "सेंट थॉमस की समाधि के दर्शन का उल्लेख किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Quilon (Kollam)",
+          "hi": "कोल्लम (क्विलोन)"
+        },
+        "lon": 76.59,
+        "lat": 8.89,
+        "year": 1293,
+        "note": {
+          "en": "Marvels at black pepper, ginger, brazilwood, and Chinese junk ships.",
+          "hi": "काली मिर्च, अदरक और चीनी जहाजों का समृद्ध बंदरगाह।"
+        }
+      },
+      {
+        "name": {
+          "en": "Thana / Cambay (Gujarat)",
+          "hi": "थाणे व खंभात"
+        },
+        "lon": 72.62,
+        "lat": 22.31,
+        "year": 1293,
+        "note": {
+          "en": "Records fine cotton muslin, leathercraft, and silk commerce before departing west.",
+          "hi": "सूती वस्त्र और चमड़े के उत्कृष्ट हस्तशिल्प का वर्णन।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": {
+      "en": "Ibn Battuta in India",
+      "hi": "इब्न बत्तूता की भारत यात्रा"
+    },
+    "who": {
+      "en": "Ibn Battuta, Moroccan legal scholar",
+      "hi": "इब्न बत्तूता, मोरक्को का विद्वान"
+    },
+    "years": {
+      "en": "1333–1342 CE",
+      "hi": "1333–1342 ई."
+    },
+    "description": {
+      "en": "Serves as Grand Qazi of Delhi under Muhammad bin Tughlaq, then travels through the Deccan, Malabar and Maldives to China.",
+      "hi": "मुहम्मद बिन तुगलक के दरबार में काजी नियुक्त; दिल्ली से दौलताबाद और मालाबार की रोमांचक यात्रा।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Indus river (Sukkur)",
+          "hi": "सिंधु (सक्खर)"
+        },
+        "lon": 68.85,
+        "lat": 27.7,
+        "year": 1333,
+        "note": {
+          "en": "Crosses the Indus river on 1 Muharram 734 AH.",
+          "hi": "सिंधु नदी पार कर तुगलक साम्राज्य में प्रवेश किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Multan",
+          "hi": "मुल्तान"
+        },
+        "lon": 71.47,
         "lat": 30.2,
         "year": 1333,
         "note": {
-          "en": "Governor’s court.",
-          "hi": "Governor’s court."
+          "en": "Welcomed by the royal postal runners (barid) and governor.",
+          "hi": "डाक व्यवस्था (बरीद) और शाही अधिकारियों से भेंट।"
         }
       },
       {
@@ -454,159 +1366,1170 @@
         "lat": 28.61,
         "year": 1334,
         "note": {
-          "en": "Appointed qazi of Delhi.",
-          "hi": "Appointed qazi of Delhi."
+          "en": "Appointed Malikite Qazi of Delhi; serves for eight turbulent years.",
+          "hi": "सुल्तान द्वारा दिल्ली का काजी नियुक्त; 8 वर्षों तक सेवा।"
         }
       },
       {
         "name": {
           "en": "Daulatabad",
-          "hi": "Daulatabad"
+          "hi": "दौलताबाद"
         },
-        "lon": 75.2,
-        "lat": 19.9,
+        "lon": 75.21,
+        "lat": 19.94,
         "year": 1341,
         "note": {
-          "en": "Tughlaq’s second capital.",
-          "hi": "Tughlaq’s second capital."
+          "en": "Visits the invincible rock-cut fortress city in the Deccan.",
+          "hi": "दक्कन के अजेय देवगिरि दुर्ग नगर का अवलोकन।"
         }
       },
       {
         "name": {
-          "en": "Cambay",
-          "hi": "Cambay"
+          "en": "Cambay (Khambhat)",
+          "hi": "खंभात"
         },
-        "lon": 72.6,
-        "lat": 22.3,
+        "lon": 72.62,
+        "lat": 22.31,
         "year": 1342,
         "note": {
-          "en": "Port town.",
-          "hi": "Port town."
+          "en": "Embarks on diplomatic embassy to China carrying royal gifts.",
+          "hi": "चीन के सम्राट हेतु उपहार लेकर दूतावास दल के साथ प्रस्थान।"
         }
       },
       {
         "name": {
-          "en": "Honavar",
-          "hi": "Honavar"
-        },
-        "lon": 74.4,
-        "lat": 14.3,
-        "year": 1342,
-        "note": {
-          "en": "Coastal kingdom.",
-          "hi": "Coastal kingdom."
-        }
-      },
-      {
-        "name": {
-          "en": "Calicut",
+          "en": "Calicut (Kozhikode)",
           "hi": "कालिकट"
         },
         "lon": 75.78,
         "lat": 11.25,
         "year": 1342,
         "note": {
-          "en": "Great port; sets out for China.",
-          "hi": "Great port; sets out for China."
+          "en": "His fleet is wrecked in a sudden monsoon storm off the coast.",
+          "hi": "भीषण समुद्री तूफान में जहाज नष्ट; मालदीव की ओर प्रस्थान।"
         }
       }
     ]
   },
   {
-    "id": 4,
+    "id": 14,
     "title": {
-      "en": "Gandhi’s India",
-      "hi": "गांधीजी का भारत"
+      "en": "Guru Nanak’s Udasis",
+      "hi": "गुरु नानक देव जी की उदासियाँ"
     },
     "who": {
-      "en": "Mohandas K. Gandhi",
-      "hi": "मोहनदास करमचंद गांधी"
+      "en": "Guru Nanak Dev, founder of Sikhism",
+      "hi": "गुरु नानक देव जी (सिख धर्म के संस्थापक)"
     },
     "years": {
-      "en": "1869–1947",
-      "hi": "1869–1947"
+      "en": "c. 1500–1524 CE",
+      "hi": "लगभग 1500–1524 ई."
     },
     "description": {
-      "en": "From Porbandar to Delhi: key places in the freedom movement.",
-      "hi": "From Porbandar to Delhi: key places in the freedom movement."
+      "en": "Four vast journeys (Udasis) across the four directions accompanied by Bhai Mardana, singing shabads of divine oneness and human equality.",
+      "hi": "भाई मरदाना के साथ चारों दिशाओं में चार महान उदासियाँ; एक ओंकार और मानवता की समानता का अमर संदेश।"
     },
     "stops": [
       {
         "name": {
-          "en": "Porbandar",
-          "hi": "Porbandar"
+          "en": "Sultanpur Lodhi",
+          "hi": "सुल्तानपुर लोधी"
         },
-        "lon": 69.6,
-        "lat": 21.64,
-        "year": 1869,
+        "lon": 75.2,
+        "lat": 31.21,
+        "year": 1500,
         "note": {
-          "en": "Birthplace.",
-          "hi": "Birthplace."
+          "en": "Experiences enlightenment at the Bein river: 'There is no Hindu, no Musalman'.",
+          "hi": "वेईं नदी में आत्मज्ञान: 'ना कोई हिंदू, ना कोई मुसलमान'।"
+        }
+      },
+      {
+        "name": {
+          "en": "Haridwar",
+          "hi": "हरिद्वार"
+        },
+        "lon": 78.16,
+        "lat": 29.95,
+        "year": 1505,
+        "note": {
+          "en": "Throws water towards the west to teach that true worship is heartfelt, not ritualistic.",
+          "hi": "खेतों को पानी देने की युक्ति से अंधविश्वास पर प्रहार।"
+        }
+      },
+      {
+        "name": {
+          "en": "Varanasi",
+          "hi": "वाराणसी"
+        },
+        "lon": 83,
+        "lat": 25.32,
+        "year": 1506,
+        "note": {
+          "en": "Discourses with pandits on inner purity over external sectarian marks.",
+          "hi": "विद्वानों से आंतरिक पवित्रता और नाम स्मरण पर संवाद।"
+        }
+      },
+      {
+        "name": {
+          "en": "Puri (Jagannath Temple)",
+          "hi": "पुरी (जगन्नाथ धाम)"
+        },
+        "lon": 85.83,
+        "lat": 19.81,
+        "year": 1508,
+        "note": {
+          "en": "Composes the universal arti: 'Gagan mai thalu ravi chandu deepak bane'.",
+          "hi": "विश्व ब्रह्मांडीय महाआरती 'गगन मै थालु' की रचना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Rameshwaram & Ceylon",
+          "hi": "रामेश्वरम व श्रीलंका"
+        },
+        "lon": 79.31,
+        "lat": 9.28,
+        "year": 1511,
+        "note": {
+          "en": "Southern udasi sharing the message of One Creator.",
+          "hi": "दक्षिण भारत और श्रीलंका में सत्य का प्रचार।"
+        }
+      },
+      {
+        "name": {
+          "en": "Mount Sumeru & Tibet",
+          "hi": "सुमेरु पर्वत व लद्दाख"
+        },
+        "lon": 77.58,
+        "lat": 34.15,
+        "year": 1516,
+        "note": {
+          "en": "Northern udasi dialoguing with Siddhas and Yogis in the high mountains.",
+          "hi": "हिमालय में योगियों और सिद्धों के साथ संवाद (सिद्ध गोष्ठ)।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kartarpur",
+          "hi": "करतारपुर साहिब"
+        },
+        "lon": 74.96,
+        "lat": 32.09,
+        "year": 1522,
+        "note": {
+          "en": "Founds the communal farming township of Kartarpur, establishing langar.",
+          "hi": "रावी तट पर करतारपुर बसाया; लंगर व संगत की नींव रखी।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": {
+      "en": "Vasco da Gama’s voyage",
+      "hi": "वास्को द गामा की समुद्री यात्रा"
+    },
+    "who": {
+      "en": "Vasco da Gama, Dom, Admiral of the Seas",
+      "hi": "वास्को द गामा"
+    },
+    "years": {
+      "en": "1498–1502 CE",
+      "hi": "1498–1502 ई."
+    },
+    "description": {
+      "en": "Rounds the Cape of Good Hope with navigator Ahmad ibn Majid, dropping anchor at Calicut to initiate European direct trade.",
+      "hi": "अफ्रीका का चक्कर काटकर कालीकट पहुँचना; भारत में यूरोपीय समुद्री शक्तियों के प्रवेश की शुरुआत।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Malindi (East Africa)",
+          "hi": "मालिंदी (अफ्रीका)"
+        },
+        "lon": 40.11,
+        "lat": -3.22,
+        "year": 1498,
+        "note": {
+          "en": "Hires a Gujarati pilot across the Arabian Sea.",
+          "hi": "अरब सागर पार करने हेतु अनुभवी भारतीय नाविक की सहायता ली।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kappad Beach (Calicut)",
+          "hi": "कप्पड़ (कालीकट)"
+        },
+        "lon": 75.72,
+        "lat": 11.38,
+        "year": 1498,
+        "note": {
+          "en": "Lands in India on 20 May 1498; received by the Zamorin of Calicut.",
+          "hi": "20 मई 1498 को आगमन; कालीकट के ज़ामोरिन से भेंट।"
+        }
+      },
+      {
+        "name": {
+          "en": "Cannanore (Kannur)",
+          "hi": "कन्नूर"
+        },
+        "lon": 75.37,
+        "lat": 11.87,
+        "year": 1498,
+        "note": {
+          "en": "Forms an alliance with the rival Raja of Kolathunadu.",
+          "hi": "कोलाथिरी राजा के साथ व्यापारिक समझौता।"
+        }
+      },
+      {
+        "name": {
+          "en": "Cochin (Kochi)",
+          "hi": "कोच्चि"
+        },
+        "lon": 76.26,
+        "lat": 9.96,
+        "year": 1502,
+        "note": {
+          "en": "Establishes first Portuguese factory and fortified settlement on second voyage.",
+          "hi": "द्वितीय यात्रा में पहली पुर्तगाली फैक्ट्री की स्थापना।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": {
+      "en": "Babur’s conquest of Hindustan",
+      "hi": "बाबर का हिंदुस्तान अभियान"
+    },
+    "who": {
+      "en": "Zahir-ud-din Muhammad Babur",
+      "hi": "जहीरुद्दीन मुहम्मद बाबर"
+    },
+    "years": {
+      "en": "1525–1526 CE",
+      "hi": "1525–1526 ई."
+    },
+    "description": {
+      "en": "Descendant of Timur and Genghis Khan descends from Kabul to win the battles of Panipat and Khanwa, founding the Mughal realm.",
+      "hi": "काबुल से चलकर पानीपत और खानवा के युद्ध जीते; भारत में मुगल सल्तनत की आधारशिला रखी।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Kabul",
+          "hi": "काबुल"
+        },
+        "lon": 69.17,
+        "lat": 34.53,
+        "year": 1525,
+        "note": {
+          "en": "Departs with 12,000 disciplined horsemen and ottoman artillery.",
+          "hi": "12,000 घुड़सवारों और तोपों के साथ हिंदुस्तान की ओर कूच।"
+        }
+      },
+      {
+        "name": {
+          "en": "Peshawar",
+          "hi": "पेशावर"
+        },
+        "lon": 71.57,
+        "lat": 34.01,
+        "year": 1525,
+        "note": {
+          "en": "Crosses the Khyber; secures the frontier passes.",
+          "hi": "खैबर दर्रा पार कर पंजाब के मैदान में प्रवेश।"
+        }
+      },
+      {
+        "name": {
+          "en": "Lahore",
+          "hi": "लाहौर"
+        },
+        "lon": 74.35,
+        "lat": 31.55,
+        "year": 1526,
+        "note": {
+          "en": "Defeats Daulat Khan Lodi's forces; takes the city.",
+          "hi": "दौलत खान लोदी को हराकर पंजाब पर अधिकार।"
+        }
+      },
+      {
+        "name": {
+          "en": "Panipat",
+          "hi": "पानीपत"
+        },
+        "lon": 76.97,
+        "lat": 29.39,
+        "year": 1526,
+        "note": {
+          "en": "Wins the decisive First Battle of Panipat against Ibrahim Lodi.",
+          "hi": "तोपखाने की मदद से इब्राहिम लोदी को हराया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Delhi & Agra",
+          "hi": "दिल्ली व आगरा"
+        },
+        "lon": 78.01,
+        "lat": 27.18,
+        "year": 1526,
+        "note": {
+          "en": "Khutba read in Babur's name at Delhi; lays out Persian charbagh gardens at Agra.",
+          "hi": "दिल्ली में खुतबा पढ़ा गया और आगरा में आराम बाग बनाया।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": {
+      "en": "Chaitanya Mahaprabhu’s pilgrimage",
+      "hi": "चैतन्य महाप्रभु की दक्षिण यात्रा"
+    },
+    "who": {
+      "en": "Chaitanya Mahaprabhu, Gaudiya Vaishnava saint",
+      "hi": "चैतन्य महाप्रभु"
+    },
+    "years": {
+      "en": "1510–1516 CE",
+      "hi": "1510–1516 ई."
+    },
+    "description": {
+      "en": "Leaves Nabadwip to spread Harinama Sankirtana across South India, Vrindavan, and Puri, popularizing ecstatic devotional bhakti.",
+      "hi": "नवद्वीप से पुरी और दक्षिण भारत तक संकीर्तन का प्रचार; महाप्रभु की भावविभोर भक्ति यात्रा।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Nabadwip (Bengal)",
+          "hi": "नवद्वीप (बंगाल)"
+        },
+        "lon": 88.36,
+        "lat": 23.4,
+        "year": 1510,
+        "note": {
+          "en": "Takes sannyasa from Keshava Bharati at Katwa.",
+          "hi": "कटवा में संन्यास ग्रहण कर संकीर्तन आंदोलन शुरू किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Puri (Jagannath Temple)",
+          "hi": "पुरी"
+        },
+        "lon": 85.83,
+        "lat": 19.81,
+        "year": 1510,
+        "note": {
+          "en": "Deep ecstatic contemplation before Lord Jagannath; converts Sarvabhauma Bhattacharya.",
+          "hi": "सार्वभौम भट्टाचार्य से वेदांत चर्चा और जगन्नाथ दर्शन।"
+        }
+      },
+      {
+        "name": {
+          "en": "Srirangam",
+          "hi": "श्रीरंगम"
+        },
+        "lon": 78.69,
+        "lat": 10.86,
+        "year": 1511,
+        "note": {
+          "en": "Spends four months of Chaturmasya at the Ranganathaswamy temple.",
+          "hi": "श्रीरंगम मंदिर में चार महीने का चातुर्मास वास।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kanyakumari & Malabar",
+          "hi": "कन्याकुमारी व मालाबार"
+        },
+        "lon": 77.54,
+        "lat": 8.08,
+        "year": 1512,
+        "note": {
+          "en": "Travels through southern shrines discovering the Brahma Samhita manuscript.",
+          "hi": "दक्षिण के मंदिरों में 'ब्रह्म संहिता' ग्रंथ की पुनर्प्राप्ति।"
+        }
+      },
+      {
+        "name": {
+          "en": "Vrindavan",
+          "hi": "वृंदावन"
+        },
+        "lon": 77.7,
+        "lat": 27.58,
+        "year": 1515,
+        "note": {
+          "en": "Rediscovers forgotten holy sites of Krishna's pastimes in Braj.",
+          "hi": "ब्रज के लुप्त तीर्थों की पहचान और पुनर्प्रतिष्ठा।"
+        }
+      },
+      {
+        "name": {
+          "en": "Puri (Gambhir)",
+          "hi": "पुरी (गंभीर)"
+        },
+        "lon": 85.83,
+        "lat": 19.81,
+        "year": 1516,
+        "note": {
+          "en": "Spends his final 18 years in Gambhira in mystical absorption.",
+          "hi": "गंभीरा में जीवन के अंतिम 18 वर्ष दिव्य भावावेश में बिताए।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": {
+      "en": "Mirabai’s pilgrimage of devotion",
+      "hi": "मीराबाई की भक्ति यात्रा"
+    },
+    "who": {
+      "en": "Mirabai, Bhakti poetess-saint",
+      "hi": "भक्त शिरोमणि मीराबाई"
+    },
+    "years": {
+      "en": "c. 1532–1547 CE",
+      "hi": "लगभग 1532–1547 ई."
+    },
+    "description": {
+      "en": "Defies royal court orthodoxy in Mewar to sing ecstatic pads to Giridhar Gopal, walking to Merta, Vrindavan, and Dwarka.",
+      "hi": "राजसी वैभव त्यागकर 'मेरे तो गिरधर गोपाल' गाती हुईं मेड़ता, वृंदावन और द्वारका की पदयात्रा।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Chittorgarh Fort",
+          "hi": "चित्तौड़गढ़"
+        },
+        "lon": 74.65,
+        "lat": 24.89,
+        "year": 1532,
+        "note": {
+          "en": "Survives poison cups and persecutions; leaves the Sisodia palace.",
+          "hi": "विष का प्याला अमृत बना; राजमहल छोड़कर भक्ति का मार्ग चुना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Merta",
+          "hi": "मेड़ता"
+        },
+        "lon": 74.03,
+        "lat": 26.65,
+        "year": 1535,
+        "note": {
+          "en": "Returns to her ancestral Rathore home before embarking on pilgrimage.",
+          "hi": "अपने पैतृक चारभुजा मंदिर में भजन-कीर्तन।"
+        }
+      },
+      {
+        "name": {
+          "en": "Pushkar",
+          "hi": "पुष्कर"
+        },
+        "lon": 74.55,
+        "lat": 26.49,
+        "year": 1538,
+        "note": {
+          "en": "Sings at the sacred lake surrounded by devotees of all castes.",
+          "hi": "पवित्र पुष्कर सरोवर के तट पर संतों संग सत्संग।"
+        }
+      },
+      {
+        "name": {
+          "en": "Vrindavan",
+          "hi": "वृंदावन"
+        },
+        "lon": 77.7,
+        "lat": 27.58,
+        "year": 1540,
+        "note": {
+          "en": "Meets Jiva Goswami; declares that in Braj, Krishna is the only Purusha.",
+          "hi": "जीव गोस्वामी से भेंट; ब्रज में केवल कृष्ण ही पुरुष हैं।"
+        }
+      },
+      {
+        "name": {
+          "en": "Dwarka (Dwarkadhish Temple)",
+          "hi": "द्वारका (द्वारकाधीश मंदिर)"
+        },
+        "lon": 68.97,
+        "lat": 22.24,
+        "year": 1547,
+        "note": {
+          "en": "Merges into the idol of Lord Krishna according to tradition.",
+          "hi": "परंपरानुसार द्वारकाधीश के विग्रह में समाहित हुईं।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": {
+      "en": "Shivaji’s Southern campaign",
+      "hi": "छत्रपति शिवाजी का दक्षिण दिग्विजय"
+    },
+    "who": {
+      "en": "Chhatrapati Shivaji Maharaj",
+      "hi": "छत्रपति शिवाजी महाराज"
+    },
+    "years": {
+      "en": "1677–1678 CE",
+      "hi": "1677–1678 ई."
+    },
+    "description": {
+      "en": "Marches a 50,000-strong army to Hyderabad, captures Gingee and Vellore, creating a southern Maratha bedrock against Mughal advance.",
+      "hi": "रायगढ़ से गोलकुंडा होते हुए जिंजी और वेल्लोर पर विजय; दक्षिण में मराठा स्वराज्य का सुदृढ़ आधार बनाया।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Raigad",
+          "hi": "रायगढ़"
+        },
+        "lon": 73.44,
+        "lat": 18.23,
+        "year": 1677,
+        "note": {
+          "en": "Sets out with his army following the coronation.",
+          "hi": "स्वराज्य की राजधानी रायगढ़ से दक्षिण दिग्विजय हेतु प्रस्थान।"
+        }
+      },
+      {
+        "name": {
+          "en": "Hyderabad (Bhagnagar)",
+          "hi": "हैदराबाद (गोलकुंडा)"
+        },
+        "lon": 78.48,
+        "lat": 17.38,
+        "year": 1677,
+        "note": {
+          "en": "Signs strategic mutual-defense treaty with Qutb Shahi Sultan Abul Hasan Tanashah.",
+          "hi": "कुतुबशाही सुल्तान से ऐतिहासिक मैत्री संधि संपन्न।"
+        }
+      },
+      {
+        "name": {
+          "en": "Srisailam",
+          "hi": "श्रीशैलम"
+        },
+        "lon": 78.87,
+        "lat": 16.07,
+        "year": 1677,
+        "note": {
+          "en": "Spends days in deep devotion at the Mallikarjuna Jyotirlinga shrine.",
+          "hi": "मल्लिकार्जुन ज्योतिर्लिंग में तपस्या और ध्यान।"
+        }
+      },
+      {
+        "name": {
+          "en": "Gingee (Senji)",
+          "hi": "जिंजी दुर्ग"
+        },
+        "lon": 79.42,
+        "lat": 12.25,
+        "year": 1677,
+        "note": {
+          "en": "Captures the nearly impregnable citadel; calls it the most invulnerable fortress in India.",
+          "hi": "अभेद्य जिंजी दुर्ग जीता, जो आगे चलकर 8 वर्ष के मुगल घेरे में काम आया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Vellore",
+          "hi": "वेल्लोर दुर्ग"
+        },
+        "lon": 79.13,
+        "lat": 12.92,
+        "year": 1678,
+        "note": {
+          "en": "Secures the great moat fortress after a 14-month coordinated siege.",
+          "hi": "गहरे परकोटे वाले वेल्लोर दुर्ग पर मराठा ध्वज फहराया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Panhala",
+          "hi": "पन्हाला दुर्ग"
+        },
+        "lon": 74.11,
+        "lat": 16.81,
+        "year": 1678,
+        "note": {
+          "en": "Returns triumphant to the Western Ghats stronghold.",
+          "hi": "दक्षिण में स्वराज्य का विशाल विस्तार कर पश्चिमी घाट वापसी।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": {
+      "en": "Tipu Sultan’s defensive campaigns",
+      "hi": "टीपू सुल्तान के रक्षात्मक अभियान"
+    },
+    "who": {
+      "en": "Tipu Sultan, the Tiger of Mysore",
+      "hi": "टीपू सुल्तान (मैसूर के शेर)"
+    },
+    "years": {
+      "en": "1780–1799 CE",
+      "hi": "1780–1799 ई."
+    },
+    "description": {
+      "en": "Pioneers military rocket artillery and naval arsenals against Company expansion across four Anglo-Mysore Wars.",
+      "hi": "आधुनिक रॉकेट तोपखाने और कूटनीति के बल पर ब्रिटिश ईस्ट इंडिया कंपनी के विरुद्ध चार भीषण युद्ध लड़े।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Pollilur (Kanchipuram)",
+          "hi": "पोल्लिलूर"
+        },
+        "lon": 79.7,
+        "lat": 12.83,
+        "year": 1780,
+        "note": {
+          "en": "Crushes Colonel Baillie's British detachment using Mysorean iron rockets.",
+          "hi": "मैसूरियन रॉकेटों से कर्नल बेली की ब्रिटिश सेना को बुरी तरह हराया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Mangalore",
+          "hi": "मंगलुरु"
+        },
+        "lon": 74.85,
+        "lat": 12.91,
+        "year": 1784,
+        "note": {
+          "en": "Signs the Treaty of Mangalore, forcing the British to restore all conquests.",
+          "hi": "मंगलौर की संधि द्वारा अंग्रेजों को हस्तगत क्षेत्र लौटाने पर विवश किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Coimbatore",
+          "hi": "कोयंबटूर"
+        },
+        "lon": 76.95,
+        "lat": 11.01,
+        "year": 1791,
+        "note": {
+          "en": "Fortifies the strategic Palghat gap pass.",
+          "hi": "पालघाट दर्रे की सुरक्षा हेतु सैन्य दुर्ग का सुदृढ़ीकरण।"
+        }
+      },
+      {
+        "name": {
+          "en": "Srirangapatna",
+          "hi": "श्रीरंगपट्टनम"
+        },
+        "lon": 76.68,
+        "lat": 12.42,
+        "year": 1799,
+        "note": {
+          "en": "Dies sword in hand defending the breach during the Fourth Anglo-Mysore War.",
+          "hi": "श्रीरंगपट्टनम के पतन के समय दुर्ग की रक्षा करते हुए वीरगति।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "title": {
+      "en": "Swami Vivekananda’s Parivrajaka tour",
+      "hi": "स्वामी विवेकानंद की भारत परिक्रमा"
+    },
+    "who": {
+      "en": "Swami Vivekananda, wandering sannyasin",
+      "hi": "स्वामी विवेकानंद"
+    },
+    "years": {
+      "en": "1890–1893",
+      "hi": "1890–1893"
+    },
+    "description": {
+      "en": "Walks as a penniless wanderer across northern, western, and southern India, culminating in his meditation at Kanyakumari.",
+      "hi": "संन्यासी के रूप में संपूर्ण भारत का पैदल भ्रमण; जनसामान्य के दुःख-दर्द का साक्षात्कार और कन्याकुमारी में साधना।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Baranagar (Calcutta)",
+          "hi": "वराहनगर (कोलकाता)"
+        },
+        "lon": 88.36,
+        "lat": 22.64,
+        "year": 1890,
+        "note": {
+          "en": "Leaves the early Ramakrishna monastery to walk as an unknown pilgrim.",
+          "hi": "श्रीरामकृष्ण के शिष्यों के मठ से अज्ञात संन्यासी के रूप में प्रस्थान।"
+        }
+      },
+      {
+        "name": {
+          "en": "Varanasi",
+          "hi": "वाराणसी"
+        },
+        "lon": 83,
+        "lat": 25.32,
+        "year": 1890,
+        "note": {
+          "en": "Discourses with scholars; 'face the brutes' monkey incident.",
+          "hi": "विद्वानों से चर्चा और निर्भयता का पाठ।"
+        }
+      },
+      {
+        "name": {
+          "en": "Khetri (Rajasthan)",
+          "hi": "खेतड़ी"
+        },
+        "lon": 75.78,
+        "lat": 27.98,
+        "year": 1891,
+        "note": {
+          "en": "Befriended by Raja Ajit Singh, who suggests the name 'Vivekananda'.",
+          "hi": "राजा अजीत सिंह से मित्रता, जिन्होंने 'विवेकानंद' नाम सुझाया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Belgaum & Goa",
+          "hi": "बेलगाम व गोवा"
+        },
+        "lon": 74.5,
+        "lat": 15.85,
+        "year": 1892,
+        "note": {
+          "en": "Walks through the Deccan and Konkan coast reading Christian theology.",
+          "hi": "दक्कन और कोंकण में धर्मग्रंथों का तुलनात्मक अध्ययन।"
+        }
+      },
+      {
+        "name": {
+          "en": "Madras",
+          "hi": "मद्रास"
+        },
+        "lon": 80.27,
+        "lat": 13.08,
+        "year": 1892,
+        "note": {
+          "en": "Inspires youth to rise; disciples collect funds for his Chicago trip.",
+          "hi": "युवाओं में ऊर्जा का संचार; शिकागो यात्रा की योजना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Kanyakumari (Vivekananda Rock)",
+          "hi": "कन्याकुमारी"
+        },
+        "lon": 77.55,
+        "lat": 8.08,
+        "year": 1892,
+        "note": {
+          "en": "Meditates for three days on the last rock of India on the mission to awaken the motherland.",
+          "hi": "समुद्र में स्थित शिला पर तीन दिन अखंड ध्यान; भारत पुनरुत्थान का संकल्प।"
+        }
+      },
+      {
+        "name": {
+          "en": "Bombay",
+          "hi": "बंबई"
+        },
+        "lon": 72.83,
+        "lat": 18.93,
+        "year": 1893,
+        "note": {
+          "en": "Boards the ship SS Peninsular for the World’s Parliament of Religions in Chicago.",
+          "hi": "शिकागो विश्व धर्म संसद हेतु पानी के जहाज से प्रस्थान।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "title": {
+      "en": "Rabindranath Tagore’s India journeys",
+      "hi": "रवींद्रनाथ ठाकुर की भारत यात्राएँ"
+    },
+    "who": {
+      "en": "Rabindranath Tagore, Gurudev",
+      "hi": "गुरुदेव रवींद्रनाथ ठाकुर"
+    },
+    "years": {
+      "en": "1878–1940",
+      "hi": "1878–1940"
+    },
+    "description": {
+      "en": "From the Padma boat at Shelaidaha to Santiniketan, Ahmedabad, and South India, composing poems, songs, and lectures on universal humanism.",
+      "hi": "पद्मा नदी की बजरा यात्रा से शांतिनिकेतन, अहमदाबाद और दक्षिण भारत: विश्वमानव के संदेश की रचना।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Kolkata (Jorasanko Thakurbari)",
+          "hi": "जोड़ासांको (कोलकाता)"
+        },
+        "lon": 88.36,
+        "lat": 22.58,
+        "year": 1878,
+        "note": {
+          "en": "Birthplace and crucible of the Bengal Renaissance.",
+          "hi": "बंगाल पुनर्जागरण का केंद्र और जन्मस्थल।"
+        }
+      },
+      {
+        "name": {
+          "en": "Shelaidaha (Padma River)",
+          "hi": "शिलाइदह (पद्मा तट)"
+        },
+        "lon": 89.15,
+        "lat": 23.9,
+        "year": 1890,
+        "note": {
+          "en": "Lives on a houseboat; writes the core poems of Gitanjali and Galpaguchchha.",
+          "hi": "बजरे पर रहकर 'गीतांजलि' और 'गल्पगुच्छ' की रचना की।"
+        }
+      },
+      {
+        "name": {
+          "en": "Santiniketan & Sriniketan",
+          "hi": "शांतिनिकेतन"
+        },
+        "lon": 87.68,
+        "lat": 23.68,
+        "year": 1901,
+        "note": {
+          "en": "Founds the open-air ashram school, growing into Visva-Bharati University in 1921.",
+          "hi": "खुले वातावरण में आश्रम विद्यालय और विश्वभारती की स्थापना।"
+        }
+      },
+      {
+        "name": {
+          "en": "Amritsar",
+          "hi": "अमृतसर"
+        },
+        "lon": 74.88,
+        "lat": 31.62,
+        "year": 1919,
+        "note": {
+          "en": "Renounces British Knighthood in historic letter after the Jallianwala Bagh massacre.",
+          "hi": "जलियांवाला बाग नरसंहार के विरोध में 'नाइटहुड' की उपाधि त्यागी।"
+        }
+      },
+      {
+        "name": {
+          "en": "Madanapalle (Andhra Pradesh)",
+          "hi": "मदनपल्ले"
+        },
+        "lon": 78.5,
+        "lat": 13.55,
+        "year": 1919,
+        "note": {
+          "en": "Translates Jana Gana Mana into English as 'The Morning Song of India'.",
+          "hi": "राष्ट्रगान 'जन गण मन' का अंग्रेजी अनुवाद किया।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "title": {
+      "en": "Mahatma Gandhi’s India",
+      "hi": "महात्मा गांधी का सत्याग्रह पथ"
+    },
+    "who": {
+      "en": "Mohandas Karamchand Gandhi",
+      "hi": "महात्मा गांधी"
+    },
+    "years": {
+      "en": "1915–1947",
+      "hi": "1915–1947"
+    },
+    "description": {
+      "en": "Returns from South Africa to lead the Champaran, Kheda, Salt March, and Quit India movements through non-violence (ahimsa).",
+      "hi": "दक्षिण अफ्रीका से वापसी के बाद चंपारण, खेड़ा, दांडी यात्रा और भारत छोड़ो आंदोलन का अहिंसक नेतृत्व।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Mumbai (Apollo Bunder)",
+          "hi": "बंबई (अपोलो बंदर)"
+        },
+        "lon": 72.83,
+        "lat": 18.92,
+        "year": 1915,
+        "note": {
+          "en": "Returns from South Africa on 9 January (Pravasi Bharatiya Divas).",
+          "hi": "9 जनवरी 1915 को स्वदेश वापसी (प्रवासी भारतीय दिवस)।"
         }
       },
       {
         "name": {
           "en": "Champaran",
-          "hi": "Champaran"
+          "hi": "चंपारण"
         },
         "lon": 84.9,
         "lat": 26.6,
         "year": 1917,
         "note": {
-          "en": "First satyagraha in India.",
-          "hi": "First satyagraha in India."
+          "en": "First satyagraha in India defending indigo farmers against tinkathia exploitation.",
+          "hi": "नील के किसानों के हक में भारत का पहला सफल सत्याग्रह।"
         }
       },
       {
         "name": {
-          "en": "Ahmedabad",
-          "hi": "Ahmedabad"
+          "en": "Sabarmati Ashram (Ahmedabad)",
+          "hi": "साबरमती आश्रम"
         },
         "lon": 72.58,
-        "lat": 23.03,
-        "year": 1920,
+        "lat": 23.06,
+        "year": 1917,
         "note": {
-          "en": "Sabarmati Ashram.",
-          "hi": "Sabarmati Ashram."
+          "en": "Founds the central laboratory of constructive work, khadi, and satyagraha.",
+          "hi": "सत्याग्रह, चरखा और रचनात्मक कार्यों का मुख्य केंद्र।"
         }
       },
       {
         "name": {
           "en": "Dandi",
-          "hi": "Dandi"
+          "hi": "दांडी"
         },
         "lon": 72.8,
         "lat": 20.9,
         "year": 1930,
         "note": {
-          "en": "Breaks the salt law.",
-          "hi": "Breaks the salt law."
+          "en": "Completes the 240-mile Salt March; breaks the salt tax on 6 April.",
+          "hi": "240 मील की पदयात्रा कर नमक कानून तोड़ा; सविनय अवज्ञा का शंखनाद।"
+        }
+      },
+      {
+        "name": {
+          "en": "Sevagram (Wardha)",
+          "hi": "सेवाग्राम (वर्धा)"
+        },
+        "lon": 78.6,
+        "lat": 20.75,
+        "year": 1936,
+        "note": {
+          "en": "Establishes his rural ashram headquarters in central India.",
+          "hi": "ग्रामीण विकास और बुनियादी शिक्षा (नई तालीम) का केंद्र।"
         }
       },
       {
         "name": {
           "en": "Noakhali",
-          "hi": "Noakhali"
+          "hi": "नोआखली"
         },
         "lon": 91.1,
         "lat": 22.8,
         "year": 1946,
         "note": {
-          "en": "Works for peace amid communal violence.",
-          "hi": "Works for peace amid communal violence."
+          "en": "Barefoot peace march through riot-torn villages during communal violence.",
+          "hi": "विभाजन की हिंसा के बीच शांति स्थापना हेतु नंगे पाँव यात्रा।"
         }
       },
       {
         "name": {
-          "en": "Delhi",
-          "hi": "दिल्ली"
+          "en": "New Delhi (Birla House)",
+          "hi": "नई दिल्ली (बिड़ला हाउस)"
         },
         "lon": 77.21,
-        "lat": 28.61,
-        "year": 1947,
+        "lat": 28.6,
+        "year": 1948,
         "note": {
-          "en": "Independence.",
-          "hi": "Independence."
+          "en": "Martyred on 30 January 1948 while heading to prayer.",
+          "hi": "30 जनवरी 1948 को प्रार्थना सभा जाते समय बलिदान।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "title": {
+      "en": "Dr. Ambedkar’s path of liberation",
+      "hi": "डॉ. आंबेडकर का मुक्ति पथ"
+    },
+    "who": {
+      "en": "Dr. B. R. Ambedkar, Babasaheb",
+      "hi": "डॉ. भीमराव आंबेडकर (बाबासाहेब)"
+    },
+    "years": {
+      "en": "1927–1956",
+      "hi": "1927–1956"
+    },
+    "description": {
+      "en": "From the Mahad water satyagraha to drafting the Constitution and the grand Deeksha at Nagpur: fighting for caste annihilation and human dignity.",
+      "hi": "महाड सत्याग्रह से संविधान निर्माण और नागपुर में बौद्ध धम्म दीक्षा: सामाजिक न्याय और समता का संघर्ष।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Mahad (Chavdar Tale)",
+          "hi": "महाड (चवदार तालाब)"
+        },
+        "lon": 73.42,
+        "lat": 18.08,
+        "year": 1927,
+        "note": {
+          "en": "Leads the historic water satyagraha asserting equal human rights to public water.",
+          "hi": "सार्वजनिक तालाब से पानी पीने के मानवीय अधिकार हेतु ऐतिहासिक सत्याग्रह।"
+        }
+      },
+      {
+        "name": {
+          "en": "Nashik (Kalaram Temple)",
+          "hi": "नासिक (कालाराम मंदिर)"
+        },
+        "lon": 73.79,
+        "lat": 20,
+        "year": 1930,
+        "note": {
+          "en": "Five-year non-violent satyagraha for temple entry and civic equality.",
+          "hi": "मंदिर प्रवेश और सामाजिक समानता हेतु 5 वर्षीय शांतिपूर्ण सत्याग्रह।"
+        }
+      },
+      {
+        "name": {
+          "en": "Pune (Yerwada Jail)",
+          "hi": "पुणे (यरवदा)"
+        },
+        "lon": 73.88,
+        "lat": 18.55,
+        "year": 1932,
+        "note": {
+          "en": "Signs the Poona Pact ensuring reserved electoral representation for Depressed Classes.",
+          "hi": "गांधीजी के साथ पूना पैक्ट पर हस्ताक्षर; सुरक्षित सीटों की व्यवस्था।"
+        }
+      },
+      {
+        "name": {
+          "en": "Yeola (Nashik)",
+          "hi": "येवला"
+        },
+        "lon": 74.49,
+        "lat": 20.04,
+        "year": 1935,
+        "note": {
+          "en": "Declares: 'I was born a Hindu, but I solemnly assure you I will not die as a Hindu'.",
+          "hi": "'मैं हिंदू पैदा हुआ था, लेकिन हिंदू मरूँगा नहीं' का ऐतिहासिक संकल्प।"
+        }
+      },
+      {
+        "name": {
+          "en": "New Delhi (Constitution Hall)",
+          "hi": "नई दिल्ली (संविधान सभा)"
+        },
+        "lon": 77.21,
+        "lat": 28.62,
+        "year": 1949,
+        "note": {
+          "en": "As Chairman of the Drafting Committee, presents the completed Constitution of India.",
+          "hi": "प्रारूप समिति के अध्यक्ष के रूप में भारत का संविधान प्रस्तुत किया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Nagpur (Deekshabhoomi)",
+          "hi": "नागपुर (दीक्षाभूमि)"
+        },
+        "lon": 79.07,
+        "lat": 21.13,
+        "year": 1956,
+        "note": {
+          "en": "Embraces Buddhism alongside 500,000 followers on Ashoka Vijaya Dashami.",
+          "hi": "5 लाख अनुयायियों के साथ बौद्ध धम्म की दीक्षा ली।"
+        }
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "title": {
+      "en": "Netaji Subhas Bose & the INA",
+      "hi": "नेताजी सुभाष चंद्र बोस और आज़ाद हिंद फ़ौज"
+    },
+    "who": {
+      "en": "Netaji Subhas Chandra Bose",
+      "hi": "नेताजी सुभाष चंद्र बोस"
+    },
+    "years": {
+      "en": "1941–1945",
+      "hi": "1941–1945"
+    },
+    "description": {
+      "en": "The Great Escape from Calcutta to Berlin and Singapore, leading the Indian National Army (INA) to the northeastern borders of India.",
+      "hi": "कोलकाता से महा-निष्क्रमण, जर्मनी व सिंगापुर में आज़ाद हिंद फ़ौज का पुनर्गठन और 'दिल्ली चलो' का उद्घोष।"
+    },
+    "stops": [
+      {
+        "name": {
+          "en": "Calcutta (Elgin Road)",
+          "hi": "कोलकाता (एल्गिन रोड)"
+        },
+        "lon": 88.35,
+        "lat": 22.54,
+        "year": 1941,
+        "note": {
+          "en": "Executes the daring 'Great Escape' disguised as Ziauddin, evading British surveillance.",
+          "hi": "ब्रिटिश नजरबंदी से जियाउद्दीन के वेश में ऐतिहासिक महा-निष्क्रमण।"
+        }
+      },
+      {
+        "name": {
+          "en": "Gomoh & Peshawar",
+          "hi": "गोमो व पेशावर"
+        },
+        "lon": 71.57,
+        "lat": 34.01,
+        "year": 1941,
+        "note": {
+          "en": "Boards the Frontier Mail; travels overland across the tribal territories to Kabul.",
+          "hi": "फ्रंटियर मेल पकड़कर काबुल और सोवियत संघ के मार्ग से बर्लिन प्रस्थान।"
+        }
+      },
+      {
+        "name": {
+          "en": "Singapore",
+          "hi": "सिंगापुर"
+        },
+        "lon": 103.82,
+        "lat": 1.35,
+        "year": 1943,
+        "note": {
+          "en": "Assumes leadership of the Indian Independence League and proclaims Azad Hind government.",
+          "hi": "आज़ाद हिंद सरकार की स्थापना और 'तुम मुझे खून दो, मैं तुम्हें आज़ादी दूँगा' का आह्वान।"
+        }
+      },
+      {
+        "name": {
+          "en": "Port Blair (Andamans)",
+          "hi": "पोर्ट ब्लेयर (अंडमान)"
+        },
+        "lon": 92.73,
+        "lat": 11.67,
+        "year": 1943,
+        "note": {
+          "en": "Unfurls the tricolour on liberated Indian soil; renames the islands Shaheed and Swaraj.",
+          "hi": "मुक्त भारतीय भूमि पर तिरंगा फहराया; द्वीपों को 'शहीद' और 'स्वराज' नाम दिया।"
+        }
+      },
+      {
+        "name": {
+          "en": "Moirang (Manipur)",
+          "hi": "मोइरांग (मणिपुर)"
+        },
+        "lon": 93.77,
+        "lat": 24.5,
+        "year": 1944,
+        "note": {
+          "en": "INA Colonel Shaukat Malik unfurls the national flag on the mainland during the Imphal offensive.",
+          "hi": "आज़ाद हिंद फ़ौज ने भारतीय मुख्य भूमि पर तिरंगा फहराया।"
         }
       }
     ]

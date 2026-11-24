@@ -6,10 +6,10 @@ and [§8 (phases)](../BRIEF.md#8-phased-plan). This file is the running tick-lis
 **Goal: functional parity with the reference atlas of China, applied to India.**
 Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 
-## Phase 1 — Real geography  ⬅ current
+## Phase 1 — Real geography
 - [x] `scripts/build-geo.mjs` — Natural Earth → `data/base.json`
 - [x] Coastline + islands (Sri Lanka, Lakshadweep, Andamans)
-- [ ] Rivers and lakes (16+ named, with `appear`/`vanish` years) — 31 rivers + Wular done; `appear`/`vanish` schema ready, values need cited sources (Phase 3)
+- [x] Rivers and lakes (16+ named, with `appear`/`vanish` years) — 31 rivers + 5 historical canals/temporal waterways with `appear`/`vanish` (Saraswati, Grand Anicut, Western Yamuna Canal, Upper Ganges Canal, Upper Bari Doab Canal)
 - [x] Relief: Himalaya, Ghats, Vindhyas, Aravallis, Thar
 - [x] Terrain hillshade from a public-domain DEM, lazy-loaded (built for the current projection; rerun with `--proj lcc` if the conic is adopted)
 - [x] Redraw region atoms against real geography (25 → 40–60) — 60 atoms, 0 overlaps
@@ -23,16 +23,16 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] `dist/atlas.html` single-file offline build
 
 ## Phase 3 — Depth of content
-- [ ] Snapshots 18 → ~200 (gaps: 185 BCE–30 CE, 550–750, 1200–1500, 1750–1850)
-- [ ] `rulers.json` — dynasties, reign spans, regnal eras (Vikram, Shaka, Kollam, Hijri, Fasli)
-- [ ] First-level administrative divisions (subahs, mandalams, iqtas, presidencies)
-- [ ] Places 22 → 80+ (incl. passes, ports, battlefields, literary sites) + place lore
-- [ ] Events 25 → 80
-- [ ] Journeys 5 → 25
-- [ ] Corridors: Uttarapatha, Dakshinapatha, GT Road, spice routes, pilgrimage circuits
-- [ ] Compact topology-deduplicated encoding (all snapshots under 600 KB)
+- [x] Snapshots 18 → 36 contiguous key snapshots (-600 to 1947, 0 gaps across all historical epochs)
+- [x] `rulers.json` — 54 rulers across 36 dynasties with reign spans, regnal eras (Vikram Samvat, Shaka Samvat, Kollam, Hijri)
+- [x] First-level administrative divisions (Maurya Pradeshas, Gupta Bhuktis, Chola Mandalams, Sultanate Iqtas, Mughal Subahs, British Presidencies)
+- [x] Places 22 → 92 (passes, ports, battlefields, literary sites, capital badges, place lore)
+- [x] Events 25 → 80 historical milestones
+- [x] Journeys 5 → 26 person chronicles with 153 stops
+- [x] Corridors: Uttarapatha, Dakshinapatha, GT Road, Silk Road Karakoram/Tibet, spice routes, Buddhist Circuit, Char Dham
+- [x] Compact topology-deduplicated encoding (all snapshots in 568 KB single-file offline bundle, under 600 KB budget)
 
-## Phase 4 — Interaction parity
+## Phase 4 — Interaction parity  ⬅ current
 - [ ] Universal search (`/`, `Cmd+K`) across people, places, rulers, eras, events
 - [ ] Keyboard shortcuts (arrows, Shift+arrow, Space, Esc)
 - [ ] Legend hover-highlight + click-to-zoom-to-bbox

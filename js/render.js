@@ -4,6 +4,28 @@ let hovPol = -1;
 const lineD = r => 'M' + ptsStr(r).replace(/ /g, 'L');
 const ringsD = rs => rs.map(r => lineD(r) + 'Z').join('');
 
+function drawWaterways() {
+  const y = st.year;
+  const visRivers = B.rivers.filter(r => (r.appear == null || r.appear <= y) && (r.vanish == null || y <= r.vanish));
+  $('#rivers').innerHTML = visRivers.map(r => `<path class="river${r.rank ? ' big' : ''}" d="${r.line.map(lineD).join('')}"/>`).join('');
+}
+
+function drawCorridors() {
+  const g = $('#corridors');
+  if (!g) return;
+  if (!st.corridors) {
+    g.innerHTML = '';
+    return;
+  }
+  const y = st.year;
+  const vis = (window.ATLAS_CORRIDORS || []).filter(c => c.from <= y && y <= c.to);
+  g.innerHTML = vis.map(c => {
+    const pts = c.coords.map(pt => px(pt[0], pt[1]).toFixed(1) + ',' + py(pt[0], pt[1]).toFixed(1)).join(' ');
+    const cls = `corridor ${c.type}`;
+    return `<polyline class="${cls}" points="${pts}" stroke="${c.color || '#d97706'}" data-cor="${c.id}"><title>${esc(T(c.name))}</title></polyline>`;
+  }).join('');
+}
+
 function initStaticLayers() {
   const landD = ringsD([B.coast, ...B.islands.map(i => i.poly)]);
   $('#land').setAttribute('d', landD);
@@ -11,8 +33,18 @@ function initStaticLayers() {
   $('#lakes').innerHTML = B.lakes.map(l => `<path class="lake" d="${ringsD([l.poly])}"/>`).join('');
   if (!window.ATLAS_BASE) $('.note').textContent = 'Base map failed to load. ' + $('.note').textContent;
   $('#relief').innerHTML = B.relief.map(r => `<polygon class="relief${r.name === 'Thar' ? ' desert' : ''}" points="${ptsStr(r.poly)}"/>`).join('');
-  $('#rivers').innerHTML = B.rivers.map(r => `<path class="river${r.rank ? ' big' : ''}" d="${r.line.map(lineD).join('')}"/>`).join('');
+  drawWaterways();
+  drawCorridors();
   $('#pols').setAttribute('clip-path', 'url(#clipLand)');
+
+  const tgCor = $('#tgCorridors');
+  if (tgCor) {
+    tgCor.onclick = () => {
+      st.corridors = !st.corridors;
+      tgCor.classList.toggle('on', st.corridors);
+      drawCorridors();
+    };
+  }
 
   // Terrain hillshade lazy load
   (window.requestIdleCallback || setTimeout)(() => {

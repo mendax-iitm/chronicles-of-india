@@ -17,6 +17,7 @@
     <g id="relief"></g>
     <g id="rivers"></g>
     <g id="pols" clip-path="url(#clipLand)"></g>
+    <g id="corridors"></g>
     <g id="route"></g>
     <g id="ov"></g>
    </g>
@@ -25,6 +26,7 @@
   <div id="tip"></div>
   <div class="zoom"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">−</button><button id="zr" aria-label="Reset view" style="font-size:14px">⌂</button></div>
   <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era">Ghost borders</button>
+  <button class="tg on" id="tgCorridors" title="Toggle historical trade corridors and pilgrimage routes" style="right:112px">Corridors</button>
  </section>
  <aside id="panel">
   <div id="tabs" role="tablist"><button data-t="era" class="on" role="tab" aria-selected="true">Era</button><button data-t="places" role="tab" aria-selected="false">Places</button><button data-t="journeys" role="tab" aria-selected="false">Journeys</button><button data-t="quiz" role="tab" aria-selected="false">Quiz</button></div>
@@ -42,9 +44,12 @@
 <script src="data/base.js"></script>
 <script src="data/regions.js"></script>
 <script src="data/snapshots.js"></script>
+<script src="data/rulers.js"></script>
+<script src="data/divisions.js"></script>
 <script src="data/places.js"></script>
 <script src="data/events.js"></script>
 <script src="data/journeys.js"></script>
+<script src="data/corridors.js"></script>
 
 <!-- Atlas application modules -->
 <script src="js/projection.js"></script>

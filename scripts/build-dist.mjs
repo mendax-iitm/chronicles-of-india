@@ -14,9 +14,12 @@ const dataScripts = [
   'data/base.js',
   'data/regions.js',
   'data/snapshots.js',
+  'data/rulers.js',
+  'data/divisions.js',
   'data/places.js',
   'data/events.js',
-  'data/journeys.js'
+  'data/journeys.js',
+  'data/corridors.js'
 ].map(file => readFileSync(file, 'utf8')).join('\n');
 
 const jsScripts = [

@@ -86,7 +86,7 @@ const snapFile = 'data/snapshots.json';
 if (!existsSync(snapFile)) fail(`Missing ${snapFile}`);
 else {
   const snapshots = JSON.parse(readFileSync(snapFile, 'utf8'));
-  if (snapshots.length < 18) fail(`Snapshot count ${snapshots.length} less than 18`);
+  if (snapshots.length < 30) fail(`Snapshot count ${snapshots.length} less than 30 (Phase 3 requires ≥ 30)`);
   let lastFrom = -Infinity;
   snapshots.forEach((s, i) => {
     if (typeof s.from !== 'number') fail(`Snapshot ${i} missing 'from' year`);
@@ -116,7 +116,7 @@ const placeFile = 'data/places.json';
 if (!existsSync(placeFile)) fail(`Missing ${placeFile}`);
 else {
   const places = JSON.parse(readFileSync(placeFile, 'utf8'));
-  if (places.length < 20) fail(`Place count ${places.length} < 20`);
+  if (places.length < 80) fail(`Place count ${places.length} < 80 (Phase 3 requires ≥ 80)`);
   places.forEach((p, i) => {
     if (typeof p.lon !== 'number' || typeof p.lat !== 'number') fail(`Place ${i} invalid coordinates`);
     if (p.lon < 50 || p.lon > 105 || p.lat < 0 || p.lat > 42) fail(`Place ${i} outside subcontinent bounds`);
@@ -137,7 +137,7 @@ const eventFile = 'data/events.json';
 if (!existsSync(eventFile)) fail(`Missing ${eventFile}`);
 else {
   const events = JSON.parse(readFileSync(eventFile, 'utf8'));
-  if (events.length < 20) fail(`Event count ${events.length} < 20`);
+  if (events.length < 80) fail(`Event count ${events.length} < 80 (Phase 3 requires ≥ 80)`);
   events.forEach((e, i) => {
     if (typeof e.year !== 'number' || e.year === 0 || e.year < -600 || e.year > 1947) {
       fail(`Event ${i} has invalid year: ${e.year}`);
@@ -152,7 +152,7 @@ const jrFile = 'data/journeys.json';
 if (!existsSync(jrFile)) fail(`Missing ${jrFile}`);
 else {
   const journeys = JSON.parse(readFileSync(jrFile, 'utf8'));
-  if (journeys.length < 5) fail(`Journey count ${journeys.length} < 5`);
+  if (journeys.length < 25) fail(`Journey count ${journeys.length} < 25 (Phase 3 requires ≥ 25)`);
   journeys.forEach((j, i) => {
     if (!j.stops || j.stops.length < 2) fail(`Journey ${i} has < 2 stops`);
     j.stops.forEach((st, sIdx) => {
@@ -161,6 +161,56 @@ else {
     });
   });
   log(`Journeys: ${journeys.length} person chronicles with ${journeys.reduce((sum, j) => sum + j.stops.length, 0)} total stops`);
+}
+
+// 7. Validate Rulers
+const rulerFile = 'data/rulers.json';
+if (!existsSync(rulerFile)) fail(`Missing ${rulerFile}`);
+else {
+  const rulers = JSON.parse(readFileSync(rulerFile, 'utf8'));
+  if (rulers.length < 40) fail(`Ruler count ${rulers.length} < 40`);
+  const dynasties = new Set();
+  rulers.forEach((r, i) => {
+    if (!r.reign || r.reign.length !== 2) fail(`Ruler ${r.name?.en} missing valid reign tuple`);
+    const [start, end] = r.reign;
+    if (typeof start !== 'number' || typeof end !== 'number') fail(`Ruler ${r.name?.en} invalid reign years`);
+    if (start > end) fail(`Ruler ${r.name?.en} reign start ${start} > end ${end}`);
+    if (r.dynasty) dynasties.add(r.dynasty);
+  });
+  log(`Rulers: ${rulers.length} rulers across ${dynasties.size} dynasties with verified regnal eras`);
+}
+
+// 8. Validate Administrative Divisions
+const divFile = 'data/divisions.json';
+if (!existsSync(divFile)) fail(`Missing ${divFile}`);
+else {
+  const divisionSystems = JSON.parse(readFileSync(divFile, 'utf8'));
+  if (divisionSystems.length < 5) fail(`Division system count ${divisionSystems.length} < 5`);
+  divisionSystems.forEach((sys, i) => {
+    if (!sys.divisions || !sys.divisions.length) fail(`Division system ${i} has no divisions`);
+    sys.divisions.forEach((dv, dIdx) => {
+      if (!dv.atoms || !dv.atoms.length) fail(`Division ${dv.name?.en} has no atoms`);
+      dv.atoms.forEach(a => {
+        if (!atoms[a]) fail(`Division ${dv.name?.en} references unknown atom '${a}'`);
+      });
+    });
+  });
+  log(`Divisions: ${divisionSystems.length} imperial administrative systems with mapped atoms`);
+}
+
+// 9. Validate Corridors
+const corFile = 'data/corridors.json';
+if (!existsSync(corFile)) fail(`Missing ${corFile}`);
+else {
+  const corridors = JSON.parse(readFileSync(corFile, 'utf8'));
+  if (corridors.length < 6) fail(`Corridor count ${corridors.length} < 6`);
+  corridors.forEach((c, i) => {
+    if (!c.coords || c.coords.length < 2) fail(`Corridor ${c.id} has < 2 points`);
+    c.coords.forEach(([lon, lat], ptIdx) => {
+      if (typeof lon !== 'number' || typeof lat !== 'number') fail(`Corridor ${c.id} pt ${ptIdx} invalid coords`);
+    });
+  });
+  log(`Corridors: ${corridors.length} historical highways, routes, and pilgrimage circuits`);
 }
 
 console.log('\n--- Validation Summary ---');

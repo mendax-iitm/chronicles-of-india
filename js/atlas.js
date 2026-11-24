@@ -10,6 +10,7 @@ const st = {
   selEv: -1,
   jr: -1,
   ghost: true,
+  corridors: true,
   play: false,
   walk: null,
   quiz: { on: false, rounds: [], i: 0, score: 0, res: null, guess: null, done: false }
@@ -106,6 +107,14 @@ const JR = rawJR.map(j => ({
   d: j.description || j.d,
   s: (j.stops || j.s || []).map(st => (Array.isArray(st) ? st : [st.name, st.lon, st.lat, st.year, st.note]))
 }));
+
+// Corridors Adapter
+const rawCOR = window.ATLAS_CORRIDORS || [];
+const COR = rawCOR;
+
+// Rulers & Divisions
+const RULERS = window.ATLAS_RULERS || [];
+const DIVISIONS = window.ATLAS_DIVISIONS || [];
 
 /* ---------- Viewport Camera ---------- */
 const scl = () => svg.clientWidth / vb.w;

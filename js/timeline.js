@@ -6,6 +6,39 @@ function snapAt(y) {
   return k;
 }
 
+function getRegnalEras(y) {
+  const eras = [];
+  // Vikram Samvat (started 57 BCE)
+  const vs = y > 0 ? y + 57 : y + 58;
+  eras.push(`VS ${vs}`);
+  // Shaka Samvat (started 78 CE)
+  if (y >= 78) eras.push(`Shaka ${y - 78}`);
+  // Hijri (Islamic lunar year, from 622 CE)
+  if (y >= 622) {
+    const ah = Math.round((y - 622) * 1.0307) + 1;
+    eras.push(`AH ${ah}`);
+  }
+  // Kollam Era (Malayalam Era, from 825 CE)
+  if (y >= 825) {
+    eras.push(`ME ${y - 824}`);
+  }
+  return eras.join(' · ');
+}
+
+function getActiveRulers(y) {
+  const res = [];
+  (window.ATLAS_RULERS || []).forEach(r => {
+    if (r.reign && r.reign[0] <= y && y <= r.reign[1]) {
+      res.push({
+        dynasty: r.dynasty_name || r.dynasty,
+        name: r.name,
+        span: `${fy(r.reign[0])}–${fy(r.reign[1])}`
+      });
+    }
+  });
+  return res;
+}
+
 function setYear(y, keepView) {
   y = Math.max(-600, Math.min(1947, Math.round(y)));
   if (y === 0) y = 1;
@@ -20,7 +53,17 @@ function setYear(y, keepView) {
   }
   [...$('#ticks').children].forEach((t, i) => t.classList.toggle('on', i === si));
   const s = SN[si];
-  $('#eracard').innerHTML = `<b>${esc(T(s.title))}</b><span>${rg(s)} · map shown at ${esc(T(s.rep))}</span>`;
+  const rulers = getActiveRulers(y);
+  const erasStr = getRegnalEras(y);
+  let cardHtml = `<b>${esc(T(s.title))}</b><span>${rg(s)} · map shown at ${esc(T(s.rep))}</span>`;
+  if (erasStr) cardHtml += `<div class="regnal-eras">${erasStr}</div>`;
+  if (rulers.length) {
+    const rChips = rulers.slice(0, 3).map(r => `<span class="ruler-chip" title="${esc(T(r.dynasty))} (${r.span})">👑 <b>${esc(T(r.name))}</b> <span class="small">(${esc(T(r.dynasty))})</span></span>`).join('');
+    cardHtml += `<div class="rulers">${rChips}</div>`;
+  }
+  $('#eracard').innerHTML = cardHtml;
+  drawWaterways();
+  drawCorridors();
   drawOv();
   if (st.tab === 'era' && ch) render();
   else if (st.tab === 'places' || st.tab === 'journeys') render(true);

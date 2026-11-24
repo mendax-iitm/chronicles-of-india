@@ -19,16 +19,35 @@ function render(soft) {
     if (evs.length) {
       h += '<h3>Events in this era</h3><ul class="l">' + evs.map(e => `<li data-a="ev:${e.id}" class="${e.id === st.selEv ? 'on' : ''}"><span class="dia"></span><span><b>${fy(e.y)}</b> · ${esc(T(e.t))}${e.id === st.selEv ? `<br><span class="small">${esc(T(e.d))}</span>` : ''}</span></li>`).join('') + '</ul>';
     }
+    const divSys = (window.ATLAS_DIVISIONS || []).find(d => {
+      return d.period && d.period[0] <= s.from && s.from <= d.period[1];
+    });
+    if (divSys) {
+      h += `<h3>Administrative Divisions</h3><p class="small"><b>${esc(T(divSys.name))}</b></p><div class="div-list">` +
+        divSys.divisions.slice(0, 8).map(dv => `<div class="div-card"><b>${esc(T(dv.name))}</b> <span class="small">(Cap: ${esc(typeof dv.capital === 'object' ? T(dv.capital) : dv.capital)})</span></div>`).join('') +
+        `</div>`;
+    }
     h += '<p class="small" style="margin-top:12px">Tip: tap a region or a ◆ for details. Dashed outlines show lands that changed hands since the previous era.</p>';
   } else if (st.tab === 'places') {
     const vis = PL.filter(p => nameAt(p, st.year));
     if (st.selPlace >= 0) {
       const p = PL[st.selPlace], cur = nameAt(p, st.year);
+      const rawP = (window.ATLAS_PLACES || []).find(x => x.id === p.id) || p;
       h += '<button class="sec" data-a="pl:back">← All places</button>';
       if (cur) {
-        h += `<h2 style="margin-top:10px">${esc(T(cur[1]))}</h2><div class="rng">Name in ${fy(st.year)}</div><p>${esc(T(cur[2]))}</p>`;
+        h += `<h2 style="margin-top:10px">${esc(T(cur[1]))}`;
+        if (rawP.category) h += `<span class="cap-badge">${esc(T(rawP.category))}</span>`;
+        h += `</h2><div class="rng">Name in ${fy(st.year)}</div><p>${esc(T(cur[2]))}</p>`;
       } else {
-        h += `<h2 style="margin-top:10px">${esc(T(p.n[0][1]))}</h2><div class="rng">Not yet founded in ${fy(st.year)}</div>`;
+        h += `<h2 style="margin-top:10px">${esc(T(p.n[0][1]))}`;
+        if (rawP.category) h += `<span class="cap-badge">${esc(T(rawP.category))}</span>`;
+        h += `</h2><div class="rng">Not yet founded in ${fy(st.year)}</div>`;
+      }
+      if (rawP.eras_as_capital && rawP.eras_as_capital.length) {
+        h += `<div style="margin-top:4px">` + rawP.eras_as_capital.map(c => `<span class="cap-badge" style="background:#e0f2fe;color:#0369a1;border-color:#bae6fd">★ Capital: ${esc(c)}</span>`).join(' ') + `</div>`;
+      }
+      if (rawP.lore) {
+        h += `<div class="lore-box"><b>Cultural Lore:</b> ${esc(T(rawP.lore))}</div>`;
       }
       h += '<h3>Name through the ages</h3><div class="gen">' + p.n.map(n => `<div class="${cur && n === cur ? 'cur' : ''}"><b>${fy(n[0])} · ${esc(T(n[1]))}</b><br><span class="small">${esc(T(n[2]))}</span></div>`).join('') + '</div>';
       h += `<button class="pri" data-a="pl:fly:${p.id}">Show on map</button>`;
@@ -36,7 +55,9 @@ function render(soft) {
     } else {
       h += `<h2>Place genealogy</h2><p class="small">Cities change names and masters. Pick one to trace its names across the eras. Showing places existing in ${fy(st.year)}.</p><ul class="l">` + vis.map(p => {
         const n = nameAt(p, st.year);
-        return `<li data-a="pl:${p.id}"><span class="chip" style="background:#0b2a5b;border-radius:50%"></span><span><b>${esc(T(n[1]))}</b>${p.n.length > 1 ? `<br><span class="small">${p.n.length} names over time</span>` : ''}</span></li>`;
+        const rawItem = (window.ATLAS_PLACES || []).find(x => x.id === p.id);
+        const catBadge = rawItem && rawItem.category ? `<span class="cap-badge">${esc(T(rawItem.category))}</span>` : '';
+        return `<li data-a="pl:${p.id}"><span class="chip" style="background:#0b2a5b;border-radius:50%"></span><span><b>${esc(T(n[1]))}</b>${catBadge}${p.n.length > 1 ? `<br><span class="small">${p.n.length} names over time</span>` : ''}</span></li>`;
       }).join('') + '</ul>';
     }
   } else if (st.tab === 'journeys') {

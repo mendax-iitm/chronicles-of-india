@@ -1,0 +1,810 @@
+// scripts/build-snapshots.mjs
+// Generates data/snapshots.json and data/snapshots.js (36 contiguous historical territorial snapshots from -600 to 1947)
+// Usage: node scripts/build-snapshots.mjs
+
+import { writeFileSync, readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+process.chdir(resolve(dirname(fileURLToPath(import.meta.url)), '..'));
+
+const regions = JSON.parse(readFileSync('data/regions.json', 'utf8'));
+const validAtoms = new Set(Object.keys(regions.atoms));
+
+export const SNAPSHOTS = [
+  // 1. -600 to -346: The Mahajanapadas
+  {
+    id: "era-01",
+    from: -600,
+    to: -346,
+    title: { en: "The Mahajanapadas", hi: "महाजनपद" },
+    representative: { en: "c. 550 BCE", hi: "लगभग 550 ई.पू." },
+    summary: {
+      en: "Sixteen great realms (mahajanapadas) arise across the Indo-Gangetic plain as iron tools, rice farming and walled cities spread. Magadha, Kosala, Avanti and Vatsa compete for supremacy while Buddhism and Jainism emerge.",
+      hi: "लोहे के औजारों, धान की खेती और नगरों के विस्तार के साथ उत्तर भारत में 16 महाजनपदों का उदय। मगध, कोसल, अवंती और वत्स के बीच संघर्ष; बौद्ध और जैन धर्म का प्रादुर्भाव।"
+    },
+    polities: [
+      { name: { en: "Gandhara", hi: "गांधार" }, color: "#8e6bbf", atoms: ["GANDHARA"], note: { en: "Capital Takshashila, famed seat of Vedic and classical learning.", hi: "राजधानी तक्षशिला, विद्या का महान केंद्र।" } },
+      { name: { en: "Kamboja & Indus tribes", hi: "कंबोज और सिंधु जनजातियाँ" }, color: "#b7c4a3", atoms: ["KABUL", "ARACHOSIA", "MULTAN", "SINDH_N", "SINDH_S", "PUNJAB_W"], note: { en: "Northwestern frontier peoples; part of the Achaemenid empire from c. 518 BCE.", hi: "पश्चिमोत्तर सीमांत जातियाँ; लगभग 518 ई.पू. से हख़ामनी साम्राज्य का हिस्सा।" } },
+      { name: { en: "Kuru–Panchala", hi: "कुरु-पांचाल" }, color: "#4a8fd8", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "PUNJAB_E"], note: { en: "Vedic heartland with capitals at Hastinapura, Ahichchhatra, and Kampilya.", hi: "वैदिक संस्कृति का केंद्र; हस्तिनापुर, अहिच्छत्र और कांपिल्य राजधानी।" } },
+      { name: { en: "Matsya & Surasena", hi: "मत्स्य और शूरसेन" }, color: "#6cb0a8", atoms: ["MARWAR", "MEWAR", "DHUNDHAR"], note: { en: "Matsya capital Viratnagar; Surasena capital Mathura on the Yamuna.", hi: "मत्स्य राजधानी विराटनगर और शूरसेन की मथुरा।" } },
+      { name: { en: "Avanti", hi: "अवंती" }, color: "#d97736", atoms: ["MALWA"], note: { en: "Capital Ujjayini (Ujjain); ruled by King Pradyota, major center on southern routes.", hi: "उज्जयिनी राजधानी; राजा प्रद्योत का शासन, दक्षिणापथ का प्रमुख केंद्र।" } },
+      { name: { en: "Kosala", hi: "कोसल" }, color: "#d65050", atoms: ["AWADH"], note: { en: "Capital Shravasti; ruled by King Prasenajit, rival to Magadha.", hi: "श्रावस्ती राजधानी; राजा प्रसेनजित का शासन।" } },
+      { name: { en: "Vatsa", hi: "वत्स" }, color: "#8a5fb0", atoms: ["VATSA", "BUNDELKHAND"], note: { en: "Capital Kaushambi on the Yamuna; ruled by King Udayana.", hi: "यमुना तट पर कौशांबी राजधानी; राजा उदयन का शासन।" } },
+      { name: { en: "Magadha", hi: "मगध" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA"], note: { en: "Haryanka and Shishunaga dynasties; capital at Rajagriha.", hi: "हर्यंक और शिशुनाग वंश; राजगृह राजधानी।" } },
+      { name: { en: "Kalinga", hi: "कलिंग" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S"], note: { en: "Maritime kingdom on the Bay of Bengal coast.", hi: "बंगाल की खाड़ी के तट पर स्थित समुद्री राज्य।" } },
+      { name: { en: "Deccan chiefdoms", hi: "दक्कन के सरदार" }, color: "#9ca886", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N", "VIDARBHA", "KHANDESH", "MARATHWADA", "BASTAR", "GONDWANA", "BAGHELKHAND", "CHHATTISGARH"], note: { en: "Asmaka/Assaka and early iron-using pastoralist communities.", hi: "अश्मक और प्रारंभिक लौह युगीन समुदाय।" } },
+      { name: { en: "Tamilakam chiefdoms", hi: "तमिऴकम के सरदार" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S", "KANARA"], note: { en: "Early lineage polities of the Cheras, Cholas, and Pandyas.", hi: "प्रारंभिक चेर, चोल और पांड्य राजवंश।" } },
+      { name: { en: "Island kingdoms (Lanka)", hi: "लंका के द्वीप राज्य" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Early Indo-Aryan and indigenous settlements; King Vijaya's traditional arrival.", hi: "प्रारंभिक बस्तियाँ; अनुराधापुर राज्य की शुरुआत।" } }
+    ]
+  },
+
+  // 2. -345 to -322: The Nanda Empire
+  {
+    id: "era-02",
+    from: -345,
+    to: -322,
+    title: { en: "The Nanda Empire", hi: "नंद साम्राज्य" },
+    representative: { en: "c. 330 BCE", hi: "लगभग 330 ई.पू." },
+    summary: {
+      en: "Mahapadma Nanda unites northern India into the first pan-Gangetic empire, fielding enormous standing armies. In 326 BCE Alexander of Macedon invades the Punjab but halts at the Beas river.",
+      hi: "महापद्मनंद ने उत्तर भारत का एकीकरण कर विशाल स्थायी सेना बनाई। 326 ई.पू. में सिकंदर ने पंजाब पर आक्रमण किया किंतु ब्यास से लौट गया।"
+    },
+    polities: [
+      { name: { en: "Nanda Empire", hi: "नंद साम्राज्य" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "AWADH", "VATSA", "BUNDELKHAND", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "MALWA", "KALINGA_N", "KALINGA_S", "GONDWANA", "BAGHELKHAND", "CHHATTISGARH"], note: { en: "Vast imperial army reported by Greek sources: 200,000 infantry, 80,000 horse, 6,000 war elephants.", hi: "पाटलिपुत्र से संचालित 2 लाख पैदल और 6,000 हाथियों की विशाल सेना।" } },
+      { name: { en: "Gandhara & Punjab kingdoms", hi: "गांधार और पंजाब के राज्य" }, color: "#8e6bbf", atoms: ["GANDHARA", "PUNJAB_W", "PUNJAB_E", "KASHMIR", "LADAKH"], note: { en: "Kingdom of Porus (Pauravas) and Taxila, confronting Alexander's campaign.", hi: "राजा पोरस और तक्षशिला के आंभी का राज्य।" } },
+      { name: { en: "Indus & frontier republics", hi: "सिंधु और सीमांत गणराज्य" }, color: "#b7c4a3", atoms: ["MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "KABUL", "ARACHOSIA"], note: { en: "Malloi, Oxydrakai and other autonomous tribal republics.", hi: "मल्लोई और सिंधु घाटी के स्वतंत्र गणराज्य।" } },
+      { name: { en: "Rajasthan–Gujarat tribes", hi: "राजस्थान-गुजरात की जनजातियाँ" }, color: "#6cb0a8", atoms: ["MARWAR", "MEWAR", "DHUNDHAR", "GUJARAT", "SAURASHTRA", "KUTCH"], note: { en: "Pastoral and mercantile clans in western India.", hi: "पश्चिमी भारत के स्वायत्त कबीले।" } },
+      { name: { en: "Deccan chiefdoms", hi: "दक्कन के सरदार" }, color: "#9ca886", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N", "VIDARBHA", "KHANDESH", "MARATHWADA", "BASTAR"], note: { en: "Megalithic cultures and emerging Satavahana ancestors.", hi: "महापाषाण युगीन बस्तियाँ।" } },
+      { name: { en: "Tamilakam", hi: "तमिऴकम" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S", "KANARA"], note: { en: "Chera, Chola, and Pandya realms trading with the Mediterranean.", hi: "संगम युगीन चेर, चोल और पांड्य राज्य।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Kingdom of Anuradhapura under Pandukabhaya.", hi: "राजा पंडुकाभय का अनुराधापुर राज्य।" } }
+    ]
+  },
+
+  // 3. -321 to -262: Rise of the Mauryas
+  {
+    id: "era-03",
+    from: -321,
+    to: -262,
+    title: { en: "Rise of the Mauryas", hi: "मौर्यों का उदय" },
+    representative: { en: "c. 300 BCE", hi: "लगभग 300 ई.पू." },
+    summary: {
+      en: "Chandragupta Maurya and Chanakya overthrow the Nandas, defeat Seleucus I Nicator, and extend imperial rule to the Hindu Kush. Bindusara pushes southward into Karnataka.",
+      hi: "चंद्रगुप्त मौर्य और चाणक्य ने नंदों को उखाड़ फेंका, सेल्युकस को हराकर हिंदूकुश तक सीमा बढ़ाई और दक्षिण में विस्तार किया।"
+    },
+    polities: [
+      { name: { en: "Maurya Empire", hi: "मौर्य साम्राज्य" }, color: "#3a7f5a", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "BALOCH", "MULTAN", "SINDH_N", "SINDH_S", "PUNJAB_W", "PUNJAB_E", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "MARWAR", "MEWAR", "DHUNDHAR", "GUJARAT", "SAURASHTRA", "KUTCH", "MALWA", "AWADH", "VATSA", "BUNDELKHAND", "MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "GONDWANA", "BAGHELKHAND", "CHHATTISGARH"], note: { en: "Chandragupta and Bindusara rule from Pataliputra; Seleucid alliance sealed.", hi: "पाटलिपुत्र से चंद्रगुप्त और बिंदुसार का सुदृढ़ केंद्रीय शासन।" } },
+      { name: { en: "Kalinga", hi: "कलिंग" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S"], note: { en: "Independent mercantile and naval republic fiercely resisting Maurya hegemony.", hi: "स्वतंत्र कलिंग गणराज्य जो मौर्य प्रभाव से बाहर रहा।" } },
+      { name: { en: "Deccan chiefdoms", hi: "दक्कन के सरदार" }, color: "#9ca886", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N", "VIDARBHA", "KHANDESH", "MARATHWADA", "BASTAR"], note: { en: "Tribal and pastoral polities entering tributary relations with Pataliputra.", hi: "मौर्य प्रभाव क्षेत्र में आने वाले दक्कनी समुदाय।" } },
+      { name: { en: "Tamilakam", hi: "तमिऴकम" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S", "KANARA"], note: { en: "Southern kingdoms maintaining independent friendly relations (Asampradana).", hi: "स्वतंत्र संगम युगीन तमिल राज्य।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Anuradhapura kingdom under Mutasiva.", hi: "अनुराधापुर का सिंहली राज्य।" } }
+    ]
+  },
+
+  // 4. -261 to -186: Ashoka’s Maurya Empire
+  {
+    id: "era-04",
+    from: -261,
+    to: -186,
+    title: { en: "Ashoka’s Maurya Empire", hi: "अशोक का मौर्य साम्राज्य" },
+    representative: { en: "c. 250 BCE", hi: "लगभग 250 ई.पू." },
+    summary: {
+      en: "Following the conquest of Kalinga in 261 BCE, Ashoka embraces Buddhism and dhamma. The empire stretches from Kandahar to the borders of the Tamil south, leaving rock and pillar edicts across the subcontinent.",
+      hi: "कलिंग विजय के बाद अशोक ने बौद्ध धम्म अपनाया। कंधार से कर्नाटक तक फैले साम्राज्य में अहिंसा और जन-कल्याण के शिलालेख उत्कीर्ण कराए।"
+    },
+    polities: [
+      { name: { en: "Maurya Empire", hi: "मौर्य साम्राज्य" }, color: "#3a7f5a", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "BALOCH", "MULTAN", "SINDH_N", "SINDH_S", "KASHMIR", "LADAKH", "PUNJAB_W", "PUNJAB_E", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "MARWAR", "MEWAR", "DHUNDHAR", "GUJARAT", "SAURASHTRA", "KUTCH", "MALWA", "AWADH", "VATSA", "BUNDELKHAND", "MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "GONDWANA", "BAGHELKHAND", "CHHATTISGARH", "KALINGA_N", "KALINGA_S", "VIDARBHA", "KHANDESH", "MARATHWADA", "BASTAR", "TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N", "KARNATAKA_S", "KANARA"], note: { en: "Apex of pan-Indian imperial unity; governed through four provincial viceroyalties.", hi: "अशोक का साम्राज्य: तक्षशिला, उज्जैन, तोसली और सुवर्णगिरि चार प्रांतीय केंद्र।" } },
+      { name: { en: "Chola, Chera & Pandya", hi: "चोल, चेर और पांड्य" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA"], note: { en: "Bordering sovereign realms explicitly named as friendly neighbors in Ashoka's Major Rock Edict II.", hi: "अशोक के दूसरे शिलालेख में उल्लिखित स्वतंत्र दक्षिणी पड़ोसी राज्य।" } },
+      { name: { en: "Anuradhapura (Lanka)", hi: "अनुराधापुर (लंका)" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "King Devanampiya Tissa adopts Buddhism following the arrival of Mahinda and Sanghamitta.", hi: "महेंद्र और संघमित्रा के आगमन पर राजा तिस्स ने बौद्ध धर्म अपनाया।" } }
+    ]
+  },
+
+  // 5. -185 to -101: Shungas & Indo-Greeks
+  {
+    id: "era-05",
+    from: -185,
+    to: -101,
+    title: { en: "Shungas & Indo-Greeks", hi: "शुंग और भारत-यूनानी" },
+    representative: { en: "c. 150 BCE", hi: "लगभग 150 ई.पू." },
+    summary: {
+      en: "Pushyamitra Shunga assassinates Brihadratha, establishing the Shunga dynasty at Pataliputra and Vidisha. Demetrius and Menander I expand Indo-Greek rule into Punjab and the Indus valley.",
+      hi: "पुष्यमित्र शुंग ने मगध और विदिशा में शुंग वंश स्थापित किया। डिमिट्रियस और मिनांडर ने पंजाब में इंडो-ग्रीक सत्ता का विस्तार किया।"
+    },
+    polities: [
+      { name: { en: "Shunga Empire", hi: "शुंग साम्राज्य" }, color: "#9a4f4f", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "AWADH", "VATSA", "BUNDELKHAND", "DOAB_LOWER", "DOAB_UPPER", "ROHILKHAND", "MALWA"], note: { en: "Pushyamitra and Agnimitra rule from Pataliputra and Vidisha; revival of Vedic sacrifices.", hi: "पुष्यमित्र और अग्निमित्र का शासन; सांची और भरहुत स्तूपों का विस्तार।" } },
+      { name: { en: "Indo-Greek Kingdom", hi: "भारत-यूनानी राज्य" }, color: "#5078a0", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "PUNJAB_W", "PUNJAB_E", "MULTAN"], note: { en: "Menander I (King Milinda) rules from Sagala (Sialkot); patron of Buddhism.", hi: "राजा मिलिंद का साकल (सियालकोट) से शासन; मिलिंदपन्हो संवाद।" } },
+      { name: { en: "Satavahana (early)", hi: "प्रारंभिक सातवाहन" }, color: "#d9822b", atoms: ["MARATHWADA", "VIDARBHA", "KHANDESH", "TELANGANA", "KARNATAKA_N"], note: { en: "Simuka and Satakarni I establish Deccan power centered at Pratishthana.", hi: "सिमुक और शातकर्णी प्रथम द्वारा दक्कन में शक्ति की स्थापना।" } },
+      { name: { en: "Kalinga (Mahameghavahana)", hi: "कलिंग (महामेघवाहन)" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S"], note: { en: "Revived independence after the collapse of the Mauryas.", hi: "मौर्यों के पतन के बाद कलिंग की स्वतंत्रता का पुनरुद्धार।" } },
+      { name: { en: "Western Tribes & Republics", hi: "पश्चिमी जनजातियाँ व गणराज्य" }, color: "#8ca870", atoms: ["MARWAR", "MEWAR", "DHUNDHAR", "GUJARAT", "SAURASHTRA", "KUTCH", "SINDH_N", "SINDH_S", "BALOCH"], note: { en: "Autonomous clans controlling trans-Thar and coastal trade routes.", hi: "व्यापार मार्गों पर नियंत्रण रखने वाले स्वायत्त गणराज्य।" } },
+      { name: { en: "Tamil Kingdoms", hi: "तमिल राज्य" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S", "KANARA"], note: { en: "Early Sangam flourishing: trade with Ptolemaic Egypt and Rome.", hi: "रोम और मिस्र के साथ समृद्ध समुद्री व्यापार।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Dutthagamani unifies the island kingdom under Anuradhapura.", hi: "दुट्ठगामणी द्वारा संपूर्ण लंका का एकीकरण।" } }
+    ]
+  },
+
+  // 6. -100 to -31: Kanvas & Indo-Scythians
+  {
+    id: "era-06",
+    from: -100,
+    to: -31,
+    title: { en: "Kanvas & Indo-Scythians", hi: "कण्व और शक (इंडो-सीथियन)" },
+    representative: { en: "c. 70 BCE", hi: "लगभग 70 ई.पू." },
+    summary: {
+      en: "Sakas (Indo-Scythians) push through the Bolan pass into Gandhara and Gujarat. The Kanva dynasty succeeds the Shungas in Magadha, while the Satavahanas consolidate the northern Deccan.",
+      hi: "शकों ने पश्चिमोत्तर और गुजरात में प्रवेश किया। मगध में शुंगों के बाद कण्व वंश आया और दक्कन में सातवाहन मजबूत हुए।"
+    },
+    polities: [
+      { name: { en: "Indo-Scythian (Saka) realms", hi: "शक (इंडो-सीथियन) राज्य" }, color: "#5b6da0", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "PUNJAB_W", "PUNJAB_E", "SAURASHTRA", "KUTCH"], note: { en: "Maues and Azes I establish Sakasthana across the Indus basin and coastal Gujarat.", hi: "माउस और एजेस प्रथम द्वारा गांधार और गुजरात में शक सत्ता।" } },
+      { name: { en: "Kanva & Shunga remnants", hi: "कण्व और शुंग अवशेष" }, color: "#9a4f4f", atoms: ["MAGADHA", "MITHILA", "RADHA", "AWADH", "VATSA", "DOAB_LOWER"], note: { en: "Vasudeva Kanva overthrows Devabhuti in 73 BCE; reduced Gangetic realm.", hi: "वासुदेव कण्व द्वारा मगध में शासन की स्थापना।" } },
+      { name: { en: "Satavahana Empire", hi: "सातवाहन साम्राज्य" }, color: "#d9822b", atoms: ["MARATHWADA", "VIDARBHA", "KHANDESH", "MALWA", "TELANGANA", "VENGI", "KARNATAKA_N"], note: { en: "Expanding north into Malwa; patronizing rock-cut chaityas at Karle and Nashik.", hi: "मालवा और आंध्र तक विस्तार; कार्ले व नासिक में बौद्ध गुफा निर्माण।" } },
+      { name: { en: "Kalinga", hi: "कलिंग" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR"], note: { en: "Mahameghavahana power consolidates ahead of Kharavela's accession.", hi: "महामेघवाहन वंश का शासन।" } },
+      { name: { en: "Tribal Republics (Yaudheya, Malava)", hi: "जनपद गणराज्य (यौधेय, मालव)" }, color: "#6cb0a8", atoms: ["KURU", "DOAB_UPPER", "ROHILKHAND", "MARWAR", "MEWAR", "DHUNDHAR"], note: { en: "Warrior republics issuing coins inscribed with 'Yaudheyanaam Jayah'.", hi: "'यौधेय गणस्य जयः' अंकित सिक्के जारी करने वाले स्वतंत्र गणराज्य।" } },
+      { name: { en: "Sangam Kingdoms", hi: "संगम राज्य" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S", "KANARA"], note: { en: "Pandya, Chola, and Chera ports bustling with Roman gold coin trade.", hi: "मुज़िरिस और कावेरीपट्टनम से विदेशी व्यापार।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "King Vattagamani Abhaya commits the Theravada Pali Canon to writing at Aluvihara.", hi: "आलुविहार में पहली बार पालि त्रिपिटक को लिपिबद्ध किया गया।" } }
+    ]
+  },
+
+  // 7. -30 to 29: Kharavela’s Kalinga & the Western Kshatrapas
+  {
+    id: "era-07",
+    from: -30,
+    to: 29,
+    title: { en: "Kharavela & Western Kshatrapas", hi: "खारवेल और पश्चिमी क्षत्रप" },
+    representative: { en: "c. 1 BCE", hi: "लगभग 1 ई.पू." },
+    summary: {
+      en: "Emperor Kharavela of Kalinga launches extensive military campaigns across northern and southern India. Indo-Parthians and Western Kshatrapas govern the northwest and Gujarat.",
+      hi: "कलिंग नरेश खारवेल ने भारत भर में सैन्य अभियान चलाए। पश्चिमोत्तर और गुजरात में क्षत्रप सत्ता स्थापित हुई।"
+    },
+    polities: [
+      { name: { en: "Kalinga (Kharavela)", hi: "कलिंग (खारवेल)" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR", "CHHATTISGARH", "BAGHELKHAND"], note: { en: "Kharavela records victories over Magadha, the Satavahanas, and the Tamil confederacy in the Hathigumpha inscription.", hi: "हाथीगुम्फा अभिलेख में मगध और दक्षिण के अभियानों का उल्लेख।" } },
+      { name: { en: "Northern & Western Kshatrapas", hi: "उत्तरी व पश्चिमी क्षत्रप" }, color: "#5b6da0", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "MULTAN", "PUNJAB_W", "PUNJAB_E", "KURU", "DOAB_UPPER", "SAURASHTRA", "KUTCH", "GUJARAT"], note: { en: "Hagamasha and Rajuvula in Mathura; Bhumaka founding the Kshaharata dynasty in Gujarat.", hi: "मथुरा में राजुवुल और गुजरात में क्षहरात क्षत्रप सत्ता।" } },
+      { name: { en: "Satavahanas", hi: "सातवाहन" }, color: "#d9822b", atoms: ["MARATHWADA", "VIDARBHA", "KHANDESH", "TELANGANA", "VENGI", "KARNATAKA_N", "RAYALASEEMA"], note: { en: "Navigating dynastic challenges while maintaining hold of the western Deccan ports.", hi: "दक्कन और तटीय बंदरगाहों पर सातवाहन नियंत्रण।" } },
+      { name: { en: "Magadha & Eastern Chiefdoms", hi: "मगध और पूर्वी राज्य" }, color: "#9a4f4f", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "AWADH", "VATSA", "DOAB_LOWER"], note: { en: "Post-Kanva local rulers centered at Pataliputra and Kausambi.", hi: "कण्वों के बाद मगध और वत्स के स्थानीय राजा।" } },
+      { name: { en: "Sangam Kingdoms", hi: "संगम राज्य" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S", "KANARA"], note: { en: "Flourishing era of early Tamil epic literature (Silappatikaram era).", hi: "संगम काल का स्वर्ण युग।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Anuradhapura monastic expansions under the Lambakanna dynasty.", hi: "अनुराधापुर में बौद्ध महाविहारों का विस्तार।" } }
+    ]
+  },
+
+  // 8. 30 to 149: Kushan Empire & Western Kshatrapas
+  {
+    id: "era-08",
+    from: 30,
+    to: 149,
+    title: { en: "Kushan Empire & Kshatrapas", hi: "कुषाण साम्राज्य और क्षत्रप" },
+    representative: { en: "c. 100 CE", hi: "लगभग 100 ई." },
+    summary: {
+      en: "Kujula Kadphises and Kanishka I build a massive trans-continental empire connecting the Gangetic basin to the Silk Road. The Western Kshatrapas dominate Gujarat and Malwa.",
+      hi: "कुषाणों ने मध्य एशिया से गंगा घाटी तक विशाल साम्राज्य बनाया। गुजरात और मालवा में पश्चिमी क्षत्रपों का शासन रहा।"
+    },
+    polities: [
+      { name: { en: "Kushan Empire", hi: "कुषाण साम्राज्य" }, color: "#a85d32", atoms: ["KABUL", "GANDHARA", "ARACHOSIA", "PUNJAB_W", "PUNJAB_E", "KASHMIR", "LADAKH", "MULTAN", "SINDH_N", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "MAGADHA"], note: { en: "Twin imperial capitals at Purushapura (Peshawar) and Mathura; Fourth Buddhist Council.", hi: "पेशावर और मथुरा दो राजधानियाँ; गांधार और मथुरा कला का विकास।" } },
+      { name: { en: "Western Kshatrapas", hi: "पश्चिमी क्षत्रप" }, color: "#5b6da0", atoms: ["MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "SINDH_S", "MARWAR", "MEWAR", "DHUNDHAR"], note: { en: "Nahapana and Chashtana rule western ports; Rudradaman repairs Sudarshana lake.", hi: "नहपान, चष्टन और रुद्रदामन का शासन; जूनागढ़ अभिलेख।" } },
+      { name: { en: "Satavahana Empire", hi: "सातवाहन साम्राज्य" }, color: "#d9822b", atoms: ["MARATHWADA", "VIDARBHA", "KHANDESH", "TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N", "KANARA"], note: { en: "Gautamiputra Satakarni destroys the Kshaharata clan, restoring Deccan dominance.", hi: "गौतमीपुत्र शातकर्णी द्वारा सातवाहन गौरव की पुनर्स्थापना।" } },
+      { name: { en: "Kalinga & Eastern Kingdoms", hi: "कलिंग और पूर्वी राज्य" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR", "RADHA", "VANGA"], note: { en: "Independent coastal principalities with vibrant maritime trade with Southeast Asia.", hi: "दक्षिण-पूर्व एशिया से व्यापार करने वाले तटीय राज्य।" } },
+      { name: { en: "Sangam Kingdoms", hi: "संगम राज्य" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S"], note: { en: "Karikala Chola builds the Grand Anicut dam; Madurai capital of the Pandyas.", hi: "करिकाल चोल द्वारा कावेरी पर कल्लनै (ग्रैंड एनीकट) बांध निर्माण।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "King Gajabahu I establishes friendly diplomatic ties with the Cheras.", hi: "राजा गजबाहु प्रथम का काल।" } }
+    ]
+  },
+
+  // 9. 150 to 249: Satavahana Zenith & Later Kushans
+  {
+    id: "era-09",
+    from: 150,
+    to: 249,
+    title: { en: "Satavahana Zenith & Later Kushans", hi: "सातवाहन उत्कर्ष और उत्तरवर्ती कुषाण" },
+    representative: { en: "c. 190 CE", hi: "लगभग 190 ई." },
+    summary: {
+      en: "Vashishtiputra Pulumavi and Yajna Sri Satakarni rule from coast to coast with maritime ship-motif coins. The Kushans stabilize the northwest under Huvishka and Vasudeva I.",
+      hi: "सातवाहनों ने दोनों समुद्रों (अरब सागर और बंगाल की खाड़ी) के बीच शासन किया और जहाजी सिक्के चलाए।"
+    },
+    polities: [
+      { name: { en: "Satavahana Empire", hi: "सातवाहन साम्राज्य" }, color: "#d9822b", atoms: ["MARATHWADA", "VIDARBHA", "KHANDESH", "TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N", "KANARA", "KALINGA_S", "BASTAR"], note: { en: "Amaravati and Nagarjunakonda stupas achieve magnificent marble-carved artistic peaks.", hi: "अमरावती और नागार्जुनकोंडा में स्तूप स्थापत्य का चरमोत्कर्ष।" } },
+      { name: { en: "Later Kushans", hi: "उत्तरवर्ती कुषाण" }, color: "#a85d32", atoms: ["KABUL", "GANDHARA", "PUNJAB_W", "PUNJAB_E", "KASHMIR", "LADAKH", "KURU", "DOAB_UPPER", "ROHILKHAND"], note: { en: "Vasudeva I adopts Shaivism as power retreats to the northwest against Sassanid pressure.", hi: "वासुदेव प्रथम द्वारा शासन; पश्चिमोत्तर में सिमटती सत्ता।" } },
+      { name: { en: "Western Kshatrapas (Kardamaka)", hi: "पश्चिमी क्षत्रप (कर्दमक)" }, color: "#5b6da0", atoms: ["MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "MARWAR", "MEWAR"], note: { en: "Kardamaka dynasty maintaining mints at Ujjain and coastal ports.", hi: "उज्जैन और सौराष्ट्र से कर्दमक क्षत्रपों का शासन।" } },
+      { name: { en: "Magadha & Murunda chiefs", hi: "मगध और मुरुंड शासक" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "AWADH", "VATSA", "DOAB_LOWER", "RADHA", "VANGA"], note: { en: "Licchavis and Murundas assert independence along the middle Ganga.", hi: "मध्य गंगा घाटी में लिच्छवि और स्थानीय सरदारों का उदय।" } },
+      { name: { en: "Tamilakam", hi: "तमिऴकम" }, color: "#7a9c68", atoms: ["TONDAI", "KONGU", "CHOLA", "PANDYA", "KERALA", "KARNATAKA_S"], note: { en: "Late Sangam era; emergence of early Kalabhra migration waves.", hi: "संगम काल का उत्तरार्ध।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "King Voharika Tissa reforms judicial law and patronizes Mahavihara.", hi: "अनुराधापुर में न्यायिक सुधार।" } }
+    ]
+  },
+
+  // 10. 250 to 319: The Pre-Gupta Multipolar Age
+  {
+    id: "era-10",
+    from: 250,
+    to: 319,
+    title: { en: "The Pre-Gupta Multipolar Age", hi: "गुप्त-पूर्व बहुध्रुवीय काल" },
+    representative: { en: "c. 300 CE", hi: "लगभग 300 ई." },
+    summary: {
+      en: "The Satavahanas disintegrate into the Vakatakas, Ikshvakus, and Pallavas. The Nagas rule Mathura and Padmavati, while the Licchavis rise in Magadha, setting the stage for the Gupta rise.",
+      hi: "सातवाहनों के पतन के बाद वाकाटक, इक्ष्वाकु और पल्लवों का उदय। नाग वंश ने मथुरा संभाली और मगध में लिच्छवि मजबूत हुए।"
+    },
+    polities: [
+      { name: { en: "Vakataka Kingdom", hi: "वाकाटक साम्राज्य" }, color: "#8b52a0", atoms: ["VIDARBHA", "KHANDESH", "MARATHWADA", "GONDWANA"], note: { en: "Vindhyashakti and Pravarasena I perform imperial ashvamedha sacrifices.", hi: "विंध्यशक्ति और प्रवरसेन प्रथम द्वारा वाकाटक शक्ति का विस्तार।" } },
+      { name: { en: "Nagas of Mathura & Padmavati", hi: "नाग राजवंश" }, color: "#4a7eb0", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "BUNDELKHAND", "MALWA"], note: { en: "Bharashiva Nagas performing ten horse sacrifices (Dashashwamedha) at Varanasi.", hi: "भारशिव नागों द्वारा दशाश्वमेध यज्ञ और शैव पुनरुत्थान।" } },
+      { name: { en: "Licchavis & Early Guptas", hi: "लिच्छवि और प्रारंभिक गुप्त" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "AWADH", "VATSA"], note: { en: "Sri Gupta and Ghatotkacha lay foundations; matrimonial alliance with Licchavis.", hi: "श्रीगुप्त और घटोत्कच; लिच्छवि राजकुमारी कुमारदेवी से वैवाहिक गठबंधन।" } },
+      { name: { en: "Ikshvaku & Salankayana", hi: "इक्ष्वाकु और शालंकायन" }, color: "#d9822b", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA"], note: { en: "Successors to the Satavahanas in coastal Andhra at Vijayapuri.", hi: "आंध्र में नागार्जुनकोंडा (विजयपुरी) से इक्ष्वाकु शासन।" } },
+      { name: { en: "Pallavas of Kanchi", hi: "कांची के पल्लव" }, color: "#7a9c68", atoms: ["TONDAI", "CHOLA", "KONGU"], note: { en: "Simhavarman establishes early Pallava rule over northern Tamil plain.", hi: "कांचीपुरम में प्रारंभिक पल्लव राजवंश की स्थापना।" } },
+      { name: { en: "Western Kshatrapas", hi: "पश्चिमी क्षत्रप" }, color: "#5b6da0", atoms: ["GUJARAT", "SAURASHTRA", "KUTCH"], note: { en: "Continuing rule in Kathiawar before eventual Gupta conquest.", hi: "सौराष्ट्र में क्षत्रप शासन।" } },
+      { name: { en: "Indo-Sassanids & Kidarites", hi: "इंडो-सासानी व किदाराइट" }, color: "#a85d32", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "PUNJAB_W", "MULTAN", "SINDH_N"], note: { en: "Sassanid Kushanshahs controlling the northwest marches.", hi: "पश्चिमोत्तर में सासानियों और कुषाणशाहों का प्रभाव।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "King Mahasena builds the colossal Jetavanaramaya stupa, tallest brick structure in the world.", hi: "राजा महासेन द्वारा विशाल जेतवनारामय स्तूप का निर्माण।" } }
+    ]
+  },
+
+  // 11. 320 to 449: The Imperial Guptas
+  {
+    id: "era-11",
+    from: 320,
+    to: 449,
+    title: { en: "The Imperial Guptas", hi: "गुप्त साम्राज्य का स्वर्ण युग" },
+    representative: { en: "c. 400 CE", hi: "लगभग 400 ई." },
+    summary: {
+      en: "Chandragupta I, Samudragupta, and Chandragupta II Vikramaditya unite northern India in a classical golden age of Sanskrit literature, mathematics, astronomy, and rock-cut temple art.",
+      hi: "समुद्रगुप्त और चंद्रगुप्त विक्रमादित्य के काल में भारत का स्वर्ण युग: कालिदास का साहित्य, आर्यभट का विज्ञान और सांस्कृतिक एकता।"
+    },
+    polities: [
+      { name: { en: "Gupta Empire", hi: "गुप्त साम्राज्य" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "AWADH", "VATSA", "BUNDELKHAND", "DOAB_LOWER", "DOAB_UPPER", "ROHILKHAND", "KURU", "PUNJAB_E", "MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "JHARKHAND", "BAGHELKHAND"], note: { en: "Directly administered heartland with western maritime ports annexed under Vikramaditya.", hi: "पाटलिपुत्र और उज्जैन जुड़वां राजधानियाँ; शकों का समूल विनाश।" } },
+      { name: { en: "Vakataka Empire", hi: "वाकाटक साम्राज्य" }, color: "#8b52a0", atoms: ["VIDARBHA", "KHANDESH", "MARATHWADA", "GONDWANA", "BASTAR", "CHHATTISGARH"], note: { en: "Allied matrimonial dynasty (Prabhavatigupta); creators of the Ajanta cave masterpieces.", hi: "अजंता गुफाओं के अनुपम चित्रकला व मूर्तिकला के संरक्षक।" } },
+      { name: { en: "Pallavas of Kanchi", hi: "पल्लव राजवंश" }, color: "#7a9c68", atoms: ["TONDAI", "CHOLA", "KONGU", "RAYALASEEMA"], note: { en: "Vishnugopa and successors acknowledge Gupta sphere; building stone temples.", hi: "कांचीपुरम से शासन; समुद्रगुप्त की अधीनता स्वीकार की।" } },
+      { name: { en: "Kadambas & Western Gangas", hi: "कदंब और पश्चिमी गंग" }, color: "#b38634", atoms: ["KARNATAKA_N", "KARNATAKA_S", "KANARA"], note: { en: "Mayurasharma founds Kadamba power at Banavasi, earliest indigenous Kannada rulers.", hi: "मयूरशर्मा द्वारा वनवासी में प्रथम कन्नड़ राजवंश की स्थापना।" } },
+      { name: { en: "Kidarites & Northwest States", hi: "किदाराइट और पश्चिमोत्तर राज्य" }, color: "#a85d32", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "PUNJAB_W", "MULTAN", "KASHMIR"], note: { en: "Kidarite Hunas asserting control in Bactria and Gandhara.", hi: "गांधार में किदाराइट हूणों का शासन।" } },
+      { name: { en: "Kamarupa (Varman Dynasty)", hi: "कामरूप (वर्मन वंश)" }, color: "#5a9e7a", atoms: ["KAMARUPA"], note: { en: "Pushyavarman establishes Kamarupa dynasty in the Brahmaputra valley as a Gupta tributary.", hi: "असम में पुष्यवर्मन द्वारा वर्मन वंश की स्थापना।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "King Dhatusena and Kashyapa build the magnificent Sigiriya rock fortress.", hi: "राजा कश्यप द्वारा सिगिरिया के विश्वप्रसिद्ध शैल दुर्ग का निर्माण।" } }
+    ]
+  },
+
+  // 12. 450 to 549: Later Guptas & Huna Invasions
+  {
+    id: "era-12",
+    from: 450,
+    to: 549,
+    title: { en: "Huna Invasions & Gupta Decline", hi: "हूण आक्रमण और गुप्त पतन" },
+    representative: { en: "c. 510 CE", hi: "लगभग 510 ई." },
+    summary: {
+      en: "Alchon Hunas under Toramana and Mihirakula ravage the northwest and Malwa. Skandagupta repulses initial waves, but imperial finance collapses. Yashodharman of Malwa defeats Mihirakula in 528 CE.",
+      hi: "तोरमाण और मिहिरकुल के हूण आक्रमणों से गुप्त साम्राज्य खंडित हुआ। मालवा के यशोधर्मन ने 528 ई. में मिहिरकुल को हराया।"
+    },
+    polities: [
+      { name: { en: "Alchon Huna Empire", hi: "हूण (श्वेत हूण) साम्राज्य" }, color: "#8a3324", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "PUNJAB_W", "PUNJAB_E", "MULTAN", "KASHMIR", "KURU"], note: { en: "Toramana and Mihirakula rule from Sakala (Sialkot); aggressive westward campaigns.", hi: "तोरमाण और मिहिरकुल की क्रूर हूण सत्ता।" } },
+      { name: { en: "Gupta Remnants & Yashodharman", hi: "उत्तरवर्ती गुप्त और यशोधर्मन" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "AWADH", "VATSA", "DOAB_LOWER", "DOAB_UPPER", "ROHILKHAND", "MALWA", "BUNDELKHAND", "RADHA", "VANGA"], note: { en: "Yashodharman erects victory pillars at Sondani (Mandsaur) defeating the Hunas.", hi: "मंदसौर में यशोधर्मन द्वारा विजय स्तंभ की स्थापना।" } },
+      { name: { en: "Maitrakas of Vallabhi", hi: "वल्लभी के मैत्रक" }, color: "#d9822b", atoms: ["GUJARAT", "SAURASHTRA", "KUTCH"], note: { en: "Bhatarka establishes independent Maitraka dynasty; Vallabhi becomes a great Buddhist university.", hi: "भटार्क ने गुजरात में मैत्रक वंश स्थापित किया; वल्लभी विद्यापीठ का उदय।" } },
+      { name: { en: "Vakatakas & Early Chalukyas", hi: "वाकाटक और प्रारंभिक चालुक्य" }, color: "#8b52a0", atoms: ["VIDARBHA", "KHANDESH", "MARATHWADA", "GONDWANA"], note: { en: "Harishena's Vakataka zenith followed by collapse; Chalukya Pulakeshin I fortifies Badami (543).", hi: "हरिषेण का काल; 543 ई. में पुलकेशिन् प्रथम द्वारा बादामी दुर्ग की नींव।" } },
+      { name: { en: "Kadambas & Gangas", hi: "कदंब और पश्चिमी गंग" }, color: "#b38634", atoms: ["KARNATAKA_N", "KARNATAKA_S", "KANARA"], note: { en: "Prosperous rule across the Kannada plateau.", hi: "कर्नाटक में कदंबों और गंगों का शासन।" } },
+      { name: { en: "Pallavas of Kanchi", hi: "पल्लव राजवंश" }, color: "#7a9c68", atoms: ["TONDAI", "CHOLA", "KONGU", "RAYALASEEMA"], note: { en: "Simhavarman II maintains stronghold over Tondaimandalam.", hi: "कांचीपुरम में पल्लव शक्ति बरकरार।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Moggallana I returns rule to Anuradhapura.", hi: "अनुराधापुर में राजधानी की पुनर्स्थापना।" } }
+    ]
+  },
+
+  // 13. 550 to 605: Post-Gupta Kingdoms & Early Chalukyas
+  {
+    id: "era-13",
+    from: 550,
+    to: 605,
+    title: { en: "Rise of Kannauj & Badami", hi: "कन्नौज और बादामी का उदय" },
+    representative: { en: "c. 580 CE", hi: "लगभग 580 ई." },
+    summary: {
+      en: "The Maukharis make Kannauj the supreme city of north India. The Pushyabhutis rise at Thanesar, Shashanka establishes an independent Gauda in Bengal, and the Chalukyas dominate the Deccan from Badami.",
+      hi: "मौखरियों ने कन्नौज को उत्तर भारत का केंद्र बनाया। बंगाल में शशांक का गौड़ राज्य उभरा और दक्कन में बादामी चालुक्य शक्तिशाली हुए।"
+    },
+    polities: [
+      { name: { en: "Maukhari Kingdom (Kannauj)", hi: "मौखरि साम्राज्य (कन्नौज)" }, color: "#3b82f6", atoms: ["AWADH", "VATSA", "DOAB_LOWER", "DOAB_UPPER", "ROHILKHAND", "BUNDELKHAND"], note: { en: "Ishanavarman assumes Maharajadhiraja, checking Huna and Gauda forces.", hi: "ईशानवर्मन ने महाराजाधिराज की उपाधि ली; कन्नौज साम्राज्य की नींव।" } },
+      { name: { en: "Pushyabhuti (Thanesar)", hi: "पुष्यभूति वंश (थानेसर)" }, color: "#6366f1", atoms: ["KURU", "PUNJAB_E", "KUMAON"], note: { en: "Prabhakaravardhana builds martial strength in eastern Punjab; marries daughter to Maukhari king.", hi: "प्रभाकरवर्धन का शासन; मौखरियों से वैवाहिक गठबंधन।" } },
+      { name: { en: "Gauda Kingdom (Shashanka)", hi: "गौड़ राज्य (शशांक)" }, color: "#10b981", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "JHARKHAND"], note: { en: "Shashanka becomes first unified sovereign king of Bengal, warring with Kannauj.", hi: "बंगाल के प्रथम सार्वभौम शासक शशांक; बौद्ध गया के बोधिवृक्ष को कटवाने का उल्लेख।" } },
+      { name: { en: "Chalukyas of Badami", hi: "बादामी के चालुक्य" }, color: "#d97706", atoms: ["KARNATAKA_N", "KANARA", "MARATHWADA", "KHANDESH", "VIDARBHA", "KONKAN"], note: { en: "Kirtivarman I and Mangalesha expand across the western coast and Konkan.", hi: "कीर्तिवर्मन और मंगलेश द्वारा पश्चिमी तट पर विजय।" } },
+      { name: { en: "Pallavas of Kanchi", hi: "पल्लव राजवंश" }, color: "#7a9c68", atoms: ["TONDAI", "CHOLA", "KONGU", "RAYALASEEMA"], note: { en: "Simhavishnu overthrows the Kalabhras, establishing the Imperial Pallavas.", hi: "सिंहविष्णु ने कलाभ्रों को हराकर पल्लव साम्राज्य को पुनर्जीवित किया।" } },
+      { name: { en: "Maitrakas of Vallabhi", hi: "वल्लभी के मैत्रक" }, color: "#d9822b", atoms: ["GUJARAT", "SAURASHTRA", "KUTCH", "MALWA"], note: { en: "Dharasena II and Shiladitya I rule prosperous maritime Gujarat.", hi: "व्यापारिक व सांस्कृतिक रूप से समृद्ध वल्लभी।" } },
+      { name: { en: "Kashmir & Frontier States", hi: "कश्मीर व सीमांत राज्य" }, color: "#8e6bbf", atoms: ["KASHMIR", "LADAKH", "GANDHARA", "PUNJAB_W", "MULTAN", "SINDH_N", "SINDH_S"], note: { en: "Rai dynasty of Sindh and early Karkota foundations in Kashmir.", hi: "सिंध का राय राजवंश और कश्मीर की स्थानीय सत्ता।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "King Aggabodhi I patronizes Sinhala literature and tank engineering.", hi: "अनुराधापुर में साहित्य और सिंचाई का विकास।" } }
+    ]
+  },
+
+  // 14. 606 to 647: Empire of Harsha & Pulakeshin II
+  {
+    id: "era-14",
+    from: 606,
+    to: 647,
+    title: { en: "Harsha & Pulakeshin II", hi: "हर्षवर्धन और पुलकेशिन् द्वितीय" },
+    representative: { en: "c. 630 CE", hi: "लगभग 630 ई." },
+    summary: {
+      en: "Harshavardhana unites northern India from Kannauj. In the Deccan, Chalukya Pulakeshin II halts Harsha on the Narmada, while Narasimhavarman I Pallava takes Vatapi. Xuanzang records this vibrant era.",
+      hi: "हर्षवर्धन ने उत्तर भारत को कन्नौज से जोड़ा। नर्मदा पर पुलकेशिन् द्वितीय ने हर्ष को रोका, जबकि पल्लव नरसिंहवर्मन ने बादामी जीती। ह्वेन त्सांग का भारत भ्रमण।"
+    },
+    polities: [
+      { name: { en: "Harsha’s Empire", hi: "हर्षवर्धन का साम्राज्य" }, color: "#3a7f5a", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "PUNJAB_E", "AWADH", "VATSA", "BUNDELKHAND", "MAGADHA", "MITHILA", "RADHA", "VARENDRA", "MALWA"], note: { en: "Harsha rules from Kannauj; recorded by court poet Bana and pilgrim Xuanzang.", hi: "कन्नौज राजधानी; बाणभट्ट द्वारा 'हर्षचरित' और ह्वेन त्सांग का सजीव विवरण।" } },
+      { name: { en: "Chalukyas of Badami", hi: "बादामी के चालुक्य" }, color: "#d97706", atoms: ["KARNATAKA_N", "KANARA", "MARATHWADA", "KHANDESH", "VIDARBHA", "KONKAN", "GUJARAT", "TELANGANA", "VENGI"], note: { en: "Pulakeshin II defeats Harsha at the Narmada and appoints brother Kubja Vishnuvardhana at Vengi.", hi: "पुलकेशिन् द्वितीय: 'सकलुत्तरापथनाथ' हर्ष को पराजित किया; पूर्वी चालुक्य शाखा की स्थापना।" } },
+      { name: { en: "Pallavas of Kanchipuram", hi: "कांची के पल्लव" }, color: "#7a9c68", atoms: ["TONDAI", "CHOLA", "KONGU", "RAYALASEEMA", "PANDYA"], note: { en: "Narasimhavarman I 'Mamalla' defeats Pulakeshin II and builds the monolithic rathas of Mahabalipuram.", hi: "नरसिंहवर्मन मामल्ल ने वातापी जीती और महाबलीपुरम के रथ मंदिर बनवाए।" } },
+      { name: { en: "Kamarupa (Bhaskaravarman)", hi: "कामरूप (भास्करवर्मन)" }, color: "#5a9e7a", atoms: ["KAMARUPA"], note: { en: "Allied with Harsha against Gauda; Xuanzang visits his court in Pragjyotishpura.", hi: "हर्ष के परम मित्र भास्करवर्मन का असम में समृद्ध शासन।" } },
+      { name: { en: "Maitrakas of Vallabhi", hi: "वल्लभी के मैत्रक" }, color: "#d9822b", atoms: ["SAURASHTRA", "KUTCH"], note: { en: "Harsha's daughter marries Dhruvasena II, creating dynastic peace.", hi: "हर्षवर्धन से वैवाहिक संधि द्वारा संरक्षित।" } },
+      { name: { en: "Rai Dynasty (Sindh)", hi: "राय राजवंश (सिंध)" }, color: "#8ca870", atoms: ["SINDH_N", "SINDH_S", "MULTAN", "BALOCH"], note: { en: "Buddhist-Hindu dynasty ruling the Indus lower valley from Alor.", hi: "अलोर से सिंधु घाटी पर शासन करने वाला राजवंश।" } },
+      { name: { en: "Karkota Dynasty (Kashmir)", hi: "कारकोट वंश (कश्मीर)" }, color: "#8e6bbf", atoms: ["KASHMIR", "LADAKH", "GANDHARA", "PUNJAB_W"], note: { en: "Durlabhavardhana founds the Karkota dynasty, securing the northern trade corridors.", hi: "दुर्लभवर्धन द्वारा कश्मीर में शक्तिशाली कारकोट वंश की स्थापना।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Prince Manavamma flees to Kanchipuram, enlisting Pallava military support.", hi: "पल्लव सहायता से अनुराधापुर की सत्ता का संघर्ष।" } }
+    ]
+  },
+
+  // 15. 648 to 749: Post-Harsha & Early Medieval Rivals
+  {
+    id: "era-15",
+    from: 648,
+    to: 749,
+    title: { en: "Post-Harsha Rivals & Arab Conquest of Sindh", hi: "हर्षोत्तर काल और सिंध विजय" },
+    representative: { en: "c. 720 CE", hi: "लगभग 720 ई." },
+    summary: {
+      en: "Lalitaditya of Kashmir and Yashovarman of Kannauj campaign across north India. In 712 CE, Muhammad bin Qasim establishes Umayyad Arab rule in Sindh, while the Chalukyas and Pallavas war in the South.",
+      hi: "कश्मीर के ललितादित्य मुक्तापीड़ का उत्कर्ष। 712 ई. में मुहम्मद बिन कासिम ने सिंध पर अरब शासन स्थापित किया। दक्षिण में चालुक्य-पल्लव संघर्ष।"
+    },
+    polities: [
+      { name: { en: "Karkota Empire (Kashmir)", hi: "कारकोट साम्राज्य (कश्मीर)" }, color: "#8e6bbf", atoms: ["KASHMIR", "LADAKH", "GANDHARA", "PUNJAB_W", "PUNJAB_E", "KURU"], note: { en: "Lalitaditya Muktapida builds the Martand Sun Temple and campaigns across central and northern India.", hi: "ललितादित्य मुक्तापीड़ का विशाल साम्राज्य; मार्तंड सूर्य मंदिर का निर्माण।" } },
+      { name: { en: "Kingdom of Kannauj (Yashovarman)", hi: "कन्नौज (यशोवर्मन)" }, color: "#3b82f6", atoms: ["DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "BUNDELKHAND", "MALWA"], note: { en: "Yashovarman revives Kannauj; court poet Vakpati composes the Prakrit epic Gaudavaho.", hi: "यशोवर्मन द्वारा गौड़ विजय; वाक्पति द्वारा 'गौडवहो' की रचना।" } },
+      { name: { en: "Arab Caliphate Province of Sindh", hi: "सिंध का अरब प्रांत" }, color: "#15803d", atoms: ["SINDH_N", "SINDH_S", "MULTAN", "BALOCH"], note: { en: "Muhammad bin Qasim defeats Raja Dahir in 712 CE, establishing rule from Mansura and Multan.", hi: "712 ई. में राजा दाहिर को हराकर मंसूरा और मुल्तान में अरब शासन।" } },
+      { name: { en: "Chalukyas of Badami", hi: "बादामी के चालुक्य" }, color: "#d97706", atoms: ["KARNATAKA_N", "KANARA", "MARATHWADA", "KHANDESH", "VIDARBHA", "KONKAN", "GUJARAT"], note: { en: "Vikramaditya II invades Kanchi, leaving inscriptions at Kailasanatha temple without plundering it.", hi: "विक्रमादित्य द्वितीय ने कांची को जीतकर भी मंदिर की रक्षा की।" } },
+      { name: { en: "Pallavas of Kanchi", hi: "कांची के पल्लव" }, color: "#7a9c68", atoms: ["TONDAI", "CHOLA", "KONGU", "RAYALASEEMA"], note: { en: "Narasimhavarman II Rajasimha builds the Shore Temple at Mahabalipuram and Kailasanatha temple.", hi: "महाबलीपुरम का तटीय (शोर) मंदिर और कांची का कैलाशनाथ मंदिर बनवाया।" } },
+      { name: { en: "Pandyas of Madurai", hi: "मदुरै के पांड्य" }, color: "#e11d48", atoms: ["PANDYA", "KERALA"], note: { en: "Kochadaiyan Ranadhiran expands First Pandya Empire against Pallavas and Cheras.", hi: "प्रथम पांड्य साम्राज्य का दक्षिण में विस्तार।" } },
+      { name: { en: "Bengal under Matsyanyaya", hi: "बंगाल (मात्स्यन्याय काल)" }, color: "#10b981", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA"], note: { en: "Internal chaos and external raids preceding the election of Gopala in 750 CE.", hi: "गोपाल द्वारा पाल वंश की स्थापना से पूर्व की अराजकता।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Manavamma establishes the Second Lambakanna dynasty at Anuradhapura.", hi: "अनुराधापुर में दूसरे लंबकण्ण वंश का सुदृढ़ शासन।" } }
+    ]
+  },
+
+  // 16. 750 to 849: Early Tripartite Struggle
+  {
+    id: "era-16",
+    from: 750,
+    to: 849,
+    title: { en: "The Tripartite Struggle Begins", hi: "त्रिपक्षीय संघर्ष का आरंभ" },
+    representative: { en: "c. 800 CE", hi: "लगभग 800 ई." },
+    summary: {
+      en: "Dantidurga overthrows the Chalukyas, founding the Rashtrakuta Empire at Ellora. The Palas under Dharmapala and Gurjara-Pratiharas under Vatsaraja clash for imperial control of Kannauj.",
+      hi: "दंतिदुर्ग ने राष्ट्रकूट साम्राज्य स्थापित किया (एलोरा का कैलाश मंदिर)। पाल, प्रतिहार और राष्ट्रकूटों के बीच कन्नौज पर नियंत्रण हेतु त्रिकोणीय संघर्ष शुरू हुआ।"
+    },
+    polities: [
+      { name: { en: "Rashtrakuta Empire", hi: "राष्ट्रकूट साम्राज्य" }, color: "#8b52a0", atoms: ["KARNATAKA_N", "KANARA", "MARATHWADA", "KHANDESH", "VIDARBHA", "KONKAN", "GUJARAT", "MALWA"], note: { en: "Govinda III campaigns to the Himalayas; Krishna I cuts the monolithic Kailasa temple at Ellora.", hi: "गोविंद तृतीय का उत्तर भारत अभियान; एलोरा का अखंड कैलाश मंदिर बना।" } },
+      { name: { en: "Pala Empire", hi: "पाल साम्राज्य" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "JHARKHAND", "AWADH", "DOAB_LOWER"], note: { en: "Dharmapala crowns Chakrayudha at Kannauj; patronizes Nalanda and founds Vikramashila.", hi: "धर्मपाल ने कन्नौज पर नियंत्रण किया; विक्रमशिला महाविहार की स्थापना।" } },
+      { name: { en: "Gurjara-Pratihara", hi: "गुर्जर-प्रतिहार" }, color: "#3b82f6", atoms: ["MARWAR", "MEWAR", "DHUNDHAR", "KURU", "DOAB_UPPER", "ROHILKHAND", "PUNJAB_E"], note: { en: "Vatsaraja and Nagabhata II repulse Arab raids and push east toward the Gangetic doab.", hi: "नागभट द्वितीय ने मुंगेर में धर्मपाल को हराकर कन्नौज को राजधानी बनाया।" } },
+      { name: { en: "Eastern Chalukyas of Vengi", hi: "वेंगी के पूर्वी चालुक्य" }, color: "#d97706", atoms: ["VENGI", "TELANGANA"], note: { en: "Autonomous cadet branch reigning in coastal Andhra.", hi: "तटीय आंध्र में वेंगी के चालुक्यों का स्वतंत्र शासन।" } },
+      { name: { en: "Pallavas & Pandyas", hi: "पल्लव और पांड्य" }, color: "#7a9c68", atoms: ["TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA", "RAYALASEEMA"], note: { en: "Dantivarman Pallava and Srimara Srivallabha Pandya fight for dominance in the Kaveri basin.", hi: "कावेरी घाटी पर अधिकार हेतु पल्लव-पांड्य युद्ध।" } },
+      { name: { en: "Sindh (Emirates of Mansura & Multan)", hi: "सिंध के अमीर" }, color: "#15803d", atoms: ["SINDH_N", "SINDH_S", "MULTAN", "BALOCH"], note: { en: "Habbari dynasty establishes hereditary autonomous emirate at Mansura.", hi: "मंसूरा में हब्बारी वंश की स्वायत्त अमीरात।" } },
+      { name: { en: "Hindu Shahis & Kabul", hi: "हिंदू शाही" }, color: "#5078a0", atoms: ["GANDHARA", "KABUL", "PUNJAB_W"], note: { en: "Kallar founds Hindu Shahi dynasty ruling from Udabhandapura (Hund).", hi: "उद्भांडपुर (हुंड) से हिंदू शाही वंश का शासन।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Sena I repulses Pandya invasion of Anuradhapura.", hi: "पांड्य आक्रमणों का सामना करता सिंहली राज्य।" } }
+    ]
+  },
+
+  // 17. 850 to 999: Imperial Pratiharas & Early Cholas
+  {
+    id: "era-17",
+    from: 850,
+    to: 999,
+    title: { en: "Pratihara Zenith & Imperial Cholas", hi: "प्रतिहार उत्कर्ष और चोल उदय" },
+    representative: { en: "c. 920 CE", hi: "लगभग 920 ई." },
+    summary: {
+      en: "Mihira Bhoja makes Kannauj the undisputed capital of northern India. In the south, Vijayalaya revives the Cholas at Thanjavur, while Amoghavarsha I fosters Kannada literature at Manyakheta.",
+      hi: "मिहिर भोज के समय प्रतिहार साम्राज्य शिखर पर पहुंचा। तंजौर में विजयालय द्वारा चोल वंश का पुनरुत्थान; मान्यखेत में अमोघवर्ष का शासन।"
+    },
+    polities: [
+      { name: { en: "Gurjara-Pratihara Empire", hi: "गुर्जर-प्रतिहार साम्राज्य" }, color: "#3b82f6", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "BUNDELKHAND", "MALWA", "MARWAR", "MEWAR", "DHUNDHAR", "GUJARAT", "SAURASHTRA"], note: { en: "Mihira Bhoja and Mahendrapala I rule an empire from Gujarat to Bihar; patron of poet Rajashekhara.", hi: "मिहिर भोज और महेंद्रपाल प्रथम: अरब यात्रियों (सुलेमान) द्वारा भारत की सबसे शक्तिशाली सेना बताया गया।" } },
+      { name: { en: "Rashtrakuta Empire", hi: "राष्ट्रकूट साम्राज्य" }, color: "#8b52a0", atoms: ["KARNATAKA_N", "KANARA", "MARATHWADA", "KHANDESH", "VIDARBHA", "KONKAN", "TELANGANA"], note: { en: "Amoghavarsha I reigns 64 peaceful years at Manyakheta, authoring Kavirajamarga.", hi: "अमोघवर्ष प्रथम द्वारा 'कविराजमार्ग' की रचना और जैन धर्म को संरक्षण।" } },
+      { name: { en: "Pala Empire", hi: "पाल साम्राज्य" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "JHARKHAND"], note: { en: "Devapala and Mahipala I preserve Buddhist monastic learning and bronze sculpture art.", hi: "देवपाल और महीपाल प्रथम: बौद्ध धर्म और कांस्य मूर्तिकला का केंद्र।" } },
+      { name: { en: "Chola Kingdom", hi: "चोल साम्राज्य" }, color: "#f97316", atoms: ["CHOLA", "TONDAI", "KONGU"], note: { en: "Vijayalaya captures Thanjavur; Parantaka I conquers Madurai and gold-plates Chidambaram.", hi: "विजयालय द्वारा तंजौर विजय; परांतक प्रथम द्वारा चिदंबरम मंदिर का स्वर्ण अलंकरण।" } },
+      { name: { en: "Pandyas & Cheras", hi: "पांड्य और चेर" }, color: "#e11d48", atoms: ["PANDYA", "KERALA"], note: { en: "Rajasimha II flees to Lanka; Kulasekhara Alwar revives Chera realm at Mahodayapuram.", hi: "महोदयपुरम से चेर कुलशेखर राजवंश का शासन।" } },
+      { name: { en: "Hindu Shahis", hi: "हिंदू शाही" }, color: "#5078a0", atoms: ["GANDHARA", "KABUL", "PUNJAB_W", "PUNJAB_E"], note: { en: "Jayapala rules from Peshawar and Lahore against the Ghaznavid rise.", hi: "राजा जयपाल का गजनवियों के विरुद्ध संघर्ष।" } },
+      { name: { en: "Eastern Ganga (Odisha)", hi: "पूर्वी गंग (ओडिशा)" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR"], note: { en: "Consolidating rule in Kalinga and coastal Utkala.", hi: "उत्कल और कलिंग में स्वतंत्र गंग शासन।" } },
+      { name: { en: "Lanka", hi: "लंका" }, color: "#8b9c78", atoms: ["RAJARATA", "RUHUNA"], note: { en: "Facing repeated maritime Chola invasions under Parantaka I.", hi: "चोल आक्रमणों का सामना करती अनुराधापुर राजधानी।" } }
+    ]
+  },
+
+  // 18. 1000 to 1099: Imperial Chola Hegemony & Ghaznavids
+  {
+    id: "era-18",
+    from: 1000,
+    to: 1099,
+    title: { en: "Chola Hegemony & Ghaznavid Invasions", hi: "चोल नौसैनिक प्रभुत्व और गजनवी" },
+    representative: { en: "c. 1030 CE", hi: "लगभग 1030 ई." },
+    summary: {
+      en: "Rajaraja I and Rajendra I build an imperial maritime state, subduing Sri Lanka and sending a naval armada to Srivijaya. Mahmud of Ghazni raids northern temples, while the Western Chalukyas rule Kalyani.",
+      hi: "राजाराम प्रथम और राजेंद्र चोल ने श्रीलंका जीती और श्रीविजय पर नौसैनिक विजय पाई। महमूद गजनवी के उत्तर भारत पर आक्रमण। कल्याणी के चालुक्य।"
+    },
+    polities: [
+      { name: { en: "Chola Empire", hi: "चोल साम्राज्य" }, color: "#f97316", atoms: ["CHOLA", "TONDAI", "KONGU", "PANDYA", "KERALA", "RAYALASEEMA", "VENGI", "RAJARATA", "RUHUNA"], note: { en: "Rajendra I completes conquest of Sri Lanka, marches to the Ganges, and sails across the Bay of Bengal.", hi: "राजेंद्र चोल: गंगैकोंडचोलपुरम राजधानी; श्रीलंका विजय और दक्षिण-पूर्व एशिया नौसैनिक अभियान।" } },
+      { name: { en: "Western Chalukya Empire (Kalyani)", hi: "पश्चिमी चालुक्य (कल्याणी)" }, color: "#d97706", atoms: ["KARNATAKA_N", "KARNATAKA_S", "KANARA", "MARATHWADA", "TELANGANA", "KONKAN"], note: { en: "Tailapa II overthrows Rashtrakutas; Someshvara I makes Kalyani the imperial capital.", hi: "तैलप द्वितीय और सोमेश्वर प्रथम द्वारा कल्याणी से भव्य चालुक्य साम्राज्य।" } },
+      { name: { en: "Ghaznavid Empire", hi: "ग़ज़नवी साम्राज्य" }, color: "#047857", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "PUNJAB_W", "PUNJAB_E", "MULTAN", "SINDH_N"], note: { en: "Mahmud of Ghazni annexes Punjab to Ghazni, plundering Thanesar, Kannauj, and Somnath.", hi: "महमूद गजनवी द्वारा पंजाब का विलय और उत्तर भारत के मंदिरों पर आक्रमण।" } },
+      { name: { en: "Paramaras of Malwa", hi: "मालवा के परमार" }, color: "#d97736", atoms: ["MALWA", "KHANDESH"], note: { en: "Raja Bhoja of Dhar: polymath king, builder of Bhojeshwar temple and Bhojshala university.", hi: "राजा भोज (धार): विद्वान सम्राट, भोजपुर मंदिर और भोजशाला के निर्माता।" } },
+      { name: { en: "Pala Empire", hi: "पाल साम्राज्य" }, color: "#3a7f5a", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA"], note: { en: "Mahipala I and Ramapala revive Buddhist rule across Bengal and Bihar.", hi: "महीपाल और रामपाल द्वारा पाल सत्ता का पुनर्जीवन।" } },
+      { name: { en: "Chaulukyas (Solankis) of Gujarat", hi: "सोलंकी (गुजरात)" }, color: "#6cb0a8", atoms: ["GUJARAT", "SAURASHTRA", "KUTCH"], note: { en: "Bhima I rebuilds the stone temple of Somnath following the Ghaznavid raid.", hi: "भीमदेव प्रथम ने सोमनाथ का पत्थर से भव्य पुनर्निर्माण कराया।" } },
+      { name: { en: "Chandelas & Kalachuris", hi: "चंदेल और कलचुरी" }, color: "#8a5fb0", atoms: ["BUNDELKHAND", "BAGHELKHAND", "VATSA", "DOAB_LOWER", "CHHATTISGARH"], note: { en: "Vidyadhara Chandela repulses Mahmud and builds the Kandariya Mahadeva temple at Khajuraho.", hi: "विद्याधर चंदेल द्वारा खजुराहो के कंदरिया महादेव मंदिर का निर्माण।" } }
+    ]
+  },
+
+  // 19. 1100 to 1205: Eve of the Sultanate
+  {
+    id: "era-19",
+    from: 1100,
+    to: 1205,
+    title: { en: "Eve of the Delhi Sultanate", hi: "सल्तनत की पूर्वसंध्या" },
+    representative: { en: "c. 1180 CE", hi: "लगभग 1180 ई." },
+    summary: {
+      en: "Prithviraj Chauhan unites the Rajputs at Ajmer and Delhi. In 1192 CE, Muhammad of Ghor wins the Second Battle of Tarain, opening the plains to Turkish Sultanate conquest. Hoysalas and Kakatiyas rise in the south.",
+      hi: "पृथ्वीराज चौहान ने अजमेर और दिल्ली से शासन किया। 1192 ई. में तराइन के दूसरे युद्ध में मुहम्मद गोरी की विजय से उत्तर भारत में तुर्क सल्तनत की नींव पड़ी।"
+    },
+    polities: [
+      { name: { en: "Chahamanas (Chauhans of Ajmer)", hi: "चाहमान (चौहान)" }, color: "#dc2626", atoms: ["MARWAR", "MEWAR", "DHUNDHAR", "KURU", "DOAB_UPPER", "PUNJAB_E", "ROHILKHAND"], note: { en: "Prithviraj III rules from Ajmer and Qila Rai Pithora (Delhi); hero of the Tarain battles.", hi: "पृथ्वीराज चौहान: 1191 में तराइन जीता, 1192 में पराजित हुए।" } },
+      { name: { en: "Gahadavalas of Kannauj", hi: "कन्नौज के गहड़वाल" }, color: "#2563eb", atoms: ["DOAB_LOWER", "AWADH", "VATSA", "BUNDELKHAND"], note: { en: "Jaichandra rules from Varanasi and Kannauj; defeated by Ghorids at Chandawar in 1194.", hi: "राजा जयचंद का शासन; 1194 में चंदावर के युद्ध में पराजय।" } },
+      { name: { en: "Sena Dynasty of Bengal", hi: "बंगाल का सेन वंश" }, color: "#059669", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA"], note: { en: "Ballala Sena and Lakshmana Sena patronize poet Jayadeva (Gita Govinda); Bakhtiyar Khalji attacks Nabadwip in 1204.", hi: "लक्ष्मण सेन का काल; जयदेव द्वारा 'गीत गोविंद' की रचना; 1204 में बख्तियार खिलजी का हमला।" } },
+      { name: { en: "Hoysala Empire", hi: "होयसल साम्राज्य" }, color: "#b45309", atoms: ["KARNATAKA_S", "KANARA", "KONGU"], note: { en: "Vishnuvardhana and Ballala II build the star-shaped ornate temples of Belur and Halebidu.", hi: "विष्णुवर्धन द्वारा बेलूर और हलेबिदु के अद्वितीय नक्काशीदार मंदिरों का निर्माण।" } },
+      { name: { en: "Kakatiya Dynasty", hi: "काकतीय वंश" }, color: "#7c3aed", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA"], note: { en: "Prataparudra I and Ganapati Deva make Orugallu (Warangal) their stone-walled capital.", hi: "वारंगल (ओरुगल्लु) से काकतीय शक्ति का अभ्युदय।" } },
+      { name: { en: "Seuna Yadavas of Devagiri", hi: "देवगिरि के यादव" }, color: "#d97706", atoms: ["MARATHWADA", "KHANDESH", "VIDARBHA", "KONKAN", "KARNATAKA_N"], note: { en: "Bhillama V founds Devagiri fortress; flourishing Marathi culture and Hemadpanthi temples.", hi: "भिल्लम पंचम ने देवगिरि दुर्ग बनाया; मराठी भाषा व संस्कृति का विकास।" } },
+      { name: { en: "Cholas & Pandyas", hi: "चोल और पांड्य" }, color: "#f97316", atoms: ["CHOLA", "TONDAI", "PANDYA", "KERALA"], note: { en: "Kulottunga III fights the Second Pandya Empire under Maravarman Sundara Pandya.", hi: "चोल शक्ति का ह्रास और द्वितीय पांड्य साम्राज्य का उदय।" } },
+      { name: { en: "Ghorid Possessions", hi: "गोरी साम्राज्य" }, color: "#047857", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "PUNJAB_W", "MULTAN", "SINDH_N"], note: { en: "Muhammad of Ghor's governors establish garrison centers across the northwest.", hi: "मुहम्मद गोरी की सैनिक छावनियाँ।" } }
+    ]
+  },
+
+  // 20. 1206 to 1289: The Early Delhi Sultanate (Mamluk Dynasty)
+  {
+    id: "era-20",
+    from: 1206,
+    to: 1289,
+    title: { en: "Early Delhi Sultanate (Mamluks)", hi: "प्रारंभिक दिल्ली सल्तनत (मामलूक)" },
+    representative: { en: "c. 1250 CE", hi: "लगभग 1250 ई." },
+    summary: {
+      en: "Qutb-ud-din Aibak, Iltutmish, Razia Sultana, and Ghiyas-ud-din Balban consolidate Turkish rule across northern India, repulsing early Mongol raids from the Indus.",
+      hi: "ऐबक, इल्तुतमिश, रजिया सुल्ताना और बलबन ने दिल्ली सल्तनत को संगठित किया और चंगेज खान के मंगोल आक्रमणों से रक्षा की।"
+    },
+    polities: [
+      { name: { en: "Delhi Sultanate (Mamluk)", hi: "दिल्ली सल्तनत (गुलाम वंश)" }, color: "#166534", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "PUNJAB_E", "PUNJAB_W", "MULTAN", "SINDH_N", "MAGADHA", "MITHILA", "RADHA", "VARENDRA"], note: { en: "Qutb Minar begun; iqta administrative system institutionalized by Iltutmish.", hi: "कुतुब मीनार का निर्माण; इल्तुतमिश द्वारा इक्ता व्यवस्था और चालीसा का गठन।" } },
+      { name: { en: "Rajput States (Mewar, Ranthambore)", hi: "राजपूत राज्य" }, color: "#dc2626", atoms: ["MEWAR", "MARWAR", "DHUNDHAR"], note: { en: "Hammiradeva of Ranthambore and Guhilas of Chittor resist Sultanate expansion.", hi: "रणथंभौर के हम्मीर देव और चित्तौड़ का कड़ा प्रतिरोध।" } },
+      { name: { en: "Seuna Yadavas of Devagiri", hi: "देवगिरि के यादव" }, color: "#d97706", atoms: ["MARATHWADA", "KHANDESH", "VIDARBHA", "KONKAN", "KARNATAKA_N"], note: { en: "Singhana II expands Yadava power across Maharashtra and northern Karnataka.", hi: "सिंघण द्वितीय के काल में यादव साम्राज्य का चरमोत्कर्ष।" } },
+      { name: { en: "Kakatiyas of Warangal", hi: "वारंगल के काकतीय" }, color: "#7c3aed", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA"], note: { en: "Queen Rudrama Devi successfully defends her kingdom, noted by Marco Polo.", hi: "महारानी रुद्रमा देवी का शौर्यपूर्ण शासन; मार्को पोलो द्वारा प्रशंसा।" } },
+      { name: { en: "Hoysala Empire", hi: "होयसल साम्राज्य" }, color: "#b45309", atoms: ["KARNATAKA_S", "KANARA"], note: { en: "Narasimha II and Someshvara intervene in Tamil politics from Kannanur Kuppam.", hi: "दक्कन और तमिलनाडु दोनों में होयसल प्रभाव।" } },
+      { name: { en: "Pandya Empire", hi: "पांड्य साम्राज्य" }, color: "#e11d48", atoms: ["PANDYA", "CHOLA", "TONDAI", "KONGU", "KERALA"], note: { en: "Sadaiyavarman Sundara Pandya I eliminates the Cholas and becomes master of the South.", hi: "सुंदर पांड्य प्रथम ने चोलों को समाप्त कर दक्षिण पर पूर्ण प्रभुत्व पाया।" } },
+      { name: { en: "Eastern Ganga (Odisha)", hi: "पूर्वी गंग (ओडिशा)" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR", "CHHATTISGARH"], note: { en: "Narasimhadeva I defeats Bengal Muslim forces and builds the Sun Temple at Konark.", hi: "नरसिंहदेव प्रथम ने कोणार्क का विश्वप्रसिद्ध सूर्य मंदिर बनवाया।" } },
+      { name: { en: "Ahom Kingdom (Assam)", hi: "अहोम राज्य (असम)" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Chaolung Sukaphaa establishes the Ahom kingdom at Charaideo in 1228 CE.", hi: "1228 ई. में सुकाफा द्वारा ब्रह्मपुत्र घाटी में अहोम राज्य की स्थापना।" } }
+    ]
+  },
+
+  // 21. 1290 to 1320: Khalji Conquests
+  {
+    id: "era-21",
+    from: 1290,
+    to: 1320,
+    title: { en: "The Khalji Conquests", hi: "खिलजी साम्राज्य व दक्षिण अभियान" },
+    representative: { en: "c. 1315 CE", hi: "लगभग 1315 ई." },
+    summary: {
+      en: "Alauddin Khalji repulses six massive Mongol invasions, annexes Gujarat, Ranthambore, and Chittor, and sends Malik Kafur to conquer the Yadavas, Kakatiyas, Hoysalas, and Pandyas.",
+      hi: "अलाउद्दीन खिलजी ने मंगोल आक्रमणों को रोका, गुजरात और राजस्थान जीता और मलिक काफूर के नेतृत्व में मदुरै तक दक्षिण भारत को जीता।"
+    },
+    polities: [
+      { name: { en: "Delhi Sultanate (Khalji)", hi: "दिल्ली सल्तनत (खिलजी)" }, color: "#166534", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "BUNDELKHAND", "PUNJAB_E", "PUNJAB_W", "MULTAN", "SINDH_N", "SINDH_S", "MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "DHUNDHAR", "MARWAR", "MEWAR", "MAGADHA", "MITHILA", "RADHA", "VARENDRA", "MARATHWADA", "KHANDESH"], note: { en: "Market price control reforms; direct revenue assessment in the doab; Siri fortress.", hi: "बाजार नियंत्रण व्यवस्था; सीरी का किला; अलाउद्दीन खिलजी का केंद्रीयकृत प्रशासन।" } },
+      { name: { en: "Deccan Tributaries (Devagiri & Warangal)", hi: "दक्कन के करद राज्य" }, color: "#7c3aed", atoms: ["TELANGANA", "VENGI", "VIDARBHA"], note: { en: "Ramachandra Yadava and Prataparudra II forced to pay massive annual tribute.", hi: "मलिक काफूर द्वारा भारी कर वसूली और कोहिनूर हीरा प्राप्त करना।" } },
+      { name: { en: "Hoysala Kingdom", hi: "होयसल राज्य" }, color: "#b45309", atoms: ["KARNATAKA_S", "KANARA", "KARNATAKA_N"], note: { en: "Veera Ballala III defends Karnataka territory following Malik Kafur's sack of Dwarasamudra.", hi: "द्वारसमुद्र के विध्वंस के बाद वीर बल्लाल तृतीय का संघर्ष।" } },
+      { name: { en: "Pandya Remnants", hi: "पांड्य अवशेष" }, color: "#e11d48", atoms: ["PANDYA", "CHOLA", "TONDAI", "KONGU", "KERALA"], note: { en: "Civil war between Sundara and Vira Pandya opens door to Sultanate raid of Madurai.", hi: "गृहयुद्ध के कारण सल्तनती सेना द्वारा मदुरै पर आक्रमण।" } },
+      { name: { en: "Eastern Ganga (Odisha)", hi: "पूर्वी गंग (ओडिशा)" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR"], note: { en: "Maintaining independence between Bengal and the Sultanate.", hi: "ओडिशा की स्वाधीनता बरकरार।" } },
+      { name: { en: "Ahom Kingdom", hi: "अहोम राज्य" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Consolidating control over the Upper Brahmaputra valley.", hi: "असम में अहोम शक्ति का विस्तार।" } }
+    ]
+  },
+
+  // 22. 1321 to 1346: Tughlaq Empire Zenith
+  {
+    id: "era-22",
+    from: 1321,
+    to: 1346,
+    title: { en: "Tughlaq Empire Zenith", hi: "तुगलक साम्राज्य का चरमोत्कर्ष" },
+    representative: { en: "c. 1335 CE", hi: "लगभग 1335 ई." },
+    summary: {
+      en: "Muhammad bin Tughlaq rules the largest territorial empire in medieval India, annexing Warangal, Madurai, and Bengal. He attempts to transfer the capital to Daulatabad and issue token currency.",
+      hi: "मुहम्मद बिन तुगलक के काल में सल्तनत का सर्वाधिक विस्तार। देवगिरि (दौलताबाद) राजधानी स्थानांतरण और सांकेतिक मुद्रा का प्रयोग।"
+    },
+    polities: [
+      { name: { en: "Tughlaq Empire", hi: "तुग़लक़ साम्राज्य" }, color: "#15803d", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "BUNDELKHAND", "PUNJAB_E", "PUNJAB_W", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "DHUNDHAR", "MARWAR", "MEWAR", "MAGADHA", "MITHILA", "RADHA", "VARENDRA", "SAMATATA", "MARATHWADA", "KHANDESH", "VIDARBHA", "TELANGANA", "VENGI", "RAYALASEEMA", "TONDAI", "CHOLA", "PANDYA", "KONGU", "KARNATAKA_N"], note: { en: "Twenty-three imperial provinces; visited and chronicled by Moroccan traveller Ibn Battuta.", hi: "23 प्रांत; इब्न बत्तूता द्वारा वर्णित तुगलक कालीन भारत।" } },
+      { name: { en: "Hoysala Kingdom", hi: "होयसल राज्य" }, color: "#b45309", atoms: ["KARNATAKA_S", "KANARA", "KERALA"], note: { en: "Veera Ballala III makes Tiruvannamalai a second base before dying in battle against the Madurai Sultanate.", hi: "वीर बल्लाल तृतीय का अंतिम संघर्ष।" } },
+      { name: { en: "Vijayanagara (Sangama Rise)", hi: "विजयनगर (संगम वंश का उदय)" }, color: "#b45309", atoms: ["KARNATAKA_N"], note: { en: "Harihara I and Bukka Raya found Vijayanagara on the Tungabhadra in 1336 CE.", hi: "1336 ई. में हरिहर और बुक्का द्वारा विजयनगर की स्थापना।" } },
+      { name: { en: "Musunuri Nayakas", hi: "मुसुनूरी नायक" }, color: "#7c3aed", atoms: ["TELANGANA"], note: { en: "Provalaya Nayaka and Kapaya Nayaka liberate Warangal from Delhi governor in 1336.", hi: "वारंगल को तुगलक शासन से मुक्त कराने वाले नायक।" } },
+      { name: { en: "Eastern Ganga (Odisha)", hi: "पूर्वी गंग (ओडिशा)" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR"], note: { en: "Bhanudeva II holds the eastern coastline against Delhi incursions.", hi: "ओडिशा में गंग राजवंश।" } },
+      { name: { en: "Ahom Kingdom", hi: "अहोम राज्य" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Rule in Upper Assam unaffected by Delhi authority.", hi: "असम में स्वतंत्र अहोम शासन।" } }
+    ]
+  },
+
+  // 23. 1347 to 1397: Bahmani Sultanate & Early Vijayanagara
+  {
+    id: "era-23",
+    from: 1347,
+    to: 1397,
+    title: { en: "Bahmani & Vijayanagara Dual Power", hi: "बहमनी और विजयनगर युग" },
+    representative: { en: "c. 1380 CE", hi: "लगभग 1380 ई." },
+    summary: {
+      en: "The Deccan breaks away as Ala-ud-Din Bahman Shah founds the Bahmani Sultanate (1347). South of the Krishna, Vijayanagara under Harihara II unites southern India, while Firuz Shah Tughlaq rebuilds the north.",
+      hi: "दक्कन में बहमनी सल्तनत (1347) और कृष्णा के दक्षिण में विजयनगर साम्राज्य का उदय। उत्तर में फिरोज शाह तुगलक द्वारा नहरों व नगरों का निर्माण।"
+    },
+    polities: [
+      { name: { en: "Vijayanagara Empire", hi: "विजयनगर साम्राज्य" }, color: "#d97706", atoms: ["KARNATAKA_N", "KARNATAKA_S", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA", "VENGI"], note: { en: "Kumara Kampana conquers the Madurai Sultanate; Hampi becomes a metropolis.", hi: "कुमार कंपन द्वारा मदुरै विजय; हम्पी का भव्य विस्तार।" } },
+      { name: { en: "Bahmani Sultanate", hi: "बहमनी सल्तनत" }, color: "#0284c7", atoms: ["MARATHWADA", "KHANDESH", "VIDARBHA", "TELANGANA", "KONKAN"], note: { en: "Capital at Gulbarga (Ahsanabad); fierce wars for the Raichur Doab against Vijayanagara.", hi: "गुलबर्गा राजधानी; रायचूर दोआब पर नियंत्रण हेतु विजयनगर से संघर्ष।" } },
+      { name: { en: "Delhi Sultanate (Firuz Shah Tughlaq)", hi: "दिल्ली सल्तनत (फिरोज शाह तुगलक)" }, color: "#15803d", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "PUNJAB_E", "PUNJAB_W", "MULTAN", "SINDH_N"], note: { en: "Extensive canal construction (Western Yamuna canal), hospitals, and new cities (Firozabad, Jaunpur).", hi: "नहरों का निर्माण, जौनपुर व फिरोजाबाद की स्थापना।" } },
+      { name: { en: "Bengal Sultanate (Ilyas Shahi)", hi: "बंगाल सल्तनत (इलियास शाही)" }, color: "#059669", atoms: ["RADHA", "VANGA", "VARENDRA", "SAMATATA", "MAGADHA", "MITHILA"], note: { en: "Shamsuddin Ilyas Shah unifies Bengal in 1352; capital at Pandua and Gaur.", hi: "1352 में स्वतंत्र बंगाल सल्तनत की स्थापना।" } },
+      { name: { en: "Gujarat & Malwa (early governors)", hi: "गुजरात व मालवा" }, color: "#d97736", atoms: ["MALWA", "GUJARAT", "SAURASHTRA", "KUTCH"], note: { en: "Sultanate governorships drifting toward autonomy.", hi: "स्वायत्तता की ओर बढ़ते राज्यपाल।" } },
+      { name: { en: "Eastern Ganga (Odisha)", hi: "पूर्वी गंग (ओडिशा)" }, color: "#c98f3b", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR"], note: { en: "Ganga kings patronizing Odissi culture and Jagannath worship.", hi: "जगन्नाथ संस्कृति के संरक्षक।" } },
+      { name: { en: "Ahom Kingdom", hi: "अहोम राज्य" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Sudangphaa (Bamuni Konwar) introduces Hindu customs to the Ahom court.", hi: "अहोम दरबार में सुधार।" } }
+    ]
+  },
+
+  // 24. 1398 to 1508: Regional Sultanates & Gajapati Empire
+  {
+    id: "era-24",
+    from: 1398,
+    to: 1508,
+    title: { en: "Regional Sultanates & Gajapatis", hi: "क्षेत्रीय सल्तनतें और गजपति साम्राज्य" },
+    representative: { en: "c. 1460 CE", hi: "लगभग 1460 ई." },
+    summary: {
+      en: "Timur’s invasion in 1398 shatters Delhi. Independent sultanates thrive in Gujarat, Malwa, and Jaunpur, while Kapilendra Deva founds the Suryavamsi Gajapati empire in Odisha, rivaling Vijayanagara.",
+      hi: "1398 में तैमूर के आक्रमण से दिल्ली बिखर गई। गुजरात, मालवा और जौनपुर में स्वतंत्र सल्तनतें; ओडिशा में कपिलेंद्र देव का शक्तिशाली गजपति साम्राज्य।"
+    },
+    polities: [
+      { name: { en: "Vijayanagara Empire (Sangama Peak)", hi: "विजयनगर साम्राज्य" }, color: "#d97706", atoms: ["KARNATAKA_N", "KARNATAKA_S", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA"], note: { en: "Deva Raya II enlists Turkish archers, expands trade, and receives Persian envoy Abdur Razzak.", hi: "देवराय द्वितीय का काल; फारसी राजदूत अब्दुर रज्जाक द्वारा हम्पी की भव्यता का वर्णन।" } },
+      { name: { en: "Gajapati Empire of Odisha", hi: "ओडिशा का गजपति साम्राज्य" }, color: "#dc2626", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR", "CHHATTISGARH", "VENGI"], note: { en: "Kapilendra Deva and Purushottama Deva expand from the Ganges to the Kaveri.", hi: "कपिलेंद्र देव ने गंगा से कावेरी तक साम्राज्य बढ़ाया।" } },
+      { name: { en: "Bahmani Sultanate (Bidar phase)", hi: "बहमनी सल्तनत (बीदर)" }, color: "#0284c7", atoms: ["MARATHWADA", "KHANDESH", "VIDARBHA", "TELANGANA", "KONKAN"], note: { en: "Capital moved to Bidar; grand vizier Mahmud Gawan builds the great madrasa before fragmentation.", hi: "महमूद गावां का काल; बीदर में प्रसिद्ध मदरसा।" } },
+      { name: { en: "Gujarat Sultanate", hi: "गुजरात सल्तनत" }, color: "#059669", atoms: ["GUJARAT", "SAURASHTRA", "KUTCH"], note: { en: "Ahmad Shah founds Ahmedabad (1411); Mahmud Begada captures Girnar and Champaner.", hi: "अहमद शाह द्वारा अहमदाबाद की स्थापना (1411); महमूद बेगड़ा की विजयें।" } },
+      { name: { en: "Malwa Sultanate", hi: "मालवा सल्तनत" }, color: "#d97736", atoms: ["MALWA"], note: { en: "Hoshang Shah builds Mandu fortress capital with Jahaz Mahal and marble tombs.", hi: "मांडू को राजधानी बनाया; जहाज महल और स्थापत्य कला।" } },
+      { name: { en: "Jaunpur (Sharqi Sultanate)", hi: "जौनपुर (शर्की सल्तनत)" }, color: "#7c3aed", atoms: ["AWADH", "VATSA", "DOAB_LOWER", "MAGADHA"], note: { en: "'Shiraz of the East' known for Atala Mosque and Hindustani classical music patronage.", hi: "'शिराज-ए-हिंद'; अटाला मस्जिद और संगीत का केंद्र।" } },
+      { name: { en: "Delhi Sultanate (Sayyid & Lodi)", hi: "दिल्ली सल्तनत (लोदी)" }, color: "#166534", atoms: ["KURU", "DOAB_UPPER", "ROHILKHAND", "PUNJAB_E", "PUNJAB_W", "MULTAN"], note: { en: "Bahlul and Sikandar Lodi restore north Indian authority; Sikandar founds Agra in 1504.", hi: "बहलोल और सिकंदर लोदी; 1504 में आगरा की स्थापना।" } },
+      { name: { en: "Rajput States (Mewar under Kumbha)", hi: "मेवाड़ (राणा कुंभा)" }, color: "#e11d48", atoms: ["MEWAR", "MARWAR", "DHUNDHAR"], note: { en: "Rana Kumbha builds 32 forts including Kumbhalgarh and the Vijay Stambha at Chittor.", hi: "राणा कुंभा ने कुंभलगढ़ और चित्तौड़ का विजय स्तंभ बनवाया।" } }
+    ]
+  },
+
+  // 25. 1509 to 1525: Krishnadevaraya’s Golden Age
+  {
+    id: "era-25",
+    from: 1509,
+    to: 1525,
+    title: { en: "Krishnadevaraya’s Golden Age", hi: "कृष्णदेवराय का स्वर्ण युग" },
+    representative: { en: "c. 1520 CE", hi: "लगभग 1520 ई." },
+    summary: {
+      en: "Emperor Krishnadevaraya of Vijayanagara wins the Battle of Raichur, subdues the Gajapatis, and patronizes Telugu and Kannada arts. The Bahmani Sultanate splits into five Deccan Sultanates, while the Portuguese take Goa (1510).",
+      hi: "कृष्णदेवराय का विजयनगर साम्राज्य अपने चरम पर। बहमनी सल्तनत पांच दक्कन सल्तनतों (बीजापुर, गोलकुंडा आदि) में बंटी। पुर्तगालियों ने गोवा पर अधिकार किया (1510)।"
+    },
+    polities: [
+      { name: { en: "Vijayanagara Empire", hi: "विजयनगर साम्राज्य" }, color: "#d97706", atoms: ["KARNATAKA_N", "KARNATAKA_S", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA", "VENGI"], note: { en: "Krishnadevaraya authors Amuktamalyada; Portuguese traveler Domingo Paes describes Hampi as larger than Rome.", hi: "कृष्णदेवराय का शासन; अष्टदिग्गज कवि; रायचूर का ऐतिहासिक युद्ध (1520)।" } },
+      { name: { en: "Deccan Sultanates (Bijapur, Golconda, Ahmadnagar)", hi: "दक्कन की सल्तनतें" }, color: "#0284c7", atoms: ["MARATHWADA", "KHANDESH", "VIDARBHA", "TELANGANA", "KONKAN"], note: { en: "Adil Shahi (Bijapur), Nizam Shahi (Ahmadnagar), and Qutb Shahi (Golconda) independent dynasties.", hi: "आदिलशाही, निजामशाही और कुतुबशाही सल्तनतें।" } },
+      { name: { en: "Lodi Sultanate (Delhi)", hi: "लोदी सल्तनत (दिल्ली)" }, color: "#166534", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "PUNJAB_E", "PUNJAB_W", "MULTAN"], note: { en: "Ibrahim Lodi alienates Afghan nobility; Babur invited from Kabul.", hi: "इब्राहिम लोदी का शासन; पानीपत के युद्ध की पृष्ठभूमि।" } },
+      { name: { en: "Gujarat Sultanate", hi: "गुजरात सल्तनत" }, color: "#059669", atoms: ["GUJARAT", "SAURASHTRA", "KUTCH", "MALWA"], note: { en: "Muzaffar Shah II expands influence into Malwa and fights Portuguese at Diu.", hi: "दीव और मालवा में सक्रिय गुजरात सल्तनत।" } },
+      { name: { en: "Rajput Confederacy (Rana Sanga)", hi: "मेवाड़ (राणा सांगा)" }, color: "#dc2626", atoms: ["MEWAR", "MARWAR", "DHUNDHAR"], note: { en: "Maharana Sanga unites Rajput clans defeating Malwa and Gujarat sultanates.", hi: "राणा सांगा के नेतृत्व में एकजुट राजपूत शक्ति।" } },
+      { name: { en: "Bengal Sultanate (Husain Shahi)", hi: "बंगाल (हुसैन शाही वंश)" }, color: "#10b981", atoms: ["RADHA", "VANGA", "VARENDRA", "SAMATATA", "MAGADHA", "MITHILA"], note: { en: "Alauddin Husain Shah patronizes Bengali literature and synthesis.", hi: "बंगाल में सांस्कृतिक पुनर्जागरण का काल।" } },
+      { name: { en: "Gajapati Kingdom", hi: "गजपति राज्य" }, color: "#b91c1c", atoms: ["KALINGA_N", "KALINGA_S", "BASTAR"], note: { en: "Prataparudra Deva makes peace with Krishnadevaraya; Chaitanya Mahaprabhu lives at Puri.", hi: "प्रतापरुद्र देव का काल; चैतन्य महाप्रभु का पुरी में निवास।" } }
+    ]
+  },
+
+  // 26. 1526 to 1555: The Early Mughals & the Sur Empire
+  {
+    id: "era-26",
+    from: 1526,
+    to: 1555,
+    title: { en: "Early Mughals & the Sur Empire", hi: "प्रारंभिक मुग़ल और सूर साम्राज्य" },
+    representative: { en: "c. 1545 CE", hi: "लगभग 1545 ई." },
+    summary: {
+      en: "Babur wins Panipat (1526) and Khanwa (1527), founding the Mughal realm. In 1540, Sher Shah Suri expels Humayun, establishing the Sur Empire, reforming coinage (the silver Rupiya), and building the Grand Trunk Road.",
+      hi: "बाबर ने पानीपत और खानवा जीतकर मुगल साम्राज्य की नींव रखी। 1540 में शेरशाह सूरी ने हुमायूँ को हराकर सूर साम्राज्य बनाया, रुपया चलाया और जीटी रोड का निर्माण किया।"
+    },
+    polities: [
+      { name: { en: "Sur Empire", hi: "सूर साम्राज्य" }, color: "#78350f", atoms: ["KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "AWADH", "VATSA", "BUNDELKHAND", "PUNJAB_E", "PUNJAB_W", "MULTAN", "SINDH_N", "MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "MALWA", "DHUNDHAR", "MARWAR", "MEWAR"], note: { en: "Sher Shah Suri introduces administrative sarkars, standardized rupee, and extensive postal dak chaukis.", hi: "शेरशाह सूरी के प्रशासनिक सुधार: रुपया सिक्का, डाक चौकियाँ और सासाराम का मकबरा।" } },
+      { name: { en: "Vijayanagara Empire", hi: "विजयनगर साम्राज्य" }, color: "#d97706", atoms: ["KARNATAKA_N", "KARNATAKA_S", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA", "VENGI"], note: { en: "Achyuta Deva Raya and Regent Aliya Rama Raya dominate peninsular India.", hi: "रामराय के समय विजयनगर की कूटनीतिक शक्ति।" } },
+      { name: { en: "Deccan Sultanates", hi: "दक्कन की सल्तनतें" }, color: "#0284c7", atoms: ["MARATHWADA", "KHANDESH", "VIDARBHA", "TELANGANA", "KONKAN"], note: { en: "Bijapur, Golconda, and Ahmadnagar competing with Vijayanagara for border territories.", hi: "दक्कन की सल्तनतें।" } },
+      { name: { en: "Gujarat Sultanate", hi: "गुजरात सल्तनत" }, color: "#059669", atoms: ["GUJARAT", "SAURASHTRA", "KUTCH"], note: { en: "Bahadur Shah annexes Malwa but faces Portuguese pressure at Diu.", hi: "बहादुर शाह का शासन; पुर्तगालियों द्वारा दीव में हत्या (1537)।" } },
+      { name: { en: "Mughals in Exile (Kabul/Sindh)", hi: "मुगल (काबुल व सिंध)" }, color: "#3a7f5a", atoms: ["KABUL", "GANDHARA", "SINDH_S", "BALOCH"], note: { en: "Humayun flees to Safavid Persia; prepares reconquest of Delhi with Shah Tahmasp's aid.", hi: "हुमायूँ का फारस में शरण लेना और काबुल पर पुनर्अधिकार।" } },
+      { name: { en: "Ahom Kingdom", hi: "अहोम राज्य" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Suhungmung (Swarganarayan) defeats the Chutiyas and repulses Muslim invasions from Bengal.", hi: "सुहुंगमुंग का काल; असम का विस्तार।" } }
+    ]
+  },
+
+  // 27. 1556 to 1605: Akbar’s Mughal Empire
+  {
+    id: "era-27",
+    from: 1556,
+    to: 1605,
+    title: { en: "Akbar’s Mughal Empire", hi: "अकबर का मुग़ल साम्राज्य" },
+    representative: { en: "c. 1590 CE", hi: "लगभग 1590 ई." },
+    summary: {
+      en: "Akbar consolidates Mughal power from Kabul and Kashmir to Bengal and the Deccan borders. He institutes the mansabdari system, twelve administrative subahs, and religious tolerance (Sulh-i Kul).",
+      hi: "अकबर ने काबुल, कश्मीर से बंगाल और गुजरात तक साम्राज्य फैलाया। मनसबदारी व्यवस्था, 12 सूबे और सुलह-ए-कुल की नीति लागू की।"
+    },
+    polities: [
+      { name: { en: "Mughal Empire", hi: "मुगल साम्राज्य" }, color: "#15803d", atoms: ["KABUL", "GANDHARA", "KASHMIR", "LADAKH", "PUNJAB_W", "PUNJAB_E", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "BUNDELKHAND", "MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "DHUNDHAR", "MARWAR", "KHANDESH"], note: { en: "Akbar rules from Agra, Fatehpur Sikri, and Lahore; Raja Todar Mal formulates Dahsala revenue system.", hi: "फतेहपुर सीकरी व आगरा से शासन; राजा टोडरमल की दहसाला राजस्व व्यवस्था।" } },
+      { name: { en: "Mewar (Maharana Pratap)", hi: "मेवाड़ (महाराणा प्रताप)" }, color: "#dc2626", atoms: ["MEWAR"], note: { en: "Maharana Pratap resists Mughal annexation from the Aravalli hills after the Battle of Haldighati (1576).", hi: "हल्दीघाटी के युद्ध (1576) के बाद चावंड से स्वाधीनता का अनवरत संघर्ष।" } },
+      { name: { en: "Deccan Sultanates (Bijapur, Golconda, Ahmadnagar)", hi: "दक्कन सल्तनतें" }, color: "#0284c7", atoms: ["MARATHWADA", "VIDARBHA", "TELANGANA", "KONKAN"], note: { en: "Chand Bibi defends Ahmadnagar; Ibrahim Adil Shah II writes Kitab-e-Navras at Bijapur.", hi: "चांद बीबी द्वारा अहमदनगर की रक्षा; इब्राहिम आदिल शाह द्वितीय की 'किताब-ए-नवरस'।" } },
+      { name: { en: "Vijayanagara (Aravidu Dynasty)", hi: "विजयनगर (अराविदु वंश)" }, color: "#d97706", atoms: ["KARNATAKA_S", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA", "VENGI"], note: { en: "Following the catastrophe of Talikota (1565), Venkatapati Raya rules from Penukonda and Chandragiri.", hi: "तालिकोटा युद्ध (1565) के बाद पेनुकोंडा और चंद्रगिरि से शासन।" } },
+      { name: { en: "Ahom Kingdom", hi: "अहोम राज्य" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Sukhaamphaa (Khora Raja) rules independent Upper Assam.", hi: "असम में अहोम राज्य की स्वतंत्रता।" } }
+    ]
+  },
+
+  // 28. 1606 to 1657: Classical Mughal Splendor
+  {
+    id: "era-28",
+    from: 1606,
+    to: 1657,
+    title: { en: "Classical Mughal Splendor", hi: "मुग़ल स्थापत्य व कला का चरमोत्कर्ष" },
+    representative: { en: "c. 1640 CE", hi: "लगभग 1640 ई." },
+    summary: {
+      en: "Jahangir and Shah Jahan govern a wealthy, unified empire. Shah Jahan builds the Taj Mahal, the Red Fort, and Shahjahanabad. Mewar signs honorable peace (1615), while Ahmadnagar is annexed.",
+      hi: "जहाँगीर और शाहजहाँ का काल। ताजमहल, लाल किला और जामा मस्जिद का निर्माण। अहमदनगर का विलय और दक्कन की सल्तनतें करद बनीं।"
+    },
+    polities: [
+      { name: { en: "Mughal Empire", hi: "मुगल साम्राज्य" }, color: "#15803d", atoms: ["KABUL", "GANDHARA", "KASHMIR", "LADAKH", "PUNJAB_W", "PUNJAB_E", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "BUNDELKHAND", "MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "DHUNDHAR", "MARWAR", "MEWAR", "KHANDESH", "MARATHWADA"], note: { en: "Apex of courtly arts and world GDP share (~24%); Mewar integrated as loyal Rajput ally.", hi: "शाहजहाँनाबाद (दिल्ली) नई राजधानी; विश्व व्यापार में सूती वस्त्रों का दबदबा।" } },
+      { name: { en: "Sultanate of Bijapur (Adil Shahi)", hi: "बीजापुर सल्तनत (आदिलशाही)" }, color: "#0284c7", atoms: ["KARNATAKA_N", "KANARA", "KONKAN"], note: { en: "Muhammad Adil Shah constructs the Gol Gumbaz; expanding into southern Karnataka and Tamil plain.", hi: "गोल गुंबज का निर्माण; दक्षिण कर्नाटक और तंजौर तक विस्तार।" } },
+      { name: { en: "Sultanate of Golconda (Qutb Shahi)", hi: "गोलकुंडा सल्तनत (कुतुबशाही)" }, color: "#0891b2", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA", "VIDARBHA"], note: { en: "Famed Kollur diamond mines (producing the Koh-i-Noor); flourishing Indo-Persian culture.", hi: "कोल्लूर की हीरा खदानें (कोहिनूर का उद्गम) और चारमीनार।" } },
+      { name: { en: "Nayakas of the South", hi: "दक्षिण के नायक राज्य" }, color: "#d97706", atoms: ["TONDAI", "CHOLA", "KONGU", "PANDYA", "KERALA", "KARNATAKA_S"], note: { en: "Tirumala Nayaka of Madurai and Nayakas of Thanjavur and Ikkeri assert sovereign rule.", hi: "मदुरै के तिरुमल नायक और तंजौर के नायक शासक।" } },
+      { name: { en: "Ahom Kingdom", hi: "अहोम राज्य" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Pratap Singha introduces the Paik labor-mobilization system.", hi: "पाइक व्यवस्था के माध्यम से सेना और प्रशासन का संगठन।" } }
+    ]
+  },
+
+  // 29. 1658 to 1706: Aurangzeb & Shivaji’s Swarajya
+  {
+    id: "era-29",
+    from: 1658,
+    to: 1706,
+    title: { en: "Aurangzeb & Shivaji’s Swarajya", hi: "औरंगज़ेब और छत्रपति शिवाजी" },
+    representative: { en: "c. 1685 CE", hi: "लगभग 1685 ई." },
+    summary: {
+      en: "Chhatrapati Shivaji Maharaj carves out Maratha Swarajya using hill forts and ganimi kava (guerrilla tactics). Aurangzeb annexes Bijapur and Golconda, engaging in a grueling 25-year war in the Deccan.",
+      hi: "छत्रपति शिवाजी महाराज ने हिंदवी स्वराज्य की स्थापना की। औरंगजेब ने बीजापुर व गोलकुंडा जीतकर दक्षिण में 25 वर्षों तक थकाने वाला युद्ध लड़ा।"
+    },
+    polities: [
+      { name: { en: "Mughal Empire", hi: "मुगल साम्राज्य" }, color: "#15803d", atoms: ["KABUL", "GANDHARA", "KASHMIR", "LADAKH", "PUNJAB_W", "PUNJAB_E", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "BUNDELKHAND", "MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "MALWA", "GUJARAT", "SAURASHTRA", "KUTCH", "DHUNDHAR", "MARWAR", "MEWAR", "KHANDESH", "VIDARBHA", "TELANGANA", "VENGI", "KARNATAKA_N"], note: { en: "Territorially largest extent (annexing Bijapur 1686, Golconda 1687), but severe fiscal overextension.", hi: "औरंगजेब के अधीन अधिकतम भौगोलिक विस्तार, किंतु वित्तीय और प्रशासनिक संकट।" } },
+      { name: { en: "Maratha Swarajya", hi: "मराठा स्वराज्य" }, color: "#ea580c", atoms: ["KONKAN", "DESH", "MARATHWADA", "RAYALASEEMA", "TONDAI"], note: { en: "Shivaji crowned at Raigad (1674); southern campaign captures Gingee and Vellore; Santaji and Dhanaji wage war of liberation.", hi: "रायगढ़ में राज्याभिषेक (1674); जिंजी और वेल्लोर विजय; संताजी व धनाजी द्वारा मुगलों को चुनौती।" } },
+      { name: { en: "Kingdom of Mysore (Wodeyars)", hi: "मैसूर राज्य (वाडेयार)" }, color: "#b45309", atoms: ["KARNATAKA_S", "KANARA"], note: { en: "Chikka Devaraja Wodeyar centralizes the administration and army of Mysore.", hi: "चिक्क देवराज वाडेयार द्वारा मैसूर का विस्तार।" } },
+      { name: { en: "Nayakas & Poligars of Madurai", hi: "मदुरै के नायक" }, color: "#d97706", atoms: ["CHOLA", "PANDYA", "KONGU", "KERALA"], note: { en: "Queen Mangammal reigns as regent in Madurai, building extensive road networks.", hi: "रानी मंगम्मल का कुशल शासन।" } },
+      { name: { en: "Ahom Kingdom", hi: "अहोम राज्य" }, color: "#0d9488", atoms: ["KAMARUPA"], note: { en: "Lachit Borphukan defeats Ram Singh's Mughal army at the Battle of Saraighat (1671).", hi: "1671 में सरायघाट के युद्ध में लाचित बोरफुकन द्वारा मुगलों की पराजय।" } }
+    ]
+  },
+
+  // 30. 1707 to 1760: Maratha Zenith & Mughal Fragmentation
+  {
+    id: "era-30",
+    from: 1707,
+    to: 1760,
+    title: { en: "Maratha Zenith & Fragmentation", hi: "मराठा साम्राज्य का उत्कर्ष" },
+    representative: { en: "c. 1750 CE", hi: "लगभग 1750 ई." },
+    summary: {
+      en: "Following Aurangzeb's death, Peshwa Baji Rao I expands the Maratha Confederacy across Malwa, Gujarat, and Bundelkhand, reaching Delhi. Autonomous successor states arise in Hyderabad, Bengal, and Awadh.",
+      hi: "पेशवा बाजीराव प्रथम ने मराठा ध्वज कटक से अटक तक फहराया। हैदराबाद के निजाम, बंगाल और अवध के नवाब स्वायत्त हुए।"
+    },
+    polities: [
+      { name: { en: "Maratha Confederacy", hi: "मराठा परिसंघ" }, color: "#ea580c", atoms: ["KONKAN", "DESH", "MARATHWADA", "KHANDESH", "VIDARBHA", "MALWA", "GUJARAT", "SAURASHTRA", "BUNDELKHAND", "DHUNDHAR", "KURU", "DOAB_UPPER", "PUNJAB_E", "KALINGA_N", "KALINGA_S"], note: { en: "Chhatrapati Shahu and Peshwas (Balaji Vishwanath, Baji Rao I, Balaji Baji Rao); Scindia, Holkar, Gaekwad, and Bhonsle branches.", hi: "पेशवाओं के नेतृत्व में मराठा परिसंघ का चरमोत्कर्ष; ग्वालियर, इंदौर, बड़ौदा और नागपुर की शाखाएं।" } },
+      { name: { en: "Nizam of Hyderabad (Asaf Jahi)", hi: "हैदराबाद के निज़ाम" }, color: "#0891b2", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N"], note: { en: "Nizam-ul-Mulk Asaf Jah I establishes hereditary autonomy in the Deccan in 1724.", hi: "1724 में आसफजाह प्रथम द्वारा स्वतंत्र हैदराबाद राज्य की स्थापना।" } },
+      { name: { en: "Nawabs of Bengal", hi: "बंगाल के नवाब" }, color: "#059669", atoms: ["MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA"], note: { en: "Murshid Quli Khan, Alivardi Khan, and Siraj-ud-Daulah rule from Murshidabad.", hi: "मुर्शिदाबाद से मुर्शिद कुली खां और अलीवर्दी खां का शासन।" } },
+      { name: { en: "Nawabs of Awadh", hi: "अवध के नवाब" }, color: "#2563eb", atoms: ["AWADH", "VATSA", "DOAB_LOWER", "ROHILKHAND"], note: { en: "Saadat Ali Khan I and Safdarjung govern rich Gangetic plains from Lucknow and Faizabad.", hi: "सआदत खां द्वारा लखनऊ से स्वतंत्र अवध की स्थापना।" } },
+      { name: { en: "Mughal Remnant (Delhi)", hi: "मुगल अवशेष (दिल्ली)" }, color: "#15803d", atoms: ["KUMAON"], note: { en: "Emperor Muhammad Shah sacked by Nader Shah of Persia in 1739; titular imperial prestige remains.", hi: "1739 में नादिर शाह की लूट के बाद शक्तिहीन सम्राट।" } },
+      { name: { en: "Durrani Empire (Afghan)", hi: "दुर्रानी साम्राज्य" }, color: "#047857", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "PUNJAB_W", "MULTAN", "SINDH_N", "SINDH_S", "KASHMIR"], note: { en: "Ahmad Shah Durrani establishes Afghan empire, contesting Punjab with the Marathas and Sikhs.", hi: "अहमद शाह दुर्रानी का पंजाब पर दावा।" } },
+      { name: { en: "Kingdom of Travancore", hi: "त्रावणकोर राज्य" }, color: "#7a9c68", atoms: ["KERALA"], note: { en: "Marthanda Varma crushes the Dutch East India Company at the Battle of Colachel (1741).", hi: "मार्तंड वर्मा ने 1741 में कोलाचेल के युद्ध में डचों को हराया।" } }
+    ]
+  },
+
+  // 31. 1761 to 1798: Marathas, Mysore & the East India Company
+  {
+    id: "era-31",
+    from: 1761,
+    to: 1798,
+    title: { en: "Marathas, Mysore & Company Rise", hi: "मराठा पुनरुत्थान, मैसूर और कंपनी" },
+    representative: { en: "c. 1785 CE", hi: "लगभग 1785 ई." },
+    summary: {
+      en: "Despite heavy losses at the Third Battle of Panipat (1761), Mahadji Shinde rebuilds Maratha dominance in Delhi. The British East India Company wins Plassey (1757) and Buxar (1764), while Hyder Ali and Tipu Sultan fight four wars in Mysore.",
+      hi: "पानीपत (1761) के बाद महादजी शिंदे ने मराठा शक्ति को पुनर्स्थापित किया। कंपनी ने बक्सर (1764) जीतकर दीवानी ली। मैसूर में हैदर अली और टीपू सुल्तान का प्रतिरोध।"
+    },
+    polities: [
+      { name: { en: "Maratha Confederacy", hi: "मराठा परिसंघ" }, color: "#ea580c", atoms: ["KONKAN", "DESH", "MARATHWADA", "KHANDESH", "VIDARBHA", "MALWA", "GUJARAT", "SAURASHTRA", "BUNDELKHAND", "DHUNDHAR", "KURU", "DOAB_UPPER", "KALINGA_N", "KALINGA_S"], note: { en: "Mahadji Scindia and Nana Fadnavis defeat the British in the First Anglo-Maratha War (Treaty of Salbai, 1782).", hi: "महादजी सिंधिया और नाना फडणवीस: प्रथम आंग्ल-मराठा युद्ध में विजय (सालबाई संधि, 1782)।" } },
+      { name: { en: "British East India Company", hi: "ब्रिटिश ईस्ट इंडिया कंपनी" }, color: "#dc2626", atoms: ["RADHA", "VANGA", "VARENDRA", "SAMATATA", "MAGADHA", "MITHILA", "CHOLA", "TONDAI"], note: { en: "Clive and Warren Hastings govern Bengal diwani, Northern Circars, and Carnatic protectorates.", hi: "बंगाल की दीवानी और मद्रास प्रेसीडेंसी पर कंपनी का प्रत्यक्ष नियंत्रण।" } },
+      { name: { en: "Kingdom of Mysore", hi: "मैसूर राज्य" }, color: "#15803d", atoms: ["KARNATAKA_S", "KANARA", "KONGU"], note: { en: "Hyder Ali and Tipu Sultan employ modern rocket artillery, resisting British expansion in Carnatic.", hi: "हैदर अली और टीपू सुल्तान का आंग्ल-मैसूर युद्धों में शौर्य।" } },
+      { name: { en: "Nizam of Hyderabad", hi: "हैदराबाद के निज़ाम" }, color: "#0891b2", atoms: ["TELANGANA", "VENGI", "RAYALASEEMA", "KARNATAKA_N"], note: { en: "Nizam Ali Khan navigates shifting alliances between Marathas, Mysore, and the British.", hi: "निजाम की कूटनीतिक स्थिति।" } },
+      { name: { en: "Nawabs of Awadh", hi: "अवध के नवाब" }, color: "#2563eb", atoms: ["AWADH", "VATSA", "DOAB_LOWER", "ROHILKHAND"], note: { en: "Asaf-ud-Daula builds the Bara Imambara in Lucknow; subsidiary alliance signed.", hi: "आसफुद्दौला द्वारा लखनऊ में बड़ा इमामबाड़ा का निर्माण।" } },
+      { name: { en: "Sikh Misls (Punjab)", hi: "सिख मिसलें" }, color: "#f59e0b", atoms: ["PUNJAB_E", "PUNJAB_W"], note: { en: "Twelve sovereign Sikh confederacies (Dal Khalsa) liberate Punjab from Afghan control.", hi: "दल खालसा की 12 मिसलों द्वारा पंजाब की अफगानों से मुक्ति।" } },
+      { name: { en: "Durrani Afghanistan", hi: "दुर्रानी अफगानिस्तान" }, color: "#047857", atoms: ["GANDHARA", "KABUL", "ARACHOSIA", "MULTAN", "SINDH_N", "SINDH_S", "KASHMIR"], note: { en: "Zaman Shah Durrani ruling western marches.", hi: "अफगान साम्राज्य।" } },
+      { name: { en: "Travancore", hi: "त्रावणकोर" }, color: "#7a9c68", atoms: ["KERALA"], note: { en: "Dharma Raja maintains alliance with British against Mysore.", hi: "केरल में त्रावणकोर राज्य।" } }
+    ]
+  },
+
+  // 32. 1799 to 1817: Fall of Mysore & Anglo-Maratha Wars
+  {
+    id: "era-32",
+    from: 1799,
+    to: 1817,
+    title: { en: "Fall of Mysore & Maratha Wars", hi: "मैसूर का पतन और आंग्ल-मराठा युद्ध" },
+    representative: { en: "c. 1805 CE", hi: "लगभग 1805 ई." },
+    summary: {
+      en: "Tipu Sultan falls at Srirangapatna (1799). Lord Wellesley aggressively deploys the Subsidiary Alliance system, defeating Scindia and Bhonsle in the Second Anglo-Maratha War (Assaye, 1803) and entering Delhi.",
+      hi: "1799 में टीपू सुल्तान का बलिदान। लॉर्ड वेलेस्ली की सहायक संधि नीति; द्वितीय आंग्ल-मराठा युद्ध में सिंधिया व भोंसले की पराजय और दिल्ली पर कंपनी का कब्जा।"
+    },
+    polities: [
+      { name: { en: "British East India Company", hi: "ब्रिटिश ईस्ट इंडिया कंपनी" }, color: "#dc2626", atoms: ["RADHA", "VANGA", "VARENDRA", "SAMATATA", "MAGADHA", "MITHILA", "CHOLA", "TONDAI", "KONGU", "KANARA", "RAYALASEEMA", "DOAB_LOWER", "DOAB_UPPER", "ROHILKHAND", "KURU", "KALINGA_N", "KALINGA_S"], note: { en: "Direct rule over Bengal, Madras, Orissa, and the Doab; Mughal emperor taken under protection.", hi: "बंगाल, मद्रास, ओडिशा और दोआब पर कंपनी का सीधा अधिकार।" } },
+      { name: { en: "Maratha Confederacy (Peshwa, Holkar, Scindia)", hi: "मराठा परिसंघ" }, color: "#ea580c", atoms: ["KONKAN", "DESH", "MARATHWADA", "KHANDESH", "VIDARBHA", "MALWA", "GUJARAT", "SAURASHTRA", "BUNDELKHAND"], note: { en: "Peshwa Baji Rao II signs Treaty of Bassein (1802); Yashwantrao Holkar fights to a standstill.", hi: "बेसिन की संधि (1802); यशवंतराव होलकर द्वारा अंग्रेजों को कड़ी चुनौती।" } },
+      { name: { en: "Sikh Empire (Ranjit Singh)", hi: "सिख साम्राज्य (रणजीत सिंह)" }, color: "#f59e0b", atoms: ["PUNJAB_E", "PUNJAB_W"], note: { en: "Maharaja Ranjit Singh captures Lahore (1799) and unifies the misls into an empire.", hi: "1799 में लाहौर जीतकर महाराजा रणजीत सिंह द्वारा सिख साम्राज्य की स्थापना।" } },
+      { name: { en: "Princely Mysore (Wodeyar)", hi: "मैसूर रियासत" }, color: "#b45309", atoms: ["KARNATAKA_S"], note: { en: "Restored under five-year-old Krishnaraja Wodeyar III under subsidiary alliance.", hi: "सहायक संधि के तहत वाडेयार वंश को पुनः सौंपा गया।" } },
+      { name: { en: "Nizam of Hyderabad", hi: "हैदराबाद के निज़ाम" }, color: "#0891b2", atoms: ["TELANGANA", "VENGI", "KARNATAKA_N"], note: { en: "First state to enter Lord Wellesley's Subsidiary Alliance (1798).", hi: "सहायक संधि स्वीकार करने वाला पहला राज्य।" } },
+      { name: { en: "Rajput States", hi: "राजपूत राज्य" }, color: "#d97736", atoms: ["MARWAR", "MEWAR", "DHUNDHAR"], note: { en: "Suffering Maratha exactions before entering British protection treaties in 1818.", hi: "स्वतंत्र राजपूत राज्य।" } },
+      { name: { en: "Sindh (Talpur Amirs)", hi: "सिंध के तालपुर अमीर" }, color: "#15803d", atoms: ["SINDH_N", "SINDH_S", "MULTAN", "BALOCH"], note: { en: "Talpur Balochi dynasty takes over Sindh.", hi: "तालपुर अमीरों का शासन।" } }
+    ]
+  },
+
+  // 33. 1818 to 1848: Company Hegemony & the Sikh Empire
+  {
+    id: "era-33",
+    from: 1818,
+    to: 1848,
+    title: { en: "Company Hegemony & the Sikh Empire", hi: "कंपनी का प्रभुत्व और सिख साम्राज्य" },
+    representative: { en: "c. 1835 CE", hi: "लगभग 1835 ई." },
+    summary: {
+      en: "The Third Anglo-Maratha War (1818) extinguishes the Peshwaship, leaving the Company master of India. In the northwest, Maharaja Ranjit Singh builds the formidable Sikh Khalsa Sarkar from Kashmir to Peshawar.",
+      hi: "1818 में तृतीय आंग्ल-मराठा युद्ध से पेशवाई समाप्त; कंपनी भारत की सर्वोच्च शक्ति बनी। पश्चिमोत्तर में शेर-ए-पंजाब रणजीत सिंह का शक्तिशाली सिख साम्राज्य।"
+    },
+    polities: [
+      { name: { en: "British East India Company (Direct)", hi: "ब्रिटिश कंपनी राज" }, color: "#dc2626", atoms: ["RADHA", "VANGA", "VARENDRA", "SAMATATA", "MAGADHA", "MITHILA", "CHOLA", "TONDAI", "KONGU", "KANARA", "RAYALASEEMA", "DOAB_LOWER", "DOAB_UPPER", "ROHILKHAND", "KURU", "KALINGA_N", "KALINGA_S", "KONKAN", "DESH", "KHANDESH", "GUJARAT"], note: { en: "Bengal, Madras, and Bombay Presidencies dominate subcontinent governance.", hi: "बंबई, मद्रास और बंगाल प्रेसीडेंसी का सीधा नियंत्रण।" } },
+      { name: { en: "Sikh Empire (Sarkar-i Khalsa)", hi: "सिख साम्राज्य (सरकार-ए-खालसा)" }, color: "#f59e0b", atoms: ["PUNJAB_W", "PUNJAB_E", "MULTAN", "KASHMIR", "LADAKH", "GANDHARA"], note: { en: "Ranjit Singh's modernized Fauj-i-Khas commands European generals; conquers Multan, Kashmir, and Peshawar.", hi: "शेर-ए-पंजाब रणजीत सिंह: मुल्तान, कश्मीर और पेशावर विजय; आधुनिक खालसा सेना।" } },
+      { name: { en: "Princely States (Subsidiary Alliance)", hi: "देसी रियासतें" }, color: "#3b82f6", atoms: ["HYDERABAD", "TELANGANA", "VENGI", "KARNATAKA_N", "KARNATAKA_S", "MARWAR", "MEWAR", "DHUNDHAR", "SAURASHTRA", "KUTCH", "MALWA", "VIDARBHA", "AWADH", "KERALA", "BASTAR"].filter(a => validAtoms.has(a)), note: { en: "Over 500 autonomous states bound by British paramountcy: Hyderabad, Mysore, Gwalior, Rajputana.", hi: "ब्रिटिश सर्वोच्चता के अधीन 500 से अधिक स्वायत्त देशी रियासतें।" } },
+      { name: { en: "Sindh (Talpur)", hi: "सिंध (तालपुर)" }, color: "#15803d", atoms: ["SINDH_N", "SINDH_S", "BALOCH"], note: { en: "Annexed by Sir Charles Napier in 1843 ('Peccavi').", hi: "1843 में चार्ल्स नेपियर द्वारा सिंध का अन्यायपूर्ण विलय।" } },
+      { name: { en: "Kabul / Durrani Remnants", hi: "काबुल (अफगानिस्तान)" }, color: "#047857", atoms: ["KABUL", "ARACHOSIA"], note: { en: "Dost Mohammad Khan restores Barakzai rule following First Anglo-Afghan War.", hi: "दोस्त मुहम्मद खान का शासन।" } }
+    ]
+  },
+
+  // 34. 1849 to 1857: British Direct Rule & the Great Uprising
+  {
+    id: "era-34",
+    from: 1849,
+    to: 1857,
+    title: { en: "Doctrine of Lapse & the 1857 Revolt", hi: "डलहौजी की हड़प नीति और 1857 की क्रांति" },
+    representative: { en: "c. 1856 CE", hi: "लगभग 1856 ई." },
+    summary: {
+      en: "Lord Dalhousie annexes Punjab (1849), Satara, Jhansi, Nagpur, and Awadh (1856) through the Doctrine of Lapse. In May 1857, sepoys at Meerut revolt, sparking a widespread war of independence.",
+      hi: "लॉर्ड डलहौजी ने पंजाब, झांसी, नागपुर और अवध का विलय किया। मई 1857 में मेरठ से 1857 की क्रांति का विस्फोट हुआ, जिसमें रानी लक्ष्मीबाई, कुंवर सिंह और नाना साहब लड़े।"
+    },
+    polities: [
+      { name: { en: "British East India Company", hi: "ब्रिटिश ईस्ट इंडिया कंपनी" }, color: "#dc2626", atoms: ["RADHA", "VANGA", "VARENDRA", "SAMATATA", "MAGADHA", "MITHILA", "CHOLA", "TONDAI", "KONGU", "KANARA", "RAYALASEEMA", "DOAB_LOWER", "DOAB_UPPER", "ROHILKHAND", "KURU", "KALINGA_N", "KALINGA_S", "KONKAN", "DESH", "KHANDESH", "GUJARAT", "PUNJAB_W", "PUNJAB_E", "MULTAN", "SINDH_N", "SINDH_S", "AWADH", "VIDARBHA"], note: { en: "Annexations of Punjab (1849) and Awadh (1856); first railways (1853) and telegraph lines.", hi: "पंजाब और अवध का विलय; पहली रेलवे (1853) और डाक-तार व्यवस्था।" } },
+      { name: { en: "Princely States", hi: "देसी रियासतें" }, color: "#3b82f6", atoms: ["TELANGANA", "VENGI", "KARNATAKA_N", "KARNATAKA_S", "MARWAR", "MEWAR", "DHUNDHAR", "SAURASHTRA", "KUTCH", "MALWA", "KERALA", "KASHMIR", "LADAKH", "BASTAR"], note: { en: "Jammu and Kashmir sold to Gulab Singh (1846); major states remain neutral or aid British in 1857.", hi: "गुलाब सिंह को कश्मीर की बिक्री; अधिकांश रियासतें 1857 में ब्रिटिश पक्ष में रहीं।" } },
+      { name: { en: "1857 Uprising Centers (Delhi, Awadh, Jhansi)", hi: "1857 क्रांति के मुख्य केंद्र" }, color: "#ea580c", atoms: ["VATSA", "BUNDELKHAND"], note: { en: "Bahadur Shah Zafar proclaimed Emperor; Rani Lakshmibai, Nana Saheb, Tantia Tope, and Kunwar Singh lead fierce resistance.", hi: "बहादुर शाह जफर शहंशाह घोषित; झांसी की रानी और कुंवर सिंह का ऐतिहासिक संघर्ष।" } }
+    ]
+  },
+
+  // 35. 1858 to 1946: The British Indian Empire & Princely States
+  {
+    id: "era-35",
+    from: 1858,
+    to: 1946,
+    title: { en: "The British Raj & Princely States", hi: "ब्रिटिश राज और देसी रियासतें" },
+    representative: { en: "c. 1910 CE", hi: "लगभग 1910 ई." },
+    summary: {
+      en: "Queen Victoria's 1858 Proclamation dissolves the Company; direct Crown rule governs British India alongside 565 Princely States under paramountcy. The Indian national freedom movement arises under Congress, Tilak, and Gandhi.",
+      hi: "1858 में ब्रिटिश महारानी का सीधा शासन प्रारंभ; ब्रिटिश प्रांत और 565 देसी रियासतें। कांग्रेस, तिलक और महात्मा गांधी के नेतृत्व में राष्ट्रीय स्वतंत्रता आंदोलन।"
+    },
+    polities: [
+      { name: { en: "British India (Direct Provinces)", hi: "ब्रिटिश भारत (प्रत्यक्ष प्रांत)" }, color: "#dc2626", atoms: ["PUNJAB_W", "PUNJAB_E", "MULTAN", "SINDH_N", "SINDH_S", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "MAGADHA", "MITHILA", "RADHA", "VANGA", "VARENDRA", "SAMATATA", "KAMARUPA", "NE_HILLS", "KALINGA_N", "KALINGA_S", "VIDARBHA", "CHHATTISGARH", "KHANDESH", "DESH", "KONKAN", "GUJARAT", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "GANDHARA"], note: { en: "Governed by the Viceroy and Provincial Governors: Bengal, Bombay, Madras, United Provinces, Punjab, Central Provinces, Assam, Bihar-Orissa.", hi: "वायसराय और गवर्नरों के अधीन प्रत्यक्ष प्रांत।" } },
+      { name: { en: "Princely States (Indian Rulers)", hi: "देसी रियासतें (भारतीय नरेश)" }, color: "#2563eb", atoms: ["KASHMIR", "LADAKH", "MARWAR", "MEWAR", "DHUNDHAR", "SAURASHTRA", "KUTCH", "MALWA", "BUNDELKHAND", "BAGHELKHAND", "JHARKHAND", "BASTAR", "GONDWANA", "TELANGANA", "VENGI", "KARNATAKA_N", "KARNATAKA_S", "KERALA", "BALOCH"], note: { en: "565 states with internal autonomy under British paramountcy: Kashmir, Hyderabad, Mysore, Baroda, Gwalior, Travancore, Rajputana states.", hi: "ब्रिटिश सर्वोच्चता के तहत आंतरिक स्वायत्तता प्राप्त 565 रियासतें।" } }
+    ]
+  },
+
+  // 36. 1947 to 1947: Independence & Partition
+  {
+    id: "era-36",
+    from: 1947,
+    to: 1947,
+    title: { en: "Independence & Partition", hi: "स्वतंत्रता और विभाजन" },
+    representative: { en: "August 1947", hi: "अगस्त 1947" },
+    summary: {
+      en: "On 14–15 August 1947, British rule ends with the partition of British India into India and Pakistan. Sardar Patel leads the rapid integration of 565 princely states into the Indian Union.",
+      hi: "14-15 अगस्त 1947 को भारत और पाकिस्तान स्वतंत्र हुए। सरदार वल्लभभाई पटेल के नेतृत्व में 565 रियासतों का भारतीय संघ में ऐतिहासिक एकीकरण हुआ।"
+    },
+    polities: [
+      { name: { en: "Dominion of India", hi: "भारतीय संघ (भारत)" }, color: "#ea580c", atoms: ["PUNJAB_E", "KURU", "DOAB_UPPER", "DOAB_LOWER", "ROHILKHAND", "KUMAON", "AWADH", "VATSA", "MAGADHA", "MITHILA", "RADHA", "KAMARUPA", "NE_HILLS", "KALINGA_N", "KALINGA_S", "VIDARBHA", "CHHATTISGARH", "KHANDESH", "DESH", "KONKAN", "GUJARAT", "KANARA", "RAYALASEEMA", "TONDAI", "CHOLA", "KONGU", "PANDYA", "MARWAR", "MEWAR", "DHUNDHAR", "SAURASHTRA", "KUTCH", "MALWA", "BUNDELKHAND", "BAGHELKHAND", "JHARKHAND", "BASTAR", "GONDWANA", "KARNATAKA_S", "KERALA"], note: { en: "Independent India under Prime Minister Jawaharlal Nehru; Sardar Patel integrates princely territories.", hi: "जवाहरलाल नेहरू प्रथम प्रधानमंत्री; सरदार पटेल द्वारा रियासतों का एकीकरण।" } },
+      { name: { en: "Dominion of Pakistan", hi: "पाकिस्तान" }, color: "#15803d", atoms: ["PUNJAB_W", "MULTAN", "SINDH_N", "SINDH_S", "BALOCH", "GANDHARA", "KABUL", "VANGA", "VARENDRA", "SAMATATA"], note: { en: "West and East Pakistan (divided by the Radcliffe Line) under Governor-General Muhammad Ali Jinnah.", hi: "रेडक्लिफ रेखा द्वारा विभाजित पश्चिमी और पूर्वी पाकिस्तान।" } },
+      { name: { en: "Acceding / Unintegrated States (Aug 1947)", hi: "विलयशील राज्य (अगस्त 1947)" }, color: "#2563eb", atoms: ["KASHMIR", "LADAKH", "TELANGANA", "VENGI", "KARNATAKA_N"], note: { en: "Jammu & Kashmir signs Instrument of Accession in Oct 1947; Hyderabad integrated via Police Action in Sep 1948.", hi: "कश्मीर (अक्टूबर 1947) और हैदराबाद (सितंबर 1948) का बाद में संघ में विलय।" } }
+    ]
+  }
+];
+
+// Validate that every atom in all snapshots exists
+SNAPSHOTS.forEach(s => {
+  s.polities.forEach(p => {
+    p.atoms.forEach(a => {
+      if (!validAtoms.has(a)) {
+        throw new Error(`Snapshot ${s.id} (${s.title.en}) references invalid atom: '${a}'`);
+      }
+    });
+  });
+});
+
+// Write data/snapshots.json
+writeFileSync('data/snapshots.json', JSON.stringify(SNAPSHOTS, null, 2) + '\n');
+
+// Write data/snapshots.js (offline/file:// support)
+const jsContent = `// Generated by scripts/build-snapshots.mjs
+window.ATLAS_SNAPSHOTS = ${JSON.stringify(SNAPSHOTS, null, 2)};
+`;
+writeFileSync('data/snapshots.js', jsContent);
+
+console.log(`Generated data/snapshots.json and data/snapshots.js (${SNAPSHOTS.length} snapshots)`);

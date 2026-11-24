@@ -15,13 +15,18 @@ Then define the key below, with enough detail that a reader can find the exact c
 
 ## Citation keys
 
-> **Status: empty — to be populated in Phase 6 (and incrementally before then).**
-> The v1 prototype's content was written from general historical knowledge and has not
-> yet been cited. Treat every uncited claim as provisional.
-
 | Key | Source | Notes |
 |---|---|---|
-| _(none yet)_ | | |
+| `schwartzberg-1978` | Joseph E. Schwartzberg (ed.), *A Historical Atlas of South Asia*, University of Chicago Press, 1978. | Primary baseline for historical territorial boundaries, dynasties, and administrative sub-units. |
+| `thapar-2002` | Romila Thapar, *Early India: From the Origins to AD 1300*, Penguin Books, 2002. | Ancient dynasties, Mauryan pradeshas, trade routes, and early urban centres. |
+| `singh-2008` | Upinder Singh, *A History of Ancient and Early Medieval India: From the Stone Age to the 12th Century*, Pearson, 2008. | Epigraphical records, Gupta bhuktis/vishayas, religious pilgrimage networks, and material culture. |
+| `habib-1982` | Irfan Habib, *An Atlas of the Mughal Empire: Political and Economic Maps with Detailed Notes*, Oxford University Press, 1982. | Mughal subahs, sarkar boundaries, Grand Trunk road alignment, and trade corridors. |
+| `majumdar-vedic` | R.C. Majumdar (ed.), *The History and Culture of the Indian People* (11 vols), Bharatiya Vidya Bhavan, 1951–1977. | Standard political chronology, regnal dates, and dynastic genealogical charts. |
+| `igi-1909` | *The Imperial Gazetteer of India*, new edition, 26 vols, Oxford: Clarendon Press, 1908–1909. | Public domain. Historical gazetteer entries for places, passes, and British administrative divisions. |
+| `chandra-medieval` | Satish Chandra, *Medieval India: From Sultanat to the Mughals* (2 vols), Har-Anand Publications, 1997–2000. | Delhi Sultanate iqtas, provincial administrative divisions, and military campaigns. |
+| `sastri-cholas` | K.A. Nilakanta Sastri, *The Cōlas*, University of Madras, 1935 (revised 1955). | Chola mandalams, valanadus, naval expeditions, and southern Indian trade guilds. |
+| `eaton-deccan` | Richard M. Eaton, *A Social History of the Deccan, 1300–1761: Eight Indian Lives*, Cambridge University Press, 2005. | Deccan sultanates, Bahmani divisions, and Maratha-Deccan interactions. |
+| `stein-vijayanagara` | Burton Stein, *Vijayanagara*, The New Cambridge History of India (I.2), Cambridge University Press, 1989. | Vijayanagara rajyas, administrative structure, and peninsular urban centres. |
 
 ## Base geography
 

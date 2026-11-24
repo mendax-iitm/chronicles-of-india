@@ -1,0 +1,1152 @@
+// scripts/build-events.mjs
+// Generates data/events.json and data/events.js (80 historical milestones across South Asia)
+// Usage: node scripts/build-events.mjs
+
+import { writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+process.chdir(resolve(dirname(fileURLToPath(import.meta.url)), '..'));
+
+export const EVENTS = [
+  // --- Ancient Era (-600 to 300 CE) ---
+  {
+    id: 0,
+    year: -544,
+    lon: 85.42,
+    lat: 25.01,
+    title: {
+      en: "Bimbisara expands Magadhan hegemony",
+      hi: "बिंबिसार द्वारा मगध का विस्तार"
+    },
+    description: {
+      en: "Haryanka king Bimbisara establishes Magadha's primacy across the Middle Gangetic plain from Rajagriha.",
+      hi: "हर्यंक राजा बिंबिसार ने राजगृह से मध्य गंगा घाटी में मगध का वर्चस्व स्थापित किया।"
+    }
+  },
+  {
+    id: 1,
+    year: -528,
+    lon: 84.99,
+    lat: 24.70,
+    title: {
+      en: "Buddha’s enlightenment",
+      hi: "बुद्ध का सम्बोधि लाभ"
+    },
+    description: {
+      en: "Siddhartha Gautama attains awakening under the Bodhi tree at Bodh Gaya (traditional date).",
+      hi: "सिद्धार्थ गौतम ने बोधगया में बोधिवृक्ष के नीचे ज्ञान प्राप्त किया (पारंपरिक तिथि)।"
+    }
+  },
+  {
+    id: 2,
+    year: -483,
+    lon: 85.42,
+    lat: 25.02,
+    title: {
+      en: "First Buddhist Council at Rajgriha",
+      hi: "राजगृह में प्रथम बौद्ध संगीति"
+    },
+    description: {
+      en: "Following the Mahaparinirvana of the Buddha, monks assemble at the Sattapanni Cave to recite the Suttas and Vinaya.",
+      hi: "बुद्ध के महापरिनिर्वाण के बाद सप्तपर्णी गुफा में भिक्षुओं ने सुत्त और विनय का संकलन किया।"
+    }
+  },
+  {
+    id: 3,
+    year: -468,
+    lon: 85.55,
+    lat: 25.08,
+    title: {
+      en: "Mahavira’s nirvana at Pavapuri",
+      hi: "पावापुरी में महावीर का निर्वाण"
+    },
+    description: {
+      en: "Vardhamana Mahavira, 24th Tirthankara of Jainism, attains nirvana at Pavapuri (traditional Shvetambara date).",
+      hi: "जैन धर्म के 24वें तीर्थंकर वर्धमान महावीर ने पावापुरी में निर्वाण प्राप्त किया।"
+    }
+  },
+  {
+    id: 4,
+    year: -326,
+    lon: 73.73,
+    lat: 32.93,
+    title: {
+      en: "Battle of the Hydaspes",
+      hi: "हाइडैस्पेस (झेलम) का युद्ध"
+    },
+    description: {
+      en: "Alexander defeats Porus on the Jhelum, but his army refuses to advance east of the Beas.",
+      hi: "सिकंदर ने झेलम पर पोरस को हराया, लेकिन उसकी सेना ने ब्यास के पूर्व बढ़ने से मना कर दिया।"
+    }
+  },
+  {
+    id: 5,
+    year: -321,
+    lon: 85.14,
+    lat: 25.61,
+    title: {
+      en: "Chandragupta founds the Maurya dynasty",
+      hi: "चंद्रगुप्त द्वारा मौर्य वंश की स्थापना"
+    },
+    description: {
+      en: "Chandragupta Maurya and Chanakya overthrow Dhana Nanda, uniting the Gangetic plain at Pataliputra.",
+      hi: "चंद्रगुप्त मौर्य और चाणक्य ने धनानंद को अपदस्थ कर पाटलिपुत्र में साम्राज्य स्थापित किया।"
+    }
+  },
+  {
+    id: 6,
+    year: -305,
+    lon: 71.50,
+    lat: 32.50,
+    title: {
+      en: "Maurya–Seleucid peace treaty",
+      hi: "मौर्य-सेल्युकस संधि"
+    },
+    description: {
+      en: "Chandragupta halts Seleucus I Nicator on the Indus; Gedrosia, Arachosia and Paropamisadae cede to the Mauryas.",
+      hi: "चंद्रगुप्त ने सेल्युकस निकेटर से संधि की; गांधार, अराकोसिया और गेड्रोसिया मौर्य साम्राज्य में मिले।"
+    }
+  },
+  {
+    id: 7,
+    year: -261,
+    lon: 85.84,
+    lat: 20.19,
+    title: {
+      en: "Kalinga War",
+      hi: "कलिंग युद्ध"
+    },
+    description: {
+      en: "Ashoka’s conquest of Kalinga leads him to adopt dhamma and renounce expansion by war.",
+      hi: "कलिंग विजय के भीषण नरसंहार ने अशोक को धम्म अपनाने और युद्ध विजय त्यागने को प्रेरित किया।"
+    }
+  },
+  {
+    id: 8,
+    year: -250,
+    lon: 85.14,
+    lat: 25.61,
+    title: {
+      en: "Third Buddhist Council at Pataliputra",
+      hi: "पाटलिपुत्र में तृतीय बौद्ध संगीति"
+    },
+    description: {
+      en: "Convened by Emperor Ashoka and presided by Moggaliputta Tissa; Buddhist missions dispatched across Asia and the Hellenistic world.",
+      hi: "अशोक द्वारा पाटलिपुत्र में तृतीय संगीति आयोजित; एशिया और भूमध्यसागरीय राज्यों में धर्मप्रचारक भेजे गए।"
+    }
+  },
+  {
+    id: 9,
+    year: -185,
+    lon: 85.14,
+    lat: 25.61,
+    title: {
+      en: "Pushyamitra Shunga establishes Shunga dynasty",
+      hi: "पुष्यमित्र शुंग द्वारा शुंग वंश की स्थापना"
+    },
+    description: {
+      en: "Commander Pushyamitra assassinating the last Maurya ruler Brihadratha, founding the Shunga dynasty at Pataliputra and Vidisha.",
+      hi: "अंतिम मौर्य सम्राट बृहद्रथ की हत्या के बाद पुष्यमित्र ने शुंग वंश की नींव रखी।"
+    }
+  },
+  {
+    id: 10,
+    year: -155,
+    lon: 74.53,
+    lat: 32.50,
+    title: {
+      en: "Menander I rules from Sagala",
+      hi: "मिनांडर प्रथम का साकल में शासन"
+    },
+    description: {
+      en: "The Indo-Greek king Menander I (Milinda) establishes his capital at Sagala (Sialkot) and patronizes Buddhism.",
+      hi: "इंडो-ग्रीक राजा मिनांडर (मिलिंद) ने साकल (सियालकोट) को राजधानी बनाया और बौद्ध धर्म अपनाया।"
+    }
+  },
+  {
+    id: 11,
+    year: -113,
+    lon: 77.81,
+    lat: 23.53,
+    title: {
+      en: "Heliodorus pillar erected at Vidisha",
+      hi: "विदिशा में हेलियोडोरस स्तंभ"
+    },
+    description: {
+      en: "Heliodorus, ambassador of the Indo-Greek king Antialcidas, erects a Garuda standard dedicated to Vasudeva at Besnagar.",
+      hi: "इंडो-ग्रीक राजदूत हेलियोडोरस ने बेसनगर में वासुदेव के सम्मान में गरुड़ ध्वज स्थापित किया।"
+    }
+  },
+  {
+    id: 12,
+    year: -57,
+    lon: 75.77,
+    lat: 23.18,
+    title: {
+      en: "Vikram Samvat era begins",
+      hi: "विक्रम संवत का आरंभ"
+    },
+    description: {
+      en: "The legendary King Vikramaditya of Ujjain defeats the Shakas, inaugurating the widely used Vikram calendar era.",
+      hi: "उज्जैन के राजा विक्रमादित्य द्वारा शकों पर विजय के उपलक्ष्य में विक्रम संवत प्रारंभ।"
+    }
+  },
+  {
+    id: 13,
+    year: -30,
+    lon: 85.79,
+    lat: 20.26,
+    title: {
+      en: "Kharavela’s Hathigumpha inscription",
+      hi: "खारवेल का हाथीगुम्फा अभिलेख"
+    },
+    description: {
+      en: "Mahameghavahana king Kharavela of Kalinga records his military campaigns across north and south India in the Udayagiri caves.",
+      hi: "कलिंग नरेश खारवेल ने उदयगिरि गुफाओं में अपने विस्तृत सैन्य अभियानों का विवरण उत्कीर्ण कराया।"
+    }
+  },
+  {
+    id: 14,
+    year: 78,
+    lon: 71.57,
+    lat: 34.01,
+    title: {
+      en: "Shaka era begins under Kanishka",
+      hi: "शक संवत और कनिष्क का राज्यारोहण"
+    },
+    description: {
+      en: "Kanishka I ascends the Kushana throne, patronizing the Fourth Buddhist Council in Kashmir and trade across the Silk Road.",
+      hi: "कुषाण सम्राट कनिष्क का राज्यारोहण; शक संवत प्रारंभ और कश्मीर में चतुर्थ बौद्ध संगीति।"
+    }
+  },
+  {
+    id: 15,
+    year: 130,
+    lon: 73.78,
+    lat: 19.99,
+    title: {
+      en: "Gautamiputra Satakarni restores Satavahana power",
+      hi: "गौतमीपुत्र शातकर्णी द्वारा सातवाहन पुनरुत्थान"
+    },
+    description: {
+      en: "Gautamiputra Satakarni defeats Western Kshatrapa ruler Nahapana, reclaiming the Deccan and Malwa ports.",
+      hi: "गौतमीपुत्र शातकर्णी ने क्षहरात नहपान को परास्त कर दक्कन में सातवाहन प्रभुत्व पुनर्स्थापित किया।"
+    }
+  },
+  {
+    id: 16,
+    year: 150,
+    lon: 70.47,
+    lat: 21.52,
+    title: {
+      en: "Rudradaman I Junagadh inscription",
+      hi: "रुद्रदामन का जूनागढ़ अभिलेख"
+    },
+    description: {
+      en: "Western Kshatrapa Mahakshatrapa Rudradaman repairs Sudarshana lake dam, composing the first major Sanskrit royal prasasti.",
+      hi: "महाक्षत्रप रुद्रदामन ने सुदर्शन झील का जीर्णोद्धार कराया और विशुद्ध संस्कृत में प्रशस्ति लिखवाई।"
+    }
+  },
+  {
+    id: 17,
+    year: 250,
+    lon: 78.12,
+    lat: 9.92,
+    title: {
+      en: "Sangam literature flourishes at Madurai",
+      hi: "मदुरै में संगम साहित्य का उत्कर्ष"
+    },
+    description: {
+      en: "Pandya kings patronize the Tamil Sangam academies; classical anthologies (Ettuttokai and Pattuppattu) are codified.",
+      hi: "पांड्य राजाओं के संरक्षण में तमिल संगम साहित्य का संकलन और शास्त्रीय काव्य का विकास।"
+    }
+  },
+
+  // --- Classical & Early Medieval Era (300 to 1200 CE) ---
+  {
+    id: 18,
+    year: 320,
+    lon: 85.14,
+    lat: 25.61,
+    title: {
+      en: "Gupta era begins",
+      hi: "गुप्त संवत का आरंभ"
+    },
+    description: {
+      en: "Chandragupta I marries Lichchhavi princess Kumaradevi and assumes Maharajadhiraja, inaugurating the Gupta era.",
+      hi: "चंद्रगुप्त प्रथम ने लिच्छवि राजकुमारी कुमारदेवी से विवाह कर महाराजाधिराज की उपाधि धारण की।"
+    }
+  },
+  {
+    id: 19,
+    year: 350,
+    lon: 81.85,
+    lat: 25.43,
+    title: {
+      en: "Samudragupta’s Allahabad Pillar prasasti",
+      hi: "समुद्रगुप्त की प्रयाग प्रशस्ति"
+    },
+    description: {
+      en: "Court poet Harishena carves Samudragupta's extensive digvijaya across Aryavarta and Dakshinapatha on the Ashokan pillar.",
+      hi: "हरिषेण ने अशोक स्तंभ पर समुद्रगुप्त के आर्यावर्त और दक्षिणापथ विजय अभियानों की प्रशस्ति उत्कीर्ण की।"
+    }
+  },
+  {
+    id: 20,
+    year: 388,
+    lon: 75.77,
+    lat: 23.18,
+    title: {
+      en: "Chandragupta II conquers the Western Kshatrapas",
+      hi: "चंद्रगुप्त द्वितीय द्वारा शक विजय"
+    },
+    description: {
+      en: "Chandragupta II Vikramaditya annexes Gujarat and Malwa, gaining Arabian Sea maritime trade ports at Bharuch and Cambay.",
+      hi: "चंद्रगुप्त विक्रमादित्य ने शकों को हराकर गुजरात और मालवा को गुप्त साम्राज्य में मिलाया।"
+    }
+  },
+  {
+    id: 21,
+    year: 427,
+    lon: 85.44,
+    lat: 25.13,
+    title: {
+      en: "Nalanda Mahavihara founded",
+      hi: "नालंदा महाविहार की स्थापना"
+    },
+    description: {
+      en: "Kumaragupta I endows the great residential monastic university of Nalanda, attracting scholars from across Asia.",
+      hi: "कुमारगुप्त प्रथम के संरक्षण में नालंदा विश्वविद्यालय की नींव पड़ी, जहाँ संपूर्ण एशिया से विद्वान आए।"
+    }
+  },
+  {
+    id: 22,
+    year: 455,
+    lon: 83.00,
+    lat: 25.50,
+    title: {
+      en: "Skandagupta repulses the Hunas",
+      hi: "स्कंदगुप्त द्वारा हूणों का निष्कासन"
+    },
+    description: {
+      en: "Skandagupta successfully defeats the first waves of invading Kidarite and Alchon Hunas, preserving the Gupta realm.",
+      hi: "स्कंदगुप्त ने हूणों के शुरुआती आक्रमण को सफलतापूर्वक पीछे धकेलकर गुप्त साम्राज्य की रक्षा की।"
+    }
+  },
+  {
+    id: 23,
+    year: 543,
+    lon: 75.68,
+    lat: 15.92,
+    title: {
+      en: "Pulakeshin I establishes Chalukya dynasty at Vatapi",
+      hi: "पुलकेशिन् प्रथम द्वारा बादामी चालुक्य वंश की स्थापना"
+    },
+    description: {
+      en: "Pulakeshin I fortifies the hill citadel of Vatapi (Badami) and performs the ashvamedha sacrifice.",
+      hi: "पुलकेशिन् प्रथम ने वातापी के दुर्ग का निर्माण कर अश्वमेध यज्ञ किया और चालुक्य सत्ता स्थापित की।"
+    }
+  },
+  {
+    id: 24,
+    year: 575,
+    lon: 79.70,
+    lat: 12.83,
+    title: {
+      en: "Simhavishnu revives Pallava rule at Kanchi",
+      hi: "सिंहविष्णु द्वारा कांची में पल्लव पुनरुत्थान"
+    },
+    description: {
+      en: "Simhavishnu defeats the Kalabhras, establishing the Imperial Pallavas of Kanchipuram and rock-cut temple architecture.",
+      hi: "सिंहविष्णु ने कलाभ्रों को हराकर कांचीपुरम में पल्लव शक्ति स्थापित की और शैलकृत स्थापत्य को बढ़ावा दिया।"
+    }
+  },
+  {
+    id: 25,
+    year: 606,
+    lon: 79.92,
+    lat: 27.05,
+    title: {
+      en: "Harsha crowned at Kannauj",
+      hi: "हर्षवर्धन का कन्नौज में राज्यारोहण"
+    },
+    description: {
+      en: "Harshavardhana unites Thanesar and Kannauj, creating an empire across northern India.",
+      hi: "हर्षवर्धन ने थानेसर और कन्नौज को मिलाकर उत्तर भारत में विशाल साम्राज्य का निर्माण किया।"
+    }
+  },
+  {
+    id: 26,
+    year: 618,
+    lon: 76.50,
+    lat: 21.80,
+    title: {
+      en: "Battle of the Narmada",
+      hi: "नर्मदा का युद्ध"
+    },
+    description: {
+      en: "Chalukya emperor Pulakeshin II halts Harsha’s southward advance on the Narmada river.",
+      hi: "चालुक्य सम्राट पुलकेशिन् द्वितीय ने नर्मदा तट पर हर्षवर्धन के दक्षिण अभियान को रोका।"
+    }
+  },
+  {
+    id: 27,
+    year: 642,
+    lon: 75.68,
+    lat: 15.92,
+    title: {
+      en: "Narasimhavarman I captures Vatapi",
+      hi: "नरसिंहवर्मन प्रथम द्वारा वातापी विजय"
+    },
+    description: {
+      en: "Pallava king Narasimhavarman I defeats Pulakeshin II, takes Vatapi and assumes the title Vatapikonda.",
+      hi: "पल्लव राजा नरसिंहवर्मन प्रथम ने पुलकेशिन् द्वितीय को परास्त कर वातापीकोंड की उपाधि धारण की।"
+    }
+  },
+  {
+    id: 28,
+    year: 712,
+    lon: 68.30,
+    lat: 25.40,
+    title: {
+      en: "Arab conquest of Sindh",
+      hi: "मुहम्मद बिन कासिम की सिंध विजय"
+    },
+    description: {
+      en: "Umayyad general Muhammad bin Qasim defeats Raja Dahir, establishing Arab control over Sindh and Multan.",
+      hi: "उमय्यद सेनापति मुहम्मद बिन कासिम ने राजा दाहिर को हराकर सिंध और मुल्तान में शासन स्थापित किया।"
+    }
+  },
+  {
+    id: 29,
+    year: 740,
+    lon: 75.22,
+    lat: 33.74,
+    title: {
+      en: "Lalitaditya Muktapida builds Martand Sun Temple",
+      hi: "ललितादित्य मुक्तापीड़ द्वारा मार्तंड सूर्य मंदिर निर्माण"
+    },
+    description: {
+      en: "Karkota emperor Lalitaditya of Kashmir erects the monumental Martand Sun Temple during his expansive reign.",
+      hi: "कश्मीर के कर्कोट सम्राट ललितादित्य ने अपने विशाल साम्राज्य के दौरान भव्य मार्तंड सूर्य मंदिर का निर्माण कराया।"
+    }
+  },
+  {
+    id: 30,
+    year: 750,
+    lon: 88.13,
+    lat: 24.87,
+    title: {
+      en: "Gopala elected king, founding Pala dynasty",
+      hi: "गोपाल द्वारा पाल वंश की स्थापना"
+    },
+    description: {
+      en: "The chieftains of Bengal elect Gopala to end anarchy (matsyanyaya), founding four centuries of Pala Buddhist rule.",
+      hi: "बंगाल में मात्स्यन्याय समाप्त करने हेतु सरदारों ने गोपाल को चुना, जिससे पाल वंश का उदय हुआ।"
+    }
+  },
+  {
+    id: 31,
+    year: 753,
+    lon: 75.18,
+    lat: 20.02,
+    title: {
+      en: "Dantidurga founds Rashtrakuta Empire",
+      hi: "दंतिदुर्ग द्वारा राष्ट्रकूट साम्राज्य की स्थापना"
+    },
+    description: {
+      en: "Dantidurga overthrows the Chalukyas of Badami; Krishna I subsequently cuts the monolithic Kailasa temple at Ellora.",
+      hi: "दंतिदुर्ग ने बादामी के चालुक्यों को अपदस्थ कर राष्ट्रकूट साम्राज्य स्थापित किया; एलोरा का कैलाश मंदिर बना।"
+    }
+  },
+  {
+    id: 32,
+    year: 788,
+    lon: 76.43,
+    lat: 10.17,
+    title: {
+      en: "Birth of Adi Shankara at Kalady",
+      hi: "आदि शंकराचार्य का कालड़ी में जन्म"
+    },
+    description: {
+      en: "Adi Shankara expounds Advaita Vedanta and establishes monastic centers (Amnaya Mathas) across the four corners of India.",
+      hi: "अद्वैत वेदांत के महान दार्शनिक आदि शंकराचार्य का जन्म; उन्होंने भारत के चार कोनों में मठ स्थापित किए।"
+    }
+  },
+  {
+    id: 33,
+    year: 836,
+    lon: 79.92,
+    lat: 27.05,
+    title: {
+      en: "Mihira Bhoja ascends Gurjara-Pratihara throne",
+      hi: "मिहिर भोज का कन्नौज में राज्यारोहण"
+    },
+    description: {
+      en: "Mihira Bhoja makes Kannauj the imperial capital of the Gurjara-Pratihara empire, repulsing Arab raids from Sindh.",
+      hi: "गुर्जर-प्रतिहार सम्राट मिहिर भोज ने कन्नौज को राजधानी बनाकर उत्तर भारत में सुदृढ़ साम्राज्य खड़ा किया।"
+    }
+  },
+  {
+    id: 34,
+    year: 850,
+    lon: 79.13,
+    lat: 10.78,
+    title: {
+      en: "Vijayalaya revives Chola power at Thanjavur",
+      hi: "विजयालय द्वारा तंजौर में चोल पुनरुत्थान"
+    },
+    description: {
+      en: "Vijayalaya Chola captures Thanjavur from the Muttaraiyars, inaugurating the Imperial Chola dynasty.",
+      hi: "विजयालय ने मुत्तरैयरों से तंजौर जीतकर मध्यकालीन चोल साम्राज्य की नींव रखी।"
+    }
+  },
+  {
+    id: 35,
+    year: 985,
+    lon: 79.13,
+    lat: 10.78,
+    title: {
+      en: "Rajaraja I crowned Chola Emperor",
+      hi: "राजाराम प्रथम का राज्यारोहण"
+    },
+    description: {
+      en: "Rajaraja Chola I expands naval and land territories to Sri Lanka and the Maldives, commissioning the Brihadisvara Temple.",
+      hi: "राजाराम चोल प्रथम ने श्रीलंका और मालदीव तक साम्राज्य बढ़ाया और तंजौर का बृहदीश्वर मंदिर बनवाया।"
+    }
+  },
+  {
+    id: 36,
+    year: 1025,
+    lon: 79.45,
+    lat: 11.20,
+    title: {
+      en: "Chola naval expedition to Srivijaya",
+      hi: "राजेंद्र चोल का श्रीविजय नौसैनिक अभियान"
+    },
+    description: {
+      en: "Rajendra I’s armada crosses the Bay of Bengal, subduing Srivijaya's maritime ports and founding Gangaikonda Cholapuram.",
+      hi: "राजेंद्र चोल की नौसेना ने बंगाल की खाड़ी पार कर श्रीविजय के बंदरगाहों पर विजय पाई।"
+    }
+  },
+  {
+    id: 37,
+    year: 1026,
+    lon: 70.40,
+    lat: 20.89,
+    title: {
+      en: "Mahmud of Ghazni attacks Somnath",
+      hi: "महमूद गजनवी का सोमनाथ पर आक्रमण"
+    },
+    description: {
+      en: "Mahmud of Ghazni marches across the Thar desert to raid and plunder the coastal temple of Somnath in Gujarat.",
+      hi: "महमूद गजनवी ने थार मरुस्थल पार कर गुजरात के सोमनाथ मंदिर पर आक्रमण किया।"
+    }
+  },
+  {
+    id: 38,
+    year: 1191,
+    lon: 76.93,
+    lat: 29.95,
+    title: {
+      en: "First Battle of Tarain",
+      hi: "तराइन का प्रथम युद्ध"
+    },
+    description: {
+      en: "Prithviraj Chauhan leads a Rajput confederacy defeating Muhammad of Ghor, who retreats to Ghazni.",
+      hi: "पृथ्वीराज चौहान ने राजपूत संघ का नेतृत्व कर तराइन में मुहम्मद गोरी को पराजित किया।"
+    }
+  },
+  {
+    id: 39,
+    year: 1192,
+    lon: 76.93,
+    lat: 29.95,
+    title: {
+      en: "Second Battle of Tarain",
+      hi: "तराइन का द्वितीय युद्ध"
+    },
+    description: {
+      en: "Muhammad of Ghor defeats Prithviraj Chauhan, opening the Indo-Gangetic plain to Turkish rule.",
+      hi: "मुहम्मद गोरी ने पृथ्वीराज चौहान को परास्त किया, जिससे उत्तर भारत में तुर्क सल्तनत का मार्ग प्रशस्त हुआ।"
+    }
+  },
+  {
+    id: 40,
+    year: 1193,
+    lon: 85.44,
+    lat: 25.13,
+    title: {
+      en: "Destruction of Nalanda Mahavihara",
+      hi: "नालंदा महाविहार का विनाश"
+    },
+    description: {
+      en: "Ghorid commander Bakhtiyar Khalji sacks the monastic universities of Nalanda and Vikramashila in Bihar.",
+      hi: "बख्तियार खिलजी की सेना ने नालंदा और विक्रमशिला के बौद्ध महाविहारों को नष्ट किया।"
+    }
+  },
+
+  // --- Medieval & Delhi Sultanate Era (1200 to 1526 CE) ---
+  {
+    id: 41,
+    year: 1206,
+    lon: 77.21,
+    lat: 28.61,
+    title: {
+      en: "Delhi Sultanate founded",
+      hi: "दिल्ली सल्तनत की स्थापना"
+    },
+    description: {
+      en: "Qutb-ud-din Aibak assumes rule following Ghor's death, establishing the Mamluk (Slave) dynasty at Delhi and Lahore.",
+      hi: "कुतुबुद्दीन ऐबक ने मामलूक (गुलाम) वंश की नींव रखी और दिल्ली सल्तनत की शुरुआत हुई।"
+    }
+  },
+  {
+    id: 42,
+    year: 1228,
+    lon: 94.88,
+    lat: 26.96,
+    title: {
+      en: "Sukaphaa establishes Ahom Kingdom in Assam",
+      hi: "सुकाफा द्वारा असम में अहोम राज्य की स्थापना"
+    },
+    description: {
+      en: "Chaolung Sukaphaa crosses the Patkai range from Mong Mao, establishing the 600-year Ahom kingdom at Charaideo.",
+      hi: "चाओलुंग सुकाफा ने पटकाई पहाड़ पार कर चराइदेव में छह सदियों तक चलने वाले अहोम राज्य की नींव रखी।"
+    }
+  },
+  {
+    id: 43,
+    year: 1236,
+    lon: 77.21,
+    lat: 28.61,
+    title: {
+      en: "Razia Sultana ascends Delhi throne",
+      hi: "रजिया सुल्ताना का राज्यारोहण"
+    },
+    description: {
+      en: "Razia becomes the first sovereign female monarch of the Delhi Sultanate, reigning from Delhi.",
+      hi: "इल्तुतमिश की पुत्री रजिया दिल्ली सल्तनत की प्रथम महिला शासिका बनीं।"
+    }
+  },
+  {
+    id: 44,
+    year: 1296,
+    lon: 77.21,
+    lat: 28.61,
+    title: {
+      en: "Alauddin Khalji seizes power in Delhi",
+      hi: "अलाउद्दीन खिलजी का दिल्ली पर अधिकार"
+    },
+    description: {
+      en: "Alauddin Khalji initiates economic market reforms, agrarian taxation, and expansions across Gujarat, Rajasthan and the Deccan.",
+      hi: "अलाउद्दीन खिलजी ने मूल्य नियंत्रण, सैन्य सुधार लागू किए और दक्कन तक साम्राज्य विस्तार किया।"
+    }
+  },
+  {
+    id: 45,
+    year: 1303,
+    lon: 74.65,
+    lat: 24.89,
+    title: {
+      en: "Siege of Chittorgarh",
+      hi: "चित्तौड़गढ़ का घेरा"
+    },
+    description: {
+      en: "Alauddin Khalji captures the Guhila hill fortress of Chittor from Rawal Ratan Singh after an eight-month siege.",
+      hi: "अलाउद्दीन खिलजी ने आठ महीने के घेरे के बाद रावल रतन सिंह से चित्तौड़ दुर्ग जीता।"
+    }
+  },
+  {
+    id: 46,
+    year: 1311,
+    lon: 78.12,
+    lat: 9.92,
+    title: {
+      en: "Malik Kafur’s Deccan and Southern raid",
+      hi: "मलिक काफूर का दक्षिण अभियान"
+    },
+    description: {
+      en: "General Malik Kafur campaigns through the Kakatiyas, Hoysalas, and Pandyas, reaching Madurai and Rameswaram.",
+      hi: "मलिक काफूर ने वारंगल, द्वारसमुद्र और मदुरै तक अभियान चलाकर अपार संपत्ति प्राप्त की।"
+    }
+  },
+  {
+    id: 47,
+    year: 1327,
+    lon: 75.21,
+    lat: 19.94,
+    title: {
+      en: "Capital transferred to Daulatabad",
+      hi: "दौलताबाद राजधानी स्थानांतरण"
+    },
+    description: {
+      en: "Muhammad bin Tughlaq attempts to relocate the administrative center of his empire from Delhi to Devagiri (Daulatabad).",
+      hi: "मुहम्मद बिन तुगलक ने सल्तनत की राजधानी दिल्ली से देवगिरि (दौलताबाद) स्थानांतरित करने का आदेश दिया।"
+    }
+  },
+  {
+    id: 48,
+    year: 1336,
+    lon: 76.46,
+    lat: 15.34,
+    title: {
+      en: "Vijayanagara Empire founded",
+      hi: "विजयनगर साम्राज्य की स्थापना"
+    },
+    description: {
+      en: "Brothers Harihara I and Bukka Raya establish the Sangama dynasty on the Tungabhadra river at Hampi.",
+      hi: "हरिहर और बुक्का ने तुंगभद्रा के तट पर हम्पी में विजयनगर साम्राज्य की स्थापना की।"
+    }
+  },
+  {
+    id: 49,
+    year: 1347,
+    lon: 76.83,
+    lat: 17.33,
+    title: {
+      en: "Bahmani Sultanate founded at Gulbarga",
+      hi: "गुलबर्गा में बहमनी सल्तनत की स्थापना"
+    },
+    description: {
+      en: "Ala-ud-Din Bahman Shah rebels against Delhi rule, founding the independent Bahmani Sultanate in the northern Deccan.",
+      hi: "अलाउद्दीन बहमन शाह ने दिल्ली सल्तनत से विद्रोह कर दक्कन में बहमनी सल्तनत स्थापित की।"
+    }
+  },
+  {
+    id: 50,
+    year: 1398,
+    lon: 77.21,
+    lat: 28.61,
+    title: {
+      en: "Timur sacks Delhi",
+      hi: "तैमूर लंग का दिल्ली पर आक्रमण"
+    },
+    description: {
+      en: "Central Asian conqueror Timur defeats Sultan Mahmud Tughlaq and plunders Delhi, shattering Sultanate central power.",
+      hi: "तैमूर लंग ने दिल्ली पर आक्रमण कर भारी तबाही मचाई, जिससे तुगलक सल्तनत बिखर गई।"
+    }
+  },
+  {
+    id: 51,
+    year: 1435,
+    lon: 85.88,
+    lat: 20.46,
+    title: {
+      en: "Kapilendra Deva founds Gajapati Empire",
+      hi: "कपिलेंद्र देव द्वारा गजपति साम्राज्य की स्थापना"
+    },
+    description: {
+      en: "Kapilendra Deva overthrows the Eastern Gangas, establishing the Suryavamsi Gajapati empire from the Ganges to the Kaveri.",
+      hi: "कपिलेंद्र देव ने सूर्यवंशी गजपति साम्राज्य की स्थापना की, जो गंगा से कावेरी तक विस्तृत हुआ।"
+    }
+  },
+  {
+    id: 52,
+    year: 1459,
+    lon: 73.02,
+    lat: 26.29,
+    title: {
+      en: "Rao Jodha founds Jodhpur",
+      hi: "राव जोधा द्वारा जोधपुर की स्थापना"
+    },
+    description: {
+      en: "Rathore ruler Rao Jodha founds the desert city of Jodhpur and lays the foundation of Mehrangarh Fort.",
+      hi: "राठौड़ शासक राव जोधा ने मेहरानगढ़ दुर्ग की नींव रखी और जोधपुर नगर बसाया।"
+    }
+  },
+  {
+    id: 53,
+    year: 1498,
+    lon: 75.78,
+    lat: 11.25,
+    title: {
+      en: "Vasco da Gama reaches Calicut",
+      hi: "वास्को द गामा का कालीकट आगमन"
+    },
+    description: {
+      en: "Portuguese explorer Vasco da Gama lands at Kappad beach near Calicut, opening the direct maritime route between Europe and India.",
+      hi: "पुर्तगाली नाविक वास्को द गामा कालीकट पहुँचा, जिससे भारत और यूरोप के सीधे समुद्री व्यापार की शुरुआत हुई।"
+    }
+  },
+  {
+    id: 54,
+    year: 1509,
+    lon: 76.46,
+    lat: 15.34,
+    title: {
+      en: "Krishnadevaraya crowned Emperor of Vijayanagara",
+      hi: "कृष्णदेवराय का राज्यारोहण"
+    },
+    description: {
+      en: "Krishnadevaraya initiates the golden age of Vijayanagara, defeating the Sultanates and Gajapatis while patronizing Telugu and Kannada arts.",
+      hi: "कृष्णदेवराय विजयनगर के शासक बने; उनके काल में कला, साहित्य और साम्राज्य का चरमोत्कर्ष हुआ।"
+    }
+  },
+  {
+    id: 55,
+    year: 1510,
+    lon: 73.83,
+    lat: 15.50,
+    title: {
+      en: "Portuguese conquest of Goa",
+      hi: "पुर्तगालियों द्वारा गोवा पर अधिकार"
+    },
+    description: {
+      en: "Afonso de Albuquerque captures Goa from Ismail Adil Shah of Bijapur, making it the capital of the Estado da Índia.",
+      hi: "अल्बुकर्क ने बीजापुर के आदिल शाह से गोवा जीता और इसे पुर्तगाली भारत की राजधानी बनाया।"
+    }
+  },
+
+  // --- Early Modern & Mughal Era (1526 to 1757 CE) ---
+  {
+    id: 56,
+    year: 1526,
+    lon: 76.97,
+    lat: 29.39,
+    title: {
+      en: "First Battle of Panipat",
+      hi: "पानीपत का प्रथम युद्ध"
+    },
+    description: {
+      en: "Babur employs field artillery and tulghuma tactics to defeat Ibrahim Lodi, inaugurating the Mughal Empire.",
+      hi: "बाबर ने तोपखाने की मदद से इब्राहिम लोदी को हराया और भारत में मुगल साम्राज्य की नींव रखी।"
+    }
+  },
+  {
+    id: 57,
+    year: 1527,
+    lon: 77.40,
+    lat: 27.05,
+    title: {
+      en: "Battle of Khanwa",
+      hi: "खानवा का युद्ध"
+    },
+    description: {
+      en: "Babur defeats the Rajput confederacy led by Rana Sanga of Mewar, cementing Mughal control over northern India.",
+      hi: "बाबर ने मेवाड़ के राणा सांगा के नेतृत्व वाले राजपूत संघ को परास्त किया।"
+    }
+  },
+  {
+    id: 58,
+    year: 1540,
+    lon: 79.92,
+    lat: 27.05,
+    title: {
+      en: "Battle of Kannauj (Bilgram)",
+      hi: "कन्नौज (बिलग्राम) का युद्ध"
+    },
+    description: {
+      en: "Sher Shah Suri defeats Mughal emperor Humayun, establishing the Sur Empire and building the Grand Trunk Road.",
+      hi: "शेरशाह सूरी ने हुमायूँ को हराकर सूर साम्राज्य की स्थापना की और प्रशासनिक सुधार किए।"
+    }
+  },
+  {
+    id: 59,
+    year: 1556,
+    lon: 76.97,
+    lat: 29.39,
+    title: {
+      en: "Second Battle of Panipat",
+      hi: "पानीपत का द्वितीय युद्ध"
+    },
+    description: {
+      en: "The Mughal army under regent Bairam Khan defeats Hemu Chandra Vikramaditya, securing Akbar’s young throne.",
+      hi: "बैरम खां के नेतृत्व में मुगल सेना ने हेमू को पराजित कर अकबर की सत्ता सुरक्षित की।"
+    }
+  },
+  {
+    id: 60,
+    year: 1565,
+    lon: 76.30,
+    lat: 16.50,
+    title: {
+      en: "Battle of Talikota (Rakshasi-Tangadi)",
+      hi: "तालिकोटा का युद्ध"
+    },
+    description: {
+      en: "A combined alliance of Deccan Sultanates defeats Vijayanagara; the imperial capital of Hampi is sacked.",
+      hi: "दक्कन की संयुक्त सल्तनतों ने विजयनगर को परास्त किया और राजधानी हम्पी को तहस-नहस कर दिया।"
+    }
+  },
+  {
+    id: 61,
+    year: 1576,
+    lon: 73.71,
+    lat: 24.89,
+    title: {
+      en: "Battle of Haldighati",
+      hi: "हल्दीघाटी का युद्ध"
+    },
+    description: {
+      en: "Mughal forces led by Man Singh I fight the forces of Maharana Pratap of Mewar in the Aravalli pass.",
+      hi: "अकबर की सेना (मानसिंह के नेतृत्व में) और मेवाड़ के महाराणा प्रताप के बीच अरावली की घाटी में ऐतिहासिक संघर्ष।"
+    }
+  },
+  {
+    id: 62,
+    year: 1600,
+    lon: 72.83,
+    lat: 21.17,
+    title: {
+      en: "Charter of the East India Company",
+      hi: "ईस्ट इंडिया कंपनी का चार्टर"
+    },
+    description: {
+      en: "Queen Elizabeth I grants a royal charter to the Governor and Company of Merchants of London trading into the East Indies.",
+      hi: "महारानी एलिजाबेथ प्रथम ने ईस्ट इंडिया कंपनी को पूर्व में व्यापार हेतु शाही अधिकार पत्र दिया।"
+    }
+  },
+  {
+    id: 63,
+    year: 1604,
+    lon: 74.88,
+    lat: 31.62,
+    title: {
+      en: "Guru Arjan Dev installs the Adi Granth",
+      hi: "हरमंदिर साहिब में आदि ग्रंथ की स्थापना"
+    },
+    description: {
+      en: "Fifth Sikh Guru Arjan Dev completes compilation of the Adi Granth and installs it at Harmandir Sahib (Golden Temple) in Amritsar.",
+      hi: "पंचम सिख गुरु अर्जुन देव ने आदि ग्रंथ का संकलन पूर्ण कर अमृतसर के हरमंदिर साहिब में प्रतिष्ठित किया।"
+    }
+  },
+  {
+    id: 64,
+    year: 1639,
+    lon: 80.29,
+    lat: 13.08,
+    title: {
+      en: "Foundation of Fort St. George (Madras)",
+      hi: "फोर्ट सेंट जॉर्ज (मद्रास) की स्थापना"
+    },
+    description: {
+      en: "Francis Day acquires land from Damarla Venkatadri Nayaka, founding Fort St. George and modern Chennai.",
+      hi: "ईस्ट इंडिया कंपनी ने चंद्रगिरि के नायक से भूमि लेकर फोर्ट सेंट जॉर्ज और आधुनिक चेन्नई की नींव रखी।"
+    }
+  },
+  {
+    id: 65,
+    year: 1671,
+    lon: 91.70,
+    lat: 26.18,
+    title: {
+      en: "Battle of Saraighat",
+      hi: "सरायघाट का युद्ध"
+    },
+    description: {
+      en: "Ahom general Lachit Borphukan uses naval guerilla warfare on the Brahmaputra to repel Ram Singh's Mughal imperial army.",
+      hi: "अहोम सेनापति लाचित बोरफुकन ने ब्रह्मपुत्र पर मुगलों की विशाल सेना को पराजित किया।"
+    }
+  },
+  {
+    id: 66,
+    year: 1674,
+    lon: 73.44,
+    lat: 18.23,
+    title: {
+      en: "Shivaji crowned at Raigad",
+      hi: "छत्रपति शिवाजी का राज्याभिषेक"
+    },
+    description: {
+      en: "Chhatrapati Shivaji Maharaj is formally crowned sovereign monarch of Hindavi Swarajya at Raigad fort.",
+      hi: "रायगढ़ दुर्ग में छत्रपति शिवाजी महाराज का राज्याभिषेक हुआ और मराठा स्वराज्य की औपचारिक स्थापना हुई।"
+    }
+  },
+  {
+    id: 67,
+    year: 1699,
+    lon: 76.50,
+    lat: 31.24,
+    title: {
+      en: "Creation of the Khalsa at Anandpur Sahib",
+      hi: "आनंदपुर साहिब में खालसा पंथ की स्थापना"
+    },
+    description: {
+      en: "Guru Gobind Singh establishes the Khalsa order through the ceremony of Amrit Sanchar on Baisakhi day.",
+      hi: "दसवें सिख गुरु गोबिंद सिंह ने बैसाखी के दिन आनंदपुर साहिब में खालसा पंथ का सृजन किया।"
+    }
+  },
+  {
+    id: 68,
+    year: 1707,
+    lon: 74.74,
+    lat: 19.09,
+    title: {
+      en: "Death of Aurangzeb",
+      hi: "औरंगजेब की मृत्यु"
+    },
+    description: {
+      en: "Mughal emperor Aurangzeb dies at Ahmednagar following 25 years of Deccan campaigns; the empire enters fragmentation.",
+      hi: "अहमदनगर में औरंगजेब की मृत्यु के साथ मुगल साम्राज्य का पतन और क्षेत्रीय शक्तियों का उदय प्रारंभ हुआ।"
+    }
+  },
+  {
+    id: 69,
+    year: 1739,
+    lon: 77.21,
+    lat: 28.61,
+    title: {
+      en: "Nader Shah sacks Delhi",
+      hi: "नादिर शाह का दिल्ली पर आक्रमण"
+    },
+    description: {
+      en: "Persian ruler Nader Shah defeats Muhammad Shah at Karnal, plunders Delhi, and takes the Peacock Throne and Koh-i-Noor.",
+      hi: "फारस के नादिर शाह ने करनाल में मुगलों को हराया, दिल्ली में कत्लेआम किया और मयूर सिंहासन लूट ले गया।"
+    }
+  },
+
+  // --- Modern Colonial & Independence Era (1757 to 1947 CE) ---
+  {
+    id: 70,
+    year: 1757,
+    lon: 88.25,
+    lat: 23.80,
+    title: {
+      en: "Battle of Plassey",
+      hi: "प्लासी का युद्ध"
+    },
+    description: {
+      en: "Robert Clive’s Company forces defeat Nawab Siraj-ud-Daulah through Mir Jafar's conspiracy, establishing British political power in Bengal.",
+      hi: "रॉबर्ट क्लाइव ने मीर जाफर के विश्वासघात से नवाब सिराजुद्दौला को हराया; बंगाल में कंपनी शासन का आरंभ।"
+    }
+  },
+  {
+    id: 71,
+    year: 1761,
+    lon: 76.85,
+    lat: 29.40,
+    title: {
+      en: "Third Battle of Panipat",
+      hi: "पानीपत का तृतीय युद्ध"
+    },
+    description: {
+      en: "Ahmad Shah Durrani of Afghanistan defeats the Maratha confederacy under Sadashivrao Bhau with catastrophic casualties.",
+      hi: "अफगान शासक अहमद शाह दुर्रानी ने सदाशिवराव भाऊ के नेतृत्व वाली मराठा सेना को परास्त किया।"
+    }
+  },
+  {
+    id: 72,
+    year: 1764,
+    lon: 84.10,
+    lat: 25.56,
+    title: {
+      en: "Battle of Buxar",
+      hi: "बक्सर का युद्ध"
+    },
+    description: {
+      en: "Hector Munro defeats the combined armies of Mir Qasim, Shuja-ud-Daula, and Shah Alam II; Treaty of Allahabad grants Diwani rights (1765).",
+      hi: "कंपनी ने मीर कासिम, शुजाउद्दौला और शाह आलम द्वितीय की संयुक्त सेना को हराया; बंगाल की दीवानी प्राप्त की।"
+    }
+  },
+  {
+    id: 73,
+    year: 1799,
+    lon: 76.68,
+    lat: 12.42,
+    title: {
+      en: "Fall of Srirangapatna",
+      hi: "श्रीरंगपट्टनम का पतन"
+    },
+    description: {
+      en: "Tipu Sultan of Mysore is killed defending his island capital against British forces in the Fourth Anglo-Mysore War.",
+      hi: "चतुर्थ आंग्ल-मैसूर युद्ध में श्रीरंगपट्टनम की रक्षा करते हुए टीपू सुल्तान वीरगति को प्राप्त हुए।"
+    }
+  },
+  {
+    id: 74,
+    year: 1803,
+    lon: 75.90,
+    lat: 20.25,
+    title: {
+      en: "Battle of Assaye",
+      hi: "असाये का युद्ध"
+    },
+    description: {
+      en: "Arthur Wellesley defeats the combined armies of Scindia and Berar during the Second Anglo-Maratha War.",
+      hi: "आर्थर वेलेस्ली ने द्वितीय आंग्ल-मराठा युद्ध के दौरान सिंधिया और भोंसले की सेना को पराजित किया।"
+    }
+  },
+  {
+    id: 75,
+    year: 1849,
+    lon: 74.35,
+    lat: 31.55,
+    title: {
+      en: "Annexation of the Punjab",
+      hi: "पंजाब का ब्रिटिश साम्राज्य में विलय"
+    },
+    description: {
+      en: "Following the Second Anglo-Sikh War, the East India Company annexes the Sikh Empire under the young Maharaja Duleep Singh.",
+      hi: "द्वितीय आंग्ल-सिख युद्ध के उपरांत लॉर्ड डलहौजी ने महाराजा दलीप सिंह से पंजाब का विलय किया।"
+    }
+  },
+  {
+    id: 76,
+    year: 1857,
+    lon: 77.70,
+    lat: 29.00,
+    title: {
+      en: "Uprising of 1857",
+      hi: "1857 का प्रथम स्वतंत्रता संग्राम"
+    },
+    description: {
+      en: "Sepoys revolt at Meerut, sparking widespread uprisings across north and central India; British Crown assumes direct control in 1858.",
+      hi: "मेरठ छावनी से आरंभ होकर विद्रोह संपूर्ण उत्तर व मध्य भारत में फैला; 1858 में ब्रिटिश क्राउन ने सीधा शासन संभाला।"
+    }
+  },
+  {
+    id: 77,
+    year: 1885,
+    lon: 72.83,
+    lat: 18.93,
+    title: {
+      en: "Indian National Congress founded",
+      hi: "भारतीय राष्ट्रीय कांग्रेस की स्थापना"
+    },
+    description: {
+      en: "Seventy-two delegates convene at Gokuldas Tejpal Sanskrit College in Bombay under W. C. Bonnerjee, founding the Congress.",
+      hi: "बंबई में व्योमेश चंद्र बनर्जी की अध्यक्षता में 72 प्रतिनिधियों ने भारतीय राष्ट्रीय कांग्रेस की स्थापना की।"
+    }
+  },
+  {
+    id: 78,
+    year: 1919,
+    lon: 74.88,
+    lat: 31.62,
+    title: {
+      en: "Jallianwala Bagh massacre",
+      hi: "जलियांवाला बाग हत्याकांड"
+    },
+    description: {
+      en: "British troops under Reginald Dyer fire upon an unarmed gathering celebrating Baisakhi in Amritsar, galvanizing the freedom struggle.",
+      hi: "अमृतसर में बैसाखी के दिन शांतिपूर्ण सभा पर जनरल डायर की सेना ने गोलीबारी की, जिससे स्वतंत्रता आंदोलन प्रखर हुआ।"
+    }
+  },
+  {
+    id: 79,
+    year: 1947,
+    lon: 77.21,
+    lat: 28.61,
+    title: {
+      en: "Independence and Partition",
+      hi: "स्वतंत्रता और देश का विभाजन"
+    },
+    description: {
+      en: "India and Pakistan gain independence on 14–15 August; mass migrations and communal violence alter the subcontinent.",
+      hi: "14-15 अगस्त को भारत और पाकिस्तान स्वतंत्र हुए; बड़े पैमाने पर विस्थापन और विभाजन की त्रासदी हुई।"
+    }
+  }
+];
+
+// Write data/events.json
+writeFileSync('data/events.json', JSON.stringify(EVENTS, null, 2) + '\n');
+
+// Write data/events.js (offline/file:// support)
+const jsContent = `// Generated by scripts/build-events.mjs
+window.ATLAS_EVENTS = ${JSON.stringify(EVENTS, null, 2)};
+`;
+writeFileSync('data/events.js', jsContent);
+
+console.log(`Generated data/events.json and data/events.js (${EVENTS.length} events)`);
