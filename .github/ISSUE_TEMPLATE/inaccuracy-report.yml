@@ -1,0 +1,32 @@
+name: Historical Inaccuracy / Source Suggestion
+description: Report a disputed border, date, capital, ruler, or suggest an academic citation
+title: "[Data] "
+labels: ["historical-accuracy", "good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the historical accuracy of **Chronicles of India**!
+        Please include a verifiable source (inscriptions, NCERT, or peer-reviewed scholarship) where possible.
+  - type: input
+    id: era
+    attributes:
+      label: Era / Year / Place
+      description: Which snapshot, year, or settlement does this relate to?
+      placeholder: "e.g., 261 BCE — Ashoka's Maurya Empire (era-04)"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What needs correction or improvement?
+      placeholder: Describe the border, date, spelling, or regional script issue.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting Sources / Citations
+      placeholder: "e.g., Romila Thapar, Ashoka and the Decline of the Mauryas; NCERT Class 12 Themes I"
+    validations:
+      required: false

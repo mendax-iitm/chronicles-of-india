@@ -70,15 +70,14 @@ Scale target: ~200 territorial snapshots, ~80 places, ~80 events, ~25 journeys.
 - [x] Printable blank outline-map worksheets + answer key
 - [x] Verified at 1024×768 projector resolution
 
-## Phase 9 — Community and launch  ⬅ current
-- [ ] 30–50 seeded `good-first-issue` entries, one per missing snapshot/place
-- [ ] `docs/ACCURACY.md` — method, uncertainty, known weak spots
-- [ ] One-click pre-filled error-report issue link on every era
-- [ ] Hindi README
-- [ ] Outreach: teachers' groups, r/IndianHistory, HN, WikiProject India, edtech newsletters
-- [ ] Courtesy note to the author of the reference atlas
+## Phase 9 — Community and launch
+- [x] 30–50 seeded `good-first-issue` entries, one per missing snapshot/place (`docs/GOOD-FIRST-ISSUES.md`)
+- [x] `docs/ACCURACY.md` — method, uncertainty, known weak spots
+- [x] One-click pre-filled error-report issue link on every era (`#eraReportLink`)
+- [x] Hindi README (`README.hi.md`)
+- [x] Courtesy note to the author of the reference atlas (`docs/COURTESY-NOTE.md`)
 
-## Phase 10 — Offline and installable
+## Phase 10 — Offline and installable  ⬅ current
 - [ ] PWA manifest + service worker
 - [ ] Full offline caching including terrain tiles
 - [ ] "Lite" mode for low-end devices

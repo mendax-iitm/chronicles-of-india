@@ -1,32 +1,30 @@
 # Chronicles of India
 
+[हिन्दी README](README.hi.md) · [Historical Accuracy](docs/ACCURACY.md) · [Sources](docs/SOURCES.md) · [Good First Issues](docs/GOOD-FIRST-ISSUES.md)
+
 **An interactive historical atlas of the Indian subcontinent, 600 BCE – 1947 CE.**
 
 Drag a timeline and watch the map of India change: empires rise and fall, borders shift,
 cities change their names. Click anything to find out what it was and who ruled it.
 
 > ⚠️ **Boundaries are schematic approximations for learning, not surveyed borders.**
-> Empires had frontiers, not lines. See [docs/SOURCES.md](docs/SOURCES.md) and the
-> editorial policy in [BRIEF.md](BRIEF.md#10-editorial-policy--read-this-carefully).
+> Empires had frontiers, not lines. See [docs/ACCURACY.md](docs/ACCURACY.md),
+> [docs/SOURCES.md](docs/SOURCES.md), and the editorial policy in
+> [BRIEF.md](BRIEF.md#10-editorial-policy--read-this-carefully).
 
 ## Features
 
-- **Timeline** — 18 era snapshots with a scrubber, a play button and era markers.
+- **Timeline** — 36 era snapshots (600 BCE – 1947 CE) with a colored era scrubber, playback speed controls, and NCERT/UPSC syllabus filter.
 - **Ghost borders** — dashed outlines show which lands changed hands since the last era.
-- **Place genealogy** — trace a city's names across the centuries: Pataliputra → Patna,
-  Dhillika → Delhi → Shahjahanabad → New Delhi.
-- **Journeys** — follow Alexander, Faxian, Xuanzang, Ibn Battuta and Gandhi across the map.
-- **Events** — 25 dated turning points from the Kalinga War to Partition.
-- **Pinpoint quiz** — tap where you think a historic city stood; scored by distance.
-- **Real geography** — coastline, islands, 31 rivers and mountain relief from Natural Earth,
-  and a terrain hillshade from SRTM/ETOPO1 elevation data (all public domain). Kingdoms are
-  built from 60 regions drawn along real rivers, coasts and watersheds.
+- **Place genealogy** — trace 92 cities across the centuries with native regional scripts: Pataliputra → Patna, Dhillika → Delhi → Shahjahanabad → New Delhi, தஞ்சாவூர் (Thanjavur).
+- **Journeys** — follow 26 travellers and campaigns (Alexander, Faxian, Xuanzang, Ibn Battuta, Guru Nanak, Shivaji, Gandhi) with directional arcs and route comparison.
+- **Events & Map Balloons** — 82 dated turning points from the Kalinga War to 1947 Independence & Integration.
+- **Exam & Classroom Mode** — Teacher Tour with optional voice narration, printable Period Revision Sheets, and Blank Outline Map Worksheets with Answer Key.
+- **Pinpoint Quiz & Practice** — Pinpoint Map Quiz (10 curated rounds), Match the Capital, Order the Dynasties, and Which Ruler When.
+- **AI & Developer Ready** — `llms.txt`, MCP server (`scripts/mcp-server.js`), `window.atlasAPI`, WebMCP, Python CLI, and RFC 7946 GeoJSON export.
+- **Real geography** — coastline, islands, 36 waterways and mountain relief from Natural Earth, terrain hillshade from SRTM/ETOPO1, and 60 region atoms with 0 overlaps.
 
-**In progress** (see [BRIEF.md §6](BRIEF.md#6-feature-parity-checklist)): reigning-ruler and
-regnal-era display, administrative divisions, an X-ray lens showing modern boundaries,
-trade corridors, universal search, deep links and embed mode, a GeoJSON
-export, an MCP server and agent skill, Hindi and regional languages, a classroom/exam mode,
-and full offline PWA use.
+**Next up** (see [docs/ROADMAP.md](docs/ROADMAP.md)): Phase 10 — Offline PWA manifest, service worker, and low-end device "Lite" mode.
 
 ## Run it
 

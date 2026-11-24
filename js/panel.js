@@ -38,7 +38,16 @@ function render(soft) {
         ${s.syllabus.tags ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;">` + s.syllabus.tags.map(tg => `<span style="display:inline-block;padding:2px 6px;background:#e0f2fe;color:#0369a1;border-radius:4px;font-size:10.5px;">#${tg}</span>`).join('') + `</div>` : ''}
       </div>`;
     }
-    h += `<p class="small" style="margin-top:12px">${tUI('eraTip')}</p>`;
+    const issueTitle = encodeURIComponent(`[Data] ${T(s.title)} (${rg(s)})`);
+    const issueBody = encodeURIComponent(`**Era ID:** ${s.id}\n**Year:** ${fy(st.year)} (${rg(s)})\n**Snapshot:** ${T(s.title)}\n\n**What needs correction or improvement?**\n(Describe the border, date, capital, ruler, or source)\n\n**Supporting Sources / Citations:**\n`);
+    const issueUrl = `https://github.com/mendax-iitm/chronicles-of-india/issues/new?labels=historical-accuracy&title=${issueTitle}&body=${issueBody}`;
+    const reportLabel = CURRENT_LANG === 'hi' ? '🐛 अशुद्धि की रिपोर्ट करें / स्रोत सुझाएँ' : '🐛 Report an inaccuracy / Suggest source';
+    const accLabel = CURRENT_LANG === 'hi' ? 'सटीकता और सीमाएँ' : 'Methodology & Accuracy';
+    h += `<div class="era-report-row" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;">
+      <a id="eraReportLink" href="${issueUrl}" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:600;text-decoration:none;">${reportLabel} ↗</a>
+      <a href="docs/ACCURACY.md" target="_blank" rel="noopener" style="color:var(--mut);text-decoration:underline;">${accLabel}</a>
+    </div>`;
+    h += `<p class="small" style="margin-top:8px">${tUI('eraTip')}</p>`;
   } else if (st.tab === 'places') {
     const vis = PL.filter(p => nameAt(p, st.year));
     if (st.selPlace >= 0) {
