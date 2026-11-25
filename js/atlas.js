@@ -14,6 +14,18 @@ const st = {
   ghost: true,
   corridors: true,
   xray: false,
+  layers: {
+    pols: true,
+    divisions: true,
+    places: true,
+    corridors: true,
+    ghost: true,
+    events: true,
+    terrain: true,
+    rivers: true,
+    modern: false,
+    modernNames: true
+  },
   play: false,
   walk: null,
   quiz: { on: false, rounds: [], i: 0, score: 0, res: null, guess: null, done: false },
@@ -515,9 +527,60 @@ $('#zo').onclick = () => zoomAt(1.45, 0.5, 0.5);
 $('#zr').onclick = resetView;
 $('#tgGhost').onclick = e => {
   st.ghost = !st.ghost;
+  st.layers.ghost = st.ghost;
   e.target.classList.toggle('on', st.ghost);
+  const chk = $('#chk-ghost');
+  if (chk) chk.checked = st.ghost;
   drawPols();
 };
+
+// Layers Popover Menu
+const layersBtn = $('#layersBtn');
+const layersPop = $('#layers-popover');
+function syncLayerControls() {
+  st.ghost = st.layers.ghost;
+  st.corridors = st.layers.corridors;
+  st.xray = st.layers.modern;
+  $('#tgGhost')?.classList.toggle('on', st.ghost);
+  $('#tgCorridors')?.classList.toggle('on', st.corridors);
+  $('#tgXray')?.classList.toggle('on', st.xray);
+  Object.keys(st.layers).forEach(k => {
+    const chk = document.getElementById('chk-' + k);
+    if (chk) chk.checked = !!st.layers[k];
+  });
+}
+if (layersBtn && layersPop) {
+  layersBtn.onclick = e => {
+    e.stopPropagation();
+    const open = layersPop.style.display === 'none';
+    layersPop.style.display = open ? 'block' : 'none';
+    layersBtn.classList.toggle('on', open);
+    layersBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  document.addEventListener('click', e => {
+    if (layersPop.style.display !== 'none' && !layersPop.contains(e.target) && e.target !== layersBtn && !layersBtn.contains(e.target)) {
+      layersPop.style.display = 'none';
+      layersBtn.classList.remove('on');
+      layersBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  Object.keys(st.layers).forEach(k => {
+    const chk = document.getElementById('chk-' + k);
+    if (!chk) return;
+    chk.onchange = () => {
+      st.layers[k] = chk.checked;
+      syncLayerControls();
+      if (k === 'pols' || k === 'ghost') drawPols();
+      if (k === 'corridors') drawCorridors();
+      if (k === 'rivers') { drawWaterways(); drawOv(); }
+      if (k === 'modern' || k === 'modernNames') drawModern();
+      if (k === 'terrain' && typeof applyTerrainLayers === 'function') applyTerrainLayers();
+      if (k === 'places' || k === 'pols' || k === 'events') drawOv();
+      if (k === 'events' && typeof initEventDots === 'function') initEventDots();
+      if (k === 'divisions') render(true);
+    };
+  });
+}
 $('#tabs').onclick = e => {
   const b = e.target.closest('button');
   if (b) go(b.dataset.t);
@@ -739,6 +802,12 @@ drawPols();
 if (!window.location.search || !window.location.search.includes('year=')) {
   setYear(-261);
 }
+try {
+  const savedLang = localStorage.getItem('coi_lang');
+  if (!new URLSearchParams(window.location.search).has('lang') && (savedLang === 'hi' || savedLang === 'en')) {
+    st.lang = savedLang;
+  }
+} catch (_) {}
 if (st.lang === 'hi' && typeof setLanguage === 'function') {
   setLanguage('hi');
 }

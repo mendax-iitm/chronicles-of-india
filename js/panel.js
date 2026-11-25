@@ -19,7 +19,7 @@ function render(soft) {
     if (evs.length) {
       h += `<h3>${tUI('eventsInEra')}</h3><ul class="l">` + evs.map(e => `<li data-a="ev:${e.id}" class="ev-card ${e.id === st.selEv ? 'on' : ''}"><span class="dia"></span><span><b>${fy(e.y)}</b> · ${esc(T(e.t))}<br><span class="small">${esc(T(e.d))}</span></span></li>`).join('') + '</ul>';
     }
-    const divSys = (window.ATLAS_DIVISIONS || []).find(d => {
+    const divSys = (!st.layers || st.layers.divisions !== false) && (window.ATLAS_DIVISIONS || []).find(d => {
       return d.period && d.period[0] <= s.from && s.from <= d.period[1];
     });
     if (divSys) {

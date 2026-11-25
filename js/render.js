@@ -5,15 +5,24 @@ const lineD = r => 'M' + ptsStr(r).replace(/ /g, 'L');
 const ringsD = rs => rs.map(r => lineD(r) + 'Z').join('');
 
 function drawWaterways() {
+  const show = !st.layers || st.layers.rivers !== false;
+  const rEl = $('#rivers');
+  const lEl = $('#lakes');
+  if (!show) {
+    if (rEl) rEl.innerHTML = '';
+    if (lEl) lEl.innerHTML = '';
+    return;
+  }
   const y = st.year;
   const visRivers = B.rivers.filter(r => (r.appear == null || r.appear <= y) && (r.vanish == null || y <= r.vanish));
-  $('#rivers').innerHTML = visRivers.map(r => `<path class="river${r.rank ? ' big' : ''}" d="${r.line.map(lineD).join('')}"/>`).join('');
+  if (rEl) rEl.innerHTML = visRivers.map(r => `<path class="river${r.rank ? ' big' : ''}" d="${r.line.map(lineD).join('')}"/>`).join('');
+  if (lEl) lEl.innerHTML = B.lakes.map(l => `<path class="lake" d="${ringsD([l.poly])}"/>`).join('');
 }
 
 function drawCorridors() {
   const g = $('#corridors');
   if (!g) return;
-  if (!st.corridors) {
+  if (!st.corridors || (st.layers && st.layers.corridors === false)) {
     g.innerHTML = '';
     return;
   }
@@ -29,7 +38,8 @@ function drawCorridors() {
 function drawModern() {
   const g = $('#modern');
   if (!g) return;
-  if (!st.xray) {
+  const show = st.xray || (st.layers && st.layers.modern);
+  if (!show) {
     g.innerHTML = '';
     return;
   }
@@ -37,10 +47,19 @@ function drawModern() {
   if (!M) return;
   const cPaths = (M.countryLines || []).map(l => `<path class="modern-country" d="${lineD(l)}"/>`).join('');
   const sPaths = (M.stateLines || []).map(l => `<path class="modern-state" d="${lineD(l)}"/>`).join('');
-  const labels = (M.labels || []).map(l => {
+  const showNames = !st.layers || st.layers.modernNames !== false;
+  const labels = showNames ? (M.labels || []).map(l => {
     return glyph(`<text class="modern-label ${l.type}">${esc(T(l.name))}</text>`, l.at[0], l.at[1], 'pointer-events="none"');
-  }).join('');
+  }).join('') : '';
   g.innerHTML = cPaths + sPaths + labels;
+}
+
+function applyTerrainLayers() {
+  const show = !st.layers || st.layers.terrain !== false;
+  const tEl = $('#terrain');
+  const rEl = $('#relief');
+  if (tEl) tEl.style.display = show ? '' : 'none';
+  if (rEl) rEl.style.display = show ? '' : 'none';
 }
 
 function initStaticLayers() {
@@ -59,7 +78,10 @@ function initStaticLayers() {
   if (tgCor) {
     tgCor.onclick = () => {
       st.corridors = !st.corridors;
+      if (st.layers) st.layers.corridors = st.corridors;
       tgCor.classList.toggle('on', st.corridors);
+      const chk = $('#chk-corridors');
+      if (chk) chk.checked = st.corridors;
       drawCorridors();
     };
   }
@@ -68,7 +90,10 @@ function initStaticLayers() {
   if (tgXray) {
     tgXray.onclick = () => {
       st.xray = !st.xray;
+      if (st.layers) st.layers.modern = st.xray;
       tgXray.classList.toggle('on', st.xray);
+      const chk = $('#chk-modern');
+      if (chk) chk.checked = st.xray;
       drawModern();
     };
   }
@@ -131,15 +156,18 @@ function drawPols() {
   const s = SN[st.si];
   let h = '';
   if (!st.quiz.on) {
-    if (st.ghost && st.si > 0) {
+    const showGhost = st.ghost && (!st.layers || st.layers.ghost !== false);
+    if (showGhost && st.si > 0) {
       const prev = SN[st.si - 1];
       for (const k in prev.owner) {
         if (prev.owner[k] !== s.owner[k]) h += `<polygon class="ghost" points="${AP[k]}"/>`;
       }
     }
-    s.pol.forEach((p, i) => p.atoms.forEach(k => {
-      h += `<polygon class="pol${i === st.selPol ? ' sel' : ''}" data-pi="${i}" points="${AP[k]}" fill="${p.c}"/>`;
-    }));
+    if (!st.layers || st.layers.pols !== false) {
+      s.pol.forEach((p, i) => p.atoms.forEach(k => {
+        h += `<polygon class="pol${i === st.selPol ? ' sel' : ''}" data-pi="${i}" points="${AP[k]}" fill="${p.c}"/>`;
+      }));
+    }
   }
   $('#pols').innerHTML = h;
 }
@@ -178,7 +206,7 @@ function drawOv() {
     }
   });
 
-  if (scl() > 1.6) {
+  if (scl() > 1.6 && (!st.layers || st.layers.rivers !== false)) {
     B.rivers.forEach(r => {
       h += glyph(`<text class="geo" style="fill:#4f86b3">${esc(T(r.name))}</text>`, r.label[0], r.label[1], 'pointer-events="none"');
     });
@@ -194,30 +222,36 @@ function drawOv() {
       return true;
     };
 
-    s.pol.slice().sort((a, b) => b.area - a.area).forEach(p => {
-      if (p.area < 4.5) return;
-      const pName = T(p.n);
-      const ls = wrap(pName);
-      const w = Math.max(...ls.map(t => t.length)) * 6.4 + 6, hh = ls.length * 12 + 4;
-      if (!free(px(p.lon, p.lat) * sc - w / 2, py(p.lon, p.lat) * sc - hh / 2, w, hh)) return;
-      h += glyph(`<text class="plab">${ls.map((t, i) => `<tspan x="0" dy="${i ? 12 : (ls.length > 1 ? -3 : 4)}">${esc(t)}</tspan>`).join('')}</text>`, p.lon, p.lat, 'pointer-events="none"');
-    });
+    if (!st.layers || st.layers.pols !== false) {
+      s.pol.slice().sort((a, b) => b.area - a.area).forEach(p => {
+        if (p.area < 4.5) return;
+        const pName = T(p.n);
+        const ls = wrap(pName);
+        const w = Math.max(...ls.map(t => t.length)) * 6.4 + 6, hh = ls.length * 12 + 4;
+        if (!free(px(p.lon, p.lat) * sc - w / 2, py(p.lon, p.lat) * sc - hh / 2, w, hh)) return;
+        h += glyph(`<text class="plab">${ls.map((t, i) => `<tspan x="0" dy="${i ? 12 : (ls.length > 1 ? -3 : 4)}">${esc(t)}</tspan>`).join('')}</text>`, p.lon, p.lat, 'pointer-events="none"');
+      });
+    }
 
-    const isPlaceActive = (p, idx) => (st.selPlace === idx) || (st.selPlaces && st.selPlaces.includes(idx));
-    const pls = PL.filter(p => nameAt(p, y)).sort((a, b) => isPlaceActive(b, PL.indexOf(b)) - isPlaceActive(a, PL.indexOf(a)));
-    pls.forEach(p => {
-      const idx = PL.indexOf(p);
-      const c = nameAt(p, y), on = isPlaceActive(p, idx);
-      const cName = T(c[1]);
-      const w = cName.length * 6.6 + 4;
-      const lab = free(px(p.lon, p.lat) * sc + 8, py(p.lon, p.lat) * sc - 8, w, 16) || on;
-      h += glyph(`<circle r="${on ? 7 : 5}" fill="${on ? '#c98a00' : '#0b2a5b'}" stroke="#fff" stroke-width="2"/>${lab ? `<text class="pname" x="9" y="4">${esc(cName)}</text>` : ''}`, p.lon, p.lat, `data-k="p:${idx}"`);
-    });
+    if (!st.layers || st.layers.places !== false) {
+      const isPlaceActive = (p, idx) => (st.selPlace === idx) || (st.selPlaces && st.selPlaces.includes(idx));
+      const pls = PL.filter(p => nameAt(p, y)).sort((a, b) => isPlaceActive(b, PL.indexOf(b)) - isPlaceActive(a, PL.indexOf(a)));
+      pls.forEach(p => {
+        const idx = PL.indexOf(p);
+        const c = nameAt(p, y), on = isPlaceActive(p, idx);
+        const cName = T(c[1]);
+        const w = cName.length * 6.6 + 4;
+        const lab = free(px(p.lon, p.lat) * sc + 8, py(p.lon, p.lat) * sc - 8, w, 16) || on;
+        h += glyph(`<circle r="${on ? 7 : 5}" fill="${on ? '#c98a00' : '#0b2a5b'}" stroke="#fff" stroke-width="2"/>${lab ? `<text class="pname" x="9" y="4">${esc(cName)}</text>` : ''}`, p.lon, p.lat, `data-k="p:${idx}"`);
+      });
+    }
 
-    EV.forEach(e => {
-      if (Math.abs(e.y - y) > 30 && e.id !== st.selEv) return;
-      h += glyph('<path d="M0,-8 L8,0 L0,8 L-8,0Z" fill="#e9a400" stroke="#fff" stroke-width="2"/>', e.lon, e.lat, `data-k="e:${e.id}"`);
-    });
+    if (!st.layers || st.layers.events !== false) {
+      EV.forEach(e => {
+        if (Math.abs(e.y - y) > 30 && e.id !== st.selEv) return;
+        h += glyph('<path d="M0,-8 L8,0 L0,8 L-8,0Z" fill="#e9a400" stroke="#fff" stroke-width="2"/>', e.lon, e.lat, `data-k="e:${e.id}"`);
+      });
+    }
 
     if (st.jr >= 0 && JR[st.jr]) {
       const j = JR[st.jr];

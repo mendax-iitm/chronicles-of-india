@@ -94,6 +94,29 @@
     <button class="tg" id="tgXray" title="Toggle present-day state &amp; national boundaries (X-ray lens) [X]">X-Ray</button>
     <button class="tg on" id="tgCorridors" title="Toggle historical trade corridors and pilgrimage routes [C]">Corridors</button>
     <button class="tg on" id="tgGhost" title="Dashed outlines show regions that changed hands since the previous era [G]">Ghost borders</button>
+    <button class="tg layers-trigger" id="layersBtn" aria-expanded="false" aria-controls="layers-popover" title="Toggle map layers">🗂️ <span id="layersBtnText">Layers</span> ▾</button>
+  </div>
+  <div id="layers-popover" class="layers-popover" style="display:none" role="dialog" aria-label="Map layers">
+    <div class="lp-section">
+      <div class="lp-heading" id="lpHistHeading">Historical Map Layers</div>
+      <div class="lp-grid">
+        <label class="lp-chip"><input type="checkbox" id="chk-pols" checked><span id="lbl-chk-pols">Polities</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-divisions" checked><span id="lbl-chk-divisions">Divisions</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-places" checked><span id="lbl-chk-places">Places</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-corridors" checked><span id="lbl-chk-corridors">Corridors</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-ghost" checked><span id="lbl-chk-ghost">Ghost borders</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-events" checked><span id="lbl-chk-events">Key Events</span></label>
+      </div>
+    </div>
+    <div class="lp-section">
+      <div class="lp-heading" id="lpGeoHeading">Geography &amp; Modern Reference</div>
+      <div class="lp-grid">
+        <label class="lp-chip"><input type="checkbox" id="chk-terrain" checked><span id="lbl-chk-terrain">Terrain &amp; Relief</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-rivers" checked><span id="lbl-chk-rivers">Rivers &amp; Lakes</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-modern"><span id="lbl-chk-modern">Modern Borders</span></label>
+        <label class="lp-chip"><input type="checkbox" id="chk-modernNames" checked><span id="lbl-chk-modernNames">Modern Names</span></label>
+      </div>
+    </div>
   </div>
  </section>
  <aside id="panel">
@@ -103,8 +126,8 @@
  </aside>
 </main>
 <footer id="tl">
- <button id="prev" aria-label="Previous era">⏮</button><button id="play" aria-label="Play">▶</button><button id="speedBtn" class="tl-speed" title="Playback speed" aria-label="Toggle playback speed">1×</button><button id="next" aria-label="Next era">⏭</button>
- <div class="track"><div id="era-segments" class="era-segments" aria-hidden="true"></div><div id="tl-tip" class="tl-tip" aria-hidden="true"></div><input type="range" id="yr" min="-600" max="1947" value="-261" step="1" aria-label="Timeline slider: historical year"><div id="ticks"></div></div>
+ <button id="prev" aria-label="Previous era">⏮</button><button id="play" aria-label="Play">▶</button><button id="speedBtn" class="tl-speed" title="Playback speed (0.3× / 0.5× / 1× / 1.5× / 2×)" aria-label="Playback speed 1×">1×</button><button id="next" aria-label="Next era">⏭</button>
+ <div class="track"><div id="era-segments" class="era-segments"></div><div id="ev-dots" class="ev-dots"></div><div id="tl-tip" class="tl-tip" aria-hidden="true"></div><input type="range" id="yr" min="-600" max="1947" value="-261" step="1" aria-label="Timeline slider: historical year"><div id="ticks"></div></div>
  <div id="ylab"></div>
 </footer>
 
