@@ -15,9 +15,9 @@ function render(soft) {
     const s = SN[st.si];
     h += `<h2>${esc(T(s.title))}</h2><div class="rng">${rg(s)}</div><p>${esc(T(s.sum))}</p>`;
     h += `<h3>${tUI('powersOnMap')}</h3><ul class="l">` + s.pol.map((p, i) => chipLi(p.c, `<b>${esc(T(p.n))}</b>${i === st.selPol ? `<br><span class="small">${esc(T(p.t))}</span>` : ''}`, 'pol:' + i, i === st.selPol)).join('') + '</ul>';
-    const evs = EV.filter(e => e.y >= s.from && e.y <= s.to);
+    const evs = EV.filter(e => e.y >= s.from && e.y <= s.to).sort((a, b) => a.y - b.y);
     if (evs.length) {
-      h += `<h3>${tUI('eventsInEra')}</h3><ul class="l">` + evs.map(e => `<li data-a="ev:${e.id}" class="ev-card ${e.id === st.selEv ? 'on' : ''}"><span class="dia"></span><span><b>${fy(e.y)}</b> · ${esc(T(e.t))}<br><span class="small">${esc(T(e.d))}</span></span></li>`).join('') + '</ul>';
+      h += `<h3>${tUI('eventsInEra')}</h3><ul class="ke-list">` + evs.map(e => `<li data-a="ev:${e.id}" data-ev-id="${e.id}" class="ev-card ke-card${e.id === st.selEv ? ' on' : ''}"><span class="ke-year">${fy(e.y)}</span><span class="ke-body"><b>${esc(T(e.t))}</b>${esc(T(e.d))}</span></li>`).join('') + '</ul>';
     }
     const divSys = (!st.layers || st.layers.divisions !== false) && (window.ATLAS_DIVISIONS || []).find(d => {
       return d.period && d.period[0] <= s.from && s.from <= d.period[1];
@@ -215,14 +215,19 @@ function openEventBalloon(e) {
     d: Math.hypot((e.lon - p.lon) * Math.cos(p.lat * Math.PI / 180), e.lat - p.lat)
   })).filter(x => x.d < 2.2).sort((a, c) => a.d - c.d).slice(0, 2);
 
+  const s = SN[snapAt(e.y)];
+  const rulers = typeof getActiveRulers === 'function' ? getActiveRulers(e.y) : [];
+  const headParts = [fy(e.y), s ? esc(T(s.title)) : '', rulers.length ? esc(T(rulers[0].name)) : ''].filter(Boolean);
   const placeChips = nearPlaces.map(np => `<button type="button" class="eb-place-chip" data-eb-pl="${np.idx}">📍 ${esc(T(np.name))} ›</button>`).join('');
-  b.innerHTML = `<div class="eb-head"><div class="eb-title">${fy(e.y)} · ${esc(T(e.t))}</div><button type="button" class="eb-close" id="ebClose" aria-label="Close event details">×</button></div>${placeChips ? `<div class="eb-places">${placeChips}</div>` : ''}<p class="eb-desc">${esc(T(e.d))}</p>`;
+  b.innerHTML = `<div class="eb-head"><div class="eb-title">${headParts.join(' · ')}</div><button type="button" class="eb-close" id="ebClose" aria-label="Close event details">×</button></div>${placeChips ? `<div class="eb-places">${placeChips}</div>` : ''}<p class="eb-desc"><b>${esc(T(e.t))}</b> — ${esc(T(e.d))}</p>`;
   b.style.display = 'block';
 
-  // Position near center-top-ish of mapwrap so it's always cleanly visible without overlapping #eracard
+  // Anchor near projected event coordinates on mapwrap
   const r = mw.getBoundingClientRect();
-  const left = Math.max(16, Math.min(r.width - 320, Math.round(r.width * 0.48 - 140)));
-  const top = Math.max(54, Math.min(r.height - 220, Math.round(r.height * 0.32)));
+  const sx = (px(e.lon, e.lat) - vb.x) * (r.width / vb.w);
+  const sy = (py(e.lon, e.lat) - vb.y) * (r.height / vb.h);
+  const left = Math.max(16, Math.min(r.width - 336, Math.round(sx - 160)));
+  const top = Math.max(54, Math.min(r.height - 210, Math.round(sy + 18)));
   b.style.left = left + 'px';
   b.style.top = top + 'px';
 

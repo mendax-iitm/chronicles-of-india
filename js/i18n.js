@@ -52,7 +52,8 @@ const I18N = {
     timelineSlider: "Timeline slider: historical year",
     mapShownAt: "map shown at {rep}",
     powersOnMap: "Powers on the map",
-    eventsInEra: "Events in this era",
+    eventsInEra: "Key Events",
+    yrUnit: "yr",
     rulersTitle: "Key Rulers & Regnal Eras:",
     divisionsTitle: "Provincial Administrative Divisions:",
     eraTip: "Tip: tap a region or a ◆ for details. Dashed outlines show lands that changed hands since the previous era.",
@@ -234,7 +235,8 @@ const I18N = {
     timelineSlider: "समयरेखा स्लाइडर: ऐतिहासिक वर्ष",
     mapShownAt: "मानचित्र चित्रण: {rep}",
     powersOnMap: "मानचित्र पर साम्राज्य व शक्तियां",
-    eventsInEra: "इस युग की प्रमुख घटनाएं",
+    eventsInEra: "प्रमुख घटनाएं",
+    yrUnit: "वर्ष",
     rulersTitle: "प्रमुख शासक एवं शासनकाल:",
     divisionsTitle: "प्रांतीय प्रशासनिक विभाग:",
     eraTip: "संकेत: विवरण के लिए किसी क्षेत्र या ◆ पर क्लिक करें। बिंदीदार रेखाएं पिछली शताब्दी से बदले हुए भूभाग दर्शाती हैं।",
@@ -581,6 +583,8 @@ function setLanguage(lang) {
     if (play) play.setAttribute('aria-label', (typeof st !== 'undefined' && st.play) ? tUI('pause') : tUI('play'));
     const next = document.getElementById('next');
     if (next) next.setAttribute('aria-label', tUI('nextEra'));
+    const yrUnit = document.getElementById('yrUnit');
+    if (yrUnit) yrUnit.textContent = tUI('yrUnit');
     const yr = document.getElementById('yr');
     if (yr) yr.setAttribute('aria-label', tUI('timelineSlider'));
     

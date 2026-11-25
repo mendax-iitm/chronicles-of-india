@@ -99,12 +99,32 @@ function setYear(y, keepView) {
   });
   const s = SN[si];
   renderEraCard(s, si, y);
+  const yrInput = $('#yrInput');
+  if (yrInput && document.activeElement !== yrInput) {
+    yrInput.value = y;
+  }
+  const span = (tlCrop.max - tlCrop.min) || 1;
+  const pctRaw = (y - tlCrop.min) / span * 100;
+  const playhead = $('#tl-playhead');
+  if (playhead) {
+    playhead.style.left = Math.max(0, Math.min(100, pctRaw)).toFixed(2) + '%';
+  }
   const tlTip = $('#tl-tip');
   if (tlTip) {
-    const pct = Math.max(4, Math.min(96, ((y + 600) / 2547 * 100)));
+    const pct = Math.max(6, Math.min(94, pctRaw));
+    const rulers = getActiveRulers(y);
+    const rulerPart = rulers.length ? ` · ${T(rulers[0].name)}` : '';
     tlTip.style.left = pct.toFixed(2) + '%';
-    tlTip.textContent = `${fy(y)} · ${T(s.title)}`;
+    tlTip.textContent = `${fy(y)} · ${T(s.title)}${rulerPart}`;
   }
+  document.querySelectorAll('#ev-dots .ev-dot').forEach(dot => {
+    const ey = +dot.dataset.y;
+    dot.classList.toggle('active', Math.abs(ey - y) <= 2);
+  });
+  document.querySelectorAll('#content .ke-card').forEach(card => {
+    const cid = +card.dataset.evId;
+    card.classList.toggle('on', cid === st.selEv);
+  });
   if (typeof announceEraChange === 'function') {
     announceEraChange(s, y, ch);
   }
@@ -150,15 +170,26 @@ function startPlay() {
   }, stepMs);
 }
 
+const tlCrop = { min: -600, max: 1947 };
+
 function initEraSegments() {
   const segEl = $('#era-segments');
   if (!segEl) return;
-  segEl.innerHTML = MACRO_ERAS.map(sg => {
-    const w = ((sg.to - sg.from) / 2547 * 100).toFixed(2);
+  const total = tlCrop.max - tlCrop.min;
+  const bandsHtml = MACRO_ERAS.map(sg => {
+    const from = Math.max(tlCrop.min, sg.from);
+    const to = Math.min(tlCrop.max, sg.to);
+    if (to <= from) return '';
+    const w = ((to - from) / total * 100).toFixed(2);
     const lbl = typeof T === 'function' ? T(sg.label) : sg.label.en;
     const isAct = st.year >= sg.from && st.year <= sg.to;
     return `<button type="button" class="era-seg${isAct ? ' active' : ''}" data-from="${sg.from}" style="width:${w}%;background:${sg.color}" title="${esc(lbl)} (${fy(sg.from)} – ${fy(sg.to)})">${esc(lbl)}</button>`;
   }).join('');
+  const hairlinesHtml = SN.filter(s => s.from > tlCrop.min && s.from < tlCrop.max).map(s => {
+    const pct = ((s.from - tlCrop.min) / total * 100).toFixed(2);
+    return `<i class="tl-hairline" style="left:${pct}%"></i>`;
+  }).join('');
+  segEl.innerHTML = bandsHtml + hairlinesHtml + '<div id="tl-playhead" class="tl-playhead"></div>';
   segEl.onclick = e => {
     const seg = e.target.closest('.era-seg');
     if (seg && !st.quiz.on) {
@@ -166,6 +197,21 @@ function initEraSegments() {
       setYear(+seg.dataset.from);
     }
   };
+  const yrEl = $('#yr');
+  if (yrEl) {
+    yrEl.min = tlCrop.min;
+    yrEl.max = tlCrop.max;
+    yrEl.value = st.year;
+  }
+  const yearsEl = $('#tl-years');
+  if (yearsEl) {
+    const marks = MACRO_ERAS.map(sg => sg.from).concat([1947]).filter(y => y >= tlCrop.min && y <= tlCrop.max);
+    yearsEl.innerHTML = marks.map(y => {
+      const pct = ((y - tlCrop.min) / total * 100).toFixed(2);
+      const lbl = y < 0 ? `${-y} ${typeof tUI === 'function' ? tUI('bce') : 'BCE'}` : (y === 1947 ? '1947' : String(y));
+      return `<span style="left:${pct}%">${lbl}</span>`;
+    }).join('');
+  }
 }
 
 function initEventDots() {
@@ -174,19 +220,19 @@ function initEventDots() {
   const show = !st.layers || st.layers.events !== false;
   el.style.display = show ? 'block' : 'none';
   if (!show) return;
-  // Space dots so overlapping events within 18 years don't crowd the track
-  const sorted = [...EV].sort((a, b) => a.y - b.y);
+  const total = tlCrop.max - tlCrop.min;
+  const sorted = [...EV].filter(e => e.y >= tlCrop.min && e.y <= tlCrop.max).sort((a, b) => a.y - b.y);
   const placed = [];
   let lastY = -9999;
   for (const e of sorted) {
-    if (e.y - lastY >= 18) {
+    if (e.y - lastY >= 12) {
       placed.push(e);
       lastY = e.y;
     }
   }
   el.innerHTML = placed.map(e => {
-    const pct = ((e.y + 600) / 2547 * 100).toFixed(2);
-    return `<button type="button" class="ev-dot" style="left:${pct}%" data-ev="${e.id}" title="${fy(e.y)} · ${esc(T(e.t))}" aria-label="${fy(e.y)} ${esc(T(e.t))}"></button>`;
+    const pct = ((e.y - tlCrop.min) / total * 100).toFixed(2);
+    return `<button type="button" class="ev-dot" style="left:${pct}%" data-ev="${e.id}" data-y="${e.y}" title="${fy(e.y)} · ${esc(T(e.t))}" aria-label="${fy(e.y)} ${esc(T(e.t))}"></button>`;
   }).join('');
   el.onclick = ev => {
     const dot = ev.target.closest('.ev-dot');
@@ -195,6 +241,29 @@ function initEventDots() {
       act('ev:' + dot.dataset.ev);
     }
   };
+}
+
+function stepMilestone(dir) {
+  const evOn = !st.layers || st.layers.events !== false;
+  const pts = evOn
+    ? [...new Set([...SN.map(s => s.from), ...EV.map(e => e.y)])].sort((a, b) => a - b)
+    : SN.map(s => s.from).sort((a, b) => a - b);
+  if (dir > 0) {
+    const nxt = pts.find(y => y > st.year);
+    if (nxt != null) {
+      const ev = evOn ? EV.find(e => e.y === nxt) : null;
+      if (ev) act('ev:' + ev.id);
+      else setYear(nxt);
+    }
+  } else {
+    const prevPts = pts.filter(y => y < st.year);
+    if (prevPts.length) {
+      const prv = prevPts[prevPts.length - 1];
+      const ev = evOn ? EV.find(e => e.y === prv) : null;
+      if (ev) act('ev:' + ev.id);
+      else setYear(prv);
+    }
+  }
 }
 
 function initTimeline() {
@@ -213,6 +282,61 @@ function initTimeline() {
     stopPlay();
     setYear(+e.target.value);
   };
+  const yrPrev = $('#yrPrev');
+  const yrNext = $('#yrNext');
+  const yrInput = $('#yrInput');
+  if (yrPrev) yrPrev.onclick = () => { if (!st.quiz.on) { stopPlay(); stepMilestone(-1); } };
+  if (yrNext) yrNext.onclick = () => { if (!st.quiz.on) { stopPlay(); stepMilestone(1); } };
+  if (yrInput) {
+    yrInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        const val = parseInt(yrInput.value, 10);
+        if (!Number.isNaN(val) && !st.quiz.on) {
+          stopPlay();
+          setYear(val);
+        }
+        yrInput.blur();
+      }
+    });
+  }
+  const track = $('.track');
+  const edgeStart = $('#tl-edge-start');
+  const edgeEnd = $('#tl-edge-end');
+  function resetCrop() {
+    tlCrop.min = -600;
+    tlCrop.max = 1947;
+    initEraSegments();
+    initEventDots();
+    setYear(st.year);
+  }
+  if (edgeStart && edgeEnd && track) {
+    edgeStart.ondblclick = resetCrop;
+    edgeEnd.ondblclick = resetCrop;
+    const bindEdge = (el, isStart) => {
+      el.onpointerdown = ev => {
+        ev.preventDefault();
+        el.setPointerCapture(ev.pointerId);
+        const rect = track.getBoundingClientRect();
+        const move = m => {
+          const ratio = Math.max(0, Math.min(1, (m.clientX - rect.left) / rect.width));
+          const yrVal = Math.round(-600 + ratio * 2547);
+          if (isStart) tlCrop.min = Math.min(yrVal, tlCrop.max - 120);
+          else tlCrop.max = Math.max(yrVal, tlCrop.min + 120);
+          initEraSegments();
+          initEventDots();
+          setYear(Math.max(tlCrop.min, Math.min(tlCrop.max, st.year)));
+        };
+        const up = () => {
+          el.removeEventListener('pointermove', move);
+          el.removeEventListener('pointerup', up);
+        };
+        el.addEventListener('pointermove', move);
+        el.addEventListener('pointerup', up);
+      };
+    };
+    bindEdge(edgeStart, true);
+    bindEdge(edgeEnd, false);
+  }
   $('#prev').onclick = () => {
     if (st.quiz.on) return;
     stopPlay();

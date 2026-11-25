@@ -127,7 +127,24 @@
 </main>
 <footer id="tl">
  <button id="prev" aria-label="Previous era">⏮</button><button id="play" aria-label="Play">▶</button><button id="speedBtn" class="tl-speed" title="Playback speed (0.3× / 0.5× / 1× / 1.5× / 2×)" aria-label="Playback speed 1×">1×</button><button id="next" aria-label="Next era">⏭</button>
- <div class="track"><div id="era-segments" class="era-segments"></div><div id="ev-dots" class="ev-dots"></div><div id="tl-tip" class="tl-tip" aria-hidden="true"></div><input type="range" id="yr" min="-600" max="1947" value="-261" step="1" aria-label="Timeline slider: historical year"><div id="ticks"></div></div>
+ <div class="yr-stepper" role="group" aria-label="Year stepper">
+   <button id="yrPrev" type="button" title="Previous milestone / year" aria-label="Previous milestone">‹</button>
+   <input id="yrInput" type="text" value="-261" aria-label="Jump to year" title="Type a year (e.g. -261 or 1526) and press Enter">
+   <span class="yr-unit" id="yrUnit">yr</span>
+   <button id="yrNext" type="button" title="Next milestone / year" aria-label="Next milestone">›</button>
+ </div>
+ <div class="track">
+   <div id="tl-crop-left" class="tl-crop-mask left" aria-hidden="true"></div>
+   <div id="tl-crop-right" class="tl-crop-mask right" aria-hidden="true"></div>
+   <div id="era-segments" class="era-segments"></div>
+   <div id="ev-dots" class="ev-dots"></div>
+   <div id="tl-tip" class="tl-tip" aria-hidden="true"></div>
+   <input type="range" id="yr" min="-600" max="1947" value="-261" step="1" aria-label="Timeline slider: historical year">
+   <div id="ticks"></div>
+   <div id="tl-edge-start" class="tl-edge start" title="Drag to zoom timeline (double-click to reset)"></div>
+   <div id="tl-edge-end" class="tl-edge end" title="Drag to zoom timeline (double-click to reset)"></div>
+   <div id="tl-years" class="tl-years" aria-hidden="true"></div>
+ </div>
  <div id="ylab"></div>
 </footer>
 

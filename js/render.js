@@ -249,7 +249,11 @@ function drawOv() {
     if (!st.layers || st.layers.events !== false) {
       EV.forEach(e => {
         if (Math.abs(e.y - y) > 30 && e.id !== st.selEv) return;
-        h += glyph('<path d="M0,-8 L8,0 L0,8 L-8,0Z" fill="#e9a400" stroke="#fff" stroke-width="2"/>', e.lon, e.lat, `data-k="e:${e.id}"`);
+        const isSel = e.id === st.selEv;
+        const inner = isSel
+          ? '<circle r="15" fill="#b4432c" fill-opacity="0.14" stroke="#b4432c" stroke-opacity="0.35" stroke-width="1"/><path d="M0,-9 L9,0 L0,9 L-9,0Z" fill="#b4432c" stroke="#fff" stroke-width="2"/>'
+          : '<path d="M0,-8 L8,0 L0,8 L-8,0Z" fill="#e9a400" stroke="#fff" stroke-width="2"/>';
+        h += glyph(inner, e.lon, e.lat, `data-k="e:${e.id}"`);
       });
     }
 
